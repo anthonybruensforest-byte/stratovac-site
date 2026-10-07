@@ -314,6 +314,42 @@ thead th.us{color:var(--accent)}
 @media (max-width:480px){ .foot-grid{grid-template-columns:minmax(0,1fr)} }
 
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+/* maple vacuum pumps */
+.mp-why{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(20px,3vw,40px)}
+.mp-why li{border-top:2px solid var(--accent);padding:16px 0 8px}
+.mp-why h3{font-size:1.05rem;font-stretch:106%;font-weight:700;line-height:1.25}
+.mp-why p{margin-top:6px;color:var(--ink-2);font-size:.94rem}
+.mp-head{margin-top:clamp(44px,6vw,72px)}
+.mp{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);gap:clamp(18px,3vw,36px);align-items:center;padding-block:22px;border-top:1px solid var(--line)}
+.mp-img{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;aspect-ratio:4/3;display:grid;place-items:center;padding:10px;overflow:hidden}
+.mp-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.mp h3{font-size:1.3rem;font-stretch:108%;font-weight:800;line-height:1.15}
+.mp-tw{margin-top:12px;background:var(--surface)}
+table.mt{min-width:640px;font-size:.9rem}
+.mt th,.mt td{padding:9px 12px}
+.mt tbody th{font:700 .95rem/1.3 var(--font-display);font-stretch:104%;color:var(--ink);white-space:nowrap}
+.mt td{font-variant-numeric:tabular-nums}
+.cf{display:block;font-size:.8rem;color:var(--ink-2)}
+.mt .dl{white-space:nowrap}
+.mt .dl .btn{padding:6px 10px;font-size:.82rem;margin-right:6px}
+.mt .dl .btn:last-child{margin-right:0}
+.mp-lead{margin-top:6px;color:var(--ink-2);max-width:70ch}
+.mp-opt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,3.5vw,48px);align-items:center;margin-top:28px}
+.mp-opt h4{margin:0 0 8px;font:700 1.12rem/1.2 var(--font-display);font-stretch:106%}
+.mp-opt p{color:var(--ink-2);font-size:.96rem;margin-top:8px}
+.mp-opt figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;place-items:center}
+.mp-opt figure img{width:100%;height:auto}
+.mp-opt--r{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+.mp-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.mp-kw{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
+.mp-kw li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.mp-kw b{font-weight:600}.mp-kw span{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.mp-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:clamp(36px,5vw,56px);padding:22px clamp(18px,3vw,32px);border-radius:10px;background:var(--deep);color:var(--on-deep)}
+.mp-cta h3{color:#fff;font-size:1.25rem;font-stretch:108%}
+.mp-cta p{color:var(--on-deep-2);margin-top:4px}
+@media (max-width:980px){ .mp-why{grid-template-columns:repeat(2,minmax(0,1fr))} .mp{grid-template-columns:minmax(0,1fr)} .mp-img{aspect-ratio:16/9;max-width:520px} .mp-opt,.mp-opt--r{grid-template-columns:minmax(0,1fr)} .mp-opt--r > .mp-pair{order:2} }
+@media (max-width:560px){ .mp-why{grid-template-columns:minmax(0,1fr)} }
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
 <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 14h6M9 17.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
@@ -340,6 +376,7 @@ thead th.us{color:var(--accent)}
       <a href="#products"><span data-l="en" lang="en">Products</span><span data-l="fr" lang="fr">Produits</span></a>
       <a href="#technology"><span data-l="en" lang="en">Technology</span><span data-l="fr" lang="fr">Technologie</span></a>
       <a href="#applications"><span data-l="en" lang="en">Applications</span><span data-l="fr" lang="fr">Applications</span></a>
+      <a href="#maple"><span data-l="en" lang="en">Maple</span><span data-l="fr" lang="fr">Érablières</span></a>
       <a href="#resources"><span data-l="en" lang="en">Resources</span><span data-l="fr" lang="fr">Ressources</span></a>
       <a href="#contact">Contact</a>
     </nav>
@@ -416,8 +453,8 @@ thead th.us{color:var(--accent)}
   </div>
 </article>
 <article class="product" id="p-elec">
-  <figure class="plate plate--photo">
-    <img src="assets/img/electric-booster.webp" width="573" height="502" decoding="async"
+  <figure class="plate ">
+    <img src="assets/img/electric-booster.webp" width="604" height="509" decoding="async"
          alt="Electric high-pressure air booster" data-attr="alt" data-en="Electric high-pressure air booster" data-fr="Surpresseur d’air électrique haute pression">
     <figcaption><span data-l="en" lang="en">IDSC-2SHP-166-400</span><span data-l="fr" lang="fr">IDSC-2SHP-166-400</span></figcaption>
   </figure>
@@ -429,8 +466,8 @@ thead th.us{color:var(--accent)}
   </div>
 </article>
 <article class="product" id="p-press">
-  <figure class="plate plate--photo">
-    <img src="assets/img/pressurized-blower-photo.webp" width="800" height="460" decoding="async"
+  <figure class="plate ">
+    <img src="assets/img/pressurized-blower-photo.webp" width="800" height="388" decoding="async"
          alt="Delivered pressurized regenerative blower with magnetic drive" data-attr="alt" data-en="Delivered pressurized regenerative blower with magnetic drive" data-fr="Soufflante régénérative sous pression livrée, avec entraînement magnétique">
     <figcaption><span data-l="en" lang="en">Delivered unit, reference project</span><span data-l="fr" lang="fr">Unité livrée, projet de référence</span></figcaption>
   </figure>
@@ -601,6 +638,122 @@ thead th.us{color:var(--accent)}
   </div>
 </section>
 
+<section class="sec sec--surface" id="maple">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">Vacuum pumps for maple producers</span><span data-l="fr" lang="fr">Des pompes à vide pour les acériculteurs</span></h2>
+      <p><span data-l="en" lang="en">Oil-lubricated rotary vane vacuum pumps for your sugar bush, ordered straight from Stratovac. Built in South Korea, with the same quality as the AirTech Vacuum pumps, the pumps CDL has long supplied to maple producers, at very competitive prices and with no middleman supplier between you and us.</span><span data-l="fr" lang="fr">Des pompes à vide à palettes lubrifiées pour votre érablière, commandées directement chez Stratovac. Fabriquées en Corée du Sud, avec la même qualité que les pompes AirTech Vacuum, les pompes que CDL fournit depuis longtemps aux acériculteurs, à des prix très concurrentiels et sans fournisseur intermédiaire entre vous et nous.</span></p>
+    </div>
+    <ul class="mp-why">
+      <li><h3><span data-l="en" lang="en">Direct from Stratovac</span><span data-l="fr" lang="fr">Directement de Stratovac</span></h3><p><span data-l="en" lang="en">You deal with us from the quote to the delivery. No other supplier in the middle.</span><span data-l="fr" lang="fr">Vous traitez avec nous, de la soumission à la livraison. Aucun autre fournisseur entre vous et nous.</span></p></li>
+      <li><h3><span data-l="en" lang="en">The same quality as AirTech Vacuum</span><span data-l="fr" lang="fr">La même qualité qu’AirTech Vacuum</span></h3><p><span data-l="en" lang="en">Oil-lubricated rotary vane pumps like the ones CDL sells, with the same quality as AirTech Vacuum.</span><span data-l="fr" lang="fr">Des pompes à palettes lubrifiées comme celles que vend CDL, avec la même qualité qu’AirTech Vacuum.</span></p></li>
+      <li><h3><span data-l="en" lang="en">Made in South Korea</span><span data-l="fr" lang="fr">Fabriquées en Corée du Sud</span></h3><p><span data-l="en" lang="en">Built in South Korea. The whole range is CE marked.</span><span data-l="fr" lang="fr">Fabriquées en Corée du Sud. Toute la gamme porte le marquage CE.</span></p></li>
+      <li><h3><span data-l="en" lang="en">Very competitive prices</span><span data-l="fr" lang="fr">Des prix très concurrentiels</span></h3><p><span data-l="en" lang="en">Send us the pump you use today and we quote the equivalent STROV model.</span><span data-l="fr" lang="fr">Envoyez-nous la pompe que vous utilisez aujourd’hui et nous vous soumissionnons le modèle STROV équivalent.</span></p></li>
+    </ul>
+    <div class="sec-head mp-head">
+      <h2 id="maple-range"><span data-l="en" lang="en">Choose your pump</span><span data-l="fr" lang="fr">Choisissez votre pompe</span></h2>
+      <p><span data-l="en" lang="en">18 models, from 12 to 780 m³/h at 60 Hz (about 7 to 460 cfm). Each one has an English and a French datasheet with specifications, dimensions and options.</span><span data-l="fr" lang="fr">18 modèles, de 12 à 780 m³/h à 60 Hz (environ 7 à 460 pi³/min). Chacun a une fiche technique en anglais et en français, avec caractéristiques, dimensions et options.</span></p>
+    </div>
+    <article class="mp" id="maple-g1">
+  <figure class="mp-img"><img src="assets/img/rv/g1.webp" width="897" height="598" loading="lazy" alt="STROV-0020 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0020 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0020"></figure>
+  <div class="mp-body">
+    <h3>STROV-0020 · 0030 · 0040</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0020</th><td>12&nbsp;m³/h <span class='cf'>7.1&nbsp;cfm</span></td><td>10&nbsp;m³/h</td><td><span data-l="en" lang="en">2</span><span data-l="fr" lang="fr">2</span>&nbsp;mbar <span class='cf' style='display:inline'>(NM)</span><br><span data-l="en" lang="en">20</span><span data-l="fr" lang="fr">20</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">0.4</span><span data-l="fr" lang="fr">0,4</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0020-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0020-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0030</th><td>18&nbsp;m³/h <span class='cf'>11&nbsp;cfm</span></td><td>15&nbsp;m³/h</td><td><span data-l="en" lang="en">2</span><span data-l="fr" lang="fr">2</span>&nbsp;mbar <span class='cf' style='display:inline'>(NM)</span><br><span data-l="en" lang="en">20</span><span data-l="fr" lang="fr">20</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">0.75</span><span data-l="fr" lang="fr">0,75</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0030-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0030-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0040</th><td>24&nbsp;m³/h <span class='cf'>14&nbsp;cfm</span></td><td>20&nbsp;m³/h</td><td><span data-l="en" lang="en">2</span><span data-l="fr" lang="fr">2</span>&nbsp;mbar <span class='cf' style='display:inline'>(NM)</span><br><span data-l="en" lang="en">20</span><span data-l="fr" lang="fr">20</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">0.9</span><span data-l="fr" lang="fr">0,9</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0040-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0040-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g2">
+  <figure class="mp-img"><img src="assets/img/rv/g2.webp" width="768" height="536" loading="lazy" alt="STROV-0060 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0060 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0060"></figure>
+  <div class="mp-body">
+    <h3>STROV-0060 · 0080</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0060</th><td>36&nbsp;m³/h <span class='cf'>21&nbsp;cfm</span></td><td>30&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">2</span><span data-l="fr" lang="fr">2</span>&nbsp;hp · <span data-l="en" lang="en">1.1</span><span data-l="fr" lang="fr">1,1</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0060-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0060-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0080</th><td>48&nbsp;m³/h <span class='cf'>28&nbsp;cfm</span></td><td>40&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">2</span><span data-l="fr" lang="fr">2</span>&nbsp;hp · <span data-l="en" lang="en">1.5</span><span data-l="fr" lang="fr">1,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0080-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0080-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g3">
+  <figure class="mp-img"><img src="assets/img/rv/g3.webp" width="889" height="593" loading="lazy" alt="STROV-0120 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0120 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0120"></figure>
+  <div class="mp-body">
+    <h3>STROV-0120 · 0200</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0120</th><td>75&nbsp;m³/h <span class='cf'>44&nbsp;cfm</span></td><td>63&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">3</span><span data-l="fr" lang="fr">3</span>&nbsp;hp · <span data-l="en" lang="en">2.2</span><span data-l="fr" lang="fr">2,2</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0120-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0120-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0200</th><td>120&nbsp;m³/h <span class='cf'>71&nbsp;cfm</span></td><td>100&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">5</span><span data-l="fr" lang="fr">5</span>&nbsp;hp · <span data-l="en" lang="en">3</span><span data-l="fr" lang="fr">3</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0200-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0200-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g4">
+  <figure class="mp-img"><img src="assets/img/rv/g4.webp" width="730" height="462" loading="lazy" alt="STROV-0320 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0320 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0320"></figure>
+  <div class="mp-body">
+    <h3>STROV-0320 · 0430 · 0505</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0320</th><td>192&nbsp;m³/h <span class='cf'>113&nbsp;cfm</span></td><td>160&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">5</span><span data-l="fr" lang="fr">5</span>&nbsp;hp · <span data-l="en" lang="en">3.7</span><span data-l="fr" lang="fr">3,7</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0320-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0320-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0430</th><td>258&nbsp;m³/h <span class='cf'>152&nbsp;cfm</span></td><td>215&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">7.5</span><span data-l="fr" lang="fr">7,5</span>&nbsp;hp · <span data-l="en" lang="en">5.5</span><span data-l="fr" lang="fr">5,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0430-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0430-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0505</th><td>300&nbsp;m³/h <span class='cf'>177&nbsp;cfm</span></td><td>250&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;hp · <span data-l="en" lang="en">7.5</span><span data-l="fr" lang="fr">7,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0505-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0505-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g5">
+  <figure class="mp-img"><img src="assets/img/rv/g5.webp" width="862" height="573" loading="lazy" alt="STROV-0350 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0350 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0350"></figure>
+  <div class="mp-body">
+    <h3>STROV-0350</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0350</th><td>210&nbsp;m³/h <span class='cf'>124&nbsp;cfm</span></td><td>175&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">7.5</span><span data-l="fr" lang="fr">7,5</span>&nbsp;hp · <span data-l="en" lang="en">5.5</span><span data-l="fr" lang="fr">5,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0350-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0350-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g6">
+  <figure class="mp-img"><img src="assets/img/rv/g6.webp" width="877" height="626" loading="lazy" alt="STROV-0500 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0500 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0500"></figure>
+  <div class="mp-body">
+    <h3>STROV-0500 · 0600</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0500</th><td>300&nbsp;m³/h <span class='cf'>177&nbsp;cfm</span></td><td>250&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;hp · <span data-l="en" lang="en">7.5</span><span data-l="fr" lang="fr">7,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0500-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0500-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-0600</th><td>360&nbsp;m³/h <span class='cf'>212&nbsp;cfm</span></td><td>300&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar</td><td><span data-l="en" lang="en">11.5</span><span data-l="fr" lang="fr">11,5</span>&nbsp;hp · <span data-l="en" lang="en">9.2</span><span data-l="fr" lang="fr">9,2</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0600-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0600-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g7">
+  <figure class="mp-img"><img src="assets/img/rv/g7.webp" width="1100" height="730" loading="lazy" alt="STROV-0605 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0605 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0605"></figure>
+  <div class="mp-body">
+    <h3>STROV-0605</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0605</th><td>340&nbsp;m³/h <span class='cf'>200&nbsp;cfm</span></td><td>280&nbsp;m³/h</td><td><span data-l="en" lang="en">0.08 mbar (gas ballast closed)</span><span data-l="fr" lang="fr">0,08 mbar (lest fermé)</span><br><span data-l="en" lang="en">0.5 mbar (open)</span><span data-l="fr" lang="fr">0,5 mbar (ouvert)</span></td><td><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;hp · <span data-l="en" lang="en">7.5</span><span data-l="fr" lang="fr">7,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0605-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0605-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g8">
+  <figure class="mp-img"><img src="assets/img/rv/g8.webp" width="916" height="684" loading="lazy" alt="STROV-0800 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-0800 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-0800"></figure>
+  <div class="mp-body">
+    <h3>STROV-0800 · 1000 · 1200</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-0800</th><td>505&nbsp;m³/h <span class='cf'>297&nbsp;cfm</span></td><td>420&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar <span class='cf' style='display:inline'>(H)</span><br><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">20</span><span data-l="fr" lang="fr">20</span>&nbsp;hp · <span data-l="en" lang="en">15</span><span data-l="fr" lang="fr">15</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-0800-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-0800-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-1000</th><td>600&nbsp;m³/h <span class='cf'>353&nbsp;cfm</span></td><td>500&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar <span class='cf' style='display:inline'>(H)</span><br><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">20</span><span data-l="fr" lang="fr">20</span>&nbsp;hp · <span data-l="en" lang="en">15</span><span data-l="fr" lang="fr">15</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-1000-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-1000-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr><tr><th scope='row'>STROV-1200</th><td>780&nbsp;m³/h <span class='cf'>459&nbsp;cfm</span></td><td>660&nbsp;m³/h</td><td><span data-l="en" lang="en">0.1</span><span data-l="fr" lang="fr">0,1</span>&nbsp;mbar <span class='cf' style='display:inline'>(H)</span><br><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">25</span><span data-l="fr" lang="fr">25</span>&nbsp;hp · <span data-l="en" lang="en">18.5</span><span data-l="fr" lang="fr">18,5</span>&nbsp;kW</td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-1200-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-1200-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article><article class="mp" id="maple-g9">
+  <figure class="mp-img"><img src="assets/img/rv/g9.webp" width="1100" height="597" loading="lazy" alt="STROV-1500 oil-lubricated rotary vane vacuum pump" data-attr="alt" data-en="STROV-1500 oil-lubricated rotary vane vacuum pump" data-fr="Pompe à vide à palettes lubrifiées STROV-1500"></figure>
+  <div class="mp-body">
+    <h3>STROV-1500</h3>
+    <div class="tablewrap mp-tw"><table class="mt"><thead><tr>
+      <th scope="col"><span data-l="en" lang="en">Model</span><span data-l="fr" lang="fr">Modèle</span></th><th scope="col"><span data-l="en" lang="en">Pumping speed, 60 Hz</span><span data-l="fr" lang="fr">Débit de pompage, 60 Hz</span></th><th scope="col"><span data-l="en" lang="en">50 Hz</span><span data-l="fr" lang="fr">50 Hz</span></th><th scope="col"><span data-l="en" lang="en">End vacuum</span><span data-l="fr" lang="fr">Vide limite</span></th><th scope="col"><span data-l="en" lang="en">Motor, 60 Hz</span><span data-l="fr" lang="fr">Moteur, 60 Hz</span></th><th scope="col"><span class="sr"><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></span></th>
+    </tr></thead><tbody><tr><th scope='row'>STROV-1500</th><td>—</td><td>750&nbsp;m³/h</td><td><span data-l="en" lang="en">0.5</span><span data-l="fr" lang="fr">0,5</span>&nbsp;mbar <span class='cf' style='display:inline'>(H)</span><br><span data-l="en" lang="en">10</span><span data-l="fr" lang="fr">10</span>&nbsp;mbar <span class='cf' style='display:inline'>(L)</span></td><td><span data-l="en" lang="en">18.5</span><span data-l="fr" lang="fr">18,5</span>&nbsp;kW<span data-l="en" lang="en"> (50 Hz)</span><span data-l="fr" lang="fr"> (50 Hz)</span></td><td class='dl'><a class='btn btn--line' href='assets/pdf/rv/STROV-1500-EN.pdf' target='_blank' rel='noopener' hreflang='en'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>EN</span></a><a class='btn btn--line' href='assets/pdf/rv/STROV-1500-FR.pdf' target='_blank' rel='noopener' hreflang='fr'><svg class='ico' aria-hidden='true'><use href='#i-pdf'/></svg><span>FR</span></a></td></tr></tbody></table></div>
+  </div>
+</article>
+    <p class="foot-note"><span data-l="en" lang="en">Pumping speed is the displacement of the pump. End vacuum is absolute pressure. Oil is not included in the weights on the datasheets. Single-phase motors are available on the smaller models.</span><span data-l="fr" lang="fr">Le débit de pompage est la cylindrée de la pompe. Le vide limite est une pression absolue. L’huile n’est pas comprise dans les poids des fiches techniques. Des moteurs monophasés sont offerts sur les plus petits modèles.</span></p>
+    <div class="block mp-opts">
+      <h3 class="sub-h"><span data-l="en" lang="en">Our advantage: the oil heater</span><span data-l="fr" lang="fr">Notre avantage : le chauffe-huile</span></h3>
+      <div class="mp-opt">
+        <figure><img src="assets/img/rv/heater.webp" width="976" height="546" loading="lazy" alt="Pump with oil heater" data-attr="alt" data-en="Pump with oil heater" data-fr="Pompe avec chauffe-huile"></figure>
+        <div>
+          <h4><span data-l="en" lang="en">Water in the oil is what kills maple pumps</span><span data-l="fr" lang="fr">L’eau dans l’huile est ce qui abîme les pompes d’érablière</span></h4>
+          <p><span data-l="en" lang="en">During the season the pump is often stopped, and water stays in the oil. The mix can corrupt the oil and, in time, damage the pump.</span><span data-l="fr" lang="fr">Durant la saison, la pompe est souvent arrêtée et il reste de l’eau dans l’huile. Le mélange peut corrompre l’huile et, à la longue, endommager la pompe.</span></p>
+          <p><span data-l="en" lang="en">Our thermostat-controlled oil heater keeps the oil warm enough for the water to evaporate. The oil stays in good condition and the pump keeps a better vacuum, season after season.</span><span data-l="fr" lang="fr">Notre chauffe-huile à thermostat garde l’huile assez chaude pour que l’eau s’évapore. L’huile reste en bon état et la pompe conserve un meilleur vide, saison après saison.</span></p>
+          <p><span data-l="en" lang="en">Available on the STROV-0060 to 1200 models. An oil level switch is required for safety.</span><span data-l="fr" lang="fr">Offert sur les modèles STROV-0060 à 1200. Un interrupteur de niveau d’huile est requis par sécurité.</span></p>
+          <ul class="mp-kw">
+            <li><b>STROV-0060 <span data-l="en" lang="en">to</span><span data-l="fr" lang="fr">à</span> 0200</b><span>0.5 <span data-l="en" lang="en">or</span><span data-l="fr" lang="fr">ou</span> 1&nbsp;kW</span></li>
+            <li><b>STROV-0320 <span data-l="en" lang="en">to</span><span data-l="fr" lang="fr">à</span> 0605</b><span>1 <span data-l="en" lang="en">or</span><span data-l="fr" lang="fr">ou</span> 1.5&nbsp;kW</span></li>
+            <li><b>STROV-0800 <span data-l="en" lang="en">to</span><span data-l="fr" lang="fr">à</span> 1200</b><span>2 <span data-l="en" lang="en">or</span><span data-l="fr" lang="fr">ou</span> 3&nbsp;kW</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mp-cta">
+      <div><h3><span data-l="en" lang="en">Tell us about your sugar bush</span><span data-l="fr" lang="fr">Parlez-nous de votre érablière</span></h3><p><span data-l="en" lang="en">Number of taps, current pump and electrical supply: we come back with a quote.</span><span data-l="fr" lang="fr">Nombre d’entailles, pompe actuelle et alimentation électrique : nous revenons avec une soumission.</span></p></div>
+      <a class="btn btn--solid" href="#contact"><span><span data-l="en" lang="en">Request a maple quote</span><span data-l="fr" lang="fr">Demander une soumission acéricole</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <p class="foot-note"><span data-l="en" lang="en">AirTech Vacuum and CDL are trademarks or names of their owners. Stratovac is not affiliated with them.</span><span data-l="fr" lang="fr">AirTech Vacuum et CDL sont des marques ou des noms appartenant à leurs propriétaires. Stratovac n’est pas affiliée à ces entreprises.</span></p>
+  </div>
+</section>
+
+
 <section class="sec sec--deep" id="process">
   <div class="wrap">
     <div class="sec-head">
@@ -679,8 +832,8 @@ thead th.us{color:var(--accent)}
         <p><span data-l="en" lang="en">Give us the gas, the pressures, the flow and the duty cycle. We come back with a sized proposal.</span><span data-l="fr" lang="fr">Indiquez-nous le gaz, les pressions, le débit et le régime de service. Nous revenons avec une proposition dimensionnée.</span></p>
       </div>
       <ul class="ctl">
-        <li><b><span data-l="en" lang="en">Email</span><span data-l="fr" lang="fr">Courriel</span></b><div class="val"><span class="sel" id="c-mail">info@id-industries.com</span>
-          <button class="mini" type="button" data-copy="info@id-industries.com" data-target="c-mail"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy</span><span data-l="fr" lang="fr">Copier</span></span></button></div></li>
+        <li><b><span data-l="en" lang="en">Email</span><span data-l="fr" lang="fr">Courriel</span></b><div class="val"><span class="sel" id="c-mail">abruens@stratovac.ca</span>
+          <button class="mini" type="button" data-copy="abruens@stratovac.ca" data-target="c-mail"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy</span><span data-l="fr" lang="fr">Copier</span></span></button></div></li>
         <li><b><span data-l="en" lang="en">Phone</span><span data-l="fr" lang="fr">Téléphone</span></b><div class="val"><span class="sel" id="c-tel">+1 438-880-4655</span>
           <button class="mini" type="button" data-copy="+1 438-880-4655" data-target="c-tel"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy</span><span data-l="fr" lang="fr">Copier</span></span></button></div></li>
         <li><b><span data-l="en" lang="en">Production sites</span><span data-l="fr" lang="fr">Sites de production</span></b><div class="val"><span>Fort Lauderdale, FL, USA · Barcelona, <span data-l="en" lang="en">Spain</span><span data-l="fr" lang="fr">Espagne</span></span></div></li>
@@ -715,11 +868,11 @@ thead th.us{color:var(--accent)}
       </form>
       <div class="result" id="result" hidden>
         <h4><span data-l="en" lang="en">Your request is ready to send</span><span data-l="fr" lang="fr">Votre demande est prête à envoyer</span></h4>
-        <p class="hint"><span data-l="en" lang="en">Copy it and email it to info@id-industries.com. Nothing is sent from this page.</span><span data-l="fr" lang="fr">Copiez-la et envoyez-la par courriel à info@id-industries.com. Rien n’est envoyé depuis cette page.</span></p>
+        <p class="hint"><span data-l="en" lang="en">Copy it and email it to abruens@stratovac.ca. Nothing is sent from this page.</span><span data-l="fr" lang="fr">Copiez-la et envoyez-la par courriel à abruens@stratovac.ca. Rien n’est envoyé depuis cette page.</span></p>
         <textarea id="summary" readonly aria-label="Request text" data-attr="aria-label" data-en="Request text" data-fr="Texte de la demande"></textarea>
         <div class="row">
           <button class="btn btn--solid" type="button" id="copyreq"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy request</span><span data-l="fr" lang="fr">Copier la demande</span></span></button>
-          <a class="btn btn--line" id="mailto" href="mailto:info@id-industries.com"><span><span data-l="en" lang="en">Open in email app</span><span data-l="fr" lang="fr">Ouvrir dans le courriel</span></span></a>
+          <a class="btn btn--line" id="mailto" href="mailto:abruens@stratovac.ca"><span><span data-l="en" lang="en">Open in email app</span><span data-l="fr" lang="fr">Ouvrir dans le courriel</span></span></a>
           <span class="status" id="status" role="status" aria-live="polite"></span>
         </div>
       </div>
@@ -746,7 +899,7 @@ thead th.us{color:var(--accent)}
         <li><a href="#applications"><span data-l="en" lang="en">Applications</span><span data-l="fr" lang="fr">Applications</span></a></li>
         <li><a href="#resources"><span data-l="en" lang="en">Datasheets</span><span data-l="fr" lang="fr">Fiches techniques</span></a></li></ul></div>
       <div><h4>Contact</h4><ul>
-        <li>info@id-industries.com</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
+        <li>abruens@stratovac.ca</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
     </div>
     <div class="legal"><span>© 2026 Stratovac. Part of ID Industry.</span><span><span data-l="en" lang="en">English / Français</span><span data-l="fr" lang="fr">English / Français</span></span></div>
   </div>
@@ -761,11 +914,11 @@ thead th.us{color:var(--accent)}
   var MSG = {
     en: { title:'Quote request – Stratovac', gas:'Gas', pin:'Inlet pressure', pout:'Target discharge pressure', flow:'Flow', duty:'Duty cycle',
           haz:'Hazardous area', co:'Company', mail:'Email', notes:'Notes', none:'-',
-          copied:'Copied. Paste it into an email to info@id-industries.com.', manual:'Select the text and copy it (Ctrl+C or Cmd+C), then paste it into an email to info@id-industries.com.',
+          copied:'Copied. Paste it into an email to abruens@stratovac.ca.', manual:'Select the text and copy it (Ctrl+C or Cmd+C), then paste it into an email to abruens@stratovac.ca.',
           subject:'Quote request' },
     fr: { title:'Demande de soumission – Stratovac', gas:'Gaz', pin:'Pression d’entrée', pout:'Pression de refoulement visée', flow:'Débit', duty:'Régime de service',
           haz:'Emplacement dangereux', co:'Entreprise', mail:'Courriel', notes:'Notes', none:'-',
-          copied:'Copié. Collez-le dans un courriel adressé à info@id-industries.com.', manual:'Sélectionnez le texte et copiez-le (Ctrl+C ou Cmd+C), puis collez-le dans un courriel adressé à info@id-industries.com.',
+          copied:'Copié. Collez-le dans un courriel adressé à abruens@stratovac.ca.', manual:'Sélectionnez le texte et copiez-le (Ctrl+C ou Cmd+C), puis collez-le dans un courriel adressé à abruens@stratovac.ca.',
           subject:'Demande de soumission' }
   };
 
@@ -827,7 +980,7 @@ thead th.us{color:var(--accent)}
   function renderSummary(){
     var text = buildText();
     out.value = text;
-    mailBtn.setAttribute('href', 'mailto:info@id-industries.com?subject=' + encodeURIComponent(MSG[lang()].subject) + '&body=' + encodeURIComponent(text));
+    mailBtn.setAttribute('href', 'mailto:abruens@stratovac.ca?subject=' + encodeURIComponent(MSG[lang()].subject) + '&body=' + encodeURIComponent(text));
   }
 
   if (form){
