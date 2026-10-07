@@ -1,0 +1,876 @@
+<title>Stratovac</title>
+<meta name="description" content="Stratovac, part of ID Industry: oil-free regenerative boosters and blowers for high pressure, corrosive gases and hazardous areas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: engineering datasheet as a website. Pale instrument-paper pages (navy in dark mode) with fixed deep-navy "plates" for hero, product images and process,
+   lit by the blue burst of the Stratovac mark. Left-aligned, ruled spec tables, one illustrated hero. */
+:root{
+  --paper:#eef0f4; --surface:#ffffff; --ink:#0d1526; --ink-2:#4a566c; --line:#cdd3de;
+  --accent:#0a5fd0; --accent-ink:#ffffff; --accent-wash:rgba(10,95,208,.08);
+  --deep:#08101f; --deep-2:#0e1a33; --deep-line:#223157; --on-deep:#f1f4fa; --on-deep-2:#a9b6cf;
+  --glow:rgba(24,108,240,.42); --glow-soft:rgba(24,108,240,.22); --bright:#52a8ff;
+  --bar-base:#b9c2d3;
+  --logo-a:block; --logo-b:none;
+  --font-display:'Archivo','Arial Narrow',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1529; --surface:#121c34; --ink:#e9eef8; --ink-2:#9eacc5; --line:#243252;
+    --accent:#5aa9ff; --accent-ink:#06101f; --accent-wash:rgba(90,169,255,.1);
+    --bar-base:#3a4a6e; --logo-a:none; --logo-b:block; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1529; --surface:#121c34; --ink:#e9eef8; --ink-2:#9eacc5; --line:#243252;
+  --accent:#5aa9ff; --accent-ink:#06101f; --accent-wash:rgba(90,169,255,.1);
+  --bar-base:#3a4a6e; --logo-a:none; --logo-b:block; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:124px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.62 var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--accent)}
+sub{font-size:.72em;line-height:0}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--bright);outline-offset:2px;border-radius:3px}
+
+/* language switch: only the active language is shown */
+html:not([data-lang="fr"]) [data-l="fr"],html[data-lang="fr"] [data-l="en"]{display:none!important}
+
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:max(16px,4vw)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:8px 14px;z-index:50;border-radius:4px}
+.skip:focus{left:8px}
+.ico{width:1.1em;height:1.1em;flex:none}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
+.head-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand .logo{height:44px;width:auto}
+.logo-a{display:var(--logo-a)} .logo-b{display:var(--logo-b)}
+.brand-sep{width:1px;height:32px;background:var(--line);flex:none}
+.partof{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font:600 .86rem/1.15 var(--font-display);font-stretch:108%;min-width:0}
+.partof .idm{height:22px;width:auto;flex:none}
+.partof small{display:block;font:400 .72rem/1.2 var(--font-body);color:var(--ink-2);letter-spacing:.01em}
+.nav{display:flex;align-items:center;gap:2px;order:3;width:100%;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:500;font-size:.93rem;padding:8px 11px;border-radius:5px}
+.nav a:hover{background:var(--accent-wash);color:var(--accent)}
+.head-tools{display:flex;align-items:center;gap:10px;margin-left:auto}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface)}
+.lang button{font:700 .76rem/1 var(--font-display);font-stretch:110%;letter-spacing:.04em;padding:7px 11px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.site-head .head-cta{display:none}
+@media (min-width:980px){
+  .head-row{flex-wrap:nowrap}
+  .nav{order:0;width:auto;overflow:visible;margin-left:auto}
+  .head-tools{margin-left:8px}
+  .site-head .head-cta{display:inline-flex}
+}
+@media (max-width:520px){ .brand .logo{height:38px} .brand-sep{display:none} .partof small{display:none} .partof{font-size:.78rem} }
+@media (max-width:400px){ .partof .idm{display:none} }
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 18px;border-radius:6px;border:1px solid transparent;font:600 .95rem/1.2 var(--font-body);text-decoration:none;cursor:pointer}
+.btn small{font-weight:400;opacity:.75}
+.btn--solid{background:var(--accent);color:var(--accent-ink)}
+.btn--solid:hover{filter:brightness(1.1)}
+.btn--line{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn--line:hover{border-color:var(--accent);color:var(--accent)}
+.btn--deep{border-color:var(--deep-line);color:var(--on-deep);background:transparent}
+.btn--deep:hover{border-color:var(--bright);color:#fff}
+
+/* hero */
+.hero{background:radial-gradient(60% 85% at 76% 42%,var(--glow),transparent 66%),var(--deep);color:var(--on-deep);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(40px,6vw,84px) clamp(28px,4vw,48px)}
+.hero h1{font-weight:800;font-stretch:116%;font-size:clamp(2.05rem,4.7vw,3.7rem);line-height:1.04;letter-spacing:-.015em;color:#fff}
+.hero-sub{margin-top:22px;max-width:52ch;color:var(--on-deep-2);font-size:1.08rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-art{position:relative;aspect-ratio:1200/876;width:100%}
+.hero-art .draw{position:absolute;right:-6%;top:-10%;width:112%;max-width:none;opacity:.2}
+.hero-art .render{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 22px 30px rgba(0,0,0,.45))}
+.call{position:absolute;transform:translate(-50%,-50%);width:0;height:0}
+.call i{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--bright);box-shadow:0 0 0 5px rgba(82,168,255,.28)}
+.call > span{position:absolute;display:block;width:9.5rem;font-size:.78rem;line-height:1.3;color:var(--on-deep);background:rgba(8,16,31,.82);border:1px solid var(--deep-line);padding:5px 8px;border-radius:4px}
+.call > span::before{content:"";position:absolute;top:50%;height:1px;width:22px;background:var(--bright)}
+.call--r > span{left:28px;top:-18px} .call--r > span::before{right:100%}
+.call--l > span{right:28px;top:-18px;text-align:right} .call--l > span::before{left:100%}
+.hero-note{position:absolute;left:0;bottom:-6px;font-size:.74rem;color:var(--on-deep-2)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--deep-line);margin:0;padding:0;list-style:none}
+.facts li{padding:18px 20px 22px 0;margin-right:20px;border-right:1px solid var(--deep-line)}
+.facts li:last-child{border-right:0;margin-right:0}
+.facts strong{display:block;font:800 1.5rem/1.1 var(--font-display);font-stretch:112%;color:#fff;font-variant-numeric:tabular-nums}
+.facts li > span{display:block;margin-top:6px;font-size:.86rem;line-height:1.4;color:var(--on-deep-2)}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{max-width:560px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts li:nth-child(2){border-right:0;margin-right:0}
+  .facts li:nth-child(n+3){border-top:1px solid var(--deep-line)}
+}
+@media (max-width:640px){ .call{display:none} }
+
+/* sections */
+.sec{padding-block:clamp(56px,8vw,104px)}
+.sec--surface{background:var(--surface);border-block:1px solid var(--line)}
+.sec--deep{background:radial-gradient(70% 120% at 15% 0%,var(--glow-soft),transparent 60%),var(--deep);color:var(--on-deep)}
+.sec-head{display:grid;gap:14px;max-width:64ch;margin-bottom:clamp(30px,5vw,54px)}
+.sec h2{font-weight:800;font-stretch:112%;font-size:clamp(1.75rem,3.3vw,2.6rem);line-height:1.08;letter-spacing:-.01em}
+.sec-head p{color:var(--ink-2);font-size:1.05rem}
+.sec--deep .sec-head p{color:var(--on-deep-2)}
+.sec--deep h2{color:#fff}
+
+/* products */
+.product{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4.5vw,64px);align-items:start;padding-block:clamp(30px,4.5vw,52px);border-top:1px solid var(--line)}
+.product:nth-child(even) .plate{order:2}
+.plate{position:relative;margin:0;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:radial-gradient(62% 58% at 50% 46%,var(--glow),transparent 72%),var(--deep);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);place-items:center;padding:6%}
+.plate img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.plate--light{background:var(--paper);padding:1% 1% 6%}
+.plate.plate--light figcaption{color:var(--ink-2);background:transparent;padding-left:0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .plate--light img{filter:drop-shadow(0 0 1px rgba(255,255,255,.6)) drop-shadow(0 0 18px rgba(82,168,255,.25))}}
+:root[data-theme="dark"] .plate--light img{filter:drop-shadow(0 0 1px rgba(255,255,255,.6)) drop-shadow(0 0 18px rgba(82,168,255,.25))}
+.plate--photo{padding:0}
+.plate--photo img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+.plate figcaption{position:absolute;left:12px;bottom:10px;font-size:.74rem;color:var(--on-deep-2);background:rgba(8,16,31,.7);padding:3px 8px;border-radius:3px}
+.product h3{font-weight:800;font-stretch:108%;font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.15}
+.lead{margin-top:12px;color:var(--ink-2);max-width:60ch}
+.spec{display:grid;grid-template-columns:minmax(0,11.5rem) minmax(0,1fr);margin:22px 0 0}
+.spec dt,.spec dd{margin:0;padding:10px 0;border-top:1px solid var(--line)}
+.spec dt{color:var(--ink-2);font-size:.88rem;padding-right:14px}
+.spec dd{font-weight:500;font-variant-numeric:tabular-nums}
+.docs{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.doc{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.93rem;text-decoration:none}
+.doc:hover span{text-decoration:underline}
+@media (min-width:861px){ .product .plate{position:sticky;top:calc(env(safe-area-inset-top,0px) + 100px)} }
+@media (max-width:860px){
+  .product{grid-template-columns:minmax(0,1fr)}
+  .product:nth-child(even) .plate{order:0}
+  .plate{max-width:560px}
+}
+@media (max-width:520px){ .spec{grid-template-columns:minmax(0,1fr)} .spec dt{padding:10px 0 0;border-top:1px solid var(--line)} .spec dd{padding:2px 0 10px;border-top:0} }
+
+/* technology */
+.tech-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.tech-grid h3,.sub-h{font-weight:800;font-stretch:108%;font-size:1.25rem;line-height:1.2}
+.fig-note{margin-top:10px;color:var(--ink-2);font-size:.9rem;max-width:56ch}
+.diagram{width:100%;height:auto;margin-top:18px;overflow:visible}
+.diagram .d-gas{fill:var(--accent);fill-opacity:.1;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round}
+.diagram .d-can{stroke:var(--ink);stroke-width:4;fill:none;stroke-linejoin:miter}
+.diagram .d-motor{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.diagram .d-stator{fill:var(--ink);fill-opacity:.2}
+.diagram .d-rotor{fill:var(--ink);fill-opacity:.4}
+.diagram .d-cup{fill:var(--ink);fill-opacity:.28;stroke:var(--ink);stroke-width:1.2}
+.diagram .d-mag{fill:var(--accent);fill-opacity:.28;stroke:var(--accent);stroke-width:1.4}
+.diagram .d-mag-s{fill:var(--accent);fill-opacity:.7;stroke:var(--accent);stroke-width:1.4}
+.diagram .d-hub{fill:var(--ink);fill-opacity:.4}
+.diagram .d-shaft{stroke:var(--ink);stroke-width:3;fill:none}
+.diagram .d-link{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:3 2.5;fill:none}
+.diagram .d-strut{stroke:var(--ink-2);stroke-width:1.5}
+.diagram .d-brg{fill:var(--paper);stroke:var(--ink);stroke-width:1.8}
+.diagram .d-imp{fill:var(--ink);stroke:var(--ink);stroke-width:1}
+.diagram .d-blade{fill:var(--ink);fill-opacity:.55;stroke:var(--ink);stroke-width:1}
+.diagram .d-tube{stroke:var(--ink);stroke-width:18;fill:none;stroke-linejoin:round}
+.diagram .d-tube-in{stroke:var(--paper);stroke-width:12;fill:none;stroke-linejoin:round}
+.diagram .d-flow{stroke:var(--accent);stroke-width:2.4;fill:none}
+.diagram .d-head{fill:var(--accent);stroke:none}
+.diagram .d-lead{stroke:var(--ink-2);stroke-width:1;fill:none}
+.diagram .d-dot{fill:var(--ink)}
+.diagram .d-text{font:600 13px var(--font-body);fill:var(--ink)}
+.diagram .d-text2{font:500 12px var(--font-body);fill:var(--ink-2)}
+.dg-steps{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.dg-steps li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;line-height:1.4;color:var(--ink-2)}
+.dg-steps b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:700 .78rem/1 var(--font-body)}
+.simple{margin-top:30px}
+.simple h4{margin:0;font:700 .95rem/1.2 var(--font-display);font-stretch:106%}
+.simple ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--line)}
+.simple li{padding:12px 10px 0 0}
+.simple b{display:block;font:800 2rem/1 var(--font-display);font-stretch:114%;color:var(--accent);font-variant-numeric:tabular-nums}
+.simple li > span{display:block;margin-top:4px;font-size:.88rem;color:var(--ink-2)}
+.points{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.points li{padding:15px 0;border-top:1px solid var(--line)}
+.points li:first-child{border-top:0;padding-top:0}
+.points h3{font-size:1.02rem;font-stretch:104%;font-weight:700}
+.points p{margin-top:4px;color:var(--ink-2);font-size:.96rem}
+@media (max-width:900px){ .tech-grid{grid-template-columns:minmax(0,1fr)} }
+
+.block{margin-top:clamp(48px,7vw,84px)}
+.stack{display:grid;gap:12px;margin-top:22px}
+.srow{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:14px;align-items:center}
+.slabel strong{display:block;font:700 .98rem/1.2 var(--font-display);font-stretch:106%}
+.slabel > span{display:block;font-size:.84rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.bar{display:flex;height:38px;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:20% 100%;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bar .b1{width:var(--base);background:var(--bar-base)}
+.bar .b2{width:var(--add);background:var(--accent)}
+.axis{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:14px;margin-top:6px}
+.axis div{position:relative;height:1.4em;font-size:.76rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.axis div span{position:absolute;top:0;left:var(--p);transform:translateX(-50%)}
+.axis div span:first-child{transform:none}
+.axis div span:last-child{transform:translateX(-100%)}
+.axis em{font-style:normal;font-size:.8rem;color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px;font-size:.84rem;color:var(--ink-2)}
+.legend > span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;display:inline-block}
+.legend .k1{background:var(--bar-base)} .legend .k2{background:var(--accent)}
+@media (max-width:520px){ .srow,.axis{grid-template-columns:minmax(0,6.2rem) minmax(0,1fr);gap:10px} }
+
+.tablewrap{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:.95rem}
+th,td{padding:12px 16px;text-align:left;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font:700 .86rem/1.25 var(--font-display);font-stretch:106%;color:var(--ink-2)}
+tbody th{font-weight:500;color:var(--ink-2)}
+td.us,thead th.us{background:var(--accent-wash);color:var(--ink);font-weight:600}
+thead th.us{color:var(--accent)}
+.foot-note{margin-top:12px;color:var(--ink-2);font-size:.86rem;max-width:80ch}
+
+/* applications */
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,4vw,56px)}
+.app{padding:22px 0 26px;border-top:1px solid var(--line)}
+.app h3{font-size:1.08rem;font-stretch:106%;font-weight:700;line-height:1.25}
+.app p{margin-top:8px;color:var(--ink-2);font-size:.95rem}
+@media (max-width:980px){ .apps{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){ .apps{grid-template-columns:minmax(0,1fr)} }
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none;counter-reset:st}
+.steps li{counter-increment:st;border-top:2px solid var(--deep-line);padding-top:18px;position:relative}
+.steps li::before{content:counter(st);display:block;font:800 2.4rem/1 var(--font-display);font-stretch:118%;color:var(--bright);margin-bottom:12px}
+.steps li::after{content:"";position:absolute;left:0;top:-6px;width:10px;height:10px;border-radius:50%;background:var(--bright)}
+.steps h3{font-size:1.1rem;font-stretch:108%;color:#fff}
+.steps p{margin-top:8px;color:var(--on-deep-2);font-size:.94rem}
+@media (max-width:980px){
+  .steps{grid-template-columns:minmax(0,1fr);gap:0}
+  .steps li{border-top:0;border-left:2px solid var(--deep-line);padding:0 0 28px 22px}
+  .steps li::before{font-size:1.6rem;margin-bottom:6px}
+  .steps li::after{left:-6px;top:6px}
+}
+
+/* resources */
+.res{list-style:none;margin:0;padding:0}
+.res li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:16px 0;border-top:1px solid var(--line)}
+.res li:last-child{border-bottom:1px solid var(--line)}
+.res-main{min-width:0;flex:1 1 320px}
+.res-main h3{font-size:1.02rem;font-stretch:104%;font-weight:700;line-height:1.3}
+.res-main p{color:var(--ink-2);font-size:.9rem;margin-top:2px}
+
+/* blower range */
+.rng-head{margin-top:clamp(44px,6vw,72px)}
+.rng-h{margin:30px 0 8px;font:700 1.15rem/1.2 var(--font-display);font-stretch:106%;letter-spacing:.02em}
+.rng-h span{font-weight:500;color:var(--ink-2);margin-left:8px;font-size:.95rem}
+.rng{list-style:none;margin:0;padding:0}
+.rng li{display:grid;grid-template-columns:minmax(120px,1.2fr) minmax(110px,1fr) auto;align-items:center;gap:8px 16px;padding:9px 0;border-top:1px solid var(--line)}
+.rng li:last-child{border-bottom:1px solid var(--line)}
+.rng-m{font:700 1rem/1.2 var(--font-display);font-stretch:104%}
+.rng-s{color:var(--ink-2);font-size:.9rem}
+.rng-l{display:flex;gap:8px}
+.rng-l .btn{padding:7px 12px;font-size:.85rem}
+@media (max-width:520px){.rng li{grid-template-columns:1fr auto}.rng-s{grid-column:1;grid-row:2}.rng-l{grid-column:2;grid-row:1/3}}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+.ctl{display:grid;gap:0;margin:26px 0 0;padding:0;list-style:none}
+.ctl li{padding:14px 0;border-top:1px solid var(--line)}
+.ctl b{display:block;font-size:.82rem;font-weight:500;color:var(--ink-2)}
+.ctl .val{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-weight:600;font-size:1.05rem}
+.ctl .val span.sel{user-select:all}
+.mini{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);font:500 .78rem/1 var(--font-body);padding:6px 9px;border-radius:5px;cursor:pointer}
+.mini:hover{color:var(--accent);border-color:var(--accent)}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:clamp(18px,3vw,30px)}
+.panel h3{font-size:1.25rem;font-stretch:108%;font-weight:800}
+.panel .hint{margin-top:6px;color:var(--ink-2);font-size:.92rem}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:20px}
+.field{display:grid;gap:5px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:.84rem;font-weight:600;color:var(--ink)}
+.field input,.field select,.field textarea{width:100%;min-width:0;font:400 1rem/1.4 var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--bright);outline-offset:1px;border-color:var(--accent)}
+.form-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.result{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.result h4{margin:0;font:700 1rem/1.2 var(--font-display);font-stretch:106%}
+.result textarea{width:100%;margin-top:10px;min-height:230px;font:400 .92rem/1.5 var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;resize:vertical}
+.result .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:12px}
+.status{font-size:.88rem;color:var(--ink-2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mini.done{color:var(--accent);border-color:var(--accent)}
+@media (max-width:900px){ .contact-grid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:560px){ .form{grid-template-columns:minmax(0,1fr)} }
+
+/* footer */
+.site-foot{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(40px,6vw,64px) 28px;font-size:.92rem}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px 40px}
+.foot-brand .logo{height:46px;width:auto}
+.foot-brand p{margin-top:14px;max-width:34ch}
+.foot-part{display:inline-flex;align-items:center;gap:10px;margin-top:16px;color:var(--on-deep);text-decoration:none;font:600 .9rem/1.1 var(--font-display);font-stretch:108%}
+.foot-part img{height:24px;width:auto}
+.site-foot h4{margin:0 0 10px;color:var(--on-deep);font:700 .88rem/1.2 var(--font-display);font-stretch:106%}
+.site-foot ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.site-foot a{color:var(--on-deep-2);text-decoration:none}
+.site-foot a:hover{color:#fff;text-decoration:underline}
+.legal{margin-top:36px;padding-top:18px;border-top:1px solid var(--deep-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:.84rem}
+@media (max-width:860px){ .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .foot-brand{grid-column:1/-1} }
+@media (max-width:480px){ .foot-grid{grid-template-columns:minmax(0,1fr)} }
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 14h6M9 17.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+<a class="skip" href="#main"><span data-l="en" lang="en">Skip to content</span><span data-l="fr" lang="fr">Aller au contenu</span></a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <div class="brand">
+      <a href="#top" aria-label="Stratovac">
+        <img class="logo logo-a" src="assets/img/stratovac-logo.png" width="264" height="103" alt="Stratovac">
+        <img class="logo logo-b" src="assets/img/stratovac-logo-light.png" width="264" height="103" alt="Stratovac">
+      </a>
+      <span class="brand-sep" aria-hidden="true"></span>
+      <a class="partof" href="https://id-industries.com" target="_blank" rel="noopener">
+        <img class="idm logo-a" src="assets/img/id-mark.webp" width="240" height="204" alt="">
+        <img class="idm logo-b" src="assets/img/id-mark-light.webp" width="240" height="204" alt="">
+        <span>Part of ID Industry</span>
+      </a>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="#products"><span data-l="en" lang="en">Products</span><span data-l="fr" lang="fr">Produits</span></a>
+      <a href="#technology"><span data-l="en" lang="en">Technology</span><span data-l="fr" lang="fr">Technologie</span></a>
+      <a href="#applications"><span data-l="en" lang="en">Applications</span><span data-l="fr" lang="fr">Applications</span></a>
+      <a href="#resources"><span data-l="en" lang="en">Resources</span><span data-l="fr" lang="fr">Ressources</span></a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="head-tools">
+      <div class="lang" role="group" aria-label="Language / Langue">
+        <button type="button" data-set="en" aria-pressed="true" lang="en">EN</button>
+        <button type="button" data-set="fr" aria-pressed="false" lang="fr">FR</button>
+      </div>
+      <a class="btn btn--solid head-cta" href="#contact"><span data-l="en" lang="en">Request a quote</span><span data-l="fr" lang="fr">Demander une soumission</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1><span data-l="en" lang="en">Boosters and blowers for the gases catalogs skip.</span><span data-l="fr" lang="fr">Des surpresseurs et soufflantes pour les gaz que les catalogues ignorent.</span></h1>
+        <p class="hero-sub"><span data-l="en" lang="en">Stratovac builds oil-free, leak-tight regenerative boosters and blowers for high pressure, corrosive gases, explosive atmospheres and non-stop duty. Send your operating point and talk to the engineers who design the machine.</span><span data-l="fr" lang="fr">Stratovac conçoit des surpresseurs et soufflantes régénératifs sans huile et étanches pour les hautes pressions, les gaz corrosifs, les atmosphères explosives et le service continu. Envoyez votre point de fonctionnement et parlez aux ingénieurs qui conçoivent la machine.</span></p>
+        <div class="hero-cta">
+          <a class="btn btn--solid" href="#contact"><span><span data-l="en" lang="en">Send your operating point</span><span data-l="fr" lang="fr">Envoyer mon point de fonctionnement</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--deep" href="#products"><span data-l="en" lang="en">Browse products</span><span data-l="fr" lang="fr">Voir les produits</span></a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img class="draw" src="assets/img/gas-booster-drawing.webp" width="1400" height="603" alt="" aria-hidden="true">
+        <img class="render" src="assets/img/gas-booster.webp" width="1200" height="876" alt="High-pressure natural gas booster, 3D rendering" data-attr="alt" data-en="High-pressure natural gas booster, 3D rendering" data-fr="Surpresseur haute pression pour gaz naturel, rendu 3D">
+        <div class="call call--r" style="left:79%;top:17%"><i></i><span><span data-l="en" lang="en">Explosion-proof motor available</span><span data-l="fr" lang="fr">Moteur antidéflagrant offert</span></span></div>
+        <div class="call call--r" style="left:58%;top:47%"><i></i><span><span data-l="en" lang="en">Magnetic coupling, no shaft seal</span><span data-l="fr" lang="fr">Accouplement magnétique, sans joint d’arbre</span></span></div>
+        <div class="call call--r" style="left:21%;top:80%"><i></i><span><span data-l="en" lang="en">Flanged inlet and outlet</span><span data-l="fr" lang="fr">Entrée et sortie à brides</span></span></div>
+      </div>
+    </div>
+    <ul class="facts">
+      <li><strong>15&nbsp;000&nbsp;RPM</strong><span><span data-l="en" lang="en">High-speed boosters, compact enough to mount on a robot</span><span data-l="fr" lang="fr">Surpresseurs haute vitesse, assez compacts pour se monter sur un robot</span></span></li>
+      <li><strong><span data-l="en" lang="en">0 oil</span><span data-l="fr" lang="fr">0 huile</span></strong><span><span data-l="en" lang="en">Nothing but your gas in the gas path</span><span data-l="fr" lang="fr">Rien d’autre que votre gaz dans le circuit de gaz</span></span></li>
+      <li><strong>24/7</strong><span><span data-l="en" lang="en">Built for continuous duty</span><span data-l="fr" lang="fr">Conçu pour le service continu</span></span></li>
+      <li><strong>Class&nbsp;I&nbsp;Div.&nbsp;1/2</strong><span><span data-l="en" lang="en">Explosion-proof motors available</span><span data-l="fr" lang="fr">Moteurs antidéflagrants offerts</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">Product lines</span><span data-l="fr" lang="fr">Gammes de produits</span></h2>
+      <p><span data-l="en" lang="en">Standard models where they fit and custom engineering where they don’t. All lines are oil-free regenerative machines built for continuous duty.</span><span data-l="fr" lang="fr">Des modèles standard là où ils conviennent et de l’ingénierie sur mesure là où ils ne conviennent pas. Toutes les gammes sont des machines régénératives sans huile, conçues pour le service continu.</span></p>
+    </div>
+    
+<article class="product" id="p-gas">
+  <figure class="plate ">
+    <img src="assets/img/gas-booster.webp" width="1200" height="876" decoding="async"
+         alt="High-pressure natural gas booster, 3D rendering" data-attr="alt" data-en="High-pressure natural gas booster, 3D rendering" data-fr="Surpresseur haute pression pour gaz naturel, rendu 3D">
+    <figcaption><span data-l="en" lang="en">Natural gas booster · 3D rendering</span><span data-l="fr" lang="fr">Surpresseur gaz naturel · rendu 3D</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">High-pressure natural gas booster</span><span data-l="fr" lang="fr">Surpresseur haute pression pour gaz naturel</span></h3>
+    <p class="lead"><span data-l="en" lang="en">A magnetically coupled side-channel booster with a stainless steel casing. Identical units stack in series to reach the discharge pressure the job needs.</span><span data-l="fr" lang="fr">Un surpresseur à canal latéral à accouplement magnétique, avec carter en acier inoxydable. Des unités identiques s’empilent en série pour atteindre la pression de refoulement voulue.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Boost from a 600 psig inlet</span><span data-l="fr" lang="fr">Gain depuis 600 psig à l’entrée</span></dt><dd><span data-l="en" lang="en">1 stage: 700 psig · 2 stages: 810 psig · 3 stages: 935 psig</span><span data-l="fr" lang="fr">1 étage : 700 psig · 2 étages : 810 psig · 3 étages : 935 psig</span></dd><dt><span data-l="en" lang="en">Sealing</span><span data-l="fr" lang="fr">Étanchéité</span></dt><dd><span data-l="en" lang="en">Magnetic coupling, no shaft seal on the gas side</span><span data-l="fr" lang="fr">Accouplement magnétique, sans joint d’arbre côté gaz</span></dd><dt><span data-l="en" lang="en">Casing</span><span data-l="fr" lang="fr">Carter</span></dt><dd><span data-l="en" lang="en">Stainless steel, resists H<sub>2</sub>S and sour gas</span><span data-l="fr" lang="fr">Acier inoxydable, résiste au H<sub>2</sub>S et au gaz acide</span></dd><dt><span data-l="en" lang="en">Gas path</span><span data-l="fr" lang="fr">Circuit de gaz</span></dt><dd><span data-l="en" lang="en">100% oil-free. One impeller and 2 bearings per stage</span><span data-l="fr" lang="fr">100&nbsp;% sans huile. Une roue et 2 roulements par étage</span></dd><dt><span data-l="en" lang="en">Motor</span><span data-l="fr" lang="fr">Moteur</span></dt><dd><span data-l="en" lang="en">Class I Div. 1/2 and Class II Div. 2, Groups C, D, F and G available</span><span data-l="fr" lang="fr">Classe I, div. 1/2 et classe II, div. 2, groupes C, D, F et G offerts</span></dd><dt><span data-l="en" lang="en">Duty</span><span data-l="fr" lang="fr">Service</span></dt><dd><span data-l="en" lang="en">Continuous, 24/7</span><span data-l="fr" lang="fr">Continu, 24&nbsp;h/24, 7&nbsp;j/7</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/high-pressure-gas-booster.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Natural gas booster datasheet</span><span data-l="fr" lang="fr">Fiche du surpresseur gaz naturel</span></span></a><a class="doc" href="assets/pdf/case-study-pressurized-blower.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Case study</span><span data-l="fr" lang="fr">Étude de cas</span></span></a></div>
+  </div>
+</article>
+<article class="product" id="p-bio">
+  <figure class="plate plate--light">
+    <img src="assets/img/biogas-blower.webp" width="558" height="535" decoding="async"
+         alt="Regenerative blower for biogas, three-quarter view" data-attr="alt" data-en="Regenerative blower for biogas, three-quarter view" data-fr="Soufflante régénérative pour biogaz, vue en perspective">
+    <figcaption><span data-l="en" lang="en">Biogas blower</span><span data-l="fr" lang="fr">Soufflante biogaz</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">Biogas regenerative blower</span><span data-l="fr" lang="fr">Soufflante régénérative pour biogaz</span></h3>
+    <p class="lead"><span data-l="en" lang="en">A gearless, oil-free blower built to move wet, corrosive biogas around the clock. No gearbox, no belts and no shaft seals.</span><span data-l="fr" lang="fr">Une soufflante sans engrenage et sans huile, conçue pour déplacer jour et nuit un biogaz humide et corrosif. Ni engrenage, ni courroies, ni joints d’arbre.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></dt><dd><span data-l="en" lang="en">5 to 2,000 CFM</span><span data-l="fr" lang="fr">5 à 2&nbsp;000 CFM</span></dd><dt><span data-l="en" lang="en">Pressure</span><span data-l="fr" lang="fr">Pression</span></dt><dd><span data-l="en" lang="en">−8.35 psi vacuum to +15 psig</span><span data-l="fr" lang="fr">Vide de −8,35 psi à +15 psig</span></dd><dt><span data-l="en" lang="en">Drive</span><span data-l="fr" lang="fr">Entraînement</span></dt><dd><span data-l="en" lang="en">Direct drive, no gearbox, belts or pulleys. 4 bearings, against 6 on a positive-displacement blower</span><span data-l="fr" lang="fr">Entraînement direct, sans engrenage, courroies ni poulies. 4 roulements, contre 6 sur une soufflante volumétrique</span></dd><dt><span data-l="en" lang="en">Corrosion</span><span data-l="fr" lang="fr">Corrosion</span></dt><dd><span data-l="en" lang="en">Nickel, Cerakote or anodized coatings matched to the gas. Aluminum impeller and housing reduce spark risk</span><span data-l="fr" lang="fr">Revêtement de nickel, Cerakote ou anodisé selon le gaz. Roue et carter en aluminium pour réduire le risque d’étincelles</span></dd><dt><span data-l="en" lang="en">Motor</span><span data-l="fr" lang="fr">Moteur</span></dt><dd><span data-l="en" lang="en">Class 1 Div. 1 Groups C and D, Class 2 Div. 2 Groups F and G. cULus listed. VFD-ready</span><span data-l="fr" lang="fr">Classe 1, div. 1, groupes C et D; classe 2, div. 2, groupes F et G. Homologué cULus. Compatible avec variateur de fréquence</span></dd><dt><span data-l="en" lang="en">Flow quality</span><span data-l="fr" lang="fr">Écoulement</span></dt><dd><span data-l="en" lang="en">Pulsation-free and quieter than a positive-displacement blower</span><span data-l="fr" lang="fr">Sans pulsations et plus silencieux qu’une soufflante volumétrique</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/biogas-regenerative-blower.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Biogas blower datasheet</span><span data-l="fr" lang="fr">Fiche de la soufflante biogaz</span></span></a></div>
+  </div>
+</article>
+<article class="product" id="p-elec">
+  <figure class="plate ">
+    <img src="assets/img/electric-booster.webp" width="900" height="839" decoding="async"
+         alt="Electric high-pressure air booster" data-attr="alt" data-en="Electric high-pressure air booster" data-fr="Surpresseur d’air électrique haute pression">
+    <figcaption><span data-l="en" lang="en">IDSC-2SHP-166-400</span><span data-l="fr" lang="fr">IDSC-2SHP-166-400</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">Electric high-pressure air booster</span><span data-l="fr" lang="fr">Surpresseur d’air électrique haute pression</span></h3>
+    <p class="lead"><span data-l="en" lang="en">A high-speed regenerative booster that doubles the pressure of compressed air or nitrogen on electric power alone. It replaces pneumatic and piston boosters without drawing compressed air or adding oil.</span><span data-l="fr" lang="fr">Un surpresseur régénératif haute vitesse qui double la pression de l’air comprimé ou de l’azote avec de l’électricité seulement. Il remplace les surpresseurs pneumatiques et à piston sans consommer d’air comprimé ni ajouter d’huile.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Pressure ratio</span><span data-l="fr" lang="fr">Rapport de pression</span></dt><dd><span data-l="en" lang="en">2:1, up to 400 psig. Units can run in series</span><span data-l="fr" lang="fr">2:1, jusqu’à 400 psig. Les unités se montent en série</span></dd><dt><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></dt><dd><span data-l="en" lang="en">35 SCFM continuous</span><span data-l="fr" lang="fr">35 SCFM en continu</span></dd><dt><span data-l="en" lang="en">Motor</span><span data-l="fr" lang="fr">Moteur</span></dt><dd><span data-l="en" lang="en">2.6 kW (3.5 hp), 120/230 V single-phase or 230 V three-phase</span><span data-l="fr" lang="fr">2,6&nbsp;kW (3,5&nbsp;hp), 120/230&nbsp;V monophasé ou 230&nbsp;V triphasé</span></dd><dt><span data-l="en" lang="en">Speed</span><span data-l="fr" lang="fr">Vitesse</span></dt><dd><span data-l="en" lang="en">Up to 15,000 RPM</span><span data-l="fr" lang="fr">Jusqu’à 15&nbsp;000 tr/min</span></dd><dt><span data-l="en" lang="en">Ports</span><span data-l="fr" lang="fr">Raccords</span></dt><dd><span data-l="en" lang="en">1.25 in. MNPT</span><span data-l="fr" lang="fr">1,25&nbsp;po MNPT</span></dd><dt><span data-l="en" lang="en">Media</span><span data-l="fr" lang="fr">Fluides</span></dt><dd><span data-l="en" lang="en">Air, nitrogen and other gases</span><span data-l="fr" lang="fr">Air, azote et autres gaz</span></dd><dt><span data-l="en" lang="en">Service</span><span data-l="fr" lang="fr">Entretien</span></dt><dd><span data-l="en" lang="en">Bearing service every 2.5 to 3 years</span><span data-l="fr" lang="fr">Entretien des roulements aux 2,5 à 3&nbsp;ans</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/electric-air-booster-datasheet.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Electric booster datasheet</span><span data-l="fr" lang="fr">Fiche du surpresseur électrique</span></span></a><a class="doc" href="assets/pdf/booster-vs-piston.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Compared with piston</span><span data-l="fr" lang="fr">Comparaison avec le piston</span></span></a><a class="doc" href="assets/pdf/booster-vs-pneumatic.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Compared with pneumatic</span><span data-l="fr" lang="fr">Comparaison avec le pneumatique</span></span></a></div>
+  </div>
+</article>
+<article class="product" id="p-press">
+  <figure class="plate plate--photo">
+    <img src="assets/img/pressurized-blower-photo.webp" width="800" height="460" decoding="async"
+         alt="Delivered pressurized regenerative blower with magnetic drive" data-attr="alt" data-en="Delivered pressurized regenerative blower with magnetic drive" data-fr="Soufflante régénérative sous pression livrée, avec entraînement magnétique">
+    <figcaption><span data-l="en" lang="en">Delivered unit, reference project</span><span data-l="fr" lang="fr">Unité livrée, projet de référence</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">Custom pressurized regenerative blowers</span><span data-l="fr" lang="fr">Soufflantes régénératives sous pression sur mesure</span></h3>
+    <p class="lead"><span data-l="en" lang="en">For gas circuits that run at line pressure. The whole casing is engineered and tested as a pressure part, and a magnetic drive replaces the shaft seal.</span><span data-l="fr" lang="fr">Pour les circuits de gaz qui fonctionnent à la pression de ligne. Le carter complet est conçu et testé comme une pièce sous pression, et un entraînement magnétique remplace le joint d’arbre.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Reference project</span><span data-l="fr" lang="fr">Projet de référence</span></dt><dd><span data-l="en" lang="en">Gas recirculation on a natural gas dryer: 20 SCFM, 174 psig (12 bar) inlet, about 181 psig outlet, 3 hp</span><span data-l="fr" lang="fr">Recirculation de gaz sur un sécheur de gaz naturel : 20&nbsp;SCFM, 174&nbsp;psig (12&nbsp;bar) à l’entrée, environ 181&nbsp;psig à la sortie, 3&nbsp;hp</span></dd><dt><span data-l="en" lang="en">Casing</span><span data-l="fr" lang="fr">Carter</span></dt><dd><span data-l="en" lang="en">Pressure-rated, hydrostatically tested at 16 bar (232 psi)</span><span data-l="fr" lang="fr">Calculé pour la pression, essai hydrostatique à 16&nbsp;bar (232&nbsp;psi)</span></dd><dt><span data-l="en" lang="en">Sealing</span><span data-l="fr" lang="fr">Étanchéité</span></dt><dd><span data-l="en" lang="en">Hermetic magnetic coupling, no shaft seal</span><span data-l="fr" lang="fr">Accouplement magnétique hermétique, sans joint d’arbre</span></dd><dt><span data-l="en" lang="en">Connections</span><span data-l="fr" lang="fr">Raccords</span></dt><dd><span data-l="en" lang="en">ANSI flanges, certified motor</span><span data-l="fr" lang="fr">Brides ANSI, moteur certifié</span></dd><dt><span data-l="en" lang="en">Field record</span><span data-l="fr" lang="fr">Historique</span></dt><dd><span data-l="en" lang="en">About 18 months in service, additional units requested</span><span data-l="fr" lang="fr">Environ 18&nbsp;mois en service, unités supplémentaires demandées</span></dd><dt><span data-l="en" lang="en">Current platform</span><span data-l="fr" lang="fr">Plateforme actuelle</span></dt><dd><span data-l="en" lang="en">Coupling rated 63 bar, nickel-coated billet aluminum housing, 316 stainless shaft, hybrid ceramic bearings</span><span data-l="fr" lang="fr">Accouplement de 63&nbsp;bar, carter en aluminium usiné enduit de nickel, arbre en inox 316, roulements hybrides en céramique</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/case-study-pressurized-blower.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Case study</span><span data-l="fr" lang="fr">Étude de cas</span></span></a></div>
+  </div>
+</article>
+<article class="product" id="p-hs">
+  <figure class="plate ">
+    <img src="assets/img/highspeed-blower.webp" width="521" height="401" decoding="async"
+         alt="Technical drawing of the IDMB0092-2SA281 high-speed blower" data-attr="alt" data-en="Technical drawing of the IDMB0092-2SA281 high-speed blower" data-fr="Dessin technique de la soufflante haute vitesse IDMB0092-2SA281">
+    <figcaption><span data-l="en" lang="en">IDMB0092-2SA281 · technical drawing</span><span data-l="fr" lang="fr">IDMB0092-2SA281 · dessin technique</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">High-speed regenerative blower</span><span data-l="fr" lang="fr">Soufflante régénérative haute vitesse</span></h3>
+    <p class="lead"><span data-l="en" lang="en">A compact, lightweight blower for equipment where space and weight count. The same unit works as a vacuum pump or a compressor over its whole performance curve.</span><span data-l="fr" lang="fr">Une soufflante compacte et légère pour les équipements où l’espace et le poids comptent. La même unité sert de pompe à vide ou de compresseur sur toute sa courbe de performance.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></dt><dd><span data-l="en" lang="en">Up to 92 m³/h</span><span data-l="fr" lang="fr">Jusqu’à 92&nbsp;m³/h</span></dd><dt><span data-l="en" lang="en">Vacuum and pressure</span><span data-l="fr" lang="fr">Vide et pression</span></dt><dd><span data-l="en" lang="en">Up to −435 mbar vacuum or 800 mbar pressure</span><span data-l="fr" lang="fr">Vide jusqu’à −435&nbsp;mbar ou pression jusqu’à 800&nbsp;mbar</span></dd><dt><span data-l="en" lang="en">Motor</span><span data-l="fr" lang="fr">Moteur</span></dt><dd><span data-l="en" lang="en">2.6 kW, 48 VDC or 120–240 VAC, high-speed three-phase permanent magnet</span><span data-l="fr" lang="fr">2,6&nbsp;kW, 48&nbsp;V c.c. ou 120–240&nbsp;V c.a., triphasé à aimants permanents haute vitesse</span></dd><dt><span data-l="en" lang="en">Speed</span><span data-l="fr" lang="fr">Vitesse</span></dt><dd><span data-l="en" lang="en">Up to 15,000 rpm</span><span data-l="fr" lang="fr">Jusqu’à 15&nbsp;000 tr/min</span></dd><dt><span data-l="en" lang="en">Weight and noise</span><span data-l="fr" lang="fr">Poids et bruit</span></dt><dd><span data-l="en" lang="en">6.8 kg, 60 to 70 dB</span><span data-l="fr" lang="fr">6,8&nbsp;kg, 60 à 70&nbsp;dB</span></dd><dt><span data-l="en" lang="en">Duty</span><span data-l="fr" lang="fr">Service</span></dt><dd><span data-l="en" lang="en">Continuous operation across the full curve, as vacuum pump or compressor</span><span data-l="fr" lang="fr">Service continu sur toute la courbe, comme pompe à vide ou comme compresseur</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/high-speed-blower-IDMB0092-2SA281.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">High-speed blower datasheet</span><span data-l="fr" lang="fr">Fiche de la soufflante haute vitesse</span></span></a></div>
+  </div>
+</article>
+<article class="product" id="p-std">
+  <figure class="plate ">
+    <img src="assets/img/standard-blower-drawing.webp" width="1000" height="851" decoding="async"
+         alt="Technical drawing of a side-channel regenerative blower" data-attr="alt" data-en="Technical drawing of a side-channel regenerative blower" data-fr="Dessin technique d’une soufflante régénérative à canal latéral">
+    <figcaption><span data-l="en" lang="en">IDSC series · technical drawing</span><span data-l="fr" lang="fr">Série IDSC · dessin technique</span></figcaption>
+  </figure>
+  <div class="product-body">
+    <h3><span data-l="en" lang="en">Standard regenerative blowers</span><span data-l="fr" lang="fr">Soufflantes régénératives standard</span></h3>
+    <p class="lead"><span data-l="en" lang="en">Side-channel blowers for vacuum and pressure, from small single-stage units to three-stage models. Motors come in 50 and 60 Hz, with explosion-proof, CSA and ULc certified options.</span><span data-l="fr" lang="fr">Des soufflantes à canal latéral pour le vide et la pression, des petites unités à un étage aux modèles à trois étages. Moteurs 50 et 60&nbsp;Hz, avec options antidéflagrantes et certifiées CSA et ULc.</span></p>
+    <dl class="spec"><dt><span data-l="en" lang="en">Range</span><span data-l="fr" lang="fr">Gamme</span></dt><dd><span data-l="en" lang="en">About 130 models in two series, IDSC and IDSC1</span><span data-l="fr" lang="fr">Environ 130&nbsp;modèles en deux séries, IDSC et IDSC1</span></dd><dt><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></dt><dd><span data-l="en" lang="en">About 50 to 3,900 m³/h</span><span data-l="fr" lang="fr">Environ 50 à 3&nbsp;900&nbsp;m³/h</span></dd><dt><span data-l="en" lang="en">Pressure and vacuum</span><span data-l="fr" lang="fr">Pression et vide</span></dt><dd><span data-l="en" lang="en">Up to about 1 bar pressure or −0.7 bar vacuum</span><span data-l="fr" lang="fr">Jusqu’à environ 1&nbsp;bar en pression ou −0,7&nbsp;bar en vide</span></dd><dt><span data-l="en" lang="en">Stages</span><span data-l="fr" lang="fr">Étages</span></dt><dd><span data-l="en" lang="en">Single-, two- and three-stage versions at 50 and 60 Hz</span><span data-l="fr" lang="fr">Versions à 1, 2 et 3&nbsp;étages à 50 et 60&nbsp;Hz</span></dd><dt><span data-l="en" lang="en">Build</span><span data-l="fr" lang="fr">Construction</span></dt><dd><span data-l="en" lang="en">Oil-free. Example datasheet (IDSC0530-2SB152-5): IP55, insulation class F, maintenance free, frequency converter operation allowed</span><span data-l="fr" lang="fr">Sans huile. Fiche d’exemple (IDSC0530-2SB152-5) : IP55, classe d’isolation F, sans entretien, fonctionnement avec convertisseur de fréquence permis</span></dd><dt><span data-l="en" lang="en">Options</span><span data-l="fr" lang="fr">Options</span></dt><dd><span data-l="en" lang="en">Explosion-proof motors, CSA and ULc certified, on request</span><span data-l="fr" lang="fr">Moteurs antidéflagrants, certifiés CSA et ULc, sur demande</span></dd><dt><span data-l="en" lang="en">Sound</span><span data-l="fr" lang="fr">Niveau sonore</span></dt><dd><span data-l="en" lang="en">48 to 89 dB(A)</span><span data-l="fr" lang="fr">48 à 89&nbsp;dB(A)</span></dd></dl>
+    <div class="docs"><a class="doc" href="assets/pdf/standard-blower-catalog.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Standard blower catalog</span><span data-l="fr" lang="fr">Catalogue des soufflantes standard</span></span></a><a class="doc" href="assets/pdf/double-stage-blower-IDSC0530-2SB152-5.pdf" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span><span data-l="en" lang="en">Double-stage blower datasheet</span><span data-l="fr" lang="fr">Fiche de la soufflante à deux étages</span></span></a></div>
+  </div>
+</article>
+  </div>
+</section>
+
+<section class="sec sec--surface" id="technology">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">Fewer parts to leak, wear or fail</span><span data-l="fr" lang="fr">Moins de pièces qui fuient, s’usent ou tombent en panne</span></h2>
+      <p><span data-l="en" lang="en">Most gas problems come from shaft seals, oil, gears and corrosion. Stratovac machines are designed to take each of them out of the gas path.</span><span data-l="fr" lang="fr">La plupart des problèmes de gaz viennent des joints d’arbre, de l’huile, des engrenages et de la corrosion. Les machines Stratovac sont conçues pour retirer chacun de ces éléments du circuit de gaz.</span></p>
+    </div>
+    <div class="tech-grid">
+      <div>
+        <h3><span data-l="en" lang="en">How the magnetic drive seals the gas</span><span data-l="fr" lang="fr">Comment l’entraînement magnétique scelle le gaz</span></h3>
+        <p class="fig-note"><span data-l="en" lang="en">Torque crosses a solid wall through magnets, so the motor shaft never enters the gas chamber.</span><span data-l="fr" lang="fr">Le couple traverse une paroi pleine grâce à des aimants, de sorte que l’arbre du moteur n’entre jamais dans la chambre de gaz.</span></p>
+        <svg class="diagram" viewBox="0 0 600 292" role="img" aria-labelledby="dg-t">
+  <title id="dg-t"><span data-l="en" lang="en">Cross-section of the electric booster: the motor turns outer magnets; their field crosses a sealed wall and turns the inner magnets, the shaft and two impellers inside the gas. Gas enters, passes through both stages in series and leaves, never meeting a shaft seal.</span><span data-l="fr" lang="fr">Coupe de l’aérosurpresseur électrique : le moteur fait tourner des aimants extérieurs; leur champ traverse une paroi étanche et entraîne les aimants intérieurs, l’arbre et deux roues dans le gaz. Le gaz entre, traverse les deux étages en série et ressort sans jamais rencontrer de joint d’arbre.</span></title>
+  <!-- gas chamber + housing -->
+  <polygon class="d-gas" points="178,120 270,120 270,74 580,74 580,226 270,226 270,180 178,180"/>
+  <!-- motor -->
+  <rect class="d-motor" x="8" y="98" width="110" height="104" rx="6"/>
+  <rect class="d-stator" x="22" y="106" width="82" height="14"/><rect class="d-stator" x="22" y="180" width="82" height="14"/>
+  <rect class="d-rotor" x="30" y="134" width="70" height="32"/>
+  <line class="d-shaft" x1="118" y1="150" x2="160" y2="150"/>
+  <!-- outer rotor cup with magnets -->
+  <rect class="d-cup" x="160" y="84" width="8" height="132"/><rect class="d-cup" x="168" y="84" width="88" height="8"/><rect class="d-cup" x="168" y="208" width="88" height="8"/>
+  <rect class="d-mag" x="176" y="92" width="36" height="20"/><rect class="d-mag-s" x="212" y="92" width="36" height="20"/>
+  <rect class="d-mag-s" x="176" y="188" width="36" height="20"/><rect class="d-mag" x="212" y="188" width="36" height="20"/>
+  <!-- sealed can -->
+  <path class="d-can" d="M 270 120 H 178 V 180 H 270"/>
+  <!-- inner magnets + hub + shaft -->
+  <rect class="d-mag" x="188" y="125" width="26" height="17"/><rect class="d-mag-s" x="214" y="125" width="26" height="17"/>
+  <rect class="d-mag-s" x="188" y="158" width="26" height="17"/><rect class="d-mag" x="214" y="158" width="26" height="17"/>
+  <rect class="d-hub" x="188" y="142" width="52" height="16"/>
+  <line class="d-shaft" x1="240" y1="150" x2="548" y2="150"/>
+  <!-- magnetic link across the wall -->
+  <path class="d-link" d="M 194 113 V 124 M 214 113 V 124 M 234 113 V 124 M 194 176 V 187 M 214 176 V 187 M 234 176 V 187"/>
+  <!-- bearings -->
+  <line class="d-strut" x1="340" y1="76" x2="340" y2="141"/><rect class="d-brg" x="333" y="141" width="14" height="18"/>
+  <line class="d-strut" x1="540" y1="76" x2="540" y2="141"/><rect class="d-brg" x="533" y="141" width="14" height="18"/>
+  <!-- impellers -->
+  <rect class="d-imp" x="396" y="88" width="8" height="124"/><rect class="d-blade" x="388" y="88" width="24" height="10"/><rect class="d-blade" x="388" y="202" width="24" height="10"/>
+  <rect class="d-imp" x="476" y="88" width="8" height="124"/><rect class="d-blade" x="468" y="88" width="24" height="10"/><rect class="d-blade" x="468" y="202" width="24" height="10"/>
+  <!-- interstage crossover -->
+  <path class="d-tube" d="M 400 226 V 258 H 480 V 226"/><path class="d-tube-in" d="M 400 226 V 258 H 480 V 226"/>
+  <path class="d-flow" d="M 400 232 V 258 H 480 V 242"/><polygon class="d-head" points="474,246 480,234 486,246"/>
+  <!-- gas in / out -->
+  <path class="d-flow" d="M 360 36 V 64"/><polygon class="d-head" points="354,62 360,74 366,62"/>
+  <path class="d-flow" d="M 360 80 Q 360 93 382 93"/><polygon class="d-head" points="379,88 389,93 379,98"/>
+  <path class="d-flow" d="M 494 93 Q 520 93 520 80"/>
+  <path class="d-flow" d="M 520 74 V 46"/><polygon class="d-head" points="514,48 520,36 526,48"/>
+  <!-- leaders -->
+  <path class="d-lead" d="M 212 66 V 83"/><circle class="d-dot" cx="212" cy="84" r="2.6"/>
+  <path class="d-lead" d="M 274 134 H 243"/><circle class="d-dot" cx="242" cy="134" r="2.6"/>
+  <path class="d-lead" d="M 263 262 V 184"/><circle class="d-dot" cx="263" cy="181" r="2.6"/>
+  <text class="d-text" x="63" y="88" text-anchor="middle" data-l="en">Motor</text><text class="d-text" x="63" y="88" text-anchor="middle" data-l="fr">Moteur</text>
+  <text class="d-text2" x="63" y="222" text-anchor="middle" data-l="en">Dry side</text><text class="d-text2" x="63" y="222" text-anchor="middle" data-l="fr">Côté sec</text>
+  <text class="d-text" x="212" y="60" text-anchor="middle" data-l="en">Outer magnets</text><text class="d-text" x="212" y="60" text-anchor="middle" data-l="fr">Aimants extérieurs</text>
+  <text class="d-text" x="278" y="114" data-l="en">Inner</text><text class="d-text" x="278" y="114" data-l="fr">Aimants</text><text class="d-text" x="278" y="127" data-l="en">magnets</text><text class="d-text" x="278" y="127" data-l="fr">intérieurs</text>
+  <text class="d-text" x="263" y="280" text-anchor="middle" data-l="en">Sealed wall</text><text class="d-text" x="263" y="280" text-anchor="middle" data-l="fr">Paroi étanche</text>
+  <text class="d-text2" x="300" y="214" data-l="en">Gas side</text><text class="d-text2" x="300" y="214" data-l="fr">Côté gaz</text>
+  <text class="d-text2" x="408" y="126" data-l="en">Impeller</text><text class="d-text2" x="408" y="126" data-l="fr">Roue</text><text class="d-text2" x="488" y="126" data-l="en">Impeller</text><text class="d-text2" x="488" y="126" data-l="fr">Roue</text>
+  <text class="d-text2" x="340" y="178" text-anchor="middle" data-l="en">Bearing</text><text class="d-text2" x="340" y="178" text-anchor="middle" data-l="fr">Roulement</text><text class="d-text2" x="540" y="178" text-anchor="middle" data-l="en">Bearing</text><text class="d-text2" x="540" y="178" text-anchor="middle" data-l="fr">Roulement</text>
+  <text class="d-text" x="368" y="50" data-l="en">Inlet</text><text class="d-text" x="368" y="50" data-l="fr">Entrée</text><text class="d-text" x="528" y="50" data-l="en">Outlet</text><text class="d-text" x="528" y="50" data-l="fr">Sortie</text>
+  <text class="d-text2" x="440" y="284" text-anchor="middle" data-l="en">To stage 2</text><text class="d-text2" x="440" y="284" text-anchor="middle" data-l="fr">Vers l’étage 2</text>
+</svg>
+<ol class="dg-steps">
+  <li><b>1</b><span><span data-l="en" lang="en">The motor turns the outer magnets, outside the gas.</span><span data-l="fr" lang="fr">Le moteur fait tourner les aimants extérieurs, hors du gaz.</span></span></li>
+  <li><b>2</b><span><span data-l="en" lang="en">Their magnetic field crosses the sealed wall, with no hole for a shaft.</span><span data-l="fr" lang="fr">Leur champ magnétique traverse la paroi étanche : aucun passage d’arbre.</span></span></li>
+  <li><b>3</b><span><span data-l="en" lang="en">The inner magnets turn the shaft and both impellers inside the gas.</span><span data-l="fr" lang="fr">Les aimants intérieurs entraînent l’arbre et les deux roues, dans le gaz.</span></span></li>
+</ol>
+        <div class="simple">
+          <h4><span data-l="en" lang="en">The electric booster, whole machine</span><span data-l="fr" lang="fr">Le surpresseur électrique, machine complète</span></h4>
+          <ul>
+            <li><b>1</b><span><span data-l="en" lang="en">Motor</span><span data-l="fr" lang="fr">Moteur</span></span></li>
+            <li><b>1</b><span><span data-l="en" lang="en">Shaft</span><span data-l="fr" lang="fr">Arbre</span></span></li>
+            <li><b>2</b><span><span data-l="en" lang="en">Impellers</span><span data-l="fr" lang="fr">Roues</span></span></li>
+            <li><b>2</b><span><span data-l="en" lang="en">Bearings</span><span data-l="fr" lang="fr">Roulements</span></span></li>
+          </ul>
+        </div>
+      </div>
+      <ul class="points">
+        <li><h3><span data-l="en" lang="en">Magnetic coupling</span><span data-l="fr" lang="fr">Accouplement magnétique</span></h3><p><span data-l="en" lang="en">No shaft seal means no leak path and no seal to replace.</span><span data-l="fr" lang="fr">Sans joint d’arbre, il n’y a ni fuite possible ni joint à remplacer.</span></p></li>
+        <li><h3><span data-l="en" lang="en">Oil-free gas path</span><span data-l="fr" lang="fr">Circuit de gaz sans huile</span></h3><p><span data-l="en" lang="en">No oil in the machine, so none reaches your gas, your process or the equipment downstream.</span><span data-l="fr" lang="fr">Aucune huile dans la machine : il ne s’en retrouve ni dans votre gaz, ni dans votre procédé, ni dans l’équipement en aval.</span></p></li>
+        <li><h3><span data-l="en" lang="en">Corrosion resistance</span><span data-l="fr" lang="fr">Résistance à la corrosion</span></h3><p><span data-l="en" lang="en">Stainless steel or nickel-coated housings stand up to H<sub>2</sub>S, sulfuric acid and caustic cleaning products. Cerakote and anodized finishes are available.</span><span data-l="fr" lang="fr">Des carters en acier inoxydable ou enduits de nickel résistent au H<sub>2</sub>S, à l’acide sulfurique et aux produits de nettoyage caustiques. Des finis Cerakote et anodisés sont offerts.</span></p></li>
+        <li><h3><span data-l="en" lang="en">Compact high speed</span><span data-l="fr" lang="fr">Haute vitesse compacte</span></h3><p><span data-l="en" lang="en">Up to 15,000 RPM in a footprint that fits on a robot, a gripper or a crowded skid.</span><span data-l="fr" lang="fr">Jusqu’à 15&nbsp;000 tr/min dans un encombrement qui tient sur un robot, une pince ou un skid bien rempli.</span></p></li>
+        <li><h3><span data-l="en" lang="en">Staged pressure</span><span data-l="fr" lang="fr">Pression par étages</span></h3><p><span data-l="en" lang="en">Identical units run in series, so you buy the pressure you need instead of an oversized single machine.</span><span data-l="fr" lang="fr">Des unités identiques fonctionnent en série : vous achetez la pression dont vous avez besoin plutôt qu’une seule machine surdimensionnée.</span></p></li>
+        <li><h3><span data-l="en" lang="en">Hazardous-area motors</span><span data-l="fr" lang="fr">Moteurs pour emplacements dangereux</span></h3><p><span data-l="en" lang="en">Class I Div. 1/2 and Class II Div. 2 motors let the machine install straight into classified areas.</span><span data-l="fr" lang="fr">Des moteurs classe I, div.&nbsp;1/2 et classe II, div.&nbsp;2 permettent d’installer la machine directement dans les emplacements classés.</span></p></li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3 class="sub-h"><span data-l="en" lang="en">Stack units to build the pressure</span><span data-l="fr" lang="fr">Empiler les unités pour monter en pression</span></h3>
+      <p class="fig-note"><span data-l="en" lang="en">Natural gas booster, 600 psig inlet. Each added stage raises the discharge pressure.</span><span data-l="fr" lang="fr">Surpresseur pour gaz naturel, 600&nbsp;psig à l’entrée. Chaque étage ajouté fait monter la pression de refoulement.</span></p>
+      <div class="stack"><div class="srow">
+  <div class="slabel"><strong><span data-l="en" lang="en">1 stage</span><span data-l="fr" lang="fr">1 étage</span></strong><span>700 psig (+100&nbsp;psi)</span></div>
+  <div class="bar" style="--base:60%;--add:10%" role="img" aria-label="1: 700 psig"><i class="b1"></i><i class="b2"></i></div>
+</div><div class="srow">
+  <div class="slabel"><strong><span data-l="en" lang="en">2 stages</span><span data-l="fr" lang="fr">2 étages</span></strong><span>810 psig (+210&nbsp;psi)</span></div>
+  <div class="bar" style="--base:60%;--add:21%" role="img" aria-label="2: 810 psig"><i class="b1"></i><i class="b2"></i></div>
+</div><div class="srow">
+  <div class="slabel"><strong><span data-l="en" lang="en">3 stages</span><span data-l="fr" lang="fr">3 étages</span></strong><span>935 psig (+335&nbsp;psi)</span></div>
+  <div class="bar" style="--base:60%;--add:33.5%" role="img" aria-label="3: 935 psig"><i class="b1"></i><i class="b2"></i></div>
+</div></div>
+      <div class="axis"><em>psig</em><div><span style="--p:0%">0</span><span style="--p:20%">200</span><span style="--p:40%">400</span><span style="--p:60%">600</span><span style="--p:80%">800</span><span style="--p:100%">1000</span></div></div>
+      <div class="legend"><span><i class="k1"></i><span data-l="en" lang="en">Inlet pressure, 600 psig</span><span data-l="fr" lang="fr">Pression d’entrée, 600&nbsp;psig</span></span><span><i class="k2"></i><span data-l="en" lang="en">Pressure added by the stages</span><span data-l="fr" lang="fr">Pression ajoutée par les étages</span></span></div>
+    </div>
+
+    <div class="block">
+      <h3 class="sub-h"><span data-l="en" lang="en">The electric booster against the alternatives</span><span data-l="fr" lang="fr">Le surpresseur électrique face aux autres solutions</span></h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <th scope="col"><span class="sr"><span data-l="en" lang="en">Criterion</span><span data-l="fr" lang="fr">Critère</span></span></th>
+            <th scope="col" class="us"><span data-l="en" lang="en">Electric booster</span><span data-l="fr" lang="fr">Surpresseur électrique</span></th>
+            <th scope="col"><span data-l="en" lang="en">Pneumatic 2:1</span><span data-l="fr" lang="fr">Pneumatique 2:1</span></th>
+            <th scope="col"><span data-l="en" lang="en">Piston, about 3 hp</span><span data-l="fr" lang="fr">À piston, environ 3&nbsp;hp</span></th>
+          </tr></thead>
+          <tbody><tr><th scope="row"><span data-l="en" lang="en">Uses compressed air</span><span data-l="fr" lang="fr">Consomme de l’air comprimé</span></th><td class="us"><span data-l="en" lang="en">No</span><span data-l="fr" lang="fr">Non</span></td><td><span data-l="en" lang="en">Yes</span><span data-l="fr" lang="fr">Oui</span></td><td><span data-l="en" lang="en">No</span><span data-l="fr" lang="fr">Non</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Energy use</span><span data-l="fr" lang="fr">Consommation d’énergie</span></th><td class="us"><span data-l="en" lang="en">1×</span><span data-l="fr" lang="fr">1×</span></td><td><span data-l="en" lang="en">≈ 2×</span><span data-l="fr" lang="fr">≈ 2×</span></td><td><span data-l="en" lang="en">Moderate</span><span data-l="fr" lang="fr">Modérée</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Oil-free</span><span data-l="fr" lang="fr">Sans huile</span></th><td class="us"><span data-l="en" lang="en">Yes</span><span data-l="fr" lang="fr">Oui</span></td><td><span data-l="en" lang="en">Varies</span><span data-l="fr" lang="fr">Variable</span></td><td><span data-l="en" lang="en">Oil risk</span><span data-l="fr" lang="fr">Risque d’huile</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Leak-tight</span><span data-l="fr" lang="fr">Étanche</span></th><td class="us"><span data-l="en" lang="en">Yes</span><span data-l="fr" lang="fr">Oui</span></td><td><span data-l="en" lang="en">No</span><span data-l="fr" lang="fr">Non</span></td><td><span data-l="en" lang="en">No</span><span data-l="fr" lang="fr">Non</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Maintenance</span><span data-l="fr" lang="fr">Entretien</span></th><td class="us"><span data-l="en" lang="en">Minimal</span><span data-l="fr" lang="fr">Minimal</span></td><td><span data-l="en" lang="en">Regular</span><span data-l="fr" lang="fr">Régulier</span></td><td><span data-l="en" lang="en">Frequent</span><span data-l="fr" lang="fr">Fréquent</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Size</span><span data-l="fr" lang="fr">Encombrement</span></th><td class="us"><span data-l="en" lang="en">Compact</span><span data-l="fr" lang="fr">Compact</span></td><td><span data-l="en" lang="en">Medium</span><span data-l="fr" lang="fr">Moyen</span></td><td><span data-l="en" lang="en">Bulky</span><span data-l="fr" lang="fr">Volumineux</span></td></tr><tr><th scope="row"><span data-l="en" lang="en">Maximum outlet pressure</span><span data-l="fr" lang="fr">Pression de sortie maximale</span></th><td class="us"><span data-l="en" lang="en">400 psig</span><span data-l="fr" lang="fr">400&nbsp;psig</span></td><td><span data-l="en" lang="en">230 to 300 psi</span><span data-l="fr" lang="fr">230 à 300&nbsp;psi</span></td><td><span data-l="en" lang="en">About 360 psi (typical 3 hp unit)</span><span data-l="fr" lang="fr">Environ 360&nbsp;psi (unité typique de 3&nbsp;hp)</span></td></tr></tbody>
+        </table>
+      </div>
+      <p class="foot-note"><span data-l="en" lang="en">Source: the electric booster datasheet and comparison sheets. Energy and wear comparisons are estimates against typical units, and results depend on your site.</span><span data-l="fr" lang="fr">Source : la fiche technique du surpresseur électrique et les fiches comparatives. Les comparaisons d’énergie et d’usure sont des estimations par rapport à des unités typiques; les résultats dépendent de votre site.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="applications">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">Where Stratovac machines run</span><span data-l="fr" lang="fr">Où fonctionnent les machines Stratovac</span></h2>
+      <p><span data-l="en" lang="en">From biogas skids to ventilators and nuclear plants, the common thread is a gas that standard blowers handle badly.</span><span data-l="fr" lang="fr">Des skids de biogaz aux ventilateurs médicaux et aux centrales nucléaires, le point commun est un gaz que les soufflantes standard gèrent mal.</span></p>
+    </div>
+    <div class="apps"><div class="app"><h3><span data-l="en" lang="en">Biogas and renewable natural gas</span><span data-l="fr" lang="fr">Biogaz et gaz naturel renouvelable</span></h3><p><span data-l="en" lang="en">Blowers and boosters that move wet, flammable, H<sub>2</sub>S-laden gas through upgrading and conditioning systems, and boost it before pipeline injection.</span><span data-l="fr" lang="fr">Soufflantes et surpresseurs qui déplacent un gaz humide, inflammable et chargé de H<sub>2</sub>S dans les systèmes de purification et de conditionnement, puis le surpressent avant l’injection dans le réseau.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Natural gas treatment</span><span data-l="fr" lang="fr">Traitement du gaz naturel</span></h3><p><span data-l="en" lang="en">Gas recirculation and regeneration in dryers and PSA units, oxygen removal systems, and fuel-gas boosting for turbine skids.</span><span data-l="fr" lang="fr">Recirculation et régénération du gaz dans les sécheurs et les unités PSA, systèmes de retrait de l’oxygène et surpression du gaz combustible pour les skids de turbines.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Hydrogen and fuel cells</span><span data-l="fr" lang="fr">Hydrogène et piles à combustible</span></h3><p><span data-l="en" lang="en">Turbo blowers for cathode air or oxygen supply and boosters for hydrogen recirculation, supplied to fuel cell manufacturers.</span><span data-l="fr" lang="fr">Soufflantes turbo pour l’alimentation en air ou en oxygène de la cathode et surpresseurs pour la recirculation de l’hydrogène, fournis à des fabricants de piles à combustible.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Collaborative robotics</span><span data-l="fr" lang="fr">Robotique collaborative</span></h3><p><span data-l="en" lang="en">Two-stage high-speed boosters small enough to mount on the robot or the gripper instead of a central station.</span><span data-l="fr" lang="fr">Surpresseurs à deux étages haute vitesse assez petits pour se monter sur le robot ou sur la pince plutôt que sur une station centrale.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Medical and respiratory</span><span data-l="fr" lang="fr">Médical et respiratoire</span></h3><p><span data-l="en" lang="en">Boosters cleaned and greased to meet breathable-air ISO limits for very low VOC. Used in a mechanical ventilator program built in Canada during COVID-19.</span><span data-l="fr" lang="fr">Surpresseurs nettoyés et graissés pour respecter les limites ISO de l’air respirable (très faibles COV). Utilisés dans un programme de ventilateurs mécaniques réalisé au Canada pendant la COVID-19.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Dental equipment</span><span data-l="fr" lang="fr">Équipement dentaire</span></h3><p><span data-l="en" lang="en">Light, high-flow boosters for portable dental vacuum, with a nickel coating against caustic cleaning products.</span><span data-l="fr" lang="fr">Surpresseurs légers à fort débit pour le vide dentaire portatif, avec un revêtement de nickel contre les produits de nettoyage caustiques.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Nuclear and radioactive gas</span><span data-l="fr" lang="fr">Nucléaire et gaz radioactifs</span></h3><p><span data-l="en" lang="en">Custom boosters that circulate radioactive gas: radiation-resistant greases, depleted uranium shielding and a low-speed design for bearing life. Units delivered several years ago are still in operation.</span><span data-l="fr" lang="fr">Surpresseurs sur mesure pour la circulation de gaz radioactifs : graisses résistantes aux radiations, blindage en uranium appauvri et conception à basse vitesse pour la durée des roulements. Les unités livrées il y a plusieurs années sont toujours en service.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Aquaculture</span><span data-l="fr" lang="fr">Aquaculture</span></h3><p><span data-l="en" lang="en">Air and oxygen injection for recirculating aquaculture systems and live-holding tanks. Oil-free for the safety of live species, built for 24/7 duty.</span><span data-l="fr" lang="fr">Injection d’air et d’oxygène pour les systèmes aquacoles à recirculation et les bassins de rétention d’animaux vivants. Sans huile pour la sécurité des espèces vivantes, conçu pour le service 24/7.</span></p></div><div class="app"><h3><span data-l="en" lang="en">Compressed air and nitrogen</span><span data-l="fr" lang="fr">Air comprimé et azote</span></h3><p><span data-l="en" lang="en">Electric boosters raise line pressure at the point of use without drawing compressed air from the network. A nitrogen booster for fiber laser cutting is in development.</span><span data-l="fr" lang="fr">Des surpresseurs électriques relèvent la pression au point d’utilisation sans puiser d’air comprimé dans le réseau. Un surpresseur d’azote pour la découpe au laser à fibre est en développement.</span></p></div></div>
+  </div>
+</section>
+
+<section class="sec sec--deep" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">From operating point to delivered unit</span><span data-l="fr" lang="fr">Du point de fonctionnement à l’unité livrée</span></h2>
+      <p><span data-l="en" lang="en">You talk to the engineers who design the machine, from the first question to the drawing approval.</span><span data-l="fr" lang="fr">Vous parlez aux ingénieurs qui conçoivent la machine, de la première question jusqu’à l’approbation des dessins.</span></p>
+    </div>
+    <ol class="steps"><li><h3><span data-l="en" lang="en">Understand</span><span data-l="fr" lang="fr">Comprendre</span></h3><p><span data-l="en" lang="en">We review your gas, pressures, flow, duty cycle and the space available.</span><span data-l="fr" lang="fr">Nous analysons votre gaz, vos pressions, votre débit, votre régime de service et l’espace disponible.</span></p></li><li><h3><span data-l="en" lang="en">Specify</span><span data-l="fr" lang="fr">Spécifier</span></h3><p><span data-l="en" lang="en">We size the machine and agree with you on materials, motor and connections.</span><span data-l="fr" lang="fr">Nous dimensionnons la machine et convenons avec vous des matériaux, du moteur et des raccords.</span></p></li><li><h3><span data-l="en" lang="en">Design</span><span data-l="fr" lang="fr">Concevoir</span></h3><p><span data-l="en" lang="en">Our engineers design around your skid and share drawings for approval.</span><span data-l="fr" lang="fr">Nos ingénieurs conçoivent la machine autour de votre skid et soumettent les dessins pour approbation.</span></p></li><li><h3><span data-l="en" lang="en">Validate</span><span data-l="fr" lang="fr">Valider</span></h3><p><span data-l="en" lang="en">Pressure parts and performance are tested before shipment.</span><span data-l="fr" lang="fr">Les pièces sous pression et la performance sont testées avant l’expédition.</span></p></li><li><h3><span data-l="en" lang="en">Deliver</span><span data-l="fr" lang="fr">Livrer</span></h3><p><span data-l="en" lang="en">Units ship from our production sites in Fort Lauderdale, Florida and Barcelona, Spain.</span><span data-l="fr" lang="fr">Les unités sont expédiées depuis nos sites de production de Fort Lauderdale (Floride) et de Barcelone (Espagne).</span></p></li></ol>
+  </div>
+</section>
+
+<section class="sec" id="resources">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span data-l="en" lang="en">Datasheets and documents</span><span data-l="fr" lang="fr">Fiches techniques et documents</span></h2>
+      <p><span data-l="en" lang="en">The documents below are in English. The blower range datasheets further down are available in English and French.</span><span data-l="fr" lang="fr">Les documents ci-dessous sont en anglais. Les fiches de la gamme de soufflantes, plus bas, existent en anglais et en français.</span></p>
+    </div>
+    <ul class="res"><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">High-pressure natural gas booster</span><span data-l="fr" lang="fr">Surpresseur haute pression pour gaz naturel</span></h3><p><span data-l="en" lang="en">Datasheet, August 2026</span><span data-l="fr" lang="fr">Fiche technique, août 2026</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/high-pressure-gas-booster.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>0.9&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Biogas regenerative blower</span><span data-l="fr" lang="fr">Soufflante régénérative pour biogaz</span></h3><p><span data-l="en" lang="en">Datasheet</span><span data-l="fr" lang="fr">Fiche technique</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/biogas-regenerative-blower.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>0.7&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Electric high-pressure air booster IDSC-2SHP-166-400</span><span data-l="fr" lang="fr">Surpresseur d’air électrique haute pression IDSC-2SHP-166-400</span></h3><p><span data-l="en" lang="en">Product datasheet</span><span data-l="fr" lang="fr">Fiche technique du produit</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/electric-air-booster-datasheet.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>1.0&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Electric booster vs. piston boosters</span><span data-l="fr" lang="fr">Surpresseur électrique contre surpresseurs à piston</span></h3><p><span data-l="en" lang="en">Comparison sheet</span><span data-l="fr" lang="fr">Fiche comparative</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/booster-vs-piston.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>0.9&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Electric booster vs. pneumatic boosters</span><span data-l="fr" lang="fr">Surpresseur électrique contre surpresseurs pneumatiques</span></h3><p><span data-l="en" lang="en">Comparison sheet</span><span data-l="fr" lang="fr">Fiche comparative</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/booster-vs-pneumatic.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>0.9&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Pressurized regenerative blower for a natural gas dryer</span><span data-l="fr" lang="fr">Soufflante régénérative sous pression pour un sécheur de gaz naturel</span></h3><p><span data-l="en" lang="en">Case study</span><span data-l="fr" lang="fr">Étude de cas</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/case-study-pressurized-blower.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>1.0&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">High-speed regenerative blower IDMB0092-2SA281</span><span data-l="fr" lang="fr">Soufflante régénérative haute vitesse IDMB0092-2SA281</span></h3><p><span data-l="en" lang="en">Datasheet with performance curves and dimensions</span><span data-l="fr" lang="fr">Fiche technique avec courbes de performance et dimensions</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/high-speed-blower-IDMB0092-2SA281.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>1.3&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Double-stage regenerative blower IDSC0530-2SB152-5</span><span data-l="fr" lang="fr">Soufflante régénérative à deux étages IDSC0530-2SB152-5</span></h3><p><span data-l="en" lang="en">Datasheet with vacuum and pressure curves</span><span data-l="fr" lang="fr">Fiche technique avec courbes de vide et de pression</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/double-stage-blower-IDSC0530-2SB152-5.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>0.6&nbsp;MB</small></a>
+</li><li>
+  <div class="res-main"><h3><span data-l="en" lang="en">Standard regenerative blower catalog, IDSC and IDSC1 series</span><span data-l="fr" lang="fr">Catalogue des soufflantes régénératives standard, séries IDSC et IDSC1</span></h3><p><span data-l="en" lang="en">Catalog, 14 pages, with technical tables at 50 and 60 Hz</span><span data-l="fr" lang="fr">Catalogue de 14 pages, avec tableaux techniques à 50 et 60 Hz</span></p></div>
+  <a class="btn btn--line" href="assets/pdf/standard-blower-catalog.pdf" target="_blank" rel="noopener">
+    <svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg>
+    <span><span data-l="en" lang="en">Open PDF</span><span data-l="fr" lang="fr">Ouvrir le PDF</span></span><small>4.2&nbsp;MB</small></a>
+</li></ul>
+    <div class="sec-head rng-head">
+      <h2 id="range"><span data-l="en" lang="en">Blower range datasheets</span><span data-l="fr" lang="fr">Fiches techniques de la gamme de soufflantes</span></h2>
+      <p><span data-l="en" lang="en">One datasheet per model, with performance curves, motor data and dimensions. Download the English or French version.</span><span data-l="fr" lang="fr">Une fiche par modèle, avec courbes de performance, données moteur et dimensions. Téléchargez la version anglaise ou française.</span></p>
+    </div>
+    <h3 class="rng-h">STRC <span><span data-l="en" lang="en">Side channel blowers</span><span data-l="fr" lang="fr">Soufflantes à canal latéral</span></span></h3><ul class="rng"><li><span class="rng-m">STRC0055-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0055-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0055-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0070-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0070-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0070-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0080-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0080-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0140-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0140-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0180-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0180-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0180-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0210-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0210-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0270-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0270-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0270-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0315-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0315-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0415-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0415-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0415-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0530-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0530-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0700-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0700-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0700-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC1050-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC1050-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1370-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC1370-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC1370-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0080-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0080-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0140-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0140-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0210-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0210-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0315-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0315-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0530-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0530-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC1050-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC1050-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0495-2P</span><span class="rng-s"><span data-l="en" lang="en">Double flow</span><span data-l="fr" lang="fr">Double débit</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0495-2P-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0495-2P-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0880-2P</span><span class="rng-s"><span data-l="en" lang="en">Double flow</span><span data-l="fr" lang="fr">Double débit</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC0880-2P-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC0880-2P-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1950-2P</span><span class="rng-s"><span data-l="en" lang="en">Double flow</span><span data-l="fr" lang="fr">Double débit</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC1950-2P-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC1950-2P-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC2050-2P</span><span class="rng-s"><span data-l="en" lang="en">Double flow</span><span data-l="fr" lang="fr">Double débit</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRC2050-2P-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRC2050-2P-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li></ul><h3 class="rng-h">STRP <span><span data-l="en" lang="en">High performance blowers</span><span data-l="fr" lang="fr">Soufflantes haute performance</span></span></h3><ul class="rng"><li><span class="rng-m">STRP0045-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0045-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0045-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0065-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0065-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0085-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0085-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0120-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0120-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-1M</span><span class="rng-s"><span data-l="en" lang="en">Single stage</span><span data-l="fr" lang="fr">Un étage</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0165-1M-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0165-1M-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0045-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0045-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0045-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0065-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0065-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0085-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0085-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0120-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0120-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-2S</span><span class="rng-s"><span data-l="en" lang="en">Double stage</span><span data-l="fr" lang="fr">Deux étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0165-2S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0165-2S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-3S</span><span class="rng-s"><span data-l="en" lang="en">Triple stage</span><span data-l="fr" lang="fr">Trois étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0120-3S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0120-3S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-3S</span><span class="rng-s"><span data-l="en" lang="en">Triple stage</span><span data-l="fr" lang="fr">Trois étages</span></span><span class="rng-l"><a class="btn btn--line" href="assets/pdf/range/STRP0165-3S-EN.pdf" target="_blank" rel="noopener" hreflang="en"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>EN</span></a><a class="btn btn--line" href="assets/pdf/range/STRP0165-3S-FR.pdf" target="_blank" rel="noopener" hreflang="fr"><svg class="ico" aria-hidden="true"><use href="#i-pdf"/></svg><span>FR</span></a></span></li></ul>
+  </div>
+</section>
+
+<section class="sec sec--surface" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <h2><span data-l="en" lang="en">Send us your operating point</span><span data-l="fr" lang="fr">Envoyez-nous votre point de fonctionnement</span></h2>
+        <p><span data-l="en" lang="en">Give us the gas, the pressures, the flow and the duty cycle. We come back with a sized proposal.</span><span data-l="fr" lang="fr">Indiquez-nous le gaz, les pressions, le débit et le régime de service. Nous revenons avec une proposition dimensionnée.</span></p>
+      </div>
+      <ul class="ctl">
+        <li><b><span data-l="en" lang="en">Email</span><span data-l="fr" lang="fr">Courriel</span></b><div class="val"><span class="sel" id="c-mail">info@id-industries.com</span>
+          <button class="mini" type="button" data-copy="info@id-industries.com" data-target="c-mail"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy</span><span data-l="fr" lang="fr">Copier</span></span></button></div></li>
+        <li><b><span data-l="en" lang="en">Phone</span><span data-l="fr" lang="fr">Téléphone</span></b><div class="val"><span class="sel" id="c-tel">+1 438-880-4655</span>
+          <button class="mini" type="button" data-copy="+1 438-880-4655" data-target="c-tel"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy</span><span data-l="fr" lang="fr">Copier</span></span></button></div></li>
+        <li><b><span data-l="en" lang="en">Production sites</span><span data-l="fr" lang="fr">Sites de production</span></b><div class="val"><span>Fort Lauderdale, FL, USA · Barcelona, <span data-l="en" lang="en">Spain</span><span data-l="fr" lang="fr">Espagne</span></span></div></li>
+        <li><b><span data-l="en" lang="en">Group</span><span data-l="fr" lang="fr">Groupe</span></b><div class="val"><a href="https://id-industries.com" target="_blank" rel="noopener">id-industries.com</a></div></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3><span data-l="en" lang="en">Quote request</span><span data-l="fr" lang="fr">Demande de soumission</span></h3>
+      <p class="hint"><span data-l="en" lang="en">Fill in what you know. The form prepares a message for you to copy into an email.</span><span data-l="fr" lang="fr">Remplissez ce que vous savez. Le formulaire prépare un message à copier dans un courriel.</span></p>
+      <form id="qform" class="form" autocomplete="on">
+        <div class="field"><label for="f-gas"><span data-l="en" lang="en">Gas</span><span data-l="fr" lang="fr">Gaz</span></label><input id="f-gas" name="gas" type="text" required placeholder="Natural gas, biogas, N2, air…" data-attr="placeholder" data-en="Natural gas, biogas, N2, air…" data-fr="Gaz naturel, biogaz, N2, air…"></div>
+        <div class="field"><label for="f-flow"><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></label><input id="f-flow" name="flow" type="text" placeholder="e.g. 35 SCFM" data-attr="placeholder" data-en="e.g. 35 SCFM" data-fr="p. ex. 35 SCFM"></div>
+        <div class="field"><label for="f-in"><span data-l="en" lang="en">Inlet pressure</span><span data-l="fr" lang="fr">Pression d’entrée</span></label><input id="f-in" name="pin" type="text" placeholder="e.g. 100 psig" data-attr="placeholder" data-en="e.g. 100 psig" data-fr="p. ex. 100 psig"></div>
+        <div class="field"><label for="f-out"><span data-l="en" lang="en">Target discharge pressure</span><span data-l="fr" lang="fr">Pression de refoulement visée</span></label><input id="f-out" name="pout" type="text" placeholder="e.g. 400 psig" data-attr="placeholder" data-en="e.g. 400 psig" data-fr="p. ex. 400 psig"></div>
+        <div class="field"><label for="f-duty"><span data-l="en" lang="en">Duty cycle</span><span data-l="fr" lang="fr">Régime de service</span></label>
+          <select id="f-duty" name="duty">
+            <option value="c" data-en="Continuous, 24/7" data-fr="Continu, 24 h/24, 7 j/7">Continuous, 24/7</option>
+            <option value="i" data-en="Intermittent" data-fr="Intermittent">Intermittent</option>
+            <option value="u" data-en="Not sure yet" data-fr="Pas encore déterminé">Not sure yet</option>
+          </select></div>
+        <div class="field"><label for="f-haz"><span data-l="en" lang="en">Hazardous area</span><span data-l="fr" lang="fr">Emplacement dangereux</span></label>
+          <select id="f-haz" name="haz">
+            <option value="n" data-en="Not required" data-fr="Non requis">Not required</option>
+            <option value="1" data-en="Class I Div. 1" data-fr="Classe I, div. 1">Class I Div. 1</option>
+            <option value="2" data-en="Class I Div. 2" data-fr="Classe I, div. 2">Class I Div. 2</option>
+            <option value="u" data-en="Not sure yet" data-fr="Pas encore déterminé">Not sure yet</option>
+          </select></div>
+        <div class="field"><label for="f-co"><span data-l="en" lang="en">Company</span><span data-l="fr" lang="fr">Entreprise</span></label><input id="f-co" name="company" type="text" autocomplete="organization"></div>
+        <div class="field"><label for="f-mail"><span data-l="en" lang="en">Email</span><span data-l="fr" lang="fr">Courriel</span></label><input id="f-mail" name="email" type="email" required autocomplete="email"></div>
+        <div class="field full"><label for="f-notes"><span data-l="en" lang="en">Notes</span><span data-l="fr" lang="fr">Notes</span></label><textarea id="f-notes" name="notes"></textarea></div>
+        <div class="form-actions"><button class="btn btn--solid" type="submit"><span data-l="en" lang="en">Prepare my request</span><span data-l="fr" lang="fr">Préparer ma demande</span></button></div>
+      </form>
+      <div class="result" id="result" hidden>
+        <h4><span data-l="en" lang="en">Your request is ready to send</span><span data-l="fr" lang="fr">Votre demande est prête à envoyer</span></h4>
+        <p class="hint"><span data-l="en" lang="en">Copy it and email it to info@id-industries.com. Nothing is sent from this page.</span><span data-l="fr" lang="fr">Copiez-la et envoyez-la par courriel à info@id-industries.com. Rien n’est envoyé depuis cette page.</span></p>
+        <textarea id="summary" readonly aria-label="Request text" data-attr="aria-label" data-en="Request text" data-fr="Texte de la demande"></textarea>
+        <div class="row">
+          <button class="btn btn--solid" type="button" id="copyreq"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy request</span><span data-l="fr" lang="fr">Copier la demande</span></span></button>
+          <a class="btn btn--line" id="mailto" href="mailto:info@id-industries.com"><span><span data-l="en" lang="en">Open in email app</span><span data-l="fr" lang="fr">Ouvrir dans le courriel</span></span></a>
+          <span class="status" id="status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="logo" src="assets/img/stratovac-logo-light.png" width="264" height="103" alt="Stratovac">
+        <a class="foot-part" href="https://id-industries.com" target="_blank" rel="noopener"><img src="assets/img/id-mark-light.webp" width="240" height="204" alt=""><span>Part of ID Industry</span></a>
+        <p><span data-l="en" lang="en">Oil-free regenerative boosters and blowers for demanding gases.</span><span data-l="fr" lang="fr">Surpresseurs et soufflantes régénératifs sans huile pour les gaz exigeants.</span></p>
+      </div>
+      <div><h4><span data-l="en" lang="en">Products</span><span data-l="fr" lang="fr">Produits</span></h4><ul>
+        <li><a href="#p-gas"><span data-l="en" lang="en">Natural gas booster</span><span data-l="fr" lang="fr">Surpresseur gaz naturel</span></a></li>
+        <li><a href="#p-bio"><span data-l="en" lang="en">Biogas blower</span><span data-l="fr" lang="fr">Soufflante biogaz</span></a></li>
+        <li><a href="#p-elec"><span data-l="en" lang="en">Electric air booster</span><span data-l="fr" lang="fr">Surpresseur d’air électrique</span></a></li>
+        <li><a href="#p-std"><span data-l="en" lang="en">Standard blowers</span><span data-l="fr" lang="fr">Soufflantes standard</span></a></li></ul></div>
+      <div><h4><span data-l="en" lang="en">Company</span><span data-l="fr" lang="fr">Entreprise</span></h4><ul>
+        <li><a href="#technology"><span data-l="en" lang="en">Technology</span><span data-l="fr" lang="fr">Technologie</span></a></li>
+        <li><a href="#applications"><span data-l="en" lang="en">Applications</span><span data-l="fr" lang="fr">Applications</span></a></li>
+        <li><a href="#resources"><span data-l="en" lang="en">Datasheets</span><span data-l="fr" lang="fr">Fiches techniques</span></a></li></ul></div>
+      <div><h4>Contact</h4><ul>
+        <li>info@id-industries.com</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Stratovac. Part of ID Industry.</span><span><span data-l="en" lang="en">English / Français</span><span data-l="fr" lang="fr">English / Français</span></span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var root = document.documentElement;
+  var KEY = 'stratovac-lang';
+  function stored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function store(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+  var MSG = {
+    en: { title:'Quote request – Stratovac', gas:'Gas', pin:'Inlet pressure', pout:'Target discharge pressure', flow:'Flow', duty:'Duty cycle',
+          haz:'Hazardous area', co:'Company', mail:'Email', notes:'Notes', none:'-',
+          copied:'Copied. Paste it into an email to info@id-industries.com.', manual:'Select the text and copy it (Ctrl+C or Cmd+C), then paste it into an email to info@id-industries.com.',
+          subject:'Quote request' },
+    fr: { title:'Demande de soumission – Stratovac', gas:'Gaz', pin:'Pression d’entrée', pout:'Pression de refoulement visée', flow:'Débit', duty:'Régime de service',
+          haz:'Emplacement dangereux', co:'Entreprise', mail:'Courriel', notes:'Notes', none:'-',
+          copied:'Copié. Collez-le dans un courriel adressé à info@id-industries.com.', manual:'Sélectionnez le texte et copiez-le (Ctrl+C ou Cmd+C), puis collez-le dans un courriel adressé à info@id-industries.com.',
+          subject:'Demande de soumission' }
+  };
+
+  function lang(){ return root.getAttribute('data-lang') === 'fr' ? 'fr' : 'en'; }
+
+  function applyAttrs(l){
+    var nodes = document.querySelectorAll('[data-en][data-fr]');
+    for (var i = 0; i < nodes.length; i++){
+      var el = nodes[i], v = el.getAttribute('data-' + l), a = el.getAttribute('data-attr');
+      if (a) el.setAttribute(a, v); else el.textContent = v;
+    }
+  }
+
+  function setLang(l, persist){
+    root.setAttribute('data-lang', l);
+    root.setAttribute('lang', l);
+    applyAttrs(l);
+    var btns = document.querySelectorAll('.lang button');
+    for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-set') === l ? 'true' : 'false');
+    if (persist) store(l);
+    var box = document.getElementById('result');
+    if (box && !box.hidden) renderSummary();
+  }
+
+  var s = stored();
+  var initial = (s === 'fr' || s === 'en') ? s : (((navigator.language || 'en').toLowerCase().indexOf('fr') === 0) ? 'fr' : 'en');
+  setLang(initial, false);
+
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.lang button') : null;
+    if (b) setLang(b.getAttribute('data-set'), true);
+  });
+
+  /* quote request: builds a text summary the visitor copies into an email */
+  var form = document.getElementById('qform');
+  var out = document.getElementById('summary');
+  var status = document.getElementById('status');
+  var mailBtn = document.getElementById('mailto');
+
+  function val(id){ var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
+  function selText(id){ var el = document.getElementById(id); return el && el.selectedIndex >= 0 ? el.options[el.selectedIndex].textContent : ''; }
+
+  function buildText(){
+    var m = MSG[lang()], none = m.none;
+    var lines = [m.title, '',
+      m.gas + ': ' + (val('f-gas') || none),
+      m.pin + ': ' + (val('f-in') || none),
+      m.pout + ': ' + (val('f-out') || none),
+      m.flow + ': ' + (val('f-flow') || none),
+      m.duty + ': ' + selText('f-duty'),
+      m.haz + ': ' + selText('f-haz'),
+      m.co + ': ' + (val('f-co') || none),
+      m.mail + ': ' + (val('f-mail') || none)];
+    var n = val('f-notes');
+    if (n) lines.push(m.notes + ': ' + n);
+    return lines.join('\n');
+  }
+
+  function renderSummary(){
+    var text = buildText();
+    out.value = text;
+    mailBtn.setAttribute('href', 'mailto:info@id-industries.com?subject=' + encodeURIComponent(MSG[lang()].subject) + '&body=' + encodeURIComponent(text));
+  }
+
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      renderSummary();
+      document.getElementById('result').hidden = false;
+      status.textContent = '';
+      document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  }
+
+  function selectAll(el){ try { el.focus(); el.select(); } catch(e){} }
+
+  function copy(text, fallbackEl, statusEl){
+    var m = MSG[lang()];
+    function manual(){ if (fallbackEl) selectAll(fallbackEl); if (statusEl) statusEl.textContent = m.manual; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ if (statusEl) statusEl.textContent = m.copied; }, manual);
+    } else { manual(); }
+  }
+
+  var copyReq = document.getElementById('copyreq');
+  if (copyReq) copyReq.addEventListener('click', function(){ copy(out.value, out, status); });
+
+  var copyBtns = document.querySelectorAll('[data-copy]');
+  for (var i = 0; i < copyBtns.length; i++){
+    copyBtns[i].addEventListener('click', function(){
+      var btn = this, target = document.getElementById(btn.getAttribute('data-target'));
+      var label = btn.querySelector('span[data-ok]');
+      function ok(){
+        var old = btn.getAttribute('aria-label');
+        btn.classList.add('done');
+        setTimeout(function(){ btn.classList.remove('done'); }, 1400);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(ok, function(){
+          if (target){ var r = document.createRange(); r.selectNodeContents(target); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+        });
+      } else if (target){
+        var r = document.createRange(); r.selectNodeContents(target); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      }
+    });
+  }
+})();
+</script>
