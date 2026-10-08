@@ -14,4 +14,18 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/fr/pompes-a-vide-erabliere/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/maple-vacuum-pumps/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-erabliere/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/maple-vacuum-pumps/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/maple-vacuum-pumps/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/maple-vacuum-pumps/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-erabliere/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/maple-vacuum-pumps/"/>
+  </url>
 </urlset>
