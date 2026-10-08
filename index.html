@@ -295,6 +295,10 @@ thead th.us{color:var(--accent)}
 .result textarea{width:100%;margin-top:10px;min-height:230px;font:400 .92rem/1.5 var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;resize:vertical}
 .result .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:12px}
 .status{font-size:.88rem;color:var(--ink-2)}
+.sendstatus{grid-column:1/-1;margin:0;font-size:.95rem;color:var(--ink-2)}
+.sendstatus:empty{display:none}
+.sendstatus.ok{color:#1f6b3a;font-weight:600}
+.sendstatus.err{color:#a3281c;font-weight:600}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .mini.done{color:var(--accent);border-color:var(--accent)}
 @media (max-width:900px){ .contact-grid{grid-template-columns:minmax(0,1fr)} }
@@ -844,7 +848,7 @@ table.mt{min-width:640px;font-size:.9rem}
     </div>
     <div class="panel">
       <h3><span data-l="en" lang="en">Quote request</span><span data-l="fr" lang="fr">Demande de soumission</span></h3>
-      <p class="hint"><span data-l="en" lang="en">Fill in what you know. The form prepares a message for you to copy into an email.</span><span data-l="fr" lang="fr">Remplissez ce que vous savez. Le formulaire prépare un message à copier dans un courriel.</span></p>
+      <p class="hint"><span data-l="en" lang="en">Fill in what you know and send it. We reply by email.</span><span data-l="fr" lang="fr">Remplissez ce que vous savez et envoyez-le. Nous répondons par courriel.</span></p>
       <form id="qform" class="form" autocomplete="on">
         <div class="field"><label for="f-gas"><span data-l="en" lang="en">Gas</span><span data-l="fr" lang="fr">Gaz</span></label><input id="f-gas" name="gas" type="text" required placeholder="Natural gas, biogas, N2, air…" data-attr="placeholder" data-en="Natural gas, biogas, N2, air…" data-fr="Gaz naturel, biogaz, N2, air…"></div>
         <div class="field"><label for="f-flow"><span data-l="en" lang="en">Flow</span><span data-l="fr" lang="fr">Débit</span></label><input id="f-flow" name="flow" type="text" placeholder="e.g. 35 SCFM" data-attr="placeholder" data-en="e.g. 35 SCFM" data-fr="p. ex. 35 SCFM"></div>
@@ -866,11 +870,13 @@ table.mt{min-width:640px;font-size:.9rem}
         <div class="field"><label for="f-co"><span data-l="en" lang="en">Company</span><span data-l="fr" lang="fr">Entreprise</span></label><input id="f-co" name="company" type="text" autocomplete="organization"></div>
         <div class="field"><label for="f-mail"><span data-l="en" lang="en">Email</span><span data-l="fr" lang="fr">Courriel</span></label><input id="f-mail" name="email" type="email" required autocomplete="email"></div>
         <div class="field full"><label for="f-notes"><span data-l="en" lang="en">Notes</span><span data-l="fr" lang="fr">Notes</span></label><textarea id="f-notes" name="notes"></textarea></div>
-        <div class="form-actions"><button class="btn btn--solid" type="submit"><span data-l="en" lang="en">Prepare my request</span><span data-l="fr" lang="fr">Préparer ma demande</span></button></div>
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <div class="form-actions"><button class="btn btn--solid" type="submit"><span data-l="en" lang="en">Send my request</span><span data-l="fr" lang="fr">Envoyer ma demande</span></button></div>
+        <p class="sendstatus" id="sendstatus" role="status" aria-live="polite"></p>
       </form>
       <div class="result" id="result" hidden>
-        <h4><span data-l="en" lang="en">Your request is ready to send</span><span data-l="fr" lang="fr">Votre demande est prête à envoyer</span></h4>
-        <p class="hint"><span data-l="en" lang="en">Copy it and email it to abruens@stratovac.ca. Nothing is sent from this page.</span><span data-l="fr" lang="fr">Copiez-la et envoyez-la par courriel à abruens@stratovac.ca. Rien n’est envoyé depuis cette page.</span></p>
+        <h4><span data-l="en" lang="en">Send it by email instead</span><span data-l="fr" lang="fr">Envoyez-la plutôt par courriel</span></h4>
+        <p class="hint"><span data-l="en" lang="en">Copy it and email it to abruens@stratovac.ca.</span><span data-l="fr" lang="fr">Copiez-la et envoyez-la par courriel à abruens@stratovac.ca.</span></p>
         <textarea id="summary" readonly aria-label="Request text" data-attr="aria-label" data-en="Request text" data-fr="Texte de la demande"></textarea>
         <div class="row">
           <button class="btn btn--solid" type="button" id="copyreq"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span><span data-l="en" lang="en">Copy request</span><span data-l="fr" lang="fr">Copier la demande</span></span></button>
@@ -917,12 +923,15 @@ table.mt{min-width:640px;font-size:.9rem}
     en: { title:'Quote request – Stratovac', gas:'Gas', pin:'Inlet pressure', pout:'Target discharge pressure', flow:'Flow', duty:'Duty cycle',
           haz:'Hazardous area', co:'Company', mail:'Email', notes:'Notes', none:'-',
           copied:'Copied. Paste it into an email to abruens@stratovac.ca.', manual:'Select the text and copy it (Ctrl+C or Cmd+C), then paste it into an email to abruens@stratovac.ca.',
-          subject:'Quote request' },
+          subject:'Quote request', sending:'Sending…', sent:'Thank you. Your request was sent to Stratovac. We will get back to you shortly.',
+          fail:'Sorry, the request could not be sent. You can copy it below or open it in your email app.' },
     fr: { title:'Demande de soumission – Stratovac', gas:'Gaz', pin:'Pression d’entrée', pout:'Pression de refoulement visée', flow:'Débit', duty:'Régime de service',
           haz:'Emplacement dangereux', co:'Entreprise', mail:'Courriel', notes:'Notes', none:'-',
           copied:'Copié. Collez-le dans un courriel adressé à abruens@stratovac.ca.', manual:'Sélectionnez le texte et copiez-le (Ctrl+C ou Cmd+C), puis collez-le dans un courriel adressé à abruens@stratovac.ca.',
-          subject:'Demande de soumission' }
+          subject:'Demande de soumission', sending:'Envoi en cours…', sent:'Merci. Votre demande a été envoyée à Stratovac. Nous vous répondrons sous peu.',
+          fail:'Désolé, la demande n’a pas pu être envoyée. Vous pouvez la copier ci-dessous ou l’ouvrir dans votre application courriel.' }
   };
+  var WEB3KEY = '17299eeb-76bf-44cf-bcfd-c6d2eee6e0cb';
 
   function lang(){ return root.getAttribute('data-lang') === 'fr' ? 'fr' : 'en'; }
 
@@ -989,9 +998,25 @@ table.mt{min-width:640px;font-size:.9rem}
     form.addEventListener('submit', function(e){
       e.preventDefault();
       renderSummary();
-      document.getElementById('result').hidden = false;
-      status.textContent = '';
-      document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+      var m = MSG[lang()], sendEl = document.getElementById('sendstatus'), resEl = document.getElementById('result');
+      var btn = form.querySelector('button[type=submit]');
+      function fallback(){
+        resEl.hidden = false; status.textContent = '';
+        sendEl.className = 'sendstatus err'; sendEl.textContent = m.fail;
+        resEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+      if (form.elements['botcheck'] && form.elements['botcheck'].checked) return;
+      btn.disabled = true; sendEl.className = 'sendstatus'; sendEl.textContent = m.sending; resEl.hidden = true;
+      var payload = { access_key: WEB3KEY, subject: m.subject + ' – ' + (val('f-co') || val('f-mail')),
+        from_name: 'Stratovac.ca', name: val('f-co') || val('f-mail'), email: val('f-mail'), message: buildText() };
+      fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          btn.disabled = false;
+          if (d && d.success){ sendEl.className = 'sendstatus ok'; sendEl.textContent = m.sent; form.reset(); }
+          else { fallback(); }
+        })
+        .catch(function(){ btn.disabled = false; fallback(); });
     });
   }
 
