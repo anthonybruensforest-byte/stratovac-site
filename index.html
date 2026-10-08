@@ -35,7 +35,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HQG25R024T"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('config','G-HQG25R024T',{allow_google_signals:false,allow_ad_personalization_signals:false});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('config','G-HQG25R024T',{allow_google_signals:false,allow_ad_personalization_signals:false});</script>
 <style>
 /* Layout: engineering datasheet as a website. Pale instrument-paper pages (navy in dark mode) with fixed deep-navy "plates" for hero, product images and process,
    lit by the blue burst of the Stratovac mark. Left-aligned, ruled spec tables, one illustrated hero. */
@@ -326,6 +326,10 @@ thead th.us{color:var(--accent)}
 .result textarea{width:100%;margin-top:10px;min-height:230px;font:400 .92rem/1.5 var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;resize:vertical}
 .result .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:12px}
 .status{font-size:.88rem;color:var(--ink-2)}
+.cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:560px;margin-inline:auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 10px 40px rgba(0,0,0,.28);display:grid;gap:12px;font-size:.92rem;line-height:1.5}
+.cc[hidden]{display:none}
+.cc p{margin:0}
+.cc-row{display:flex;gap:10px;flex-wrap:wrap}
 .sendstatus{grid-column:1/-1;margin:0;font-size:.95rem;color:var(--ink-2)}
 .sendstatus:empty{display:none}
 .sendstatus.ok{color:#1f6b3a;font-weight:600}
@@ -926,6 +930,10 @@ To stage 2
 <div class="legal"><span>© 2026 Stratovac. Part of ID Industry.</span><span>English / Français</span></div>
 </div>
 </footer>
+<div aria-label="Cookies" aria-live="polite" class="cc" hidden="" id="cc" role="dialog">
+<p>We use an analytics cookie (Google Analytics) to understand how the site is used. It is only set if you accept.</p>
+<div class="cc-row"><button class="btn btn--solid" id="cc-yes" type="button">Accept</button><button class="btn btn--line" id="cc-no" type="button">Decline</button></div>
+</div>
 <script>
 (function(){
   var root = document.documentElement;
@@ -946,6 +954,19 @@ To stage 2
           fail:'Désolé, la demande n’a pas pu être envoyée. Vous pouvez la copier ci-dessous ou l’ouvrir dans votre application courriel.' }
   };
   var WEB3KEY = '17299eeb-76bf-44cf-bcfd-c6d2eee6e0cb';
+
+  /* cookie consent (Quebec Law 25): analytics only after the visitor accepts */
+  (function(){
+    var box = document.getElementById('cc');
+    function get(){ try { return localStorage.getItem('stratovac-consent'); } catch(e){ return null; } }
+    function set(v){ try { localStorage.setItem('stratovac-consent', v); } catch(e){} }
+    function grant(){ if (typeof gtag === 'function') gtag('consent','update',{analytics_storage:'granted'}); }
+    var c = get();
+    if (c === 'yes') grant(); else if (c !== 'no' && box) box.hidden = false;
+    var y = document.getElementById('cc-yes'), n = document.getElementById('cc-no');
+    if (y) y.addEventListener('click', function(){ set('yes'); grant(); box.hidden = true; });
+    if (n) n.addEventListener('click', function(){ set('no'); box.hidden = true; });
+  })();
 
   function lang(){ return root.getAttribute('data-lang') === 'fr' ? 'fr' : 'en'; }
 
