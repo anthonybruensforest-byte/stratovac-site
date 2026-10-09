@@ -82,7 +82,9 @@ html:not([data-lang="fr"]) [data-l="fr"],html[data-lang="fr"] [data-l="en"]{disp
 .site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
 .head-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding-block:10px}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
-.brand .logo{height:44px;width:auto}
+.brand>a:first-child{flex:none}
+.brand .logo{height:44px;width:auto;max-width:none;flex:none}
+.brand .partof{flex:0 1 auto}
 .logo-a{display:var(--logo-a)} .logo-b{display:var(--logo-b)}
 .brand-sep{width:1px;height:32px;background:var(--line);flex:none}
 .partof{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font:600 .7rem/1.15 var(--font-display);font-stretch:108%;min-width:0}
