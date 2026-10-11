@@ -168,4 +168,32 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflantes-pressurisees/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressurized-blowers/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/unit-converter/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/convertisseur-unites/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/unit-converter/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/convertisseur-unites/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/convertisseur-unites/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/unit-converter/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/pressure-drop-calculator/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/pressure-drop-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/calculateur-perte-de-charge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressure-drop-calculator/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/calculateur-perte-de-charge/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/pressure-drop-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/calculateur-perte-de-charge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressure-drop-calculator/"/>
+  </url>
 </urlset>

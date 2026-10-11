@@ -48,3 +48,10 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 
 ## Optional
 - [Sitemap](https://stratovac.ca/sitemap.xml)
+
+## Free tools
+
+- [Unit converter](https://stratovac.ca/unit-converter/): CFM to m³/h, inches of water to inches of mercury, psi, bar, mbar, vacuum level (inHg to mbar absolute), power and temperature.
+- [Pressure drop calculator](https://stratovac.ca/pressure-drop-calculator/): pressure loss in air, gas and vacuum piping from flow, pipe diameter, length and fittings.
+- [Convertisseur d’unités (français)](https://stratovac.ca/fr/convertisseur-unites/)
+- [Calculateur de perte de charge (français)](https://stratovac.ca/fr/calculateur-perte-de-charge/)
