@@ -8,6 +8,8 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - [Stratovac home (English)](https://stratovac.ca/): product lines, technology, applications, resources, quote form
 - [Accueil Stratovac (français)](https://stratovac.ca/fr/): same content in French
 - [Maple vacuum pumps (English)](https://stratovac.ca/maple-vacuum-pumps/): 18 STROV models, 12 to 780 m³/h at 60 Hz, tap capacity, oil heater, datasheets
+- [Oil-free claw compressors (English)](https://stratovac.ca/claw-compressors/): 8 STRC models, 68 to 600 m³/h at 60 Hz, up to 2.2 bar, full specifications
+- [Compresseurs à griffes sans huile (français)](https://stratovac.ca/fr/compresseurs-a-griffes/): modèles STRC-60 à STRC-515, spécifications complètes
 - [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/): STROV, fiches techniques en français
 
 ## Product lines (all on the home page)
@@ -18,6 +20,7 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - High-speed regenerative blower: up to 92 m³/h, vacuum or pressure, 6.8 kg
 - High-speed turbo blower (STRT): up to 780 m³/h, about 50 kPa, built-in VFD, 18,000 hours maintenance free
 - Standard regenerative blowers (IDSC / IDSC1): about 130 models, 50 to 3,900 m³/h, 50 and 60 Hz
+- Oil-free claw compressors (STRC-60 to STRC-515): dry running, contact-free, 68 to 600 m³/h, up to 2.2 bar, 50 and 60 Hz
 - Maple vacuum pumps (STROV): built in South Korea, CE marked, sold direct by Stratovac
 
 ## Datasheets (PDF)
