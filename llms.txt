@@ -1,0 +1,35 @@
+# Stratovac
+
+> Stratovac (part of ID Industry, Quebec, Canada) supplies oil-free regenerative boosters and blowers for high pressure, corrosive gases, explosive atmospheres and non-stop duty, and oil-lubricated rotary vane vacuum pumps for maple producers. Sales in English and French, in Canada and the United States. Contact: abruens@stratovac.ca, +1-438-880-4655.
+
+Quotes are made on request: send the operating point (gas, flow, inlet and outlet pressure, duty, hazardous-area class) or, for maple, the number of taps and the current pump. Prices are not published on the site.
+
+## Main pages
+- [Stratovac home (English)](https://stratovac.ca/): product lines, technology, applications, resources, quote form
+- [Accueil Stratovac (français)](https://stratovac.ca/fr/): same content in French
+- [Maple vacuum pumps (English)](https://stratovac.ca/maple-vacuum-pumps/): 18 STROV models, 12 to 780 m³/h at 60 Hz, tap capacity, oil heater, datasheets
+- [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/): STROV, fiches techniques en français
+
+## Product lines (all on the home page)
+- High-pressure natural gas booster: magnetically coupled, stainless steel, no shaft seal; from a 600 psig inlet, 1 stage 700 psig, 2 stages 810 psig, 3 stages 935 psig; Class I Div. 1/2 motors available
+- Biogas regenerative blower: gearless, oil-free, 5 to 2,000 CFM, vacuum to +15 psig
+- Electric high-pressure air booster: 2:1 pressure ratio up to 400 psig, 35 SCFM, air or nitrogen, no compressed air consumed
+- Custom pressurized regenerative blowers: casing up to 80 bar, magnetic drive, no shaft seal
+- High-speed regenerative blower: up to 92 m³/h, vacuum or pressure, 6.8 kg
+- High-speed turbo blower (STRT): up to 780 m³/h, about 50 kPa, built-in VFD, 18,000 hours maintenance free
+- Standard regenerative blowers (IDSC / IDSC1): about 130 models, 50 to 3,900 m³/h, 50 and 60 Hz
+- Maple vacuum pumps (STROV): built in South Korea, CE marked, sold direct by Stratovac
+
+## Datasheets (PDF)
+- [Natural gas booster](https://stratovac.ca/assets/pdf/high-pressure-gas-booster.pdf)
+- [Biogas regenerative blower](https://stratovac.ca/assets/pdf/biogas-regenerative-blower.pdf)
+- [Electric air booster](https://stratovac.ca/assets/pdf/electric-air-booster-datasheet.pdf)
+- [Booster vs piston](https://stratovac.ca/assets/pdf/booster-vs-piston.pdf)
+- [Booster vs pneumatic](https://stratovac.ca/assets/pdf/booster-vs-pneumatic.pdf)
+- [Pressurized blower case study](https://stratovac.ca/assets/pdf/case-study-pressurized-blower.pdf)
+- [High-speed turbo blower STRT](https://stratovac.ca/assets/pdf/high-speed-turbo-blower-STRT.pdf)
+- [Standard blower catalog](https://stratovac.ca/assets/pdf/standard-blower-catalog.pdf)
+- STROV maple pump datasheets, one per model in English and French: https://stratovac.ca/assets/pdf/rv/STROV-0200-EN.pdf (replace 0200 with the model number, EN with FR for French)
+
+## Optional
+- [Sitemap](https://stratovac.ca/sitemap.xml)
