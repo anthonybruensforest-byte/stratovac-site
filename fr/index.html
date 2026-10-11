@@ -408,8 +408,36 @@ table.mt{min-width:640px;font-size:.9rem}
 .lang a{display:inline-block;font:700 .76rem/1 var(--font-display);font-stretch:110%;letter-spacing:.04em;padding:7px 11px;border-radius:999px;color:var(--ink-2);text-decoration:none}
 .lang a[aria-current="true"]{background:var(--ink);color:var(--paper)}
 </style>
+<style>
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin:0 0 clamp(28px,4vw,48px)}
+.pcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pc-img{margin:0;aspect-ratio:4/3;display:grid;place-items:center;padding:14px;background:radial-gradient(62% 58% at 50% 46%,var(--glow-soft),transparent 72%),var(--deep)}
+.pc-img.pc-light{background:#fff}
+.pc-img img{max-width:100%;max-height:100%;object-fit:contain}
+.pc-body{padding:16px 18px 18px;display:grid;gap:8px;align-content:start}
+.pc-body h3{font-size:1.05rem;font-stretch:106%;font-weight:700;line-height:1.2}
+.pc-body p{color:var(--ink-2);font-size:.92rem;line-height:1.45;margin:0}
+.pc-more{color:var(--accent);font-weight:600;font-size:.9rem}
+.grp-h{font:800 1.25rem/1.2 var(--font-display);font-stretch:112%;margin:0 0 6px}
+.grp-p{color:var(--ink-2);margin:0 0 20px}
+.std-panel{background:rgba(255,255,255,.05);border:1px solid var(--deep-line);border-radius:12px;padding:22px 24px}
+.std-panel h2{font:800 1.2rem/1.2 var(--font-display);font-stretch:112%;color:var(--on-deep);margin:0 0 4px}
+.std-panel>p{color:var(--on-deep-2);font-size:.92rem;margin:0 0 12px}
+.std-list{list-style:none;margin:0;padding:0}
+.std-list a{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--deep-line);color:var(--on-deep);text-decoration:none}
+.std-list a:hover b{color:var(--bright)}
+.std-list .th{width:60px;height:45px;border-radius:6px;background:var(--deep);border:1px solid var(--deep-line);display:grid;place-items:center;overflow:hidden}
+.std-list .th.lt{background:#fff}.std-list .th img{max-width:100%;max-height:100%;object-fit:contain}
+.std-list b{font-weight:600;font-size:.98rem;line-height:1.25}
+.std-list .ar{color:var(--bright)}
+.pg-hero{padding-block:clamp(28px,4vw,48px)}
+.rel{padding-top:8px}
+</style>
 </head>
 <body>
+<script>(function(){var m={"#p-gas": "/fr/surpresseur-gaz-naturel/", "#p-bio": "/fr/soufflante-biogaz/", "#p-elec": "/fr/surpresseur-air-electrique/", "#p-press": "/fr/soufflantes-pressurisees/", "#p-hs": "/fr/soufflante-haute-vitesse/", "#p-turbo": "/fr/soufflante-turbo/", "#p-std": "/fr/soufflantes-standard/", "#p-claw": "/fr/compresseurs-a-griffes/", "#maple": "/fr/pompes-a-vide-erabliere/", "#maple-range": "/fr/pompes-a-vide-erabliere/", "#range": "/fr/soufflantes-standard/#range"};var t=m[location.hash];if(t)location.replace(t);})();</script>
+
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
 <symbol id="i-pdf" viewbox="0 0 24 24"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9 14h6M9 17.5h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></symbol>
 <symbol id="i-arrow" viewbox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></symbol>
@@ -419,7 +447,7 @@ table.mt{min-width:640px;font-size:.9rem}
 <header class="site-head">
 <div class="wrap head-row">
 <div class="brand">
-<a aria-label="Stratovac" href="#top">
+<a aria-label="Stratovac" href="/fr/">
 <img alt="Stratovac" class="logo logo-a" height="103" src="/assets/img/stratovac-logo.png" width="264"/>
 <img alt="Stratovac" class="logo logo-b" height="103" src="/assets/img/stratovac-logo-light.png" width="264"/>
 </a>
@@ -431,11 +459,10 @@ table.mt{min-width:640px;font-size:.9rem}
 </a>
 </div>
 <nav aria-label="Main" class="nav">
-<div class="has-sub"><a href="#products">Produits</a><div class="sub"><a href="#p-gas">Surpresseur haute pression pour gaz naturel</a><a href="#p-bio">Soufflante régénérative pour biogaz</a><a href="#p-elec">Surpresseur d’air électrique haute pression</a><a href="#p-press">Soufflantes régénératives sous pression sur mesure</a><a href="#p-hs">Soufflante régénérative haute vitesse</a><a href="#p-turbo">Turbosouffleuse haute vitesse</a><a href="#p-std">Soufflantes régénératives standard</a><a href="#p-claw">Compresseurs à griffes sans huile</a><a href="#maple">Pompes à vide d’érablière</a></div></div>
-<a href="#technology">Technologie</a>
-<a href="#applications">Applications</a>
-<a href="#maple">Érablières</a>
-<a href="#resources">Ressources</a>
+<div class="has-sub"><a href="/fr/produits/">Produits</a><div class="sub"><a href="/fr/surpresseur-air-electrique/">Surpresseur d’air électrique haute pression</a><a href="/fr/pompes-a-vide-erabliere/">Pompes à vide pour érablières</a><a href="/fr/compresseurs-a-griffes/">Compresseurs à griffes sans huile</a><a href="/fr/soufflante-turbo/">Turbosouffleuse haute vitesse</a><a href="/fr/soufflantes-standard/">Soufflantes régénératives standard</a><a href="/fr/soufflante-haute-vitesse/">Soufflante régénérative haute vitesse</a><a href="/fr/surpresseur-gaz-naturel/">Surpresseur haute pression pour gaz naturel</a><a href="/fr/soufflante-biogaz/">Soufflante régénérative pour biogaz</a><a href="/fr/soufflantes-pressurisees/">Soufflantes régénératives sous pression sur mesure</a></div></div>
+<a href="/fr/#technology">Technologie</a>
+<a href="/fr/#applications">Applications</a>
+<a href="/fr/#resources">Ressources</a>
 <a href="#contact">Contact</a>
 </nav>
 <div class="head-tools">
@@ -453,15 +480,10 @@ table.mt{min-width:640px;font-size:.9rem}
 <p class="hero-sub">Stratovac conçoit des surpresseurs et soufflantes régénératifs sans huile et étanches pour les hautes pressions, les gaz corrosifs, les atmosphères explosives et le service continu. Envoyez votre point de fonctionnement et parlez aux ingénieurs qui conçoivent la machine.</p>
 <div class="hero-cta">
 <a class="btn btn--solid" href="#contact"><span>Envoyer mon point de fonctionnement</span><svg aria-hidden="true" class="ico"><use href="#i-arrow"></use></svg></a>
-<a class="btn btn--deep" href="#products">Voir les produits</a>
+<a class="btn btn--deep" href="/fr/produits/">Voir les produits</a>
 </div>
 </div>
-<div class="hero-art">
-<img alt="" aria-hidden="true" class="draw" height="603" src="/assets/img/gas-booster-drawing.webp" width="1400"/>
-<img alt="Surpresseur haute pression pour gaz naturel, rendu 3D" class="render" height="876" src="/assets/img/gas-booster.webp" width="1200"/>
-<div class="call call--r" style="left:79%;top:17%"><i></i><span>Moteur antidéflagrant offert</span></div>
-<div class="call call--r" style="left:58%;top:47%"><i></i><span>Accouplement magnétique, sans joint d’arbre</span></div>
-<div class="call call--r" style="left:21%;top:80%"><i></i><span>Entrée et sortie à brides</span></div>
+<div><aside class="std-panel" aria-labelledby="std-h"><h2 id="std-h">Équipement standard</h2><p>Modèles de catalogue: surpresseurs, pompes à vide, compresseurs à griffes, soufflantes et turbos.</p><ul class="std-list"><li><a href="/fr/surpresseur-air-electrique/"><span class="th"><img alt="" loading="lazy" src="/assets/img/electric-booster.webp"/></span><b>Surpresseur d’air électrique haute pression</b><span class="ar">→</span></a></li><li><a href="/fr/pompes-a-vide-erabliere/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/rv/g2.webp"/></span><b>Pompes à vide pour érablières</b><span class="ar">→</span></a></li><li><a href="/fr/compresseurs-a-griffes/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/claw/claw-compressor.webp"/></span><b>Compresseurs à griffes sans huile</b><span class="ar">→</span></a></li><li><a href="/fr/soufflante-turbo/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/turbo-blower.webp"/></span><b>Turbosouffleuse haute vitesse</b><span class="ar">→</span></a></li><li><a href="/fr/soufflantes-standard/"><span class="th"><img alt="" loading="lazy" src="/assets/img/standard-blower-drawing.webp"/></span><b>Soufflantes régénératives standard</b><span class="ar">→</span></a></li><li><a href="/fr/soufflante-haute-vitesse/"><span class="th"><img alt="" loading="lazy" src="/assets/img/highspeed-blower.webp"/></span><b>Soufflante régénérative haute vitesse</b><span class="ar">→</span></a></li></ul></aside>
 </div>
 </div>
 <ul class="facts">
@@ -476,104 +498,11 @@ table.mt{min-width:640px;font-size:.9rem}
 <div class="wrap">
 <div class="sec-head">
 <h2>Gammes de produits</h2>
-<p>Des modèles standard là où ils conviennent et de l’ingénierie sur mesure là où ils ne conviennent pas. Toutes les gammes sont des machines régénératives sans huile, conçues pour le service continu.</p>
+<p>Des modèles standard là où ils conviennent, de l’ingénierie sur mesure là où ils ne conviennent pas. Toutes les gammes sont sans huile et conçues pour le service continu.</p>
 </div>
-<article class="product" id="p-gas">
-<figure class="plate">
-<img alt="Surpresseur haute pression pour gaz naturel, rendu 3D" decoding="async" height="876" src="/assets/img/gas-booster.webp" width="1200"/>
-<figcaption>Surpresseur gaz naturel · rendu 3D</figcaption>
-</figure>
-<div class="product-body">
-<h3>Surpresseur haute pression pour gaz naturel</h3>
-<p class="lead">Un surpresseur à canal latéral à accouplement magnétique, avec carter en acier inoxydable. Des unités identiques s’empilent en série pour atteindre la pression de refoulement voulue.</p>
-<dl class="spec"><dt>Gain depuis 600 psig (41,4 bar) à l’entrée</dt><dd>1 étage : 700 psig (48,3 bar) · 2 étages : 810 psig (55,8 bar) · 3 étages : 935 psig (64,5 bar)</dd><dt>Étanchéité</dt><dd>Accouplement magnétique, sans joint d’arbre côté gaz</dd><dt>Carter</dt><dd>Acier inoxydable, résiste au H<sub>2</sub>S et au gaz acide</dd><dt>Circuit de gaz</dt><dd>100 % sans huile. Une roue et 2 roulements par étage</dd><dt>Moteur</dt><dd>Classe I, div. 1/2 et classe II, div. 2, groupes C, D, F et G offerts</dd><dt>Service</dt><dd>Continu, 24 h/24, 7 j/7</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-pressure-gas-booster.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche du surpresseur gaz naturel</span></a><a class="doc" href="/assets/pdf/case-study-pressurized-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Étude de cas</span></a></div>
-</div>
-</article>
-<article class="product" id="p-bio">
-<figure class="plate plate--light">
-<img alt="Soufflante régénérative pour biogaz, vue en perspective" decoding="async" height="535" src="/assets/img/biogas-blower.webp" width="558"/>
-<figcaption>Soufflante biogaz</figcaption>
-</figure>
-<div class="product-body">
-<h3>Soufflante régénérative pour biogaz</h3>
-<p class="lead">Une soufflante sans engrenage et sans huile, conçue pour déplacer jour et nuit un biogaz humide et corrosif. Ni engrenage, ni courroies, ni joints d’arbre.</p>
-<dl class="spec"><dt>Débit</dt><dd>5 à 2 000 CFM (8,5 à 3 400 m³/h)</dd><dt>Pression</dt><dd>Vide de −8,35 psi (−0,58 bar) à +15 psig (1,03 bar)</dd><dt>Entraînement</dt><dd>Entraînement direct, sans engrenage, courroies ni poulies. 4 roulements, contre 6 sur une soufflante volumétrique</dd><dt>Corrosion</dt><dd>Revêtement de nickel, Cerakote ou anodisé selon le gaz. Roue et carter en aluminium pour réduire le risque d’étincelles</dd><dt>Moteur</dt><dd>Classe 1, div. 1, groupes C et D; classe 2, div. 2, groupes F et G. Homologué cULus. Compatible avec variateur de fréquence</dd><dt>Écoulement</dt><dd>Sans pulsations et plus silencieux qu’une soufflante volumétrique</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/biogas-regenerative-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche de la soufflante biogaz</span></a></div>
-</div>
-</article>
-<article class="product" id="p-elec">
-<figure class="plate">
-<img alt="Surpresseur d’air électrique haute pression" decoding="async" height="509" src="/assets/img/electric-booster.webp" width="604"/>
-<figcaption>IDSC-2SHP-166-400</figcaption>
-</figure>
-<div class="product-body">
-<h3>Surpresseur d’air électrique haute pression</h3>
-<p class="lead">Un surpresseur régénératif haute vitesse qui double la pression de l’air comprimé ou de l’azote avec de l’électricité seulement. Il remplace les surpresseurs pneumatiques et à piston sans consommer d’air comprimé ni ajouter d’huile.</p>
-<dl class="spec"><dt>Rapport de pression</dt><dd>2:1, jusqu’à 400 psig (27,6 bar). Les unités se montent en série</dd><dt>Pression plus élevée</dt><dd>Nous pouvons construire des soufflantes qui fonctionnent à plus haute pression au besoin</dd><dt>Débit</dt><dd>35 SCFM (59 m³/h) en continu</dd><dt>Moteur</dt><dd>2,6 kW (3,5 hp), 120/230 V monophasé ou 230 V triphasé</dd><dt>Vitesse</dt><dd>Jusqu’à 15 000 tr/min</dd><dt>Raccords</dt><dd>1,25 po MNPT</dd><dt>Fluides</dt><dd>Air, azote et autres gaz</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/electric-air-booster-datasheet.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche du surpresseur électrique</span></a><a class="doc" href="/assets/pdf/booster-vs-piston.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Comparaison avec le piston</span></a><a class="doc" href="/assets/pdf/booster-vs-pneumatic.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Comparaison avec le pneumatique</span></a></div>
-</div>
-</article>
-<article class="product" id="p-press">
-<figure class="plate">
-<img alt="Soufflante régénérative sous pression livrée, avec entraînement magnétique" decoding="async" height="388" src="/assets/img/pressurized-blower-photo.webp" width="800"/>
-<figcaption>Unité livrée, projet de référence</figcaption>
-</figure>
-<div class="product-body">
-<h3>Soufflantes régénératives sous pression sur mesure</h3>
-<p class="lead">Pour les circuits de gaz qui fonctionnent à la pression de ligne. Le carter complet est conçu et testé comme une pièce sous pression, et un entraînement magnétique remplace le joint d’arbre.</p>
-<dl class="spec"><dt>Projet de référence</dt><dd>Recirculation de gaz sur un sécheur de gaz naturel : 20 SCFM (34 m³/h), 174 psig (12 bar) à l’entrée, environ 181 psig (12,5 bar) à la sortie, 3 hp</dd><dt>Pression du carter</dt><dd>Jusqu’à 80 bar (1 160 psi). L’unité de référence a subi un essai hydrostatique à 16 bar (232 psi)</dd><dt>Matériau du carter</dt><dd>Aluminium ou acier inoxydable, selon la pression. Autres matériaux offerts sur demande</dd><dt>Étanchéité</dt><dd>Accouplement magnétique hermétique, sans joint d’arbre</dd><dt>Raccords</dt><dd>Brides ANSI, moteur certifié</dd><dt>Historique</dt><dd>Environ 18 mois en service, unités supplémentaires demandées</dd><dt>Plateforme actuelle</dt><dd>Accouplement de 63 bar (914 psi), carter en aluminium usiné enduit de nickel, arbre en inox 316, roulements hybrides en céramique</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/case-study-pressurized-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Étude de cas</span></a></div>
-</div>
-</article>
-<article class="product" id="p-hs">
-<figure class="plate">
-<img alt="Dessin technique de la soufflante haute vitesse IDMB0092-2SA281" decoding="async" height="401" src="/assets/img/highspeed-blower.webp" width="521"/>
-<figcaption>IDMB0092-2SA281 · dessin technique</figcaption>
-</figure>
-<div class="product-body">
-<h3>Soufflante régénérative haute vitesse</h3>
-<p class="lead">Une soufflante compacte et légère pour les équipements où l’espace et le poids comptent. La même unité sert de pompe à vide ou de compresseur sur toute sa courbe de performance.</p>
-<dl class="spec"><dt>Débit</dt><dd>Jusqu’à 92 m³/h (54 CFM)</dd><dt>Vide et pression</dt><dd>Vide jusqu’à −435 mbar (−0,435 bar, −6,3 psi) ou pression jusqu’à 800 mbar (0,8 bar, 11,6 psi)</dd><dt>Moteur</dt><dd>2,6 kW, 48 V c.c. ou 120–240 V c.a., triphasé à aimants permanents haute vitesse</dd><dt>Vitesse</dt><dd>Jusqu’à 15 000 tr/min</dd><dt>Poids et bruit</dt><dd>6,8 kg, 60 à 70 dB</dd><dt>Service</dt><dd>Service continu sur toute la courbe, comme pompe à vide ou comme compresseur</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-speed-blower-IDMB0092-2SA281.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche de la soufflante haute vitesse</span></a></div>
-</div>
-</article>
-<article class="product" id="p-turbo">
-<figure class="plate plate--light">
-<img alt="Turbosouffleuse haute vitesse STRT avec variateur intégré et filtre d’entrée" decoding="async" height="339" src="/assets/img/turbo-blower.webp" width="411"/>
-<figcaption>Série STRT · turbosouffleuse haute vitesse</figcaption>
-</figure>
-<div class="product-body">
-<h3>Turbosouffleuse haute vitesse</h3>
-<p class="lead">Une turbosouffleuse compacte et sans huile, avec un moteur haute vitesse breveté et un variateur de fréquence intégré. La vitesse se règle à l’écran ou par MODBUS, et l’unité ne demande aucun entretien courant.</p>
-<dl class="spec"><dt>Débit</dt><dd>Jusqu’à 13 m³/min (780 m³/h, 459 CFM)</dd><dt>Pression</dt><dd>Jusqu’à environ 50 kPa (0,5 bar, 7,3 psi)</dd><dt>Moteur</dt><dd>3,5 à 7,5 kW, moteur haute vitesse breveté avec variateur intégré, jusqu’à 80 000 tr/min</dd><dt>Alimentation</dt><dd>Monophasé ou triphasé, 50 ou 60 Hz</dd><dt>Commande</dt><dd>Vitesse réglable à l’interface ou par automate via MODBUS</dd><dt>Construction</dt><dd>18 000 heures sans entretien, isolation classe H, IP65</dd><dt>Poids et bruit</dt><dd>Environ 11 à 15 kg, 71 à 74 dB(A)</dd><dt>Modèles</dt><dd>STRT-A15-XXXX430, 440, 7.530 et 7.540</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-speed-turbo-blower-STRT.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche de la turbosouffleuse</span></a></div>
-</div>
-</article>
-<article class="product" id="p-std">
-<figure class="plate">
-<img alt="Dessin technique d’une soufflante régénérative à canal latéral" decoding="async" height="851" src="/assets/img/standard-blower-drawing.webp" width="1000"/>
-<figcaption>Série IDSC · dessin technique</figcaption>
-</figure>
-<div class="product-body">
-<h3>Soufflantes régénératives standard</h3>
-<p class="lead">Des soufflantes à canal latéral pour le vide et la pression, des petites unités à un étage aux modèles à trois étages. Moteurs 50 et 60 Hz, avec options antidéflagrantes et certifiées CSA et ULc.</p>
-<dl class="spec"><dt>Gamme</dt><dd>Environ 130 modèles en deux séries, IDSC et IDSC1</dd><dt>Débit</dt><dd>Environ 50 à 3 900 m³/h (29 à 2 295 CFM)</dd><dt>Pression et vide</dt><dd>Jusqu’à environ 1 bar (14,5 psi) en pression ou −0,7 bar (−10,1 psi) en vide</dd><dt>Étages</dt><dd>Versions à 1, 2 et 3 étages à 50 et 60 Hz</dd><dt>Construction</dt><dd>Sans huile. Fiche d’exemple (IDSC0530-2SB152-5) : IP55, classe d’isolation F, sans entretien, fonctionnement avec convertisseur de fréquence permis</dd><dt>Options</dt><dd>Moteurs antidéflagrants, certifiés CSA et ULc, sur demande</dd><dt>Niveau sonore</dt><dd>48 à 89 dB(A)</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/standard-blower-catalog.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Catalogue des soufflantes standard</span></a><a class="doc" href="/assets/pdf/double-stage-blower-IDSC0530-2SB152-5.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Fiche de la soufflante à deux étages</span></a></div>
-</div>
-</article>
-<article class="product" id="p-claw">
-<figure class="plate">
-<img alt="Compresseur à griffes sans huile Stratovac" decoding="async" height="835" loading="lazy" src="/assets/img/claw/claw-compressor.webp" width="1000"/>
-<figcaption>Série STRC · compresseur à griffes</figcaption>
-</figure>
-<div class="product-body">
-<h3>Compresseurs à griffes sans huile</h3>
-<p class="lead">Compresseurs à griffes à fonctionnement à sec, sans contact, pour de l’air comprimé propre à basse pression. Refroidis par air, à entraînement direct, conçus pour le service continu.</p>
-<dl class="spec"><dt>Modèles</dt><dd>8 modèles, STRC-60 à STRC-515</dd><dt>Débit</dt><dd>68 à 600 m³/h (40 à 353 pi³/min) à 60 Hz</dd><dt>Pression</dt><dd>Jusqu’à 2,2 bar (32 psi) en continu</dd><dt>Construction</dt><dd>Fonctionnement à sec, sans huile, sans contact d’usure, certifié CE</dd><dt>Alimentation</dt><dd>50 et 60 Hz, de 3 à 37 kW</dd></dl>
-<p><a class="btn btn--line" href="/fr/compresseurs-a-griffes/">Tous les détails des compresseurs à griffes</a></p>
-</div>
-</article>
+<h3 class="grp-h">Équipement standard</h3><p class="grp-p">Modèles de catalogue: surpresseurs, pompes à vide, compresseurs à griffes, soufflantes et turbos.</p><div class="pgrid"><a class="pcard" href="/fr/surpresseur-air-electrique/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/electric-booster.webp"/></figure><div class="pc-body"><h3>Surpresseur d’air électrique haute pression</h3><p>Un surpresseur régénératif haute vitesse qui double la pression de l’air comprimé ou de l’azote avec de l’électricité seulement. Il remplace les…</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/pompes-a-vide-erabliere/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/rv/g2.webp"/></figure><div class="pc-body"><h3>Pompes à vide pour érablières</h3><p>Pompes à palettes lubrifiées à l’huile pour érablières, de 12 à 780 m³/h, avec un chauffe-huile qui garde l’eau hors de l’huile.</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/compresseurs-a-griffes/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/claw/claw-compressor.webp"/></figure><div class="pc-body"><h3>Compresseurs à griffes sans huile</h3><p>Compresseurs à griffes à fonctionnement à sec, de 68 à 600 m³/h, jusqu’à 2,2 bar, pour de l’air propre à basse pression.</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/soufflante-turbo/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/turbo-blower.webp"/></figure><div class="pc-body"><h3>Turbosouffleuse haute vitesse</h3><p>Une turbosouffleuse compacte et sans huile, avec un moteur haute vitesse breveté et un variateur de fréquence intégré. La vitesse se règle à…</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/soufflantes-standard/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/standard-blower-drawing.webp"/></figure><div class="pc-body"><h3>Soufflantes régénératives standard</h3><p>Des soufflantes à canal latéral pour le vide et la pression, des petites unités à un étage aux modèles à trois étages. Moteurs 50 et 60 Hz, avec…</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/soufflante-haute-vitesse/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/highspeed-blower.webp"/></figure><div class="pc-body"><h3>Soufflante régénérative haute vitesse</h3><p>Une soufflante compacte et légère pour les équipements où l’espace et le poids comptent. La même unité sert de pompe à vide ou de compresseur sur…</p><span class="pc-more">Voir le produit →</span></div></a></div>
+<h3 class="grp-h">Sur mesure</h3><p class="grp-p">Des machines conçues autour de votre gaz, de votre pression et de votre skid.</p><div class="pgrid"><a class="pcard" href="/fr/surpresseur-gaz-naturel/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/gas-booster.webp"/></figure><div class="pc-body"><h3>Surpresseur haute pression pour gaz naturel</h3><p>Un surpresseur à canal latéral à accouplement magnétique, avec carter en acier inoxydable. Des unités identiques s’empilent en série pour…</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/soufflante-biogaz/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/biogas-blower.webp"/></figure><div class="pc-body"><h3>Soufflante régénérative pour biogaz</h3><p>Une soufflante sans engrenage et sans huile, conçue pour déplacer jour et nuit un biogaz humide et corrosif. Ni engrenage, ni courroies, ni joints…</p><span class="pc-more">Voir le produit →</span></div></a><a class="pcard" href="/fr/soufflantes-pressurisees/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/pressurized-blower-photo.webp"/></figure><div class="pc-body"><h3>Soufflantes régénératives sous pression sur mesure</h3><p>Pour les circuits de gaz qui fonctionnent à la pression de ligne. Le carter complet est conçu et testé comme une pièce sous pression, et un…</p><span class="pc-more">Voir le produit →</span></div></a></div>
+<p><a class="btn btn--line" href="/fr/produits/">Tous les produits</a></p>
 </div>
 </section>
 <section class="sec sec--surface" id="technology">
@@ -702,120 +631,6 @@ Vers l’étage 2
 <div class="apps"><div class="app"><h3>Biogaz et gaz naturel renouvelable</h3><p>Soufflantes et surpresseurs qui déplacent un gaz humide, inflammable et chargé de H<sub>2</sub>S dans les systèmes de purification et de conditionnement, puis le surpressent avant l’injection dans le réseau.</p></div><div class="app"><h3>Traitement du gaz naturel</h3><p>Recirculation et régénération du gaz dans les sécheurs et les unités PSA, systèmes de retrait de l’oxygène et surpression du gaz combustible pour les skids de turbines.</p></div><div class="app"><h3>Hydrogène et piles à combustible</h3><p>Soufflantes turbo pour l’alimentation en air ou en oxygène de la cathode et surpresseurs pour la recirculation de l’hydrogène, fournis à des fabricants de piles à combustible.</p></div><div class="app"><h3>Robotique collaborative</h3><p>Surpresseurs à deux étages haute vitesse assez petits pour se monter sur le robot ou sur la pince plutôt que sur une station centrale.</p></div><div class="app"><h3>Médical et respiratoire</h3><p>Surpresseurs nettoyés et graissés pour respecter les limites ISO de l’air respirable (très faibles COV). Utilisés dans un programme de ventilateurs mécaniques réalisé au Canada pendant la COVID-19.</p></div><div class="app"><h3>Équipement dentaire</h3><p>Surpresseurs légers à fort débit pour le vide dentaire portatif, avec un revêtement de nickel contre les produits de nettoyage caustiques.</p></div><div class="app"><h3>Nucléaire et gaz radioactifs</h3><p>Surpresseurs sur mesure pour la circulation de gaz radioactifs : graisses résistantes aux radiations, blindage en uranium appauvri et conception à basse vitesse pour la durée des roulements. Les unités livrées il y a plusieurs années sont toujours en service.</p></div><div class="app"><h3>Aquaculture</h3><p>Injection d’air et d’oxygène pour les systèmes aquacoles à recirculation et les bassins de rétention d’animaux vivants. Sans huile pour la sécurité des espèces vivantes, conçu pour le service 24/7.</p></div><div class="app"><h3>Air comprimé et azote</h3><p>Des surpresseurs électriques relèvent la pression au point d’utilisation sans puiser d’air comprimé dans le réseau. Un surpresseur d’azote pour la découpe au laser à fibre est en développement.</p></div></div>
 </div>
 </section>
-<section class="sec sec--surface" id="maple">
-<div class="wrap">
-<div class="sec-head">
-<h2>Des pompes à vide pour les acériculteurs</h2>
-<p>Des pompes à vide à palettes lubrifiées pour votre érablière, commandées directement chez Stratovac. Fabriquées en Corée du Sud, avec la même qualité que les pompes AirTech Vacuum, les pompes que CDL fournit depuis longtemps aux acériculteurs, à des prix très concurrentiels et sans fournisseur intermédiaire entre vous et nous.</p>
-<p><a class="btn btn--line" href="/fr/pompes-a-vide-erabliere/">Tous les détails sur les pompes d’érablière</a></p></div>
-<ul class="mp-why">
-<li><h3>Directement de Stratovac</h3><p>Vous traitez avec nous, de la soumission à la livraison. Aucun autre fournisseur entre vous et nous.</p></li>
-<li><h3>La même qualité qu’AirTech Vacuum</h3><p>Des pompes à palettes lubrifiées comme celles que vend CDL, avec la même qualité qu’AirTech Vacuum.</p></li>
-<li><h3>Fabriquées en Corée du Sud</h3><p>Fabriquées en Corée du Sud. Toute la gamme porte le marquage CE.</p></li>
-<li><h3>Des prix très concurrentiels</h3><p>Envoyez-nous la pompe que vous utilisez aujourd’hui et nous vous soumissionnons le modèle STROV équivalent.</p></li>
-</ul>
-<div class="sec-head mp-head">
-<h2 id="maple-range">Choisissez votre pompe</h2>
-<p>18 modèles, de 12 à 780 m³/h à 60 Hz (environ 7 à 460 pi³/min). Chacun a une fiche technique en anglais et en français, avec caractéristiques, dimensions et options.</p>
-</div>
-<article class="mp" id="maple-g1">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0020" height="598" loading="lazy" src="/assets/img/rv/g1.webp" width="897"/></figure>
-<div class="mp-body">
-<h3>STROV-0020 · 0030 · 0040</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0020</th><td>12 m³/h <span class="cf">7.1 cfm</span></td><td class="tp">environ 400</td><td>10 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0,4 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0020-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0020-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0030</th><td>18 m³/h <span class="cf">11 cfm</span></td><td class="tp">environ 650</td><td>15 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0,75 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0030-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0030-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0040</th><td>24 m³/h <span class="cf">14 cfm</span></td><td class="tp">environ 850</td><td>20 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0,9 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0040-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0040-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g2">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0060" height="536" loading="lazy" src="/assets/img/rv/g2.webp" width="768"/></figure>
-<div class="mp-body">
-<h3>STROV-0060 · 0080</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0060</th><td>36 m³/h <span class="cf">21 cfm</span></td><td class="tp">environ 1 300</td><td>30 m³/h</td><td>0,1 mbar</td><td>2 hp · 1,1 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0060-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0060-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0080</th><td>48 m³/h <span class="cf">28 cfm</span></td><td class="tp">environ 1 700</td><td>40 m³/h</td><td>0,1 mbar</td><td>2 hp · 1,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0080-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0080-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g3">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0120" height="593" loading="lazy" src="/assets/img/rv/g3.webp" width="889"/></figure>
-<div class="mp-body">
-<h3>STROV-0120 · 0200</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0120</th><td>75 m³/h <span class="cf">44 cfm</span></td><td class="tp">environ 2 700</td><td>63 m³/h</td><td>0,1 mbar</td><td>3 hp · 2,2 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0120-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0120-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0200</th><td>120 m³/h <span class="cf">71 cfm</span></td><td class="tp">environ 4 400</td><td>100 m³/h</td><td>0,1 mbar</td><td>5 hp · 3 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0200-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0200-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g4">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0320" height="462" loading="lazy" src="/assets/img/rv/g4.webp" width="730"/></figure>
-<div class="mp-body">
-<h3>STROV-0320 · 0430 · 0505</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0320</th><td>192 m³/h <span class="cf">113 cfm</span></td><td class="tp">environ 7 100</td><td>160 m³/h</td><td>0,1 mbar</td><td>5 hp · 3,7 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0320-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0320-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0430</th><td>258 m³/h <span class="cf">152 cfm</span></td><td class="tp">environ 9 500</td><td>215 m³/h</td><td>0,1 mbar</td><td>7,5 hp · 5,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0430-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0430-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0505</th><td>300 m³/h <span class="cf">177 cfm</span></td><td class="tp">environ 11 100</td><td>250 m³/h</td><td>0,1 mbar</td><td>10 hp · 7,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0505-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0505-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g5">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0350" height="573" loading="lazy" src="/assets/img/rv/g5.webp" width="862"/></figure>
-<div class="mp-body">
-<h3>STROV-0350</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0350</th><td>210 m³/h <span class="cf">124 cfm</span></td><td class="tp">environ 7 700</td><td>175 m³/h</td><td>0,1 mbar</td><td>7,5 hp · 5,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0350-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0350-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g6">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0500" height="626" loading="lazy" src="/assets/img/rv/g6.webp" width="877"/></figure>
-<div class="mp-body">
-<h3>STROV-0500 · 0600</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0500</th><td>300 m³/h <span class="cf">177 cfm</span></td><td class="tp">environ 11 100</td><td>250 m³/h</td><td>0,1 mbar</td><td>10 hp · 7,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0500-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0500-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0600</th><td>360 m³/h <span class="cf">212 cfm</span></td><td class="tp">environ 13 300</td><td>300 m³/h</td><td>0,1 mbar</td><td>11,5 hp · 9,2 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0600-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0600-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g7">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0605" height="730" loading="lazy" src="/assets/img/rv/g7.webp" width="1100"/></figure>
-<div class="mp-body">
-<h3>STROV-0605</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0605</th><td>340 m³/h <span class="cf">200 cfm</span></td><td class="tp">environ 12 500</td><td>280 m³/h</td><td>0,08 mbar (lest fermé)<br/>0,5 mbar (ouvert)</td><td>10 hp · 7,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0605-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0605-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g8">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-0800" height="684" loading="lazy" src="/assets/img/rv/g8.webp" width="916"/></figure>
-<div class="mp-body">
-<h3>STROV-0800 · 1000 · 1200</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0800</th><td>505 m³/h <span class="cf">297 cfm</span></td><td class="tp">environ 18 600</td><td>420 m³/h</td><td>0,1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>20 hp · 15 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0800-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0800-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-1000</th><td>600 m³/h <span class="cf">353 cfm</span></td><td class="tp">environ 22 200</td><td>500 m³/h</td><td>0,1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>20 hp · 15 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1000-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1000-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-1200</th><td>780 m³/h <span class="cf">459 cfm</span></td><td class="tp">environ 28 800</td><td>660 m³/h</td><td>0,1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>25 hp · 18,5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1200-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1200-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g9">
-<figure class="mp-img"><img alt="Pompe à vide à palettes lubrifiées STROV-1500" height="597" loading="lazy" src="/assets/img/rv/g9.webp" width="1100"/></figure>
-<div class="mp-body">
-<h3>STROV-1500</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Modèle</th><th scope="col">Débit de pompage, 60 Hz</th><th scope="col">Entailles supportées</th><th scope="col">50 Hz</th><th scope="col">Vide limite</th><th scope="col">Moteur, 60 Hz</th><th scope="col"><span class="sr">Fiche technique</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-1500</th><td>—</td><td class="tp">Sur demande</td><td>750 m³/h</td><td>0,5 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>18,5 kW (50 Hz)</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1500-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1500-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article>
-<p class="foot-note">Le débit de pompage est la cylindrée de la pompe. Le vide limite est une pression absolue. L’huile n’est pas comprise dans les poids des fiches techniques. Des moteurs monophasés sont offerts sur les plus petits modèles. Le nombre d’entailles est une valeur indicative pour un réseau de tubulure étanche à 60 Hz, soit environ 37 entailles par m³/h de débit de pompage, en ligne avec les capacités que CDL publie pour des pompes de taille semblable. Le nombre réel dépend des fuites, de la longueur des lignes et du vide à maintenir; demandez-nous de dimensionner votre système.</p>
-<div class="block mp-opts">
-<h3 class="sub-h">Notre avantage : le chauffe-huile</h3>
-<div class="mp-opt">
-<figure><img alt="Pompe avec chauffe-huile" height="546" loading="lazy" src="/assets/img/rv/heater.webp" width="976"/></figure>
-<div>
-<h4>L’eau dans l’huile est ce qui abîme les pompes d’érablière</h4>
-<p>Durant la saison, la pompe est souvent arrêtée et il reste de l’eau dans l’huile. Le mélange peut corrompre l’huile et, à la longue, endommager la pompe.</p>
-<p>Notre chauffe-huile à thermostat garde l’huile assez chaude pour que l’eau s’évapore. L’huile reste en bon état et la pompe conserve un meilleur vide, saison après saison.</p>
-<p>Offert sur les modèles STROV-0060 à 1200. Un interrupteur de niveau d’huile est requis par sécurité.</p>
-<ul class="mp-kw">
-<li><b>STROV-0060 à 0200</b><span>0.5 ou 1 kW</span></li>
-<li><b>STROV-0320 à 0605</b><span>1 ou 1.5 kW</span></li>
-<li><b>STROV-0800 à 1200</b><span>2 ou 3 kW</span></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="mp-cta">
-<div><h3>Parlez-nous de votre érablière</h3><p>Nombre d’entailles, pompe actuelle et alimentation électrique : nous revenons avec une soumission.</p></div>
-<a class="btn btn--solid" href="#contact"><span>Demander une soumission acéricole</span><svg aria-hidden="true" class="ico"><use href="#i-arrow"></use></svg></a>
-</div>
-<p class="foot-note">AirTech Vacuum et CDL sont des marques ou des noms appartenant à leurs propriétaires. Stratovac n’est pas affiliée à ces entreprises.</p>
-</div>
-</section>
 <section class="sec sec--deep" id="process">
 <div class="wrap">
 <div class="sec-head">
@@ -882,11 +697,7 @@ Vers l’étage 2
 <svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg>
 <span>Ouvrir le PDF</span><small>4.2 MB</small></a>
 </li></ul>
-<div class="sec-head rng-head">
-<h2 id="range">Fiches techniques de la gamme de soufflantes</h2>
-<p>Une fiche par modèle, avec courbes de performance, données moteur et dimensions. Téléchargez la version anglaise ou française.</p>
-</div>
-<h3 class="rng-h">STRC <span>Soufflantes à canal latéral</span></h3><ul class="rng"><li><span class="rng-m">STRC0055-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0055-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0055-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0070-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0070-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0070-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0080-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0080-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0140-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0140-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0180-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0180-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0180-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0210-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0210-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0270-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0270-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0270-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0315-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0315-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0415-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0415-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0415-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0530-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0530-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0700-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0700-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0700-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1050-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1050-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1370-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1370-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1370-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0080-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0080-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0140-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0140-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0210-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0210-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0315-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0315-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0530-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0530-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1050-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1050-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0495-2P</span><span class="rng-s">Double débit</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0495-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0495-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0880-2P</span><span class="rng-s">Double débit</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0880-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0880-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1950-2P</span><span class="rng-s">Double débit</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1950-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1950-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC2050-2P</span><span class="rng-s">Double débit</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC2050-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC2050-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li></ul><h3 class="rng-h">STRP <span>Soufflantes haute performance</span></h3><ul class="rng"><li><span class="rng-m">STRP0045-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0045-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0045-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0065-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0065-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0085-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0085-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-1M</span><span class="rng-s">Un étage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0045-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0045-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0045-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0065-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0065-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0085-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0085-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-2S</span><span class="rng-s">Deux étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-3S</span><span class="rng-s">Trois étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-3S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-3S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-3S</span><span class="rng-s">Trois étages</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-3S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-3S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li></ul>
+<p class="grp-p" style="margin-top:28px">Les fiches techniques de la gamme de soufflantes (une par modèle, en anglais et en français) se trouvent sur la page des soufflantes régénératives standard. <a href="/fr/soufflantes-standard/#range">Fiches techniques de la gamme de soufflantes →</a></p>
 </div>
 </section>
 <section class="sec sec--surface" id="contact">
@@ -956,15 +767,19 @@ Vers l’étage 2
 <p>Surpresseurs et soufflantes régénératifs sans huile pour les gaz exigeants.</p>
 </div>
 <div><h4>Produits</h4><ul>
-<li><a href="#p-gas">Surpresseur gaz naturel</a></li>
-<li><a href="#p-bio">Soufflante biogaz</a></li>
-<li><a href="#p-elec">Surpresseur d’air électrique</a></li>
-<li><a href="#p-turbo">Turbosouffleuse</a></li>
-<li><a href="#p-std">Soufflantes standard</a></li></ul></div>
+<li><a href="/fr/surpresseur-gaz-naturel/">Surpresseur haute pression pour gaz naturel</a></li>
+<li><a href="/fr/soufflante-biogaz/">Soufflante régénérative pour biogaz</a></li>
+<li><a href="/fr/surpresseur-air-electrique/">Surpresseur d’air électrique haute pression</a></li>
+<li><a href="/fr/soufflante-turbo/">Turbosouffleuse haute vitesse</a></li>
+<li><a href="/fr/soufflantes-standard/">Soufflantes régénératives standard</a></li>
+<li><a href="/fr/compresseurs-a-griffes/">Compresseurs à griffes sans huile</a></li>
+<li><a href="/fr/pompes-a-vide-erabliere/">Pompes à vide pour érablières</a></li>
+</ul></div>
 <div><h4>Entreprise</h4><ul>
-<li><a href="#technology">Technologie</a></li>
-<li><a href="#applications">Applications</a></li>
-<li><a href="#resources">Fiches techniques</a></li></ul></div>
+<li><a href="/fr/produits/">Produits</a></li>
+<li><a href="/fr/#technology">Technologie</a></li>
+<li><a href="/fr/#applications">Applications</a></li>
+<li><a href="/fr/#resources">Fiches techniques</a></li></ul></div>
 <div><h4>Contact</h4><ul>
 <li>abruens@stratovac.ca</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
 </div>

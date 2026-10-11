@@ -2,28 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://stratovac.ca/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/"/>
   </url>
   <url>
     <loc>https://stratovac.ca/fr/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/"/>
   </url>
   <url>
-    <loc>https://stratovac.ca/fr/pompes-a-vide-erabliere/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <loc>https://stratovac.ca/products/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/products/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/produits/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/products/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/produits/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/products/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/produits/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/products/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/electric-air-booster/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/electric-air-booster/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/surpresseur-air-electrique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/electric-air-booster/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/surpresseur-air-electrique/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/electric-air-booster/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/surpresseur-air-electrique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/electric-air-booster/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/maple-vacuum-pumps/</loc>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/maple-vacuum-pumps/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-erabliere/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/maple-vacuum-pumps/"/>
   </url>
   <url>
-    <loc>https://stratovac.ca/maple-vacuum-pumps/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <loc>https://stratovac.ca/fr/pompes-a-vide-erabliere/</loc>
+    <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/maple-vacuum-pumps/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-erabliere/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/maple-vacuum-pumps/"/>
@@ -41,5 +69,89 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/claw-compressors/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/compresseurs-a-griffes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/claw-compressors/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/turbo-blower/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/turbo-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-turbo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/turbo-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflante-turbo/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/turbo-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-turbo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/turbo-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/standard-blowers/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/standard-blowers/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflantes-standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/standard-blowers/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflantes-standard/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/standard-blowers/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflantes-standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/standard-blowers/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/high-speed-blower/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/high-speed-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-haute-vitesse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/high-speed-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflante-haute-vitesse/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/high-speed-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-haute-vitesse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/high-speed-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/natural-gas-booster/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/natural-gas-booster/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/surpresseur-gaz-naturel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/natural-gas-booster/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/surpresseur-gaz-naturel/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/natural-gas-booster/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/surpresseur-gaz-naturel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/natural-gas-booster/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/biogas-blower/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/biogas-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-biogaz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/biogas-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflante-biogaz/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/biogas-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-biogaz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/biogas-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/pressurized-blowers/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/pressurized-blowers/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflantes-pressurisees/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressurized-blowers/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflantes-pressurisees/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/pressurized-blowers/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflantes-pressurisees/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressurized-blowers/"/>
   </url>
 </urlset>

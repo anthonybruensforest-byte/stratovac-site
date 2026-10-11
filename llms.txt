@@ -1,27 +1,36 @@
 # Stratovac
 
-> Stratovac (part of ID Industry, Quebec, Canada) supplies oil-free regenerative boosters and blowers for high pressure, corrosive gases, explosive atmospheres and non-stop duty, and oil-lubricated rotary vane vacuum pumps for maple producers. Sales in English and French, in Canada and the United States. Contact: abruens@stratovac.ca, +1-438-880-4655.
+> Stratovac (part of ID Industry, Quebec, Canada) supplies oil-free regenerative boosters and blowers for high pressure, corrosive gases, explosive atmospheres and non-stop duty, plus standard equipment: electric air boosters, turbo blowers, claw compressors, regenerative blowers and oil-lubricated vacuum pumps for maple producers. Sales in English and French, in Canada and the United States. Contact: abruens@stratovac.ca, +1-438-880-4655.
 
 Quotes are made on request: send the operating point (gas, flow, inlet and outlet pressure, duty, hazardous-area class) or, for maple, the number of taps and the current pump. Prices are not published on the site.
 
 ## Main pages
-- [Stratovac home (English)](https://stratovac.ca/): product lines, technology, applications, resources, quote form
-- [Accueil Stratovac (français)](https://stratovac.ca/fr/): same content in French
-- [Maple vacuum pumps (English)](https://stratovac.ca/maple-vacuum-pumps/): 18 STROV models, 12 to 780 m³/h at 60 Hz, tap capacity, oil heater, datasheets
-- [Oil-free claw compressors (English)](https://stratovac.ca/claw-compressors/): 8 STRC models, 68 to 600 m³/h at 60 Hz, up to 2.2 bar, full specifications
-- [Compresseurs à griffes sans huile (français)](https://stratovac.ca/fr/compresseurs-a-griffes/): modèles STRC-60 à STRC-515, spécifications complètes
-- [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/): STROV, fiches techniques en français
+- [Stratovac home (English)](https://stratovac.ca/): overview, technology, applications, resources, quote form
+- [Accueil Stratovac (français)](https://stratovac.ca/fr/): même contenu en français
+- [All products (English)](https://stratovac.ca/products/)
+- [Tous les produits (français)](https://stratovac.ca/fr/produits/)
 
-## Product lines (all on the home page)
-- High-pressure natural gas booster: magnetically coupled, stainless steel, no shaft seal; from a 600 psig inlet, 1 stage 700 psig, 2 stages 810 psig, 3 stages 935 psig; Class I Div. 1/2 motors available
-- Biogas regenerative blower: gearless, oil-free, 5 to 2,000 CFM, vacuum to +15 psig
-- Electric high-pressure air booster: 2:1 pressure ratio up to 400 psig, 35 SCFM, air or nitrogen, no compressed air consumed
-- Custom pressurized regenerative blowers: casing up to 80 bar, magnetic drive, no shaft seal
-- High-speed regenerative blower: up to 92 m³/h, vacuum or pressure, 6.8 kg
-- High-speed turbo blower (STRT): up to 780 m³/h, about 50 kPa, built-in VFD, 18,000 hours maintenance free
-- Standard regenerative blowers (IDSC / IDSC1): about 130 models, 50 to 3,900 m³/h, 50 and 60 Hz
-- Oil-free claw compressors (STRC-60 to STRC-515): dry running, contact-free, 68 to 600 m³/h, up to 2.2 bar, 50 and 60 Hz
-- Maple vacuum pumps (STROV): built in South Korea, CE marked, sold direct by Stratovac
+## Standard equipment
+- [Electric high-pressure air booster](https://stratovac.ca/electric-air-booster/): A high-speed regenerative booster that doubles the pressure of compressed air or nitrogen on electric power alone. It replaces pneumatic and piston boosters without drawing compressed air or adding oil.
+- [Surpresseur d’air électrique haute pression (français)](https://stratovac.ca/fr/surpresseur-air-electrique/)
+- [Vacuum pumps for maple producers](https://stratovac.ca/maple-vacuum-pumps/): Oil-lubricated rotary vane pumps for sugar bushes, 12 to 780 m³/h, with an oil heater that keeps water out of the oil.
+- [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/)
+- [Oil-free claw compressors](https://stratovac.ca/claw-compressors/): Dry-running, contact-free claw compressors, 68 to 600 m³/h, up to 2.2 bar, for clean low-pressure air.
+- [Compresseurs à griffes sans huile (français)](https://stratovac.ca/fr/compresseurs-a-griffes/)
+- [High-speed turbo blower](https://stratovac.ca/turbo-blower/): A compact, oil-free turbo blower with a patented high-speed motor and a built-in variable frequency drive. Speed is set from the screen or over MODBUS, and the unit needs no routine maintenance.
+- [Turbosouffleuse haute vitesse (français)](https://stratovac.ca/fr/soufflante-turbo/)
+- [Standard regenerative blowers](https://stratovac.ca/standard-blowers/): Side-channel blowers for vacuum and pressure, from small single-stage units to three-stage models. Motors come in 50 and 60 Hz, with explosion-proof, CSA and ULc certified options.
+- [Soufflantes régénératives standard (français)](https://stratovac.ca/fr/soufflantes-standard/)
+- [High-speed regenerative blower](https://stratovac.ca/high-speed-blower/): A compact, lightweight blower for equipment where space and weight count. The same unit works as a vacuum pump or a compressor over its whole performance curve.
+- [Soufflante régénérative haute vitesse (français)](https://stratovac.ca/fr/soufflante-haute-vitesse/)
+
+## Custom engineered
+- [High-pressure natural gas booster](https://stratovac.ca/natural-gas-booster/): A magnetically coupled side-channel booster with a stainless steel casing. Identical units stack in series to reach the discharge pressure the job needs.
+- [Surpresseur haute pression pour gaz naturel (français)](https://stratovac.ca/fr/surpresseur-gaz-naturel/)
+- [Biogas regenerative blower](https://stratovac.ca/biogas-blower/): A gearless, oil-free blower built to move wet, corrosive biogas around the clock. No gearbox, no belts and no shaft seals.
+- [Soufflante régénérative pour biogaz (français)](https://stratovac.ca/fr/soufflante-biogaz/)
+- [Custom pressurized regenerative blowers](https://stratovac.ca/pressurized-blowers/): For gas circuits that run at line pressure. The whole casing is engineered and tested as a pressure part, and a magnetic drive replaces the shaft seal.
+- [Soufflantes régénératives sous pression sur mesure (français)](https://stratovac.ca/fr/soufflantes-pressurisees/)
 
 ## Datasheets (PDF)
 - [Natural gas booster](https://stratovac.ca/assets/pdf/high-pressure-gas-booster.pdf)
@@ -33,6 +42,7 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - [High-speed turbo blower STRT](https://stratovac.ca/assets/pdf/high-speed-turbo-blower-STRT.pdf)
 - [Standard blower catalog](https://stratovac.ca/assets/pdf/standard-blower-catalog.pdf)
 - STROV maple pump datasheets, one per model in English and French: https://stratovac.ca/assets/pdf/rv/STROV-0200-EN.pdf (replace 0200 with the model number, EN with FR for French)
+- Blower range datasheets (STRC and STRP series), one per model: listed on https://stratovac.ca/standard-blowers/#range
 
 ## Optional
 - [Sitemap](https://stratovac.ca/sitemap.xml)

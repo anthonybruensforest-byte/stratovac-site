@@ -414,6 +414,32 @@ table.mt{min-width:640px;font-size:.9rem}
 .qa p{margin:10px 0 0;color:var(--ink-2);line-height:1.65}
 .hero .fig-note a{color:var(--ink-2)}
 </style>
+<style>
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin:0 0 clamp(28px,4vw,48px)}
+.pcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pc-img{margin:0;aspect-ratio:4/3;display:grid;place-items:center;padding:14px;background:radial-gradient(62% 58% at 50% 46%,var(--glow-soft),transparent 72%),var(--deep)}
+.pc-img.pc-light{background:#fff}
+.pc-img img{max-width:100%;max-height:100%;object-fit:contain}
+.pc-body{padding:16px 18px 18px;display:grid;gap:8px;align-content:start}
+.pc-body h3{font-size:1.05rem;font-stretch:106%;font-weight:700;line-height:1.2}
+.pc-body p{color:var(--ink-2);font-size:.92rem;line-height:1.45;margin:0}
+.pc-more{color:var(--accent);font-weight:600;font-size:.9rem}
+.grp-h{font:800 1.25rem/1.2 var(--font-display);font-stretch:112%;margin:0 0 6px}
+.grp-p{color:var(--ink-2);margin:0 0 20px}
+.std-panel{background:rgba(255,255,255,.05);border:1px solid var(--deep-line);border-radius:12px;padding:22px 24px}
+.std-panel h2{font:800 1.2rem/1.2 var(--font-display);font-stretch:112%;color:var(--on-deep);margin:0 0 4px}
+.std-panel>p{color:var(--on-deep-2);font-size:.92rem;margin:0 0 12px}
+.std-list{list-style:none;margin:0;padding:0}
+.std-list a{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--deep-line);color:var(--on-deep);text-decoration:none}
+.std-list a:hover b{color:var(--bright)}
+.std-list .th{width:60px;height:45px;border-radius:6px;background:#fff;display:grid;place-items:center;overflow:hidden}
+.std-list .th img{max-width:100%;max-height:100%;object-fit:contain}
+.std-list b{font-weight:600;font-size:.98rem;line-height:1.25}
+.std-list .ar{color:var(--bright)}
+.pg-hero{padding-block:clamp(28px,4vw,48px)}
+.rel{padding-top:8px}
+</style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
@@ -436,7 +462,13 @@ table.mt{min-width:640px;font-size:.9rem}
 <span>Part of ID Industry</span>
 </a>
 </div>
-<nav aria-label="Main" class="nav"><a href="/fr/">Accueil</a><a href="#maple-range">Pompes</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Main" class="nav">
+<div class="has-sub"><a href="/fr/produits/">Produits</a><div class="sub"><a href="/fr/surpresseur-air-electrique/">Surpresseur d’air électrique haute pression</a><a href="/fr/pompes-a-vide-erabliere/">Pompes à vide pour érablières</a><a href="/fr/compresseurs-a-griffes/">Compresseurs à griffes sans huile</a><a href="/fr/soufflante-turbo/">Turbosouffleuse haute vitesse</a><a href="/fr/soufflantes-standard/">Soufflantes régénératives standard</a><a href="/fr/soufflante-haute-vitesse/">Soufflante régénérative haute vitesse</a><a href="/fr/surpresseur-gaz-naturel/">Surpresseur haute pression pour gaz naturel</a><a href="/fr/soufflante-biogaz/">Soufflante régénérative pour biogaz</a><a href="/fr/soufflantes-pressurisees/">Soufflantes régénératives sous pression sur mesure</a></div></div>
+<a href="/fr/#technology">Technologie</a>
+<a href="/fr/#applications">Applications</a>
+<a href="/fr/#resources">Ressources</a>
+<a href="#contact">Contact</a>
+</nav>
 <div class="head-tools">
 <div aria-label="Language / Langue" class="lang" role="group"><a aria-current="false" href="/maple-vacuum-pumps/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/fr/pompes-a-vide-erabliere/" hreflang="fr" lang="fr">FR</a></div>
 <a class="btn btn--solid head-cta" href="#contact">Demander une soumission</a>
@@ -444,7 +476,7 @@ table.mt{min-width:640px;font-size:.9rem}
 </div>
 </header>
 <main id="main"><section class="hero" id="top"><div class="wrap">
-<p class="fig-note"><a href="https://stratovac.ca/fr/">← Retour à tous les produits Stratovac</a></p>
+<p class="fig-note"><a href="/fr/produits/">← Tous les produits Stratovac</a></p>
 <h1>Pompes à vide pour acériculteurs</h1>
 <p class="hero-sub">Achetez la pompe à vide de votre érablière directement chez Stratovac, au Québec. Des pompes à palettes lubrifiées pour toutes les tailles d’exploitation, avec un chauffe-huile qui garde l’eau hors de l’huile. Envoyez-nous votre nombre d’entailles et votre pompe actuelle, et nous vous soumissionnons le modèle STROV équivalent.</p>
 <div class="hero-cta"><a class="btn btn--solid" href="#contact"><span>Demander une soumission acéricole</span></a> <a class="btn btn--deep" href="#maple-range">Voir les pompes</a></div>
@@ -636,15 +668,19 @@ table.mt{min-width:640px;font-size:.9rem}
 <p>Surpresseurs et soufflantes régénératifs sans huile pour les gaz exigeants.</p>
 </div>
 <div><h4>Produits</h4><ul>
-<li><a href="#p-gas">Surpresseur gaz naturel</a></li>
-<li><a href="#p-bio">Soufflante biogaz</a></li>
-<li><a href="#p-elec">Surpresseur d’air électrique</a></li>
-<li><a href="#p-turbo">Turbosouffleuse</a></li>
-<li><a href="#p-std">Soufflantes standard</a></li></ul></div>
+<li><a href="/fr/surpresseur-gaz-naturel/">Surpresseur haute pression pour gaz naturel</a></li>
+<li><a href="/fr/soufflante-biogaz/">Soufflante régénérative pour biogaz</a></li>
+<li><a href="/fr/surpresseur-air-electrique/">Surpresseur d’air électrique haute pression</a></li>
+<li><a href="/fr/soufflante-turbo/">Turbosouffleuse haute vitesse</a></li>
+<li><a href="/fr/soufflantes-standard/">Soufflantes régénératives standard</a></li>
+<li><a href="/fr/compresseurs-a-griffes/">Compresseurs à griffes sans huile</a></li>
+<li><a href="/fr/pompes-a-vide-erabliere/">Pompes à vide pour érablières</a></li>
+</ul></div>
 <div><h4>Entreprise</h4><ul>
-<li><a href="#technology">Technologie</a></li>
-<li><a href="#applications">Applications</a></li>
-<li><a href="#resources">Fiches techniques</a></li></ul></div>
+<li><a href="/fr/produits/">Produits</a></li>
+<li><a href="/fr/#technology">Technologie</a></li>
+<li><a href="/fr/#applications">Applications</a></li>
+<li><a href="/fr/#resources">Fiches techniques</a></li></ul></div>
 <div><h4>Contact</h4><ul>
 <li>abruens@stratovac.ca</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
 </div>

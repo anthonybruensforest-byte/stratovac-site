@@ -408,8 +408,36 @@ table.mt{min-width:640px;font-size:.9rem}
 .lang a{display:inline-block;font:700 .76rem/1 var(--font-display);font-stretch:110%;letter-spacing:.04em;padding:7px 11px;border-radius:999px;color:var(--ink-2);text-decoration:none}
 .lang a[aria-current="true"]{background:var(--ink);color:var(--paper)}
 </style>
+<style>
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin:0 0 clamp(28px,4vw,48px)}
+.pcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pc-img{margin:0;aspect-ratio:4/3;display:grid;place-items:center;padding:14px;background:radial-gradient(62% 58% at 50% 46%,var(--glow-soft),transparent 72%),var(--deep)}
+.pc-img.pc-light{background:#fff}
+.pc-img img{max-width:100%;max-height:100%;object-fit:contain}
+.pc-body{padding:16px 18px 18px;display:grid;gap:8px;align-content:start}
+.pc-body h3{font-size:1.05rem;font-stretch:106%;font-weight:700;line-height:1.2}
+.pc-body p{color:var(--ink-2);font-size:.92rem;line-height:1.45;margin:0}
+.pc-more{color:var(--accent);font-weight:600;font-size:.9rem}
+.grp-h{font:800 1.25rem/1.2 var(--font-display);font-stretch:112%;margin:0 0 6px}
+.grp-p{color:var(--ink-2);margin:0 0 20px}
+.std-panel{background:rgba(255,255,255,.05);border:1px solid var(--deep-line);border-radius:12px;padding:22px 24px}
+.std-panel h2{font:800 1.2rem/1.2 var(--font-display);font-stretch:112%;color:var(--on-deep);margin:0 0 4px}
+.std-panel>p{color:var(--on-deep-2);font-size:.92rem;margin:0 0 12px}
+.std-list{list-style:none;margin:0;padding:0}
+.std-list a{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--deep-line);color:var(--on-deep);text-decoration:none}
+.std-list a:hover b{color:var(--bright)}
+.std-list .th{width:60px;height:45px;border-radius:6px;background:var(--deep);border:1px solid var(--deep-line);display:grid;place-items:center;overflow:hidden}
+.std-list .th.lt{background:#fff}.std-list .th img{max-width:100%;max-height:100%;object-fit:contain}
+.std-list b{font-weight:600;font-size:.98rem;line-height:1.25}
+.std-list .ar{color:var(--bright)}
+.pg-hero{padding-block:clamp(28px,4vw,48px)}
+.rel{padding-top:8px}
+</style>
 </head>
 <body>
+<script>(function(){var m={"#p-gas": "/natural-gas-booster/", "#p-bio": "/biogas-blower/", "#p-elec": "/electric-air-booster/", "#p-press": "/pressurized-blowers/", "#p-hs": "/high-speed-blower/", "#p-turbo": "/turbo-blower/", "#p-std": "/standard-blowers/", "#p-claw": "/claw-compressors/", "#maple": "/maple-vacuum-pumps/", "#maple-range": "/maple-vacuum-pumps/", "#range": "/standard-blowers/#range"};var t=m[location.hash];if(t)location.replace(t);})();</script>
+
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
 <symbol id="i-pdf" viewbox="0 0 24 24"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9 14h6M9 17.5h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></symbol>
 <symbol id="i-arrow" viewbox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></symbol>
@@ -419,7 +447,7 @@ table.mt{min-width:640px;font-size:.9rem}
 <header class="site-head">
 <div class="wrap head-row">
 <div class="brand">
-<a aria-label="Stratovac" href="#top">
+<a aria-label="Stratovac" href="/">
 <img alt="Stratovac" class="logo logo-a" height="103" src="/assets/img/stratovac-logo.png" width="264"/>
 <img alt="Stratovac" class="logo logo-b" height="103" src="/assets/img/stratovac-logo-light.png" width="264"/>
 </a>
@@ -431,11 +459,10 @@ table.mt{min-width:640px;font-size:.9rem}
 </a>
 </div>
 <nav aria-label="Main" class="nav">
-<div class="has-sub"><a href="#products">Products</a><div class="sub"><a href="#p-gas">High-pressure natural gas booster</a><a href="#p-bio">Biogas regenerative blower</a><a href="#p-elec">Electric high-pressure air booster</a><a href="#p-press">Custom pressurized regenerative blowers</a><a href="#p-hs">High-speed regenerative blower</a><a href="#p-turbo">High-speed turbo blower</a><a href="#p-std">Standard regenerative blowers</a><a href="#p-claw">Oil-free claw compressors</a><a href="#maple">Maple vacuum pumps</a></div></div>
-<a href="#technology">Technology</a>
-<a href="#applications">Applications</a>
-<a href="#maple">Maple</a>
-<a href="#resources">Resources</a>
+<div class="has-sub"><a href="/products/">Products</a><div class="sub"><a href="/electric-air-booster/">Electric high-pressure air booster</a><a href="/maple-vacuum-pumps/">Vacuum pumps for maple producers</a><a href="/claw-compressors/">Oil-free claw compressors</a><a href="/turbo-blower/">High-speed turbo blower</a><a href="/standard-blowers/">Standard regenerative blowers</a><a href="/high-speed-blower/">High-speed regenerative blower</a><a href="/natural-gas-booster/">High-pressure natural gas booster</a><a href="/biogas-blower/">Biogas regenerative blower</a><a href="/pressurized-blowers/">Custom pressurized regenerative blowers</a></div></div>
+<a href="/#technology">Technology</a>
+<a href="/#applications">Applications</a>
+<a href="/#resources">Resources</a>
 <a href="#contact">Contact</a>
 </nav>
 <div class="head-tools">
@@ -453,15 +480,10 @@ table.mt{min-width:640px;font-size:.9rem}
 <p class="hero-sub">Stratovac builds oil-free, leak-tight regenerative boosters and blowers for high pressure, corrosive gases, explosive atmospheres and non-stop duty. Send your operating point and talk to the engineers who design the machine.</p>
 <div class="hero-cta">
 <a class="btn btn--solid" href="#contact"><span>Send your operating point</span><svg aria-hidden="true" class="ico"><use href="#i-arrow"></use></svg></a>
-<a class="btn btn--deep" href="#products">Browse products</a>
+<a class="btn btn--deep" href="/products/">Browse products</a>
 </div>
 </div>
-<div class="hero-art">
-<img alt="" aria-hidden="true" class="draw" height="603" src="/assets/img/gas-booster-drawing.webp" width="1400"/>
-<img alt="High-pressure natural gas booster, 3D rendering" class="render" height="876" src="/assets/img/gas-booster.webp" width="1200"/>
-<div class="call call--r" style="left:79%;top:17%"><i></i><span>Explosion-proof motor available</span></div>
-<div class="call call--r" style="left:58%;top:47%"><i></i><span>Magnetic coupling, no shaft seal</span></div>
-<div class="call call--r" style="left:21%;top:80%"><i></i><span>Flanged inlet and outlet</span></div>
+<div><aside class="std-panel" aria-labelledby="std-h"><h2 id="std-h">Standard equipment</h2><p>Catalog models: boosters, vacuum pumps, claw compressors, blowers and turbos.</p><ul class="std-list"><li><a href="/electric-air-booster/"><span class="th"><img alt="" loading="lazy" src="/assets/img/electric-booster.webp"/></span><b>Electric high-pressure air booster</b><span class="ar">→</span></a></li><li><a href="/maple-vacuum-pumps/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/rv/g2.webp"/></span><b>Vacuum pumps for maple producers</b><span class="ar">→</span></a></li><li><a href="/claw-compressors/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/claw/claw-compressor.webp"/></span><b>Oil-free claw compressors</b><span class="ar">→</span></a></li><li><a href="/turbo-blower/"><span class="th lt"><img alt="" loading="lazy" src="/assets/img/turbo-blower.webp"/></span><b>High-speed turbo blower</b><span class="ar">→</span></a></li><li><a href="/standard-blowers/"><span class="th"><img alt="" loading="lazy" src="/assets/img/standard-blower-drawing.webp"/></span><b>Standard regenerative blowers</b><span class="ar">→</span></a></li><li><a href="/high-speed-blower/"><span class="th"><img alt="" loading="lazy" src="/assets/img/highspeed-blower.webp"/></span><b>High-speed regenerative blower</b><span class="ar">→</span></a></li></ul></aside>
 </div>
 </div>
 <ul class="facts">
@@ -476,104 +498,11 @@ table.mt{min-width:640px;font-size:.9rem}
 <div class="wrap">
 <div class="sec-head">
 <h2>Product lines</h2>
-<p>Standard models where they fit and custom engineering where they don’t. All lines are oil-free regenerative machines built for continuous duty.</p>
+<p>Standard models where they fit and custom engineering where they don’t. All lines are oil-free machines built for continuous duty.</p>
 </div>
-<article class="product" id="p-gas">
-<figure class="plate">
-<img alt="High-pressure natural gas booster, 3D rendering" decoding="async" height="876" src="/assets/img/gas-booster.webp" width="1200"/>
-<figcaption>Natural gas booster · 3D rendering</figcaption>
-</figure>
-<div class="product-body">
-<h3>High-pressure natural gas booster</h3>
-<p class="lead">A magnetically coupled side-channel booster with a stainless steel casing. Identical units stack in series to reach the discharge pressure the job needs.</p>
-<dl class="spec"><dt>Boost from a 600 psig (41.4 bar) inlet</dt><dd>1 stage: 700 psig (48.3 bar) · 2 stages: 810 psig (55.8 bar) · 3 stages: 935 psig (64.5 bar)</dd><dt>Sealing</dt><dd>Magnetic coupling, no shaft seal on the gas side</dd><dt>Casing</dt><dd>Stainless steel, resists H<sub>2</sub>S and sour gas</dd><dt>Gas path</dt><dd>100% oil-free. One impeller and 2 bearings per stage</dd><dt>Motor</dt><dd>Class I Div. 1/2 and Class II Div. 2, Groups C, D, F and G available</dd><dt>Duty</dt><dd>Continuous, 24/7</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-pressure-gas-booster.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Natural gas booster datasheet</span></a><a class="doc" href="/assets/pdf/case-study-pressurized-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Case study</span></a></div>
-</div>
-</article>
-<article class="product" id="p-bio">
-<figure class="plate plate--light">
-<img alt="Regenerative blower for biogas, three-quarter view" decoding="async" height="535" src="/assets/img/biogas-blower.webp" width="558"/>
-<figcaption>Biogas blower</figcaption>
-</figure>
-<div class="product-body">
-<h3>Biogas regenerative blower</h3>
-<p class="lead">A gearless, oil-free blower built to move wet, corrosive biogas around the clock. No gearbox, no belts and no shaft seals.</p>
-<dl class="spec"><dt>Flow</dt><dd>5 to 2,000 CFM (8.5 to 3,400 m³/h)</dd><dt>Pressure</dt><dd>−8.35 psi (−0.58 bar) vacuum to +15 psig (1.03 bar)</dd><dt>Drive</dt><dd>Direct drive, no gearbox, belts or pulleys. 4 bearings, against 6 on a positive-displacement blower</dd><dt>Corrosion</dt><dd>Nickel, Cerakote or anodized coatings matched to the gas. Aluminum impeller and housing reduce spark risk</dd><dt>Motor</dt><dd>Class 1 Div. 1 Groups C and D, Class 2 Div. 2 Groups F and G. cULus listed. VFD-ready</dd><dt>Flow quality</dt><dd>Pulsation-free and quieter than a positive-displacement blower</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/biogas-regenerative-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Biogas blower datasheet</span></a></div>
-</div>
-</article>
-<article class="product" id="p-elec">
-<figure class="plate">
-<img alt="Electric high-pressure air booster" decoding="async" height="509" src="/assets/img/electric-booster.webp" width="604"/>
-<figcaption>IDSC-2SHP-166-400</figcaption>
-</figure>
-<div class="product-body">
-<h3>Electric high-pressure air booster</h3>
-<p class="lead">A high-speed regenerative booster that doubles the pressure of compressed air or nitrogen on electric power alone. It replaces pneumatic and piston boosters without drawing compressed air or adding oil.</p>
-<dl class="spec"><dt>Pressure ratio</dt><dd>2:1, up to 400 psig (27.6 bar). Units can run in series</dd><dt>Higher pressure</dt><dd>We can build blowers that run at higher pressures when the job needs it</dd><dt>Flow</dt><dd>35 SCFM (59 m³/h) continuous</dd><dt>Motor</dt><dd>2.6 kW (3.5 hp), 120/230 V single-phase or 230 V three-phase</dd><dt>Speed</dt><dd>Up to 15,000 RPM</dd><dt>Ports</dt><dd>1.25 in. MNPT</dd><dt>Media</dt><dd>Air, nitrogen and other gases</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/electric-air-booster-datasheet.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Electric booster datasheet</span></a><a class="doc" href="/assets/pdf/booster-vs-piston.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Compared with piston</span></a><a class="doc" href="/assets/pdf/booster-vs-pneumatic.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Compared with pneumatic</span></a></div>
-</div>
-</article>
-<article class="product" id="p-press">
-<figure class="plate">
-<img alt="Delivered pressurized regenerative blower with magnetic drive" decoding="async" height="388" src="/assets/img/pressurized-blower-photo.webp" width="800"/>
-<figcaption>Delivered unit, reference project</figcaption>
-</figure>
-<div class="product-body">
-<h3>Custom pressurized regenerative blowers</h3>
-<p class="lead">For gas circuits that run at line pressure. The whole casing is engineered and tested as a pressure part, and a magnetic drive replaces the shaft seal.</p>
-<dl class="spec"><dt>Reference project</dt><dd>Gas recirculation on a natural gas dryer: 20 SCFM (34 m³/h), 174 psig (12 bar) inlet, about 181 psig (12.5 bar) outlet, 3 hp</dd><dt>Casing pressure</dt><dd>Up to 80 bar (1,160 psi). The reference unit was hydrostatically tested at 16 bar (232 psi)</dd><dt>Casing material</dt><dd>Aluminum or stainless steel, depending on the pressure. Other materials available on request</dd><dt>Sealing</dt><dd>Hermetic magnetic coupling, no shaft seal</dd><dt>Connections</dt><dd>ANSI flanges, certified motor</dd><dt>Field record</dt><dd>About 18 months in service, additional units requested</dd><dt>Current platform</dt><dd>Coupling rated 63 bar (914 psi), nickel-coated billet aluminum housing, 316 stainless shaft, hybrid ceramic bearings</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/case-study-pressurized-blower.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Case study</span></a></div>
-</div>
-</article>
-<article class="product" id="p-hs">
-<figure class="plate">
-<img alt="Technical drawing of the IDMB0092-2SA281 high-speed blower" decoding="async" height="401" src="/assets/img/highspeed-blower.webp" width="521"/>
-<figcaption>IDMB0092-2SA281 · technical drawing</figcaption>
-</figure>
-<div class="product-body">
-<h3>High-speed regenerative blower</h3>
-<p class="lead">A compact, lightweight blower for equipment where space and weight count. The same unit works as a vacuum pump or a compressor over its whole performance curve.</p>
-<dl class="spec"><dt>Flow</dt><dd>Up to 92 m³/h (54 CFM)</dd><dt>Vacuum and pressure</dt><dd>Up to −435 mbar (−0.435 bar, −6.3 psi) vacuum or 800 mbar (0.8 bar, 11.6 psi) pressure</dd><dt>Motor</dt><dd>2.6 kW, 48 VDC or 120–240 VAC, high-speed three-phase permanent magnet</dd><dt>Speed</dt><dd>Up to 15,000 rpm</dd><dt>Weight and noise</dt><dd>6.8 kg, 60 to 70 dB</dd><dt>Duty</dt><dd>Continuous operation across the full curve, as vacuum pump or compressor</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-speed-blower-IDMB0092-2SA281.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>High-speed blower datasheet</span></a></div>
-</div>
-</article>
-<article class="product" id="p-turbo">
-<figure class="plate plate--light">
-<img alt="STRT high-speed turbo blower with integrated drive and inlet filter" decoding="async" height="339" src="/assets/img/turbo-blower.webp" width="411"/>
-<figcaption>STRT series · high-speed turbo blower</figcaption>
-</figure>
-<div class="product-body">
-<h3>High-speed turbo blower</h3>
-<p class="lead">A compact, oil-free turbo blower with a patented high-speed motor and a built-in variable frequency drive. Speed is set from the screen or over MODBUS, and the unit needs no routine maintenance.</p>
-<dl class="spec"><dt>Flow</dt><dd>Up to 13 m³/min (780 m³/h, 459 CFM)</dd><dt>Pressure</dt><dd>Up to about 50 kPa (0.5 bar, 7.3 psi)</dd><dt>Motor</dt><dd>3.5 to 7.5 kW, patented high-speed motor with integrated VFD, up to 80,000 rpm</dd><dt>Power supply</dt><dd>Single or three-phase, 50 or 60 Hz</dd><dt>Control</dt><dd>Speed adjustable from the HMI or by PLC over MODBUS</dd><dt>Build</dt><dd>18,000 hours maintenance free, class H insulation, IP65</dd><dt>Weight and noise</dt><dd>About 11 to 15 kg, 71 to 74 dB(A)</dd><dt>Models</dt><dd>STRT-A15-XXXX430, 440, 7.530 and 7.540</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/high-speed-turbo-blower-STRT.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Turbo blower datasheet</span></a></div>
-</div>
-</article>
-<article class="product" id="p-std">
-<figure class="plate">
-<img alt="Technical drawing of a side-channel regenerative blower" decoding="async" height="851" src="/assets/img/standard-blower-drawing.webp" width="1000"/>
-<figcaption>IDSC series · technical drawing</figcaption>
-</figure>
-<div class="product-body">
-<h3>Standard regenerative blowers</h3>
-<p class="lead">Side-channel blowers for vacuum and pressure, from small single-stage units to three-stage models. Motors come in 50 and 60 Hz, with explosion-proof, CSA and ULc certified options.</p>
-<dl class="spec"><dt>Range</dt><dd>About 130 models in two series, IDSC and IDSC1</dd><dt>Flow</dt><dd>About 50 to 3,900 m³/h (29 to 2,295 CFM)</dd><dt>Pressure and vacuum</dt><dd>Up to about 1 bar (14.5 psi) pressure or −0.7 bar (−10.1 psi) vacuum</dd><dt>Stages</dt><dd>Single-, two- and three-stage versions at 50 and 60 Hz</dd><dt>Build</dt><dd>Oil-free. Example datasheet (IDSC0530-2SB152-5): IP55, insulation class F, maintenance free, frequency converter operation allowed</dd><dt>Options</dt><dd>Explosion-proof motors, CSA and ULc certified, on request</dd><dt>Sound</dt><dd>48 to 89 dB(A)</dd></dl>
-<div class="docs"><a class="doc" href="/assets/pdf/standard-blower-catalog.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Standard blower catalog</span></a><a class="doc" href="/assets/pdf/double-stage-blower-IDSC0530-2SB152-5.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>Double-stage blower datasheet</span></a></div>
-</div>
-</article>
-<article class="product" id="p-claw">
-<figure class="plate">
-<img alt="Stratovac oil-free claw compressor" decoding="async" height="835" loading="lazy" src="/assets/img/claw/claw-compressor.webp" width="1000"/>
-<figcaption>STRC series · claw compressor</figcaption>
-</figure>
-<div class="product-body">
-<h3>Oil-free claw compressors</h3>
-<p class="lead">Dry-running, contact-free claw compressors for clean low-pressure compressed air. Air-cooled, direct driven, built for continuous duty.</p>
-<dl class="spec"><dt>Models</dt><dd>8 models, STRC-60 to STRC-515</dd><dt>Flow</dt><dd>68 to 600 m³/h (40 to 353 CFM) at 60 Hz</dd><dt>Pressure</dt><dd>Up to 2.2 bar (32 psi) continuous</dd><dt>Build</dt><dd>Dry running, oil-free, no wearing contact, CE certified</dd><dt>Power</dt><dd>50 and 60 Hz, from 3 to 37 kW</dd></dl>
-<p><a class="btn btn--line" href="/claw-compressors/">All claw compressor details</a></p>
-</div>
-</article>
+<h3 class="grp-h">Standard equipment</h3><p class="grp-p">Catalog models: boosters, vacuum pumps, claw compressors, blowers and turbos.</p><div class="pgrid"><a class="pcard" href="/electric-air-booster/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/electric-booster.webp"/></figure><div class="pc-body"><h3>Electric high-pressure air booster</h3><p>A high-speed regenerative booster that doubles the pressure of compressed air or nitrogen on electric power alone. It replaces pneumatic and…</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/maple-vacuum-pumps/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/rv/g2.webp"/></figure><div class="pc-body"><h3>Vacuum pumps for maple producers</h3><p>Oil-lubricated rotary vane pumps for sugar bushes, 12 to 780 m³/h, with an oil heater that keeps water out of the oil.</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/claw-compressors/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/claw/claw-compressor.webp"/></figure><div class="pc-body"><h3>Oil-free claw compressors</h3><p>Dry-running, contact-free claw compressors, 68 to 600 m³/h, up to 2.2 bar, for clean low-pressure air.</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/turbo-blower/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/turbo-blower.webp"/></figure><div class="pc-body"><h3>High-speed turbo blower</h3><p>A compact, oil-free turbo blower with a patented high-speed motor and a built-in variable frequency drive. Speed is set from the screen or over…</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/standard-blowers/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/standard-blower-drawing.webp"/></figure><div class="pc-body"><h3>Standard regenerative blowers</h3><p>Side-channel blowers for vacuum and pressure, from small single-stage units to three-stage models. Motors come in 50 and 60 Hz, with…</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/high-speed-blower/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/highspeed-blower.webp"/></figure><div class="pc-body"><h3>High-speed regenerative blower</h3><p>A compact, lightweight blower for equipment where space and weight count. The same unit works as a vacuum pump or a compressor over its whole…</p><span class="pc-more">View product →</span></div></a></div>
+<h3 class="grp-h">Custom engineered</h3><p class="grp-p">Machines designed around your gas, your pressure and your skid.</p><div class="pgrid"><a class="pcard" href="/natural-gas-booster/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/gas-booster.webp"/></figure><div class="pc-body"><h3>High-pressure natural gas booster</h3><p>A magnetically coupled side-channel booster with a stainless steel casing. Identical units stack in series to reach the discharge pressure the job…</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/biogas-blower/"><figure class="pc-img pc-light"><img alt="" loading="lazy" src="/assets/img/biogas-blower.webp"/></figure><div class="pc-body"><h3>Biogas regenerative blower</h3><p>A gearless, oil-free blower built to move wet, corrosive biogas around the clock. No gearbox, no belts and no shaft seals.</p><span class="pc-more">View product →</span></div></a><a class="pcard" href="/pressurized-blowers/"><figure class="pc-img"><img alt="" loading="lazy" src="/assets/img/pressurized-blower-photo.webp"/></figure><div class="pc-body"><h3>Custom pressurized regenerative blowers</h3><p>For gas circuits that run at line pressure. The whole casing is engineered and tested as a pressure part, and a magnetic drive replaces the shaft…</p><span class="pc-more">View product →</span></div></a></div>
+<p><a class="btn btn--line" href="/products/">All products</a></p>
 </div>
 </section>
 <section class="sec sec--surface" id="technology">
@@ -702,120 +631,6 @@ To stage 2
 <div class="apps"><div class="app"><h3>Biogas and renewable natural gas</h3><p>Blowers and boosters that move wet, flammable, H<sub>2</sub>S-laden gas through upgrading and conditioning systems, and boost it before pipeline injection.</p></div><div class="app"><h3>Natural gas treatment</h3><p>Gas recirculation and regeneration in dryers and PSA units, oxygen removal systems, and fuel-gas boosting for turbine skids.</p></div><div class="app"><h3>Hydrogen and fuel cells</h3><p>Turbo blowers for cathode air or oxygen supply and boosters for hydrogen recirculation, supplied to fuel cell manufacturers.</p></div><div class="app"><h3>Collaborative robotics</h3><p>Two-stage high-speed boosters small enough to mount on the robot or the gripper instead of a central station.</p></div><div class="app"><h3>Medical and respiratory</h3><p>Boosters cleaned and greased to meet breathable-air ISO limits for very low VOC. Used in a mechanical ventilator program built in Canada during COVID-19.</p></div><div class="app"><h3>Dental equipment</h3><p>Light, high-flow boosters for portable dental vacuum, with a nickel coating against caustic cleaning products.</p></div><div class="app"><h3>Nuclear and radioactive gas</h3><p>Custom boosters that circulate radioactive gas: radiation-resistant greases, depleted uranium shielding and a low-speed design for bearing life. Units delivered several years ago are still in operation.</p></div><div class="app"><h3>Aquaculture</h3><p>Air and oxygen injection for recirculating aquaculture systems and live-holding tanks. Oil-free for the safety of live species, built for 24/7 duty.</p></div><div class="app"><h3>Compressed air and nitrogen</h3><p>Electric boosters raise line pressure at the point of use without drawing compressed air from the network. A nitrogen booster for fiber laser cutting is in development.</p></div></div>
 </div>
 </section>
-<section class="sec sec--surface" id="maple">
-<div class="wrap">
-<div class="sec-head">
-<h2>Vacuum pumps for maple producers</h2>
-<p>Oil-lubricated rotary vane vacuum pumps for your sugar bush, ordered straight from Stratovac. Built in South Korea, with the same quality as the AirTech Vacuum pumps, the pumps CDL has long supplied to maple producers, at very competitive prices and with no middleman supplier between you and us.</p>
-<p><a class="btn btn--line" href="/maple-vacuum-pumps/">All maple pump details</a></p></div>
-<ul class="mp-why">
-<li><h3>Direct from Stratovac</h3><p>You deal with us from the quote to the delivery. No other supplier in the middle.</p></li>
-<li><h3>The same quality as AirTech Vacuum</h3><p>Oil-lubricated rotary vane pumps like the ones CDL sells, with the same quality as AirTech Vacuum.</p></li>
-<li><h3>Made in South Korea</h3><p>Built in South Korea. The whole range is CE marked.</p></li>
-<li><h3>Very competitive prices</h3><p>Send us the pump you use today and we quote the equivalent STROV model.</p></li>
-</ul>
-<div class="sec-head mp-head">
-<h2 id="maple-range">Choose your pump</h2>
-<p>18 models, from 12 to 780 m³/h at 60 Hz (about 7 to 460 cfm). Each one has an English and a French datasheet with specifications, dimensions and options.</p>
-</div>
-<article class="mp" id="maple-g1">
-<figure class="mp-img"><img alt="STROV-0020 oil-lubricated rotary vane vacuum pump" height="598" loading="lazy" src="/assets/img/rv/g1.webp" width="897"/></figure>
-<div class="mp-body">
-<h3>STROV-0020 · 0030 · 0040</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0020</th><td>12 m³/h <span class="cf">7.1 cfm</span></td><td class="tp">about 400</td><td>10 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0.4 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0020-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0020-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0030</th><td>18 m³/h <span class="cf">11 cfm</span></td><td class="tp">about 650</td><td>15 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0.75 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0030-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0030-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0040</th><td>24 m³/h <span class="cf">14 cfm</span></td><td class="tp">about 850</td><td>20 m³/h</td><td>2 mbar <span class="cf" style="display:inline">(NM)</span><br/>20 mbar <span class="cf" style="display:inline">(L)</span></td><td>0.9 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0040-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0040-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g2">
-<figure class="mp-img"><img alt="STROV-0060 oil-lubricated rotary vane vacuum pump" height="536" loading="lazy" src="/assets/img/rv/g2.webp" width="768"/></figure>
-<div class="mp-body">
-<h3>STROV-0060 · 0080</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0060</th><td>36 m³/h <span class="cf">21 cfm</span></td><td class="tp">about 1,300</td><td>30 m³/h</td><td>0.1 mbar</td><td>2 hp · 1.1 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0060-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0060-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0080</th><td>48 m³/h <span class="cf">28 cfm</span></td><td class="tp">about 1,700</td><td>40 m³/h</td><td>0.1 mbar</td><td>2 hp · 1.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0080-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0080-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g3">
-<figure class="mp-img"><img alt="STROV-0120 oil-lubricated rotary vane vacuum pump" height="593" loading="lazy" src="/assets/img/rv/g3.webp" width="889"/></figure>
-<div class="mp-body">
-<h3>STROV-0120 · 0200</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0120</th><td>75 m³/h <span class="cf">44 cfm</span></td><td class="tp">about 2,700</td><td>63 m³/h</td><td>0.1 mbar</td><td>3 hp · 2.2 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0120-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0120-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0200</th><td>120 m³/h <span class="cf">71 cfm</span></td><td class="tp">about 4,400</td><td>100 m³/h</td><td>0.1 mbar</td><td>5 hp · 3 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0200-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0200-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g4">
-<figure class="mp-img"><img alt="STROV-0320 oil-lubricated rotary vane vacuum pump" height="462" loading="lazy" src="/assets/img/rv/g4.webp" width="730"/></figure>
-<div class="mp-body">
-<h3>STROV-0320 · 0430 · 0505</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0320</th><td>192 m³/h <span class="cf">113 cfm</span></td><td class="tp">about 7,100</td><td>160 m³/h</td><td>0.1 mbar</td><td>5 hp · 3.7 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0320-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0320-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0430</th><td>258 m³/h <span class="cf">152 cfm</span></td><td class="tp">about 9,500</td><td>215 m³/h</td><td>0.1 mbar</td><td>7.5 hp · 5.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0430-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0430-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0505</th><td>300 m³/h <span class="cf">177 cfm</span></td><td class="tp">about 11,100</td><td>250 m³/h</td><td>0.1 mbar</td><td>10 hp · 7.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0505-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0505-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g5">
-<figure class="mp-img"><img alt="STROV-0350 oil-lubricated rotary vane vacuum pump" height="573" loading="lazy" src="/assets/img/rv/g5.webp" width="862"/></figure>
-<div class="mp-body">
-<h3>STROV-0350</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0350</th><td>210 m³/h <span class="cf">124 cfm</span></td><td class="tp">about 7,700</td><td>175 m³/h</td><td>0.1 mbar</td><td>7.5 hp · 5.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0350-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0350-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g6">
-<figure class="mp-img"><img alt="STROV-0500 oil-lubricated rotary vane vacuum pump" height="626" loading="lazy" src="/assets/img/rv/g6.webp" width="877"/></figure>
-<div class="mp-body">
-<h3>STROV-0500 · 0600</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0500</th><td>300 m³/h <span class="cf">177 cfm</span></td><td class="tp">about 11,100</td><td>250 m³/h</td><td>0.1 mbar</td><td>10 hp · 7.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0500-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0500-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-0600</th><td>360 m³/h <span class="cf">212 cfm</span></td><td class="tp">about 13,300</td><td>300 m³/h</td><td>0.1 mbar</td><td>11.5 hp · 9.2 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0600-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0600-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g7">
-<figure class="mp-img"><img alt="STROV-0605 oil-lubricated rotary vane vacuum pump" height="730" loading="lazy" src="/assets/img/rv/g7.webp" width="1100"/></figure>
-<div class="mp-body">
-<h3>STROV-0605</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0605</th><td>340 m³/h <span class="cf">200 cfm</span></td><td class="tp">about 12,500</td><td>280 m³/h</td><td>0.08 mbar (gas ballast closed)<br/>0.5 mbar (open)</td><td>10 hp · 7.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0605-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0605-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g8">
-<figure class="mp-img"><img alt="STROV-0800 oil-lubricated rotary vane vacuum pump" height="684" loading="lazy" src="/assets/img/rv/g8.webp" width="916"/></figure>
-<div class="mp-body">
-<h3>STROV-0800 · 1000 · 1200</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-0800</th><td>505 m³/h <span class="cf">297 cfm</span></td><td class="tp">about 18,600</td><td>420 m³/h</td><td>0.1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>20 hp · 15 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-0800-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-0800-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-1000</th><td>600 m³/h <span class="cf">353 cfm</span></td><td class="tp">about 22,200</td><td>500 m³/h</td><td>0.1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>20 hp · 15 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1000-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1000-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr><tr><th scope="row">STROV-1200</th><td>780 m³/h <span class="cf">459 cfm</span></td><td class="tp">about 28,800</td><td>660 m³/h</td><td>0.1 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>25 hp · 18.5 kW</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1200-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1200-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article><article class="mp" id="maple-g9">
-<figure class="mp-img"><img alt="STROV-1500 oil-lubricated rotary vane vacuum pump" height="597" loading="lazy" src="/assets/img/rv/g9.webp" width="1100"/></figure>
-<div class="mp-body">
-<h3>STROV-1500</h3>
-<div class="tablewrap mp-tw"><table class="mt"><thead><tr>
-<th scope="col">Model</th><th scope="col">Pumping speed, 60 Hz</th><th scope="col">Taps it can hold</th><th scope="col">50 Hz</th><th scope="col">End vacuum</th><th scope="col">Motor, 60 Hz</th><th scope="col"><span class="sr">Datasheet</span></th>
-</tr></thead><tbody><tr><th scope="row">STROV-1500</th><td>—</td><td class="tp">On request</td><td>750 m³/h</td><td>0.5 mbar <span class="cf" style="display:inline">(H)</span><br/>10 mbar <span class="cf" style="display:inline">(L)</span></td><td>18.5 kW (50 Hz)</td><td class="dl"><a class="btn btn--line" href="/assets/pdf/rv/STROV-1500-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/rv/STROV-1500-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></td></tr></tbody></table></div>
-</div>
-</article>
-<p class="foot-note">Pumping speed is the displacement of the pump. End vacuum is absolute pressure. Oil is not included in the weights on the datasheets. Single-phase motors are available on the smaller models. The number of taps is an indicative figure for a tight tubing system at 60 Hz, about 37 taps per m³/h of pumping speed, in line with the capacities CDL publishes for pumps of similar size. The real number depends on leaks, the length of the lines and the vacuum you want to hold; ask us to size your system.</p>
-<div class="block mp-opts">
-<h3 class="sub-h">Our advantage: the oil heater</h3>
-<div class="mp-opt">
-<figure><img alt="Pump with oil heater" height="546" loading="lazy" src="/assets/img/rv/heater.webp" width="976"/></figure>
-<div>
-<h4>Water in the oil is what kills maple pumps</h4>
-<p>During the season the pump is often stopped, and water stays in the oil. The mix can corrupt the oil and, in time, damage the pump.</p>
-<p>Our thermostat-controlled oil heater keeps the oil warm enough for the water to evaporate. The oil stays in good condition and the pump keeps a better vacuum, season after season.</p>
-<p>Available on the STROV-0060 to 1200 models. An oil level switch is required for safety.</p>
-<ul class="mp-kw">
-<li><b>STROV-0060 to 0200</b><span>0.5 or 1 kW</span></li>
-<li><b>STROV-0320 to 0605</b><span>1 or 1.5 kW</span></li>
-<li><b>STROV-0800 to 1200</b><span>2 or 3 kW</span></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="mp-cta">
-<div><h3>Tell us about your sugar bush</h3><p>Number of taps, current pump and electrical supply: we come back with a quote.</p></div>
-<a class="btn btn--solid" href="#contact"><span>Request a maple quote</span><svg aria-hidden="true" class="ico"><use href="#i-arrow"></use></svg></a>
-</div>
-<p class="foot-note">AirTech Vacuum and CDL are trademarks or names of their owners. Stratovac is not affiliated with them.</p>
-</div>
-</section>
 <section class="sec sec--deep" id="process">
 <div class="wrap">
 <div class="sec-head">
@@ -882,11 +697,7 @@ To stage 2
 <svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg>
 <span>Open PDF</span><small>4.2 MB</small></a>
 </li></ul>
-<div class="sec-head rng-head">
-<h2 id="range">Blower range datasheets</h2>
-<p>One datasheet per model, with performance curves, motor data and dimensions. Download the English or French version.</p>
-</div>
-<h3 class="rng-h">STRC <span>Side channel blowers</span></h3><ul class="rng"><li><span class="rng-m">STRC0055-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0055-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0055-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0070-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0070-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0070-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0080-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0080-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0140-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0140-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0180-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0180-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0180-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0210-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0210-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0270-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0270-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0270-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0315-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0315-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0415-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0415-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0415-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0530-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0530-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0700-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0700-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0700-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1050-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1050-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1370-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1370-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1370-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0080-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0080-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0080-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0140-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0140-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0140-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0210-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0210-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0210-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0315-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0315-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0315-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0530-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0530-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0530-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1050-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1050-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1050-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0495-2P</span><span class="rng-s">Double flow</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0495-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0495-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC0880-2P</span><span class="rng-s">Double flow</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC0880-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC0880-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC1950-2P</span><span class="rng-s">Double flow</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC1950-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC1950-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRC2050-2P</span><span class="rng-s">Double flow</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRC2050-2P-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRC2050-2P-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li></ul><h3 class="rng-h">STRP <span>High performance blowers</span></h3><ul class="rng"><li><span class="rng-m">STRP0045-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0045-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0045-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0065-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0065-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0085-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0085-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-1M</span><span class="rng-s">Single stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-1M-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-1M-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0045-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0045-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0045-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0065-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0065-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0065-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0085-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0085-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0085-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-2S</span><span class="rng-s">Double stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-2S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-2S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0120-3S</span><span class="rng-s">Triple stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0120-3S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0120-3S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li><li><span class="rng-m">STRP0165-3S</span><span class="rng-s">Triple stage</span><span class="rng-l"><a class="btn btn--line" href="/assets/pdf/range/STRP0165-3S-EN.pdf" hreflang="en" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>EN</span></a><a class="btn btn--line" href="/assets/pdf/range/STRP0165-3S-FR.pdf" hreflang="fr" rel="noopener" target="_blank"><svg aria-hidden="true" class="ico"><use href="#i-pdf"></use></svg><span>FR</span></a></span></li></ul>
+<p class="grp-p" style="margin-top:28px">The blower range datasheets (one per model, in English and French) are on the standard regenerative blowers page. <a href="/standard-blowers/#range">Blower range datasheets →</a></p>
 </div>
 </section>
 <section class="sec sec--surface" id="contact">
@@ -956,15 +767,19 @@ To stage 2
 <p>Oil-free regenerative boosters and blowers for demanding gases.</p>
 </div>
 <div><h4>Products</h4><ul>
-<li><a href="#p-gas">Natural gas booster</a></li>
-<li><a href="#p-bio">Biogas blower</a></li>
-<li><a href="#p-elec">Electric air booster</a></li>
-<li><a href="#p-turbo">Turbo blower</a></li>
-<li><a href="#p-std">Standard blowers</a></li></ul></div>
+<li><a href="/natural-gas-booster/">High-pressure natural gas booster</a></li>
+<li><a href="/biogas-blower/">Biogas regenerative blower</a></li>
+<li><a href="/electric-air-booster/">Electric high-pressure air booster</a></li>
+<li><a href="/turbo-blower/">High-speed turbo blower</a></li>
+<li><a href="/standard-blowers/">Standard regenerative blowers</a></li>
+<li><a href="/claw-compressors/">Oil-free claw compressors</a></li>
+<li><a href="/maple-vacuum-pumps/">Vacuum pumps for maple producers</a></li>
+</ul></div>
 <div><h4>Company</h4><ul>
-<li><a href="#technology">Technology</a></li>
-<li><a href="#applications">Applications</a></li>
-<li><a href="#resources">Datasheets</a></li></ul></div>
+<li><a href="/products/">Products</a></li>
+<li><a href="/#technology">Technology</a></li>
+<li><a href="/#applications">Applications</a></li>
+<li><a href="/#resources">Datasheets</a></li></ul></div>
 <div><h4>Contact</h4><ul>
 <li>abruens@stratovac.ca</li><li>+1 438-880-4655</li><li>Fort Lauderdale, FL · Barcelona</li></ul></div>
 </div>
