@@ -17,6 +17,8 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/)
 - [Oil-free claw compressors](https://stratovac.ca/claw-compressors/): Dry-running, contact-free claw compressors, 68 to 600 m³/h, up to 2.2 bar, for clean low-pressure air.
 - [Compresseurs à griffes sans huile (français)](https://stratovac.ca/fr/compresseurs-a-griffes/)
+- [Oil-free claw vacuum pumps](https://stratovac.ca/claw-vacuum-pumps/): Dry-running claw vacuum pumps, 30 to 1,140 m³/h, air- or water-cooled, 50 and 60 Hz.
+- [Pompes à vide à griffes sans huile (français)](https://stratovac.ca/fr/pompes-a-vide-a-griffes/)
 - [High-speed turbo blower](https://stratovac.ca/turbo-blower/): A compact, oil-free turbo blower with a patented high-speed motor and a built-in variable frequency drive. Speed is set from the screen or over MODBUS, and the unit needs no routine maintenance.
 - [Turbosouffleuse haute vitesse (français)](https://stratovac.ca/fr/soufflante-turbo/)
 - [Standard regenerative blowers](https://stratovac.ca/standard-blowers/): Side-channel blowers for vacuum and pressure, from small single-stage units to three-stage models. Motors come in 50 and 60 Hz, with explosion-proof, CSA and ULc certified options.

@@ -71,6 +71,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/claw-compressors/"/>
   </url>
   <url>
+    <loc>https://stratovac.ca/claw-vacuum-pumps/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/claw-vacuum-pumps/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-a-griffes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/claw-vacuum-pumps/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/pompes-a-vide-a-griffes/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/claw-vacuum-pumps/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/pompes-a-vide-a-griffes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/claw-vacuum-pumps/"/>
+  </url>
+  <url>
     <loc>https://stratovac.ca/turbo-blower/</loc>
     <lastmod>2026-10-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/turbo-blower/"/>
