@@ -401,6 +401,20 @@ table.mt{min-width:640px;font-size:.9rem}
 .mp-cta p{color:var(--on-deep-2);margin-top:4px}
 @media (max-width:980px){ .mp-why{grid-template-columns:repeat(2,minmax(0,1fr))} .mp{grid-template-columns:minmax(0,1fr)} .mp-img{aspect-ratio:16/9;max-width:520px} .mp-opt,.mp-opt--r{grid-template-columns:minmax(0,1fr)} .mp-opt--r > .mp-pair{order:2} }
 @media (max-width:560px){ .mp-why{grid-template-columns:minmax(0,1fr)} }
+
+/* conversion: sticky contact bar (mobile) + trust chips */
+.sticky-cta{display:none}
+.trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 10px;margin:22px 0 0;padding:0}
+.trust li{border:1px solid var(--deep-line,rgba(255,255,255,.28));color:var(--on-deep,#fff);border-radius:999px;padding:7px 14px;font-size:.9rem;line-height:1.2;background:rgba(255,255,255,.06)}
+.val a.tel,.val a.mail{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){
+ .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--surface,#fff);border-top:1px solid var(--line,#d9dee7);box-shadow:0 -6px 24px rgba(0,0,0,.14)}
+ .sticky-cta a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;border:1px solid var(--line,#d9dee7);color:var(--ink,#111);background:var(--surface,#fff)}
+ .sticky-cta a.sc-call{background:var(--accent,#186cf0);border-color:var(--accent,#186cf0);color:#fff;flex:1.25}
+ .sticky-cta a.sc-quote{background:var(--ink,#0b1b34);border-color:var(--ink,#0b1b34);color:#fff}
+ body{padding-bottom:72px}
+ .cc{bottom:84px}
+}
 </style>
 <style>
 .lang a{display:inline-block;font:700 .76rem/1 var(--font-display);font-stretch:110%;letter-spacing:.04em;padding:7px 11px;border-radius:999px;color:var(--ink-2);text-decoration:none}
@@ -481,7 +495,8 @@ table.mt{min-width:640px;font-size:.9rem}
 <p class="fig-note"><a href="/products/">← All Stratovac products</a></p>
 <h1>Vacuum pumps for maple producers</h1>
 <p class="hero-sub">Buy your sugar bush vacuum pump straight from Stratovac, in Quebec. Oil-lubricated rotary vane pumps for every size of operation, with an oil heater that keeps water out of the oil. Send us your number of taps and your current pump, and we quote the equivalent STROV model. The pumps reach up to 29.9 inHg (0.1 mbar absolute), and we also supply parts for AirTech Vacuum pumps sold by CDL.</p>
-<div class="hero-cta"><a class="btn btn--solid" href="#contact"><span>Request a maple quote</span></a> <a class="btn btn--deep" href="#max-vacuum">Maximum vacuum</a> <a class="btn btn--deep" href="#parts">Request parts</a> <a class="btn btn--deep" href="#maple-range">See the pumps</a></div>
+<div class="hero-cta"><a class="btn btn--solid" href="#contact"><span>Request a maple quote</span></a> <a class="btn btn--deep" href="#max-vacuum">Maximum vacuum</a> <a class="btn btn--deep" href="#parts">Request parts</a> <a class="btn btn--deep" href="#maple-range">See the pumps</a> <a class="btn btn--deep" href="tel:+14388804655"><span>Call +1 438-880-4655</span></a></div>
+<ul class="trust"><li>Up to 29.9 inHg vacuum</li><li>Direct from Stratovac, in Quebec</li><li>Parts for AirTech Vacuum pumps sold by CDL</li></ul>
 <ul class="facts"><li><strong>29.9 inHg</strong><span>maximum vacuum, 0.1 mbar absolute</span></li><li><strong>18</strong><span>models, from 12 to 780 m³/h</span></li><li><strong>Parts</strong><span>for AirTech Vacuum pumps sold by CDL</span></li><li><strong>Direct</strong><span>from Stratovac, no middleman</span></li></ul></div></section>
 
 
@@ -613,13 +628,13 @@ table.mt{min-width:640px;font-size:.9rem}
 <div class="wrap contact-grid">
 <div>
 <div class="sec-head" style="margin-bottom:0">
-<h2>Send us your operating point</h2>
-<p>Give us the gas, the pressures, the flow and the duty cycle. We come back with a sized proposal.</p>
+<h2>Tell us about your sugar bush</h2>
+<p>Number of taps, your current pump and your power supply. We call or email you back with a quote, usually the same day.</p>
 </div>
 <ul class="ctl">
-<li><b>Email</b><div class="val"><span class="sel" id="c-mail">abruens@stratovac.ca</span>
+<li><b>Email</b><div class="val"><span class="sel" id="c-mail"><a class="mail" href="mailto:abruens@stratovac.ca">abruens@stratovac.ca</a></span>
 <button class="mini" data-copy="abruens@stratovac.ca" data-target="c-mail" type="button"><svg aria-hidden="true" class="ico"><use href="#i-copy"></use></svg><span>Copy</span></button></div></li>
-<li><b>Phone</b><div class="val"><span class="sel" id="c-tel">+1 438-880-4655</span>
+<li><b>Phone</b><div class="val"><span class="sel" id="c-tel"><a class="tel" href="tel:+14388804655">+1 438-880-4655</a></span>
 <button class="mini" data-copy="+1 438-880-4655" data-target="c-tel" type="button"><svg aria-hidden="true" class="ico"><use href="#i-copy"></use></svg><span>Copy</span></button></div></li>
 <li><b>Production sites</b><div class="val"><span>Fort Lauderdale, FL, USA · Barcelona, Spain</span></div></li>
 <li><b>Group</b><div class="val"><a href="https://id-industries.com" rel="noopener" target="_blank">id-industries.com</a></div></li>
@@ -629,26 +644,14 @@ table.mt{min-width:640px;font-size:.9rem}
 <h3>Quote request</h3>
 <p class="hint">Fill in what you know and send it. We reply by email.</p>
 <form autocomplete="on" class="form" id="qform">
-<div class="field"><label for="f-gas">Gas</label><input id="f-gas" name="gas" placeholder="Natural gas, biogas, N2, air…" required="" type="text"/></div>
-<div class="field"><label for="f-flow">Flow</label><input id="f-flow" name="flow" placeholder="e.g. 35 SCFM (59 m³/h)" type="text"/></div>
-<div class="field"><label for="f-in">Inlet pressure</label><input id="f-in" name="pin" placeholder="e.g. 100 psig (6.9 bar)" type="text"/></div>
-<div class="field"><label for="f-out">Target discharge pressure</label><input id="f-out" name="pout" placeholder="e.g. 400 psig (27.6 bar)" type="text"/></div>
-<div class="field"><label for="f-duty">Duty cycle</label>
-<select id="f-duty" name="duty">
-<option value="c">Continuous, 24/7</option>
-<option value="i">Intermittent</option>
-<option value="u">Not sure yet</option>
-</select></div>
-<div class="field"><label for="f-haz">Hazardous area</label>
-<select id="f-haz" name="haz">
-<option value="n">Not required</option>
-<option value="1">Class I Div. 1</option>
-<option value="2">Class I Div. 2</option>
-<option value="u">Not sure yet</option>
-</select></div>
-<div class="field"><label for="f-co">Company</label><input autocomplete="organization" id="f-co" name="company" type="text"/></div>
-<div class="field"><label for="f-mail">Email</label><input autocomplete="email" id="f-mail" name="email" required="" type="email"/></div>
-<div class="field full"><label for="f-notes">Notes</label><textarea id="f-notes" name="notes"></textarea></div>
+<div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" type="text" required=""/></div>
+<div class="field"><label for="f-tel">Phone</label><input id="f-tel" name="tel" autocomplete="tel" type="tel"/></div>
+<div class="field"><label for="f-mail">Email</label><input id="f-mail" name="email" autocomplete="email" type="email" required=""/></div>
+<div class="field"><label for="f-co">Sugar bush (optional)</label><input id="f-co" name="company" autocomplete="organization" type="text"/></div>
+<div class="field"><label for="f-a">Number of taps</label><input id="f-a" name="taps" autocomplete="off" placeholder="e.g. 3,000 taps" type="text"/></div>
+<div class="field"><label for="f-b">Current pump (brand and model)</label><input id="f-b" name="pump" autocomplete="off" placeholder="e.g. AirTech, CDL, or &quot;none yet&quot;" type="text"/></div>
+<div class="field"><label for="f-c">Power supply</label><input id="f-c" name="power" autocomplete="off" placeholder="e.g. 240 V single phase, 600 V three phase" type="text"/></div>
+<div class="field full"><label for="f-notes">Notes or parts needed</label><textarea id="f-notes" name="notes"></textarea></div>
 <input aria-hidden="true" autocomplete="off" name="botcheck" style="position:absolute;left:-9999px" tabindex="-1" type="checkbox"/>
 <div class="form-actions"><button class="btn btn--solid" type="submit">Send my request</button></div>
 <p aria-live="polite" class="sendstatus" id="sendstatus" role="status"></p>
@@ -773,18 +776,15 @@ table.mt{min-width:640px;font-size:.9rem}
   function selText(id){ var el = document.getElementById(id); return el && el.selectedIndex >= 0 ? el.options[el.selectedIndex].textContent : ''; }
 
   function buildText(){
-    var m = MSG[lang()], none = m.none;
-    var lines = [m.title, '',
-      m.gas + ': ' + (val('f-gas') || none),
-      m.pin + ': ' + (val('f-in') || none),
-      m.pout + ': ' + (val('f-out') || none),
-      m.flow + ': ' + (val('f-flow') || none),
-      m.duty + ': ' + selText('f-duty'),
-      m.haz + ': ' + selText('f-haz'),
-      m.co + ': ' + (val('f-co') || none),
-      m.mail + ': ' + (val('f-mail') || none)];
-    var n = val('f-notes');
-    if (n) lines.push(m.notes + ': ' + n);
+    var lines = ['Quote request, maple vacuum pump', ''];
+    lines.push('Name' + ': ' + (val('f-name') || '-'));
+    lines.push('Phone' + ': ' + (val('f-tel') || '-'));
+    lines.push('Email' + ': ' + (val('f-mail') || '-'));
+    lines.push('Sugar bush' + ': ' + (val('f-co') || '-'));
+    lines.push('Taps' + ': ' + (val('f-a') || '-'));
+    lines.push('Current pump' + ': ' + (val('f-b') || '-'));
+    lines.push('Power supply' + ': ' + (val('f-c') || '-'));
+    var n = val('f-notes'); if (n) lines.push('Notes' + ': ' + n);
     return lines.join('\n');
   }
 
@@ -807,13 +807,13 @@ table.mt{min-width:640px;font-size:.9rem}
       }
       if (form.elements['botcheck'] && form.elements['botcheck'].checked) return;
       btn.disabled = true; sendEl.className = 'sendstatus'; sendEl.textContent = m.sending; resEl.hidden = true;
-      var payload = { access_key: WEB3KEY, subject: m.subject + ' – ' + (val('f-co') || val('f-mail')),
-        from_name: 'Stratovac.ca', name: val('f-co') || val('f-mail'), email: val('f-mail'), message: buildText() };
+      var payload = { access_key: WEB3KEY, subject: m.subject + ' – ' + (val('f-name') || val('f-co') || val('f-mail')),
+        from_name: 'Stratovac.ca', name: val('f-name') || val('f-co') || val('f-mail'), email: val('f-mail'), phone: val('f-tel'), message: buildText() };
       fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
         .then(function(r){ return r.json(); })
         .then(function(d){
           btn.disabled = false;
-          if (d && d.success){ sendEl.className = 'sendstatus ok'; sendEl.textContent = m.sent; form.reset(); }
+          if (d && d.success){ try{ if(typeof gtag==='function') gtag('event','generate_lead',{page_path:location.pathname}); }catch(e){} sendEl.className = 'sendstatus ok'; sendEl.textContent = m.sent; form.reset(); }
           else { fallback(); }
         })
         .catch(function(){ btn.disabled = false; fallback(); });
@@ -852,6 +852,19 @@ table.mt{min-width:640px;font-size:.9rem}
       }
     });
   }
+})();
+</script>
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Contact Stratovac"><a class="sc-call" href="tel:+14388804655">Call</a><a class="sc-mail" href="mailto:abruens@stratovac.ca">Email</a><a class="sc-quote" href="#contact">Get a quote</a></div>
+<script id="track-contacts">
+(function(){
+  function ev(n,p){ try{ if(typeof gtag==='function') gtag('event',n,p||{}); }catch(e){} }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a'):null; if(!a) return;
+    var h=a.getAttribute('href')||'', where=a.closest('.sticky-cta')?'sticky_bar':(a.closest('.hero')?'hero':(a.closest('.contact-grid')?'contact_section':'page'));
+    if(h.indexOf('tel:')===0) ev('click_call',{link_location:where,page_path:location.pathname});
+    else if(h.indexOf('mailto:')===0) ev('click_email',{link_location:where,page_path:location.pathname});
+    else if(h.indexOf('#contact')===0) ev('click_quote_button',{link_location:where,page_path:location.pathname});
+  });
 })();
 </script>
 </body>

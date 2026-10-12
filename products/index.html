@@ -403,6 +403,20 @@ table.mt{min-width:640px;font-size:.9rem}
 .mp-cta p{color:var(--on-deep-2);margin-top:4px}
 @media (max-width:980px){ .mp-why{grid-template-columns:repeat(2,minmax(0,1fr))} .mp{grid-template-columns:minmax(0,1fr)} .mp-img{aspect-ratio:16/9;max-width:520px} .mp-opt,.mp-opt--r{grid-template-columns:minmax(0,1fr)} .mp-opt--r > .mp-pair{order:2} }
 @media (max-width:560px){ .mp-why{grid-template-columns:minmax(0,1fr)} }
+
+/* conversion: sticky contact bar (mobile) + trust chips */
+.sticky-cta{display:none}
+.trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 10px;margin:22px 0 0;padding:0}
+.trust li{border:1px solid var(--deep-line,rgba(255,255,255,.28));color:var(--on-deep,#fff);border-radius:999px;padding:7px 14px;font-size:.9rem;line-height:1.2;background:rgba(255,255,255,.06)}
+.val a.tel,.val a.mail{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){
+ .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--surface,#fff);border-top:1px solid var(--line,#d9dee7);box-shadow:0 -6px 24px rgba(0,0,0,.14)}
+ .sticky-cta a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;border:1px solid var(--line,#d9dee7);color:var(--ink,#111);background:var(--surface,#fff)}
+ .sticky-cta a.sc-call{background:var(--accent,#186cf0);border-color:var(--accent,#186cf0);color:#fff;flex:1.25}
+ .sticky-cta a.sc-quote{background:var(--ink,#0b1b34);border-color:var(--ink,#0b1b34);color:#fff}
+ body{padding-bottom:72px}
+ .cc{bottom:84px}
+}
 </style>
 <style>
 .lang a{display:inline-block;font:700 .76rem/1 var(--font-display);font-stretch:110%;letter-spacing:.04em;padding:7px 11px;border-radius:999px;color:var(--ink-2);text-decoration:none}
@@ -484,9 +498,9 @@ table.mt{min-width:640px;font-size:.9rem}
 <p>Give us the gas, the pressures, the flow and the duty cycle. We come back with a sized proposal.</p>
 </div>
 <ul class="ctl">
-<li><b>Email</b><div class="val"><span class="sel" id="c-mail">abruens@stratovac.ca</span>
+<li><b>Email</b><div class="val"><span class="sel" id="c-mail"><a class="mail" href="mailto:abruens@stratovac.ca">abruens@stratovac.ca</a></span>
 <button class="mini" data-copy="abruens@stratovac.ca" data-target="c-mail" type="button"><svg aria-hidden="true" class="ico"><use href="#i-copy"></use></svg><span>Copy</span></button></div></li>
-<li><b>Phone</b><div class="val"><span class="sel" id="c-tel">+1 438-880-4655</span>
+<li><b>Phone</b><div class="val"><span class="sel" id="c-tel"><a class="tel" href="tel:+14388804655">+1 438-880-4655</a></span>
 <button class="mini" data-copy="+1 438-880-4655" data-target="c-tel" type="button"><svg aria-hidden="true" class="ico"><use href="#i-copy"></use></svg><span>Copy</span></button></div></li>
 <li><b>Production sites</b><div class="val"><span>Fort Lauderdale, FL, USA · Barcelona, Spain</span></div></li>
 <li><b>Group</b><div class="val"><a href="https://id-industries.com" rel="noopener" target="_blank">id-industries.com</a></div></li>
@@ -680,7 +694,7 @@ table.mt{min-width:640px;font-size:.9rem}
         .then(function(r){ return r.json(); })
         .then(function(d){
           btn.disabled = false;
-          if (d && d.success){ sendEl.className = 'sendstatus ok'; sendEl.textContent = m.sent; form.reset(); }
+          if (d && d.success){ try{ if(typeof gtag==='function') gtag('event','generate_lead',{page_path:location.pathname}); }catch(e){} sendEl.className = 'sendstatus ok'; sendEl.textContent = m.sent; form.reset(); }
           else { fallback(); }
         })
         .catch(function(){ btn.disabled = false; fallback(); });
@@ -719,6 +733,19 @@ table.mt{min-width:640px;font-size:.9rem}
       }
     });
   }
+})();
+</script>
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Contact Stratovac"><a class="sc-call" href="tel:+14388804655">Call</a><a class="sc-mail" href="mailto:abruens@stratovac.ca">Email</a><a class="sc-quote" href="#contact">Get a quote</a></div>
+<script id="track-contacts">
+(function(){
+  function ev(n,p){ try{ if(typeof gtag==='function') gtag('event',n,p||{}); }catch(e){} }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a'):null; if(!a) return;
+    var h=a.getAttribute('href')||'', where=a.closest('.sticky-cta')?'sticky_bar':(a.closest('.hero')?'hero':(a.closest('.contact-grid')?'contact_section':'page'));
+    if(h.indexOf('tel:')===0) ev('click_call',{link_location:where,page_path:location.pathname});
+    else if(h.indexOf('mailto:')===0) ev('click_email',{link_location:where,page_path:location.pathname});
+    else if(h.indexOf('#contact')===0) ev('click_quote_button',{link_location:where,page_path:location.pathname});
+  });
 })();
 </script>
 </body>
