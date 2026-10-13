@@ -49,6 +49,8 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 ## Optional
 - [Sitemap](https://stratovac.ca/sitemap.xml)
 
+- [Turbo blower with magnetic gearbox](https://stratovac.ca/magnetic-gearbox-turbo-blower/): single-stage turbo blower driven through a canned magnetic gearbox, any motor including explosion-proof, for biogas, gas compression and air.
+
 ## Free tools
 
 - [Unit converter](https://stratovac.ca/unit-converter/): CFM to m³/h, inches of water to inches of mercury, psi, bar, mbar, vacuum level (inHg to mbar absolute), power and temperature.

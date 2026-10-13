@@ -364,4 +364,18 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/vide-industriel/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/industrial-vacuum/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/magnetic-gearbox-turbo-blower/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/magnetic-gearbox-turbo-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-turbo-engrenage-magnetique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/magnetic-gearbox-turbo-blower/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/soufflante-turbo-engrenage-magnetique/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/magnetic-gearbox-turbo-blower/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-turbo-engrenage-magnetique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/magnetic-gearbox-turbo-blower/"/>
+  </url>
 </urlset>
