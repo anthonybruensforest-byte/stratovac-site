@@ -55,3 +55,18 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - [Pressure drop calculator](https://stratovac.ca/pressure-drop-calculator/): pressure loss in air, gas and vacuum piping from flow, pipe diameter, length and fittings.
 - [Convertisseur d’unités (français)](https://stratovac.ca/fr/convertisseur-unites/)
 - [Calculateur de perte de charge (français)](https://stratovac.ca/fr/calculateur-perte-de-charge/)
+
+## Applications
+
+- [Applications](https://stratovac.ca/applications/): biogas, natural gas, hydrogen fuel cells, robotics, medical, dental, nuclear, aquaculture, compressed air and nitrogen, maple vacuum, industrial vacuum.
+- [Biogas and renewable natural gas](https://stratovac.ca/applications/biogas/)
+- [Natural gas treatment](https://stratovac.ca/applications/natural-gas/)
+- [Hydrogen and fuel cells](https://stratovac.ca/applications/hydrogen-fuel-cells/)
+- [Collaborative robotics and pick-and-place](https://stratovac.ca/applications/robotics/)
+- [Medical and respiratory equipment](https://stratovac.ca/applications/medical-respiratory/)
+- [Portable and clinical dental vacuum](https://stratovac.ca/applications/dental/)
+- [Nuclear and radioactive gas](https://stratovac.ca/applications/nuclear/)
+- [Aquaculture and live-holding tanks](https://stratovac.ca/applications/aquaculture/)
+- [Compressed air and nitrogen boosting](https://stratovac.ca/applications/compressed-air-nitrogen/)
+- [Maple sugaring vacuum](https://stratovac.ca/applications/maple-sugaring/)
+- [Industrial vacuum](https://stratovac.ca/applications/industrial-vacuum/)

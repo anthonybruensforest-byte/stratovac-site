@@ -196,4 +196,172 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/calculateur-perte-de-charge/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/pressure-drop-calculator/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/applications/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/biogas/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/biogas/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/biogaz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/biogas/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/biogaz/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/biogas/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/biogaz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/biogas/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/natural-gas/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/natural-gas/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/gaz-naturel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/natural-gas/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/gaz-naturel/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/natural-gas/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/gaz-naturel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/natural-gas/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/hydrogen-fuel-cells/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/hydrogen-fuel-cells/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/piles-a-hydrogene/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/hydrogen-fuel-cells/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/piles-a-hydrogene/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/hydrogen-fuel-cells/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/piles-a-hydrogene/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/hydrogen-fuel-cells/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/robotics/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/robotics/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/robotique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/robotics/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/robotique/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/robotics/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/robotique/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/robotics/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/medical-respiratory/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/medical-respiratory/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/medical-respiratoire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/medical-respiratory/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/medical-respiratoire/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/medical-respiratory/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/medical-respiratoire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/medical-respiratory/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/dental/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/dental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/dentaire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/dental/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/dentaire/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/dental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/dentaire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/dental/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/nuclear/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/nuclear/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/nucleaire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/nuclear/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/nucleaire/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/nuclear/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/nucleaire/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/nuclear/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/aquaculture/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/aquaculture/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/aquaculture/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/aquaculture/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/aquaculture/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/aquaculture/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/aquaculture/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/aquaculture/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/compressed-air-nitrogen/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/compressed-air-nitrogen/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/air-comprime-azote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/compressed-air-nitrogen/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/air-comprime-azote/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/compressed-air-nitrogen/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/air-comprime-azote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/compressed-air-nitrogen/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/maple-sugaring/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/maple-sugaring/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/erabliere/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/maple-sugaring/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/erabliere/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/maple-sugaring/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/erabliere/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/maple-sugaring/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/applications/industrial-vacuum/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/industrial-vacuum/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/vide-industriel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/industrial-vacuum/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/applications/vide-industriel/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/applications/industrial-vacuum/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/applications/vide-industriel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/applications/industrial-vacuum/"/>
+  </url>
 </urlset>
