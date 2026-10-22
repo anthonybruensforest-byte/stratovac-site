@@ -13,7 +13,7 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 ## Standard equipment
 - [Electric high-pressure air booster](https://stratovac.ca/electric-air-booster/): A high-speed regenerative booster that doubles the pressure of compressed air or nitrogen on electric power alone. It replaces pneumatic and piston boosters without drawing compressed air or adding oil.
 - [Surpresseur d’air électrique haute pression (français)](https://stratovac.ca/fr/surpresseur-air-electrique/)
-- [Vacuum pumps for maple producers](https://stratovac.ca/maple-vacuum-pumps/): Oil-lubricated rotary vane pumps for sugar bushes, 12 to 780 m³/h, with an oil heater that keeps water out of the oil. Maximum vacuum up to 29.9 inHg (0.1 mbar absolute). Replacement parts available for AirTech Vacuum pumps sold by CDL.
+- [Vacuum pumps for maple producers](https://stratovac.ca/maple-vacuum-pumps/): Oil-lubricated rotary vane pumps for sugar bushes, 12 to 780 m³/h, with an oil heater that keeps water out of the oil. Maximum vacuum up to 29.9 inHg (0.1 mbar absolute). Replacement parts available for Airtech Vacuum pumps sold by CDL.
 - [Pompes à vide pour érablières (français)](https://stratovac.ca/fr/pompes-a-vide-erabliere/)
 - [Oil-free claw compressors](https://stratovac.ca/claw-compressors/): Dry-running, contact-free claw compressors, 68 to 600 m³/h, up to 2.2 bar, for clean low-pressure air.
 - [Compresseurs à griffes sans huile (français)](https://stratovac.ca/fr/compresseurs-a-griffes/)
