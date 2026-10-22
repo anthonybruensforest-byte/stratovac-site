@@ -1,7 +1,7 @@
 /* Stratovac cart: localStorage cart, server-priced checkout via Cloudflare Worker + HelcimPay.js */
 (function () {
   'use strict';
-  var API = 'https://stratovac-cart.stratovac.workers.dev/checkout'; // set at deploy
+  var API = 'https://stratovac-cart.anthony-bruens-forest.workers.dev/checkout'; // set at deploy
   var EN = document.documentElement.lang === 'en';
   var T = EN ? {
     add: 'Add to cart', added: 'Added', cart: 'Cart', empty: 'Your cart is empty.', sub: 'Subtotal', tax: 'Taxes', total: 'Total',
