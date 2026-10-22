@@ -26,6 +26,7 @@
   function save() { try { localStorage.setItem('sv_cart', JSON.stringify(cart)); } catch (e) {} }
   function fmt(n) { return n.toLocaleString(EN ? 'en-CA' : 'fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + (EN ? '' : ' ') + '$'; }
   function r2(n) { return Math.round(n * 100) / 100; }
+  function vlabel(v) { return v === '230S' ? (EN ? '230 V, single phase' : '230 V, monophasé') : v + ' V, 3 ph'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
   var css = '#svc-fab{position:fixed;right:16px;bottom:16px;z-index:9998;display:none;align-items:center;gap:8px;padding:12px 18px;border:0;border-radius:999px;background:var(--accent,#0b5fd6);color:var(--accent-ink,#fff);font:700 1rem var(--font-body,system-ui);cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}#svc-fab b{background:var(--accent-ink,#fff);color:var(--accent,#0a5fd0);border-radius:99px;padding:0 8px;font-size:.85rem}' +
@@ -67,7 +68,7 @@
     if (!cart.length) { dr.innerHTML = '<header><span>' + T.cart + '</span><button class="x" aria-label="' + T.close + '">×</button></header><div class="bd"><p>' + T.empty + '</p></div>'; dr.querySelector('.x').onclick = closeDr; return; }
     var h = '<header><span>' + T.cart + '</span><button class="x" aria-label="' + T.close + '">×</button></header><div class="bd">';
     cart.forEach(function (l, i) {
-      h += '<div class="svc-l"><div><strong>' + esc(l.n) + '</strong><br><small>' + esc(l.o) + (l.v ? ' · ' + l.v + ' V, 3 ph' : '') + '</small></div><div style="text-align:right">' + fmt(r2(l.p * l.q)) + '</div><div class="svc-q"><button data-i="' + i + '" data-d="-1" aria-label="-">−</button><span>' + l.q + '</span><button data-i="' + i + '" data-d="1" aria-label="+">+</button></div><div style="text-align:right"><button class="x" style="font-size:.85rem;text-decoration:underline" data-rm="' + i + '">' + T.remove + '</button></div></div>';
+      h += '<div class="svc-l"><div><strong>' + esc(l.n) + '</strong><br><small>' + esc(l.o) + (l.v ? ' · ' + vlabel(l.v) : '') + '</small></div><div style="text-align:right">' + fmt(r2(l.p * l.q)) + '</div><div class="svc-q"><button data-i="' + i + '" data-d="-1" aria-label="-">−</button><span>' + l.q + '</span><button data-i="' + i + '" data-d="1" aria-label="+">+</button></div><div style="text-align:right"><button class="x" style="font-size:.85rem;text-decoration:underline" data-rm="' + i + '">' + T.remove + '</button></div></div>';
     });
     h += '<div id="svc-f"><label for="svc-prov">' + T.prov + '</label><select id="svc-prov">' + PROV.map(function (p) { return '<option value="' + p[0] + '">' + p[1] + '</option>'; }).join('') + '</select>' +
       '<label for="svc-name">' + T.name + '</label><input id="svc-name" autocomplete="name"><label for="svc-email">' + T.email + '</label><input id="svc-email" type="email" autocomplete="email"><label for="svc-phone">' + T.phone + '</label><input id="svc-phone" type="tel" autocomplete="tel">' +
@@ -121,7 +122,7 @@
       b.onclick = function () {
         var m = b.dataset.model, q = 1, v = '';
         if (/-AM$/.test(b.dataset.sku)) { var sl = b.closest('td').querySelector('.sv-volt'); v = sl ? sl.value : ''; if (!v) { b.textContent = T.needVolt; if (sl) sl.focus(); setTimeout(function () { b.textContent = T.add; }, 2200); return; } }
-        add(b.dataset.sku, b.dataset.name, b.dataset.opt, +b.dataset.price, q, v);
+        add(b.dataset.sku, b.dataset.name, b.dataset.opt, (v === '230S' && b.dataset.price1) ? +b.dataset.price1 : +b.dataset.price, q, v);
         var cb = b.closest('tr').querySelector('.sv-htr input');
         if (cb && cb.checked) { add(m + '-HTR', b.dataset.name, T.heater + ' + ' + (EN ? 'oil level switch' : 'sonde de niveau'), +cb.dataset.price, 1); }
         b.textContent = T.added + ' ✓'; setTimeout(function () { b.textContent = T.add; }, 1400);
@@ -129,6 +130,11 @@
     });
     render();
   }
+  document.addEventListener('change', function (e) {
+    var sl = e.target; if (!sl.classList || !sl.classList.contains('sv-volt')) return;
+    var td = sl.closest('td'), b = td.querySelector('.sv-add'), n = (sl.value === '230S' && b.dataset.price1) ? +b.dataset.price1 : +b.dataset.price;
+    var tx = td.firstChild; if (tx && tx.nodeType === 3) tx.nodeValue = EN ? '$' + n.toLocaleString('en-CA') : n.toLocaleString('fr-CA').replace(/\u202f|\u00a0/g, ' ') + ' $';
+  });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
   if (!document.querySelector('script[src*="helcim-pay/services/start.js"]')) { var s = document.createElement('script'); s.src = 'https://secure.helcim.app/helcim-pay/services/start.js'; s.async = true; document.head.appendChild(s); }
 })();
