@@ -124,7 +124,7 @@
         if (/-AM$/.test(b.dataset.sku)) { var sl = b.closest('td').querySelector('.sv-volt'); v = sl ? sl.value : ''; if (!v) { b.textContent = T.needVolt; if (sl) sl.focus(); setTimeout(function () { b.textContent = T.add; }, 2200); return; } }
         add(b.dataset.sku, b.dataset.name, b.dataset.opt, (v === '230S' && b.dataset.price1) ? +b.dataset.price1 : +b.dataset.price, q, v);
         var cb = b.closest('tr').querySelector('.sv-htr input');
-        if (cb && cb.checked) { add(m + '-HTR', b.dataset.name, T.heater + ' + ' + (EN ? 'oil level switch' : 'sonde de niveau'), +cb.dataset.price, 1); }
+        if (cb && cb.checked) { add(m + '-HTR', b.dataset.name, T.heater + ' + ' + (EN ? 'oil level switch, 230 V single phase' : 'sonde de niveau, 230 V monophasé'), +cb.dataset.price, 1); }
         b.textContent = T.added + ' ✓'; setTimeout(function () { b.textContent = T.add; }, 1400);
       };
     });
