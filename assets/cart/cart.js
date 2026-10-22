@@ -8,14 +8,14 @@
     prov: 'Delivery province', name: 'Full name', email: 'Email', phone: 'Phone', street: 'Street address', city: 'City', postal: 'Postal code',
     note: 'Note (motor voltage, delivery details, etc.)', pay: 'Pay by card', close: 'Close', remove: 'Remove',
     heater: 'Heater kit', htrOpt: 'Add heater kit', transport: 'Prices in CAD. Transport is not included (FOB Longueuil, Quebec): we send you the transport quote after your order. Taxes are based on your delivery province. All sales are final except for a defective pump.',
-    err: 'Payment could not be started. Please check the fields or contact us.', ok: 'Thank you! Your payment was approved. We will contact you shortly about transport.', declined: 'The payment was declined.',
+    err: 'Online payment is temporarily unavailable. Please check the fields, or contact us (Request a quote) and we will finalize your order.', ok: 'Thank you! Your payment was approved. We will contact you shortly about transport.', declined: 'The payment was declined.',
     working: 'Preparing payment…', need: 'Please fill in all fields.', needVolt: 'Choose the motor voltage first.', volt: 'Motor voltage'
   } : {
     add: 'Ajouter au panier', added: 'Ajouté', cart: 'Panier', empty: 'Votre panier est vide.', sub: 'Sous-total', tax: 'Taxes', total: 'Total',
     prov: 'Province de livraison', name: 'Nom complet', email: 'Courriel', phone: 'Téléphone', street: 'Adresse', city: 'Ville', postal: 'Code postal',
     note: 'Note (tension du moteur, détails de livraison, etc.)', pay: 'Payer par carte', close: 'Fermer', remove: 'Retirer',
     heater: 'Élément chauffant', htrOpt: 'Ajouter l’élément chauffant', transport: 'Prix en dollars canadiens. Le transport n’est pas inclus (FOB Longueuil, Québec): nous vous envoyons la soumission de transport après votre commande. Les taxes dépendent de votre province de livraison. Aucun retour, sauf si la pompe est défectueuse.',
-    err: 'Le paiement n’a pas pu démarrer. Vérifiez les champs ou contactez-nous.', ok: 'Merci! Votre paiement est approuvé. Nous vous contactons sous peu pour le transport.', declined: 'Le paiement a été refusé.',
+    err: 'Le paiement en ligne est temporairement indisponible. Vérifiez les champs, ou contactez-nous (Demander une soumission) et nous finaliserons votre commande.', ok: 'Merci! Votre paiement est approuvé. Nous vous contactons sous peu pour le transport.', declined: 'Le paiement a été refusé.',
     working: 'Préparation du paiement…', need: 'Veuillez remplir tous les champs.', needVolt: 'Choisissez d’abord la tension du moteur.', volt: 'Tension du moteur'
   };
   var TAX = { QC: [['TPS', 5], ['TVQ', 9.975]], ON: [['TVH', 13]], NB: [['TVH', 15]], NL: [['TVH', 15]], PE: [['TVH', 15]], NS: [['TVH', 14]], BC: [['TPS', 5]], AB: [['TPS', 5]], SK: [['TPS', 5]], MB: [['TPS', 5]], YT: [['TPS', 5]], NT: [['TPS', 5]], NU: [['TPS', 5]] };
