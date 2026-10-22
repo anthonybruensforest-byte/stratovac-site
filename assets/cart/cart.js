@@ -9,14 +9,14 @@
     note: 'Note (motor voltage, delivery details, etc.)', pay: 'Pay by card', close: 'Close', remove: 'Remove',
     heater: 'Heater kit', htrOpt: 'Add heater kit', transport: 'Prices in CAD. Transport is not included (FOB Longueuil, Quebec): we send you the transport quote after your order. Taxes are based on your delivery province. All sales are final except for a defective pump.',
     err: 'Payment could not be started. Please check the fields or contact us.', ok: 'Thank you! Your payment was approved. We will contact you shortly about transport.', declined: 'The payment was declined.',
-    working: 'Preparing payment…', need: 'Please fill in all fields.', modelLbl: 'model', cadNote: 'CA$'
+    working: 'Preparing payment…', need: 'Please fill in all fields.', needVolt: 'Choose the motor voltage first.', volt: 'Motor voltage'
   } : {
     add: 'Ajouter au panier', added: 'Ajouté', cart: 'Panier', empty: 'Votre panier est vide.', sub: 'Sous-total', tax: 'Taxes', total: 'Total',
     prov: 'Province de livraison', name: 'Nom complet', email: 'Courriel', phone: 'Téléphone', street: 'Adresse', city: 'Ville', postal: 'Code postal',
     note: 'Note (tension du moteur, détails de livraison, etc.)', pay: 'Payer par carte', close: 'Fermer', remove: 'Retirer',
     heater: 'Élément chauffant', htrOpt: 'Ajouter l’élément chauffant', transport: 'Prix en dollars canadiens. Le transport n’est pas inclus (FOB Longueuil, Québec): nous vous envoyons la soumission de transport après votre commande. Les taxes dépendent de votre province de livraison. Aucun retour, sauf si la pompe est défectueuse.',
     err: 'Le paiement n’a pas pu démarrer. Vérifiez les champs ou contactez-nous.', ok: 'Merci! Votre paiement est approuvé. Nous vous contactons sous peu pour le transport.', declined: 'Le paiement a été refusé.',
-    working: 'Préparation du paiement…', need: 'Veuillez remplir tous les champs.', modelLbl: 'modèle', cadNote: '$'
+    working: 'Préparation du paiement…', need: 'Veuillez remplir tous les champs.', needVolt: 'Choisissez d’abord la tension du moteur.', volt: 'Tension du moteur'
   };
   var TAX = { QC: [['TPS', 5], ['TVQ', 9.975]], ON: [['TVH', 13]], NB: [['TVH', 15]], NL: [['TVH', 15]], PE: [['TVH', 15]], NS: [['TVH', 14]], BC: [['TPS', 5]], AB: [['TPS', 5]], SK: [['TPS', 5]], MB: [['TPS', 5]], YT: [['TPS', 5]], NT: [['TPS', 5]], NU: [['TPS', 5]] };
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'Nouveau-Brunswick / New Brunswick'], ['NS', 'Nouvelle-Écosse / Nova Scotia'], ['PE', 'Île-du-Prince-Édouard / PEI'], ['NL', 'Terre-Neuve / Newfoundland'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'Colombie-Britannique / British Columbia'], ['YT', 'Yukon'], ['NT', 'Territoires du Nord-Ouest / NWT'], ['NU', 'Nunavut']];
@@ -36,7 +36,7 @@
     '.svc-r{display:flex;justify-content:space-between;padding:3px 0}.svc-r.t{font-weight:700;font-size:1.1rem;border-top:1px solid var(--line,#cdd3de);margin-top:6px;padding-top:8px}' +
     '#svc-f{display:grid;gap:8px;margin-top:14px}#svc-f input,#svc-f select,#svc-f textarea{width:100%;font:inherit;color:var(--ink,#0d1526);background:var(--surface,#fff);border:1px solid var(--line,#cdd3de);border-radius:6px;padding:9px 11px}#svc-f label{font-size:.82rem;opacity:.85}' +
     '#svc-pay{margin-top:12px;width:100%;padding:13px;border:0;border-radius:8px;background:var(--accent,#0b5fd6);color:var(--accent-ink,#fff);font:700 1rem inherit;cursor:pointer}#svc-pay[disabled]{opacity:.6}.svc-n{font-size:.8rem;opacity:.75;margin-top:10px}#svc-msg{margin-top:10px;font-weight:600}' +
-    '.sv-add{display:inline-block;margin-top:6px;padding:4px 12px;font:600 .82rem/1.5 inherit;border-radius:6px;border:1.5px solid currentColor;background:none;cursor:pointer;color:var(--accent,#0b5fd6)}.sv-htr{display:flex;gap:8px;align-items:center;font-size:.92rem;font-weight:500;line-height:1.3;cursor:pointer;white-space:normal;min-width:150px}.sv-htr input{flex:none;width:20px;height:20px;accent-color:var(--accent,#0a5fd0)}.sv-htr strong{white-space:nowrap;color:var(--accent,#0a5fd0)}';
+    '.sv-add{display:inline-block;margin-top:6px;padding:4px 12px;font:600 .82rem/1.5 inherit;border-radius:6px;border:1.5px solid currentColor;background:none;cursor:pointer;color:var(--accent,#0b5fd6)}.sv-volt{display:block;margin-top:6px;max-width:100%;padding:4px 6px;font:500 .82rem var(--font-body,system-ui);color:var(--ink,#0d1526);background:var(--surface,#fff);border:1px solid var(--line,#cdd3de);border-radius:6px}.sv-add{white-space:normal}.sv-htr{display:flex;gap:8px;align-items:center;font-size:.92rem;font-weight:500;line-height:1.3;cursor:pointer;white-space:normal;min-width:150px}.sv-htr input{flex:none;width:20px;height:20px;accent-color:var(--accent,#0a5fd0)}.sv-htr strong{white-space:nowrap;color:var(--accent,#0a5fd0)}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
   var fab = document.createElement('button'); fab.id = 'svc-fab'; fab.type = 'button';
@@ -49,9 +49,10 @@
   function pumpQty(m) { return cart.reduce(function (s, l) { return s + (l.sku.indexOf(m + '-') === 0 && !/-HTR$/.test(l.sku) ? l.q : 0); }, 0); }
   function clamp() { cart = cart.filter(function (l) { return l.q > 0; }); cart.forEach(function (l) { if (/-HTR$/.test(l.sku)) { var m = l.sku.slice(0, -4), pq = pumpQty(m); if (l.q > pq) l.q = pq; } }); cart = cart.filter(function (l) { return l.q > 0; }); }
 
-  function add(sku, n, o, p, q) {
-    var l = cart.filter(function (x) { return x.sku === sku; })[0];
-    if (l) l.q = Math.min(20, l.q + q); else cart.push({ sku: sku, n: n, o: o, p: p, q: q });
+  function add(sku, n, o, p, q, v) {
+    v = v || '';
+    var l = cart.filter(function (x) { return x.sku === sku && (x.v || '') === v; })[0];
+    if (l) l.q = Math.min(20, l.q + q); else cart.push({ sku: sku, n: n, o: o, p: p, q: q, v: v });
     clamp(); save(); render();
   }
   function totals() {
@@ -95,7 +96,7 @@
     var cu = { name: g('svc-name'), email: g('svc-email'), phone: g('svc-phone'), street: g('svc-street'), city: g('svc-city'), postal: g('svc-postal') };
     if (!cu.name || !/^\S+@\S+\.\S+$/.test(cu.email) || cu.phone.replace(/\D/g, '').length < 10 || !cu.street || !cu.city || cu.postal.replace(/\s/g, '').length < 6) { msg(T.need); return; }
     btn.disabled = true; msg(T.working);
-    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: EN ? 'en' : 'fr', province: g('svc-prov'), customer: cu, note: g('svc-note'), items: cart.map(function (l) { return { sku: l.sku, qty: l.q }; }) }) })
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: EN ? 'en' : 'fr', province: g('svc-prov'), customer: cu, note: g('svc-note'), items: cart.map(function (l) { return { sku: l.sku, qty: l.q, volt: l.v || '' }; }) }) })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d.checkoutToken) throw new Error(d.error || 'x');
@@ -118,8 +119,9 @@
     document.querySelectorAll('.sv-add').forEach(function (b) {
       b.textContent = T.add;
       b.onclick = function () {
-        var m = b.dataset.model, q = 1;
-        add(b.dataset.sku, b.dataset.name, b.dataset.opt, +b.dataset.price, q);
+        var m = b.dataset.model, q = 1, v = '';
+        if (/-AM$/.test(b.dataset.sku)) { var sl = b.closest('td').querySelector('.sv-volt'); v = sl ? sl.value : ''; if (!v) { b.textContent = T.needVolt; if (sl) sl.focus(); setTimeout(function () { b.textContent = T.add; }, 2200); return; } }
+        add(b.dataset.sku, b.dataset.name, b.dataset.opt, +b.dataset.price, q, v);
         var cb = b.closest('tr').querySelector('.sv-htr input');
         if (cb && cb.checked) { add(m + '-HTR', b.dataset.name, T.heater + ' + ' + (EN ? 'oil level switch' : 'sonde de niveau'), +cb.dataset.price, 1); }
         b.textContent = T.added + ' ✓'; setTimeout(function () { b.textContent = T.add; }, 1400);
