@@ -8,14 +8,14 @@
     prov: 'Delivery province', name: 'Full name', email: 'Email', phone: 'Phone', street: 'Street address', city: 'City', postal: 'Postal code',
     note: 'Note (motor voltage, delivery details, etc.)', pay: 'Pay by card', close: 'Close', remove: 'Remove',
     heater: 'Heater kit', htrOpt: 'Add heater kit', transport: 'Prices in CAD. Transport is not included (FOB Longueuil, Quebec): we send you the transport quote after your order. Taxes are based on your delivery province. All sales are final except for a defective pump.',
-    err: 'Online payment is temporarily unavailable. Please check the fields, or contact us (Request a quote) and we will finalize your order.', ok: 'Thank you! Your payment was approved. We will contact you shortly about transport.', declined: 'The payment was declined.',
+    err: 'Online payment is temporarily unavailable. Please check the fields, or contact us (Request a quote) and we will finalize your order.', ok: 'Thank you! Your payment was approved. A confirmation email with your invoice is on its way. We will contact you shortly about transport.', declined: 'The payment was declined.',
     working: 'Preparing payment…', need: 'Please fill in all fields.', needVolt: 'Choose the motor voltage first.', volt: 'Motor voltage'
   } : {
     add: 'Ajouter au panier', added: 'Ajouté', cart: 'Panier', empty: 'Votre panier est vide.', sub: 'Sous-total', tax: 'Taxes', total: 'Total',
     prov: 'Province de livraison', name: 'Nom complet', email: 'Courriel', phone: 'Téléphone', street: 'Adresse', city: 'Ville', postal: 'Code postal',
     note: 'Note (tension du moteur, détails de livraison, etc.)', pay: 'Payer par carte', close: 'Fermer', remove: 'Retirer',
     heater: 'Élément chauffant', htrOpt: 'Ajouter l’élément chauffant', transport: 'Prix en dollars canadiens. Le transport n’est pas inclus (FOB Longueuil, Québec): nous vous envoyons la soumission de transport après votre commande. Les taxes dépendent de votre province de livraison. Aucun retour, sauf si la pompe est défectueuse.',
-    err: 'Le paiement en ligne est temporairement indisponible. Vérifiez les champs, ou contactez-nous (Demander une soumission) et nous finaliserons votre commande.', ok: 'Merci! Votre paiement est approuvé. Nous vous contactons sous peu pour le transport.', declined: 'Le paiement a été refusé.',
+    err: 'Le paiement en ligne est temporairement indisponible. Vérifiez les champs, ou contactez-nous (Demander une soumission) et nous finaliserons votre commande.', ok: 'Merci! Votre paiement est approuvé. Un courriel de confirmation avec votre facture vous est envoyé. Nous vous contactons sous peu pour le transport.', declined: 'Le paiement a été refusé.',
     working: 'Préparation du paiement…', need: 'Veuillez remplir tous les champs.', needVolt: 'Choisissez d’abord la tension du moteur.', volt: 'Tension du moteur'
   };
   var TAX = { QC: [['TPS', 5], ['TVQ', 9.975]], ON: [['TVH', 13]], NB: [['TVH', 15]], NL: [['TVH', 15]], PE: [['TVH', 15]], NS: [['TVH', 14]], BC: [['TPS', 5]], AB: [['TPS', 5]], SK: [['TPS', 5]], MB: [['TPS', 5]], YT: [['TPS', 5]], NT: [['TPS', 5]], NU: [['TPS', 5]] };
@@ -92,12 +92,23 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDr(); });
 
   function msg(t) { var m = document.getElementById('svc-msg'); if (m) m.textContent = t; }
+  function confirmOrder(m, payload) {
+    // Asks the worker to verify the payment with Helcim and email the invoice (never blocks the customer).
+    try {
+      if (typeof m === 'string') m = JSON.parse(m);
+      var id = m && ((m.data && m.data.data && m.data.data.transactionId) || (m.data && m.data.transactionId) || m.transactionId);
+      if (!id) return;
+      var body = JSON.stringify(Object.assign({ transactionId: String(id) }, payload));
+      fetch(API.replace('/checkout', '/confirm'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
   function pay() {
     var g = function (id) { return (document.getElementById(id).value || '').trim(); }, btn = document.getElementById('svc-pay');
     var cu = { name: g('svc-name'), email: g('svc-email'), phone: g('svc-phone'), street: g('svc-street'), city: g('svc-city'), postal: g('svc-postal') };
     if (!cu.name || !/^\S+@\S+\.\S+$/.test(cu.email) || cu.phone.replace(/\D/g, '').length < 10 || !cu.street || !cu.city || cu.postal.replace(/\s/g, '').length < 6) { msg(T.need); return; }
     btn.disabled = true; msg(T.working);
-    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: EN ? 'en' : 'fr', province: g('svc-prov'), customer: cu, note: g('svc-note'), items: cart.map(function (l) { return { sku: l.sku, qty: l.q, volt: l.v || '' }; }) }) })
+    var payload = { lang: EN ? 'en' : 'fr', province: g('svc-prov'), customer: cu, note: g('svc-note'), items: cart.map(function (l) { return { sku: l.sku, qty: l.q, volt: l.v || '' }; }) };
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d.checkoutToken) throw new Error(d.error || 'x');
@@ -105,7 +116,7 @@
         var key = 'helcim-pay-js-' + d.checkoutToken;
         function on(ev) {
           if (!ev.data || ev.data.eventName !== key) return;
-          if (ev.data.eventStatus === 'SUCCESS') { window.removeEventListener('message', on); try { window.removeHelcimPayIframe(); } catch (e) {} cart = []; save(); render(); closeDr(); alert(T.ok); }
+          if (ev.data.eventStatus === 'SUCCESS') { window.removeEventListener('message', on); confirmOrder(ev.data.eventMessage, payload); try { window.removeHelcimPayIframe(); } catch (e) {} cart = []; save(); render(); closeDr(); alert(T.ok); }
           else if (ev.data.eventStatus === 'ABORTED') { msg(T.declined); }
           else if (ev.data.eventStatus === 'HIDE') { window.removeEventListener('message', on); }
         }
