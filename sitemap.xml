@@ -378,4 +378,46 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/soufflante-turbo-engrenage-magnetique/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/magnetic-gearbox-turbo-blower/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/terms-of-use/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/terms-of-use/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/conditions-utilisation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/terms-of-use/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/conditions-utilisation/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/terms-of-use/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/conditions-utilisation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/terms-of-use/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/terms-of-sale/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/terms-of-sale/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/conditions-de-vente/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/terms-of-sale/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/conditions-de-vente/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/terms-of-sale/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/conditions-de-vente/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/terms-of-sale/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/privacy-policy/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/politique-de-confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/privacy-policy/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/politique-de-confidentialite/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/politique-de-confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/privacy-policy/"/>
+  </url>
 </urlset>
