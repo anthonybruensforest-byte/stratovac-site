@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>26A15-0127 | Stratovac</title>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="theme-color" content="#08101f"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--paper:#eef0f4;--surface:#fff;--ink:#0d1526;--ink-2:#4a566c;--line:#cdd3de;--accent:#0a5fd0;--accent-wash:rgba(10,95,208,.08);
+--deep:#08101f;--on-deep:#f1f4fa;--on-deep-2:#a9b6cf;--ok:#1f8a4c;--warn:#c47a00;--bad:#c62828;
+--font-display:'Archivo','Arial Narrow',system-ui,sans-serif;--font-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0d1529;--surface:#121c34;--ink:#e9eef8;--ink-2:#9eacc5;--line:#243252;--accent:#5aa9ff;--accent-wash:rgba(90,169,255,.1);color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--font-body)}
+header{background:var(--deep);color:var(--on-deep)}
+.bar{max-width:760px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bar img{height:40px;width:auto;display:block}
+.lang{background:none;border:1px solid #33456e;color:var(--on-deep);border-radius:6px;padding:6px 12px;font:600 13px var(--font-body);cursor:pointer}
+.hero{max-width:760px;margin:0 auto;padding:8px 16px 28px}
+.hero .k{color:var(--on-deep-2);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font:800 clamp(28px,7vw,40px)/1.1 var(--font-display);font-stretch:85%;margin:4px 0 2px}
+.hero .sn{color:var(--on-deep-2);font-size:15px}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px;display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h2{font:700 20px/1.2 var(--font-display);margin:0 0 12px}
+dl{display:grid;grid-template-columns:minmax(150px,42%) 1fr;column-gap:12px;margin:0}
+dt,dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line)}
+dt{color:var(--ink-2);font-size:14px}dd{font-weight:600}
+dl>:nth-last-child(-n+2){border-bottom:0}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:8px;padding:11px 18px;font:600 15px var(--font-body);text-decoration:none;cursor:pointer}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:6px;overflow:hidden;margin:14px 0 6px}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .6s}
+.due{font:800 30px/1.1 var(--font-display);margin:2px 0}
+.muted{color:var(--ink-2);font-size:14px}
+.pill{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--accent-wash);color:var(--accent)}
+form{display:grid;gap:14px}
+label{display:grid;gap:5px;font-size:14px;font-weight:600}
+label small{font-weight:400;color:var(--ink-2)}
+input,select{font:16px var(--font-body);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);width:100%}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:540px){.grid2{grid-template-columns:1fr}}
+.msg{font-size:14px;min-height:1.2em}
+.msg.err{color:var(--bad)}.msg.ok{color:var(--ok)}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--ink-2);font-size:13px;padding:0 16px 32px}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a href="/"><img src="/assets/img/stratovac-logo-light.png" alt="Stratovac" width="156" height="61"/></a>
+    <button class="lang" id="lang" type="button">EN</button>
+  </div>
+  <div class="hero">
+    <div class="k" data-t="kicker"></div>
+    <h1 id="model">STRT-A15-46037.540</h1>
+    <div class="sn"><span data-t="sn"></span> <strong>26A15-0127</strong></div>
+  </div>
+</header>
+<main>
+  <section class="card">
+    <h2 data-t="unit"></h2>
+    <dl>
+      <dt data-t="model"></dt><dd>STRT-A15-46037.540</dd>
+      <dt data-t="sn"></dt><dd>26A15-0127</dd>
+      <dt data-t="mfg"></dt><dd id="mfg"></dd>
+      <dt data-t="specs"></dt><dd>7.5 kW · 460 V 3~ 60 Hz · 40 kPa (5.8 psi) · 780 m³/h (459 CFM)</dd>
+    </dl>
+    <div class="row">
+      <a class="btn" href="/assets/pdf/STRT-A15-operating-manual-EN.pdf" target="_blank" rel="noopener" data-t="manual"></a>
+    </div>
+  </section>
+
+  <section class="card" id="status">
+    <h2 data-t="coreTitle"></h2>
+    <p class="muted" id="loading" data-t="loading"></p>
+    <div id="none" class="hidden">
+      <p data-t="notReg"></p>
+      <div class="row"><button class="btn" type="button" id="startBtn" data-t="register"></button></div>
+    </div>
+    <div id="reg" class="hidden">
+      <span class="pill" data-t="registered"></span>
+      <dl style="margin-top:12px">
+        <dt data-t="company"></dt><dd id="rCompany"></dd>
+        <dt data-t="commissioned"></dt><dd id="rDate"></dd>
+        <dt data-t="hpd"></dt><dd id="rHpd"></dd>
+        <dt data-t="lastCore"></dt><dd id="rCore"></dd>
+      </dl>
+      <div class="meter"><i id="bar"></i></div>
+      <div class="muted" id="used"></div>
+      <p class="muted" style="margin:14px 0 0" data-t="dueLabel"></p>
+      <div class="due" id="due"></div>
+      <p class="muted" id="dueNote"></p>
+      <div class="row">
+        <a class="btn" id="orderCore" data-t="orderCore"></a>
+        <button class="btn ghost" type="button" id="editBtn" data-t="edit"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="formCard">
+    <h2 data-t="formTitle"></h2>
+    <form id="f" novalidate>
+      <div class="grid2">
+        <label><span data-t="commissioned"></span><input type="date" name="commissioned" required/></label>
+        <label><span data-t="hpd"></span>
+          <select name="hours_per_day">
+            <option value="24" data-t="h24"></option><option value="20">20 h</option><option value="16">16 h</option>
+            <option value="12">12 h</option><option value="8">8 h</option><option value="4">4 h</option>
+          </select></label>
+      </div>
+      <label><span data-t="coreReplaced"></span><small data-t="coreReplacedHelp"></small><input type="date" name="core_replaced"/></label>
+      <label><span data-t="company"></span><input name="company" autocomplete="organization" maxlength="120" required/></label>
+      <div class="grid2">
+        <label><span data-t="name"></span><input name="name" autocomplete="name" maxlength="120"/></label>
+        <label><span data-t="phone"></span><input name="phone" type="tel" autocomplete="tel" maxlength="40"/></label>
+      </div>
+      <label><span data-t="email"></span><small data-t="emailHelp"></small><input name="email" type="email" autocomplete="email" maxlength="120"/></label>
+      <div class="row" style="margin:0"><button class="btn" type="submit" data-t="save"></button></div>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+  </section>
+</main>
+<footer>Stratovac · Longueuil (QC) Canada · <a href="tel:+14388804655">438-880-4655</a> · <a href="mailto:abruens@stratovac.ca">abruens@stratovac.ca</a></footer>
+
+<script>
+const API = "https://stratovac-units.anthony-bruens-forest.workers.dev";
+const SN = "26A15-0127";
+const T = {
+fr:{kicker:"Soufflante turbo haute vitesse",sn:"N° de série",unit:"Votre appareil",model:"Modèle",mfg:"Date de fabrication",specs:"Caractéristiques",
+manual:"Manuel d’utilisation (PDF)",coreTitle:"Suivi du core turbo",loading:"Chargement…",
+notReg:"Cet appareil n’est pas encore enregistré. Indiquez la date de mise en marche pour connaître la date de remplacement du core.",
+register:"Enregistrer la mise en marche",registered:"Appareil enregistré",company:"Entreprise",commissioned:"Date de mise en marche",
+hpd:"Heures de fonctionnement par jour",lastCore:"Dernier remplacement du core",none:"—",dueLabel:"Remplacement du core prévu vers le",
+used:(p,h,t)=>`${p} % de la durée de vie du core utilisée (≈ ${h} h sur ${t} h)`,
+note:"Estimation basée sur 18 mois d’opération en continu (24 h/24, 7 j/7). Communiquez avec Stratovac quelques semaines avant cette date.",
+overdue:"Échéance atteinte : communiquez avec Stratovac pour le remplacement du core.",
+orderCore:"Commander un core",edit:"Modifier les informations",formTitle:"Mise en marche",
+coreReplaced:"Date du dernier remplacement du core (optionnel)",coreReplacedHelp:"Laissez vide si le core d’origine est toujours en place.",
+name:"Nom du contact",phone:"Téléphone",email:"Courriel",emailHelp:"Pour recevoir un rappel avant le remplacement du core. Jamais affiché publiquement.",
+save:"Enregistrer",saving:"Enregistrement…",saved:"Enregistré. Merci!",h24:"24 h (en continu)",
+err:{bad_date:"Date de mise en marche invalide (doit être après la fabrication et pas dans le futur).",bad_hours:"Heures par jour invalides.",
+bad_email:"Courriel invalide.",bad_core_date:"Date de remplacement du core invalide.",net:"Erreur de connexion. Réessayez ou contactez Stratovac."},
+months:["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],loc:"fr-CA"},
+en:{kicker:"High-speed turbo blower",sn:"Serial No.",unit:"Your unit",model:"Model",mfg:"Manufacturing date",specs:"Specifications",
+manual:"Operating manual (PDF)",coreTitle:"Turbo core tracking",loading:"Loading…",
+notReg:"This unit is not registered yet. Enter the start-up date to see when the core should be replaced.",
+register:"Register start-up",registered:"Unit registered",company:"Company",commissioned:"Start-up date",
+hpd:"Operating hours per day",lastCore:"Last core replacement",none:"—",dueLabel:"Core replacement due around",
+used:(p,h,t)=>`${p}% of core life used (≈ ${h} h of ${t} h)`,
+note:"Estimate based on 18 months of continuous operation (24/7). Contact Stratovac a few weeks before this date.",
+overdue:"Due date reached: contact Stratovac to replace the core.",
+orderCore:"Order a core",edit:"Edit information",formTitle:"Start-up",
+coreReplaced:"Last core replacement date (optional)",coreReplacedHelp:"Leave empty if the original core is still installed.",
+name:"Contact name",phone:"Phone",email:"Email",emailHelp:"To get a reminder before the core replacement. Never shown publicly.",
+save:"Save",saving:"Saving…",saved:"Saved. Thank you!",h24:"24 h (continuous)",
+err:{bad_date:"Invalid start-up date (must be after manufacturing and not in the future).",bad_hours:"Invalid hours per day.",
+bad_email:"Invalid email.",bad_core_date:"Invalid core replacement date.",net:"Connection error. Try again or contact Stratovac."},
+months:["January","February","March","April","May","June","July","August","September","October","November","December"],loc:"en-CA"}};
+let lang = (()=>{try{return localStorage.getItem("sv-lang")}catch(e){return null}})() || ((navigator.language||"fr").toLowerCase().startsWith("fr")?"fr":"en");
+let data = null;
+const $ = id => document.getElementById(id);
+const fmtDate = s => { if(!s) return T[lang].none; const d=new Date(s+"T12:00:00"); return d.toLocaleDateString(T[lang].loc,{year:"numeric",month:"long",day:"numeric"}); };
+function apply(){
+  document.documentElement.lang = lang;
+  $("lang").textContent = lang==="fr"?"EN":"FR";
+  document.querySelectorAll("[data-t]").forEach(el=>{const v=T[lang][el.dataset.t]; if(typeof v==="string") el.textContent=v;});
+  if (data) render();
+}
+function render(){
+  const t=T[lang];
+  const [y,m]=data.mfg.split("-"); $("mfg").textContent = t.months[+m-1]+" "+y;
+  $("loading").classList.add("hidden");
+  $("none").classList.toggle("hidden", data.registered);
+  $("reg").classList.toggle("hidden", !data.registered);
+  if (!data.registered) return;
+  $("rCompany").textContent = data.company || t.none;
+  $("rDate").textContent = fmtDate(data.commissioned);
+  $("rHpd").textContent = data.hours_per_day + " h";
+  $("rCore").textContent = data.core_replaced ? fmtDate(data.core_replaced) : t.none;
+  const start = new Date((data.core_replaced||data.commissioned)+"T00:00:00");
+  const days = Math.max(0,(Date.now()-start)/864e5);
+  const hrs = Math.round(days*data.hours_per_day);
+  const pct = Math.min(100, Math.round(hrs/data.core_hours*100));
+  const due = new Date(start); due.setDate(due.getDate()+Math.ceil(data.core_hours/data.hours_per_day));
+  const bar=$("bar"); bar.style.width=pct+"%"; bar.style.background = pct>=100?"var(--bad)":pct>=85?"var(--warn)":"var(--ok)";
+  $("used").textContent = t.used(pct, hrs.toLocaleString(t.loc), data.core_hours.toLocaleString(t.loc));
+  $("due").textContent = due.toLocaleDateString(t.loc,{year:"numeric",month:"long",day:"numeric"});
+  $("dueNote").textContent = pct>=100 ? t.overdue : t.note;
+  const subj = encodeURIComponent((lang==="fr"?"Core turbo – ":"Turbo core – ")+data.model+" S/N "+SN);
+  $("orderCore").href = "mailto:abruens@stratovac.ca?subject="+subj;
+}
+function fill(){
+  const f=$("f"); if(!data) return;
+  f.commissioned.max = new Date().toISOString().slice(0,10);
+  f.commissioned.min = data.mfg+"-01";
+  if (data.registered){ f.commissioned.value=data.commissioned; f.hours_per_day.value=String(data.hours_per_day); f.company.value=data.company||""; f.core_replaced.value=data.core_replaced||""; }
+}
+function openForm(){ fill(); $("formCard").classList.remove("hidden"); $("formCard").scrollIntoView({behavior:"smooth"}); }
+$("startBtn").onclick=openForm; $("editBtn").onclick=openForm;
+$("lang").onclick=()=>{ lang = lang==="fr"?"en":"fr"; try{localStorage.setItem("sv-lang",lang)}catch(e){} apply(); };
+$("f").addEventListener("submit", async e=>{
+  e.preventDefault(); const f=e.target, t=T[lang], msg=$("msg");
+  if(!f.commissioned.value){ msg.className="msg err"; msg.textContent=t.err.bad_date; return; }
+  msg.className="msg"; msg.textContent=t.saving;
+  const body={commissioned:f.commissioned.value,hours_per_day:+f.hours_per_day.value,core_replaced:f.core_replaced.value,
+    company:f.company.value,name:f.name.value,phone:f.phone.value,email:f.email.value};
+  try{
+    const r=await fetch(API+"/api/unit/"+SN,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    const j=await r.json();
+    if(!r.ok){ msg.className="msg err"; msg.textContent=t.err[j.error]||t.err.net; return; }
+    data=j; render(); msg.className="msg ok"; msg.textContent=t.saved;
+    setTimeout(()=>{$("formCard").classList.add("hidden"); $("status").scrollIntoView({behavior:"smooth"});},900);
+  }catch(err){ msg.className="msg err"; msg.textContent=t.err.net; }
+});
+apply();
+fetch(API+"/api/unit/"+SN).then(r=>r.json()).then(j=>{ if(j.error) throw 0; data=j; render(); })
+  .catch(()=>{ $("loading").textContent=T[lang].err.net; });
+</script>
+</body>
+</html>
