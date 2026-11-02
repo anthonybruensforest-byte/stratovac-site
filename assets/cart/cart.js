@@ -25,6 +25,8 @@
   try { cart = JSON.parse(localStorage.getItem('sv_cart') || '[]'); } catch (e) { cart = []; }
   function save() { try { localStorage.setItem('sv_cart', JSON.stringify(cart)); } catch (e) {} }
   function fmt(n) { return n.toLocaleString(EN ? 'en-CA' : 'fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + (EN ? '' : ' ') + '$'; }
+  function ga(n, p) { try { if (typeof gtag === 'function') gtag('event', n, Object.assign({ currency: 'CAD', page_path: location.pathname }, p || {})); } catch (e) {} }
+  function gaItems() { return cart.map(function (l) { return { item_id: l.sku, item_name: l.n, item_variant: l.o, price: l.p, quantity: l.q }; }); }
   function r2(n) { return Math.round(n * 100) / 100; }
   function vlabel(v) { return v === '230S' ? (EN ? '230 V, single phase' : '230 V, monophasé') : v + ' V, 3 ph'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -55,6 +57,7 @@
     var l = cart.filter(function (x) { return x.sku === sku && (x.v || '') === v; })[0];
     if (l) l.q = Math.min(20, l.q + q); else cart.push({ sku: sku, n: n, o: o, p: p, q: q, v: v });
     clamp(); save(); render();
+    ga('add_to_cart', { value: r2(p * q), items: [{ item_id: sku, item_name: n, item_variant: o, price: p, quantity: q }] });
   }
   function totals() {
     var prov = (document.getElementById('svc-prov') || {}).value || 'QC', s = sub(), tl = (TAX[prov] || TAX.QC).map(function (t) { return [t[0] + ' ' + t[1] + ' %', r2(s * t[1] / 100)]; });
@@ -86,7 +89,7 @@
     t.tl.forEach(function (x) { h += '<div class="svc-r"><span>' + x[0] + '</span><span>' + fmt(x[1]) + '</span></div>'; });
     h += '<div class="svc-r t"><span>' + T.total + '</span><span>' + fmt(t.t) + '</span></div>'; document.getElementById('svc-tot').innerHTML = h;
   }
-  function openDr() { dr.classList.add('on'); ov.classList.add('on'); render(); }
+  function openDr() { dr.classList.add('on'); ov.classList.add('on'); render(); if (cart.length) ga('view_cart', { value: sub(), items: gaItems() }); }
   function closeDr() { dr.classList.remove('on'); ov.classList.remove('on'); }
   fab.onclick = openDr; ov.onclick = closeDr;
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDr(); });
@@ -106,7 +109,7 @@
     var g = function (id) { return (document.getElementById(id).value || '').trim(); }, btn = document.getElementById('svc-pay');
     var cu = { name: g('svc-name'), email: g('svc-email'), phone: g('svc-phone'), street: g('svc-street'), city: g('svc-city'), postal: g('svc-postal') };
     if (!cu.name || !/^\S+@\S+\.\S+$/.test(cu.email) || cu.phone.replace(/\D/g, '').length < 10 || !cu.street || !cu.city || cu.postal.replace(/\s/g, '').length < 6) { msg(T.need); return; }
-    btn.disabled = true; msg(T.working);
+    btn.disabled = true; msg(T.working); ga('begin_checkout', { value: sub(), items: gaItems() });
     var payload = { lang: EN ? 'en' : 'fr', province: g('svc-prov'), customer: cu, note: g('svc-note'), items: cart.map(function (l) { return { sku: l.sku, qty: l.q, volt: l.v || '' }; }) };
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (r) { return r.json(); })
@@ -116,14 +119,14 @@
         var key = 'helcim-pay-js-' + d.checkoutToken;
         function on(ev) {
           if (!ev.data || ev.data.eventName !== key) return;
-          if (ev.data.eventStatus === 'SUCCESS') { window.removeEventListener('message', on); confirmOrder(ev.data.eventMessage, payload); try { window.removeHelcimPayIframe(); } catch (e) {} cart = []; save(); render(); closeDr(); alert(T.ok); }
-          else if (ev.data.eventStatus === 'ABORTED') { msg(T.declined); }
+          if (ev.data.eventStatus === 'SUCCESS') { window.removeEventListener('message', on); ga('purchase', { transaction_id: d.checkoutToken.slice(0, 32), value: sub(), items: gaItems() }); confirmOrder(ev.data.eventMessage, payload); try { window.removeHelcimPayIframe(); } catch (e) {} cart = []; save(); render(); closeDr(); alert(T.ok); }
+          else if (ev.data.eventStatus === 'ABORTED') { msg(T.declined); ga('payment_declined', { value: sub() }); }
           else if (ev.data.eventStatus === 'HIDE') { window.removeEventListener('message', on); }
         }
         window.addEventListener('message', on);
         window.appendHelcimPayIframe(d.checkoutToken);
       })
-      .catch(function () { btn.disabled = false; msg(T.err); });
+      .catch(function () { btn.disabled = false; msg(T.err); ga('checkout_error', { value: sub() }); });
   }
 
   // Wire the price table buttons
