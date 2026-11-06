@@ -91,3 +91,15 @@
 .pt-point{margin:6px 0 8px}
 .pt-best td{background:var(--accent-wash)}
 .pt-tag{display:inline-block;font-size:.7rem;font-weight:700;color:var(--accent-ink);background:var(--accent);border-radius:99px;padding:1px 8px;vertical-align:middle}
+.pt-drop{display:grid;gap:4px;justify-items:center;text-align:center;padding:22px 18px;margin:0 0 18px;border:2px dashed var(--line);border-radius:10px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s}
+.pt-drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pt-drop strong{font-size:1.05rem}
+.pt-drop span{color:var(--ink-2);font-size:.9rem;max-width:62ch}
+.pt-drop small{color:var(--ink-2);font-size:.78rem}
+.pt-drop .pt-msg{color:var(--ink);margin:4px 0 0}
+.pt-drop:hover,.pt-drop.on,.pt-drop:focus-within{border-color:var(--accent);background:var(--accent-wash)}
+.pt-drop.busy{cursor:progress;opacity:.8}
+.pt-poread p{margin:0 0 6px}.pt-poread ul{margin:0 0 8px 18px;font-weight:400}.pt-poread .pt-sub{margin:8px 0 4px}
+.pt-pohint{margin:0 0 8px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:.92rem}
+.pt-msel{margin-top:4px;font:inherit;font-size:.82rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 6px}
+.pt-tag--warn{background:#b54708;color:#fff}
