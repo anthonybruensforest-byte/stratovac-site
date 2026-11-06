@@ -130,3 +130,12 @@ create policy "datasheets admin write" on storage.objects for all using (bucket_
 
 -- After your own account is created on the portal, make it the admin (replace the email):
 -- update public.profiles set is_admin = true, status = 'approved' where email = 'abruens@stratovac.ca';
+
+-- ---------- 60 Hz performance curves per blower frame (selector) ----------
+-- data: {flow_press:[[inH2O,CFM]...], flow_vac:[...], power_press:[[inH2O,HP]...], power_vac:[...]}
+create table if not exists public.perf_curves (frame text primary key, data jsonb not null);
+alter table public.perf_curves enable row level security;
+drop policy if exists "curves approved read" on public.perf_curves;
+create policy "curves approved read" on public.perf_curves for select using (public.is_approved());
+drop policy if exists "curves admin all" on public.perf_curves;
+create policy "curves admin all" on public.perf_curves for all using (public.is_admin()) with check (public.is_admin());

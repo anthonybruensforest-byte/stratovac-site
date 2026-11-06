@@ -23,7 +23,7 @@
     okCard: 'Merci ! Votre paiement est approuvé (commande no {n}). Nous vous contactons sous peu pour le transport.', payPending: 'Paiement reçu, vérification en cours (commande no {n}). Nous vous confirmerons par courriel.',
     declined: 'Le paiement a été refusé ou annulé.', err: 'Une erreur est survenue. Réessayez ou écrivez à abruens@stratovac.ca.', cardOff: 'Le paiement par carte n’est pas encore activé. Utilisez « Commander avec facture ».',
     noOrders: 'Aucune commande pour l’instant.', date: 'Date', status: 'Statut', items: 'Articles', st: { invoice_requested: 'Facture à envoyer', awaiting_payment: 'Paiement en attente', paid: 'Payée', processing: 'En préparation', shipped: 'Expédiée', cancelled: 'Annulée' },
-    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, back: 'Retour au catalogue', otherV: 'Autres tensions :', dlSheet: 'Fiche technique (PDF)', openSheet: 'Ouvrir la fiche technique dans un nouvel onglet', noSheet: 'Fiche technique disponible sur demande.', del: 'Supprimer', delConfirm: 'Confirmer la suppression', deleted: 'Client supprimé. Ses commandes passées sont conservées.', clickCust: 'Cliquez sur un client pour voir sa fiche et toutes ses commandes.', since: 'client depuis le', nOrders: 'Commandes', spent: 'Total acheté (avant taxes)', lastOrder: 'Dernière commande', close: 'Fermer', save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
+    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, sel: 'Trouver un surpresseur', selIntro: 'Entrez votre débit et votre pression (ou votre vide) : nous affichons les surpresseurs qui font le travail, du moins cher au plus cher.', pressLvl: 'Pression (relative)', vacLvl: 'Vide', find: 'Trouver', point: 'Point demandé :', at: 'à', flowAt: 'Débit au point', margin: 'Marge', maxDp: 'Max. du modèle', powerAt: 'Puissance au point', cheapest: 'le plus économique', stg: 'étage(s)', est: 'max. estimé', found: 'modèle(s) conviennent. Cliquez un modèle pour sa fiche technique.', noFit: 'Aucun surpresseur seul ne fait ce point.', twoUnits: 'Deux surpresseurs identiques en parallèle feraient le travail :', selNote: 'Calcul sur les courbes à 60 Hz, air à 20 °C (68 °F) au niveau de la mer, tolérance ±10 %. Moteurs 2 pôles, environ 3 450 tr/min. Pour un autre gaz, en altitude ou avec de l’air chaud à l’aspiration, contactez-nous pour valider la sélection.', back: 'Retour au catalogue', otherV: 'Autres tensions :', dlSheet: 'Fiche technique (PDF)', openSheet: 'Ouvrir la fiche technique dans un nouvel onglet', noSheet: 'Fiche technique disponible sur demande.', del: 'Supprimer', delConfirm: 'Confirmer la suppression', deleted: 'Client supprimé. Ses commandes passées sont conservées.', clickCust: 'Cliquez sur un client pour voir sa fiche et toutes ses commandes.', since: 'client depuis le', nOrders: 'Commandes', spent: 'Total acheté (avant taxes)', lastOrder: 'Dernière commande', close: 'Fermer', save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
     datasheet: 'Fiche', mode: { vacuum: 'vide', pressure: 'pression' }, ship: 'Livraison', taxNote: 'Taxes calculées à la commande'
   } : {
     login: 'Sign in', signup: 'Create an account', email: 'Email', pass: 'Password', pass2: 'New password', go: 'Sign in', create: 'Create my account',
@@ -43,7 +43,7 @@
     okCard: 'Thank you! Your payment was approved (order #{n}). We will contact you shortly about transport.', payPending: 'Payment received, verification in progress (order #{n}). We will confirm by email.',
     declined: 'The payment was declined or cancelled.', err: 'Something went wrong. Try again or write to abruens@stratovac.ca.', cardOff: 'Card payment is not enabled yet. Use “Order with invoice”.',
     noOrders: 'No orders yet.', date: 'Date', status: 'Status', items: 'Items', st: { invoice_requested: 'Invoice to send', awaiting_payment: 'Awaiting payment', paid: 'Paid', processing: 'In preparation', shipped: 'Shipped', cancelled: 'Cancelled' },
-    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, back: 'Back to catalog', otherV: 'Other voltages:', dlSheet: 'Datasheet (PDF)', openSheet: 'Open the datasheet in a new tab', noSheet: 'Datasheet available on request.', del: 'Delete', delConfirm: 'Confirm deletion', deleted: 'Customer deleted. Their past orders are kept.', clickCust: 'Click a customer to see their file and all their orders.', since: 'customer since', nOrders: 'Orders', spent: 'Total purchased (before tax)', lastOrder: 'Last order', close: 'Close', save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
+    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, sel: 'Blower selector', selIntro: 'Enter your flow and your pressure (or vacuum): we show the blowers that do the job, cheapest first.', pressLvl: 'Pressure (gauge)', vacLvl: 'Vacuum', find: 'Find', point: 'Requested point:', at: 'at', flowAt: 'Flow at point', margin: 'Margin', maxDp: 'Model max.', powerAt: 'Power at point', cheapest: 'most economical', stg: 'stage(s)', est: 'estimated max.', found: 'model(s) fit. Click a model for its datasheet.', noFit: 'No single blower reaches this point.', twoUnits: 'Two identical blowers in parallel would do the job:', selNote: 'Based on 60 Hz curves, air at 68 °F (20 °C) at sea level, ±10 % tolerance. 2-pole motors, about 3,450 rpm. For another gas, altitude or hot inlet air, contact us to validate the selection.', back: 'Back to catalog', otherV: 'Other voltages:', dlSheet: 'Datasheet (PDF)', openSheet: 'Open the datasheet in a new tab', noSheet: 'Datasheet available on request.', del: 'Delete', delConfirm: 'Confirm deletion', deleted: 'Customer deleted. Their past orders are kept.', clickCust: 'Click a customer to see their file and all their orders.', since: 'customer since', nOrders: 'Orders', spent: 'Total purchased (before tax)', lastOrder: 'Last order', close: 'Close', save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
     datasheet: 'Datasheet', mode: { vacuum: 'vacuum', pressure: 'pressure' }, ship: 'Delivery', taxNote: 'Taxes calculated at order'
   };
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
@@ -115,13 +115,14 @@
   // ---------- app shell ----------
   function shell() {
     var n = cart.reduce(function (s, l) { return s + l.qty; }, 0);
-    var tabs = [['cat', T.cat], ['cart', T.cart + (n ? ' (' + n + ')' : '')], ['orders', T.orders], ['account', T.account]];
+    var tabs = [['sel', T.sel], ['cat', T.cat], ['cart', T.cart + (n ? ' (' + n + ')' : '')], ['orders', T.orders], ['account', T.account]];
     if (S.prof && S.prof.is_admin) tabs.push(['admin', T.admin]);
     var bar = '<div class="pt-bar"><div class="pt-tabs" role="tablist">' + tabs.map(function (t) { return '<button type="button" data-t="' + t[0] + '" aria-selected="' + (S.tab === t[0]) + '">' + t[1] + '</button>'; }).join('') + '</div><div class="pt-who"><span>' + esc(S.prof.company || S.prof.email) + (disc() ? ' · ' + T.yourDisc + ' ' + num(disc()) + ' %' : '') + '</span><button class="pt-link" type="button" id="pt-out-btn">' + T.logout + '</button></div></div><div id="pt-view"></div>';
     root.innerHTML = bar;
     root.querySelectorAll('[data-t]').forEach(function (b) { b.onclick = function () { S.tab = b.dataset.t; history.replaceState(null, '', '#' + S.tab); shell(); }; });
     $('pt-out-btn').onclick = function () { sb.auth.signOut(); };
     if (S.tab === 'prod') return productView($('pt-view'));
+    if (S.tab === 'sel') return selView($('pt-view'));
     ({ cat: catView, cart: cartView, orders: ordersView, account: accountView, admin: adminView }[S.tab] || catView)($('pt-view'));
   }
 
@@ -173,10 +174,10 @@
   }
 
   // vacuum / pressure dialog with recommended filter + relief valve
-  function blowerDialog(p) {
+  function blowerDialog(p, preset) {
     var dlg = h('div', { class: 'pt-dlg-bg' }), box = h('div', { class: 'pt-dlg', role: 'dialog', 'aria-modal': 'true', 'aria-label': p.sku });
     dlg.appendChild(box); document.body.appendChild(dlg);
-    var mode = null;
+    var mode = preset || null;
     function accRows() {
       if (!mode) return '';
       var a = p.acc || {}, skus = mode === 'vacuum' ? [a.vac_filter, a.vac_valve] : [a.press_filter, a.press_valve];
@@ -212,11 +213,64 @@
   }
   function toast(t) { var d = h('div', { class: 'pt-toast', role: 'status' }, esc(t)); document.body.appendChild(d); setTimeout(function () { d.remove(); }, 1800); }
 
+  // ---------- selector: flow + pressure/vacuum -> blowers that do the job ----------
+  var DP = { inH2O: 1, psi: 27.7076, bar: 401.865, mbar: 0.401865, kPa: 4.01865, inHg: 13.5951 };
+  var QU = { CFM: 1, 'm³/h': 0.588578, 'L/min': 0.0353147 };
+  function lerp(c, x) { if (!c || !c.length || x < c[0][0] || x > c[c.length - 1][0]) return null; for (var i = 1; i < c.length; i++) if (x <= c[i][0]) { var a = c[i - 1], b = c[i]; return b[0] === a[0] ? a[1] : a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]); } return c[c.length - 1][1]; }
+  function selView(el) {
+    var f = S.selF || (S.selF = { mode: 'press', q: '', qu: 'CFM', dp: '', du: 'psi', v: '6' });
+    function opts(o, cur) { return Object.keys(o).map(function (k) { return '<option' + (k === cur ? ' selected' : '') + '>' + k + '</option>'; }).join(''); }
+    el.innerHTML = '<h2 class="pt-h" style="margin-top:6px">' + T.sel + '</h2><p class="pt-note" style="margin-top:0">' + T.selIntro + '</p>' +
+      '<form id="sf" class="pt-selform"><div class="pt-seg pt-seg--sm"><button type="button" data-m="press" aria-pressed="' + (f.mode === 'press') + '">' + T.press + '</button><button type="button" data-m="vac" aria-pressed="' + (f.mode === 'vac') + '">' + T.vac + '</button></div>' +
+      '<label>' + T.flow + '<span class="pt-in"><input id="sf-q" type="number" min="0" step="any" required value="' + esc(f.q) + '"><select id="sf-qu">' + opts(QU, f.qu) + '</select></span></label>' +
+      '<label id="sf-dpl">' + (f.mode === 'vac' ? T.vacLvl : T.pressLvl) + '<span class="pt-in"><input id="sf-dp" type="number" min="0" step="any" required value="' + esc(f.dp) + '"><select id="sf-du">' + opts(DP, f.du) + '</select></span></label>' +
+      '<label>' + T.volt + '<select id="sf-v"><option value="6"' + (f.v === '6' ? ' selected' : '') + '>' + T.v6 + '</option><option value="5"' + (f.v === '5' ? ' selected' : '') + '>' + T.v5 + '</option><option value="3"' + (f.v === '3' ? ' selected' : '') + '>' + T.v3 + '</option></select></label>' +
+      '<button class="btn btn--solid" type="submit">' + T.find + '</button></form><div id="sf-out"></div><p class="pt-note">' + T.selNote + '</p>';
+    el.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { read(); f.mode = b.dataset.m; if (f.mode === 'vac' && f.du === 'psi') f.du = 'inHg'; if (f.mode === 'press' && f.du === 'inHg') f.du = 'psi'; selView(el); }; });
+    function read() { f.q = v('sf-q'); f.qu = v('sf-qu'); f.dp = v('sf-dp'); f.du = v('sf-du'); f.v = v('sf-v'); }
+    $('sf').onsubmit = function (e) { e.preventDefault(); read(); run(); };
+    if (f.q && f.dp) run();
+    function run() {
+      var out = $('sf-out'), Q = Number(f.q) * QU[f.qu], dp = Number(f.dp) * DP[f.du];
+      if (!(Q > 0) || !(dp >= 0)) return;
+      out.innerHTML = '<p class="pt-note">' + T.working + '</p>';
+      (S.curves ? Promise.resolve() : sb.from('perf_curves').select('*').then(function (r) { S.curves = {}; (r.data || []).forEach(function (x) { S.curves[x.frame] = x.data; }); })).then(function () {
+        var press = f.mode === 'press', res = [], pair = [];
+        S.prods.forEach(function (p) {
+          if (p.kind !== 'blower' || !p.specs.perf || p.sku.slice(-1) !== f.v || p.list_price == null) return;
+          var pf = p.specs.perf, cv = S.curves[pf.frame]; if (!cv) return;
+          var lim = press ? pf.max_p : pf.max_v; if (!lim || dp > lim) return;
+          var qa = lerp(press ? cv.flow_press : cv.flow_vac, dp); if (qa == null) return;
+          var hp = lerp(press ? cv.power_press : cv.power_vac, dp);
+          var r = { p: p, qa: qa, hp: hp, lim: lim, est: pf.est, price: net(p.list_price) };
+          if (qa >= Q) res.push(r); else if (qa * 2 >= Q) pair.push(r);
+        });
+        res.sort(function (a, b) { return a.price - b.price || b.qa - a.qa; });
+        pair.sort(function (a, b) { return a.price - b.price; });
+        var head = '<p class="pt-point">' + T.point + ' <strong>' + num(Q, 0) + ' CFM · ' + num(Q / 0.588578, 0) + ' m³/h</strong> ' + T.at + ' <strong>' + (press ? '' : '−') + num(dp / DP.psi, 2) + ' psi · ' + num(dp / DP.mbar, 0) + ' mbar · ' + num(dp, 1) + ' inH₂O</strong>' + (press ? '' : ' (' + num(dp / DP.inHg, 2) + ' inHg)') + '</p>';
+        function rows(list, k) {
+          return '<div class="pt-tw"><table class="pt-t"><thead><tr><th>' + T.model + '</th><th>' + T.flowAt + '<br><small>CFM · m³/h</small></th><th>' + T.margin + '</th><th>' + T.maxDp + '<br><small>psi · mbar</small></th><th>' + T.powerAt + '<br><small>HP · kW</small></th><th class="r">' + T.yours + '</th><th></th></tr></thead><tbody>' +
+            list.slice(0, 15).map(function (r, i) {
+              var s = r.p.specs;
+              return '<tr' + (i === 0 ? ' class="pt-best"' : '') + '><td>' + (k > 1 ? '<strong>2 ×</strong> ' : '') + '<a class="pt-model" href="#p/' + encodeURIComponent(r.p.sku) + '"><strong>' + esc(r.p.sku) + '</strong></a>' + (i === 0 && k === 1 ? ' <span class="pt-tag">' + T.cheapest + '</span>' : '') + '<br><small>' + s.stages + ' ' + T.stg + ' · ' + num(s.kw) + ' kW · ' + esc(s.port || '') + '</small></td>' +
+                '<td>' + num(r.qa * k, 0) + ' · ' + num(r.qa * k / 0.588578, 0) + '</td><td>+' + num((r.qa * k / Q - 1) * 100, 0) + ' %</td><td>' + num(r.lim / DP.psi, 2) + ' · ' + num(r.lim / DP.mbar, 0) + (r.est ? '<br><small>' + T.est + '</small>' : '') + '</td>' +
+                '<td>' + (r.hp != null ? num(r.hp * k, 2) + ' · ' + num(r.hp * k * 0.7457, 2) : '–') + '</td><td class="r"><strong>' + usd(r.price * k) + '</strong></td><td><button class="pt-add" type="button" data-sa="' + esc(r.p.sku) + '" data-k="' + k + '">' + T.add + '</button></td></tr>';
+            }).join('') + '</tbody></table></div>';
+        }
+        var html = head;
+        if (res.length) html += '<p class="pt-note">' + res.length + ' ' + T.found + '</p>' + rows(res, 1);
+        else html += '<p class="pt-msg">' + T.noFit + '</p>' + (pair.length ? '<p class="pt-note">' + T.twoUnits + '</p>' + rows(pair, 2) : '');
+        out.innerHTML = html;
+        out.querySelectorAll('[data-sa]').forEach(function (b) { b.onclick = function () { blowerDialog(S.bySku[b.dataset.sa], press ? 'pressure' : 'vacuum'); }; });
+      });
+    }
+  }
+
   // ---------- product page (#p/SKU) ----------
   function route(first) {
     var hsh = decodeURIComponent((location.hash || '').slice(1));
     if (hsh.indexOf('p/') === 0 && S.bySku[hsh.slice(2)]) { S.tab = 'prod'; S.sku = hsh.slice(2); }
-    else if (['cat', 'cart', 'orders', 'account', 'admin'].indexOf(hsh) >= 0) S.tab = hsh;
+    else if (['sel', 'cat', 'cart', 'orders', 'account', 'admin'].indexOf(hsh) >= 0) S.tab = hsh;
     else if (!first) S.tab = 'cat';
     if (!first) { shell(); window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 90 }); }
   }
