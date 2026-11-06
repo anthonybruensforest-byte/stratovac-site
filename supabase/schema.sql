@@ -139,3 +139,14 @@ drop policy if exists "curves approved read" on public.perf_curves;
 create policy "curves approved read" on public.perf_curves for select using (public.is_approved());
 drop policy if exists "curves admin all" on public.perf_curves;
 create policy "curves admin all" on public.perf_curves for all using (public.is_admin()) with check (public.is_admin());
+
+-- ---------- customer purchase orders dropped on the portal ----------
+alter table public.orders add column if not exists po_file text;
+insert into storage.buckets (id, name, public) values ('po-uploads','po-uploads', false) on conflict (id) do nothing;
+drop policy if exists "po upload own" on storage.objects;
+create policy "po upload own" on storage.objects for insert with check (bucket_id = 'po-uploads' and public.is_approved() and (storage.foldername(name))[1] = auth.uid()::text);
+drop policy if exists "po read own or admin" on storage.objects;
+create policy "po read own or admin" on storage.objects for select using (bucket_id = 'po-uploads' and ((storage.foldername(name))[1] = auth.uid()::text or public.is_admin()));
+-- other manufacturers' model -> ID model base; server-side only (no client policy)
+create table if not exists public.xref (ext_key text primary key, id_base text not null);
+alter table public.xref enable row level security;

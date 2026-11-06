@@ -59,9 +59,10 @@ Deno.serve(async (req) => {
     if (ship.country === 'CA' && !TAX[ship.province]) return json({ error: 'province' }, 400);
     const total = r2(subtotal + taxes.reduce((a, t) => a + t.amount, 0));
 
+    const poFile = typeof body.po_file === 'string' && body.po_file.startsWith(user.id + '/') ? body.po_file.slice(0, 300) : null;
     const { data: order, error } = await db.from('orders').insert({
       user_id: user.id, status: method === 'card' ? 'awaiting_payment' : 'invoice_requested', pay_method: method, currency: 'USD',
-      discount_pct: disc, items, subtotal, taxes, total, ship, po_number: clean(body.po_number, 60) || null, note: clean(body.note, 1000) || null,
+      discount_pct: disc, items, subtotal, taxes, total, ship, po_number: clean(body.po_number, 60) || null, note: clean(body.note, 1000) || null, po_file: poFile,
     }).select('id,total,status').single();
     if (error || !order) return json({ error: 'db' }, 500);
 
