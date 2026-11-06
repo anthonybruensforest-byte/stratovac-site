@@ -23,7 +23,7 @@
     okCard: 'Merci ! Votre paiement est approuvé (commande no {n}). Nous vous contactons sous peu pour le transport.', payPending: 'Paiement reçu, vérification en cours (commande no {n}). Nous vous confirmerons par courriel.',
     declined: 'Le paiement a été refusé ou annulé.', err: 'Une erreur est survenue. Réessayez ou écrivez à abruens@stratovac.ca.', cardOff: 'Le paiement par carte n’est pas encore activé. Utilisez « Commander avec facture ».',
     noOrders: 'Aucune commande pour l’instant.', date: 'Date', status: 'Statut', items: 'Articles', st: { invoice_requested: 'Facture à envoyer', awaiting_payment: 'Paiement en attente', paid: 'Payée', processing: 'En préparation', shipped: 'Expédiée', cancelled: 'Annulée' },
-    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, del: 'Supprimer', delConfirm: 'Confirmer la suppression', deleted: 'Client supprimé. Ses commandes passées sont conservées.', clickCust: 'Cliquez sur un client pour voir sa fiche et toutes ses commandes.', since: 'client depuis le', nOrders: 'Commandes', spent: 'Total acheté (avant taxes)', lastOrder: 'Dernière commande', close: 'Fermer', save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
+    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, back: 'Retour au catalogue', otherV: 'Autres tensions :', dlSheet: 'Fiche technique (PDF)', openSheet: 'Ouvrir la fiche technique dans un nouvel onglet', noSheet: 'Fiche technique disponible sur demande.', del: 'Supprimer', delConfirm: 'Confirmer la suppression', deleted: 'Client supprimé. Ses commandes passées sont conservées.', clickCust: 'Cliquez sur un client pour voir sa fiche et toutes ses commandes.', since: 'client depuis le', nOrders: 'Commandes', spent: 'Total acheté (avant taxes)', lastOrder: 'Dernière commande', close: 'Fermer', save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
     datasheet: 'Fiche', mode: { vacuum: 'vide', pressure: 'pression' }, ship: 'Livraison', taxNote: 'Taxes calculées à la commande'
   } : {
     login: 'Sign in', signup: 'Create an account', email: 'Email', pass: 'Password', pass2: 'New password', go: 'Sign in', create: 'Create my account',
@@ -43,7 +43,7 @@
     okCard: 'Thank you! Your payment was approved (order #{n}). We will contact you shortly about transport.', payPending: 'Payment received, verification in progress (order #{n}). We will confirm by email.',
     declined: 'The payment was declined or cancelled.', err: 'Something went wrong. Try again or write to abruens@stratovac.ca.', cardOff: 'Card payment is not enabled yet. Use “Order with invoice”.',
     noOrders: 'No orders yet.', date: 'Date', status: 'Status', items: 'Items', st: { invoice_requested: 'Invoice to send', awaiting_payment: 'Awaiting payment', paid: 'Paid', processing: 'In preparation', shipped: 'Shipped', cancelled: 'Cancelled' },
-    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, del: 'Delete', delConfirm: 'Confirm deletion', deleted: 'Customer deleted. Their past orders are kept.', clickCust: 'Click a customer to see their file and all their orders.', since: 'customer since', nOrders: 'Orders', spent: 'Total purchased (before tax)', lastOrder: 'Last order', close: 'Close', save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
+    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, back: 'Back to catalog', otherV: 'Other voltages:', dlSheet: 'Datasheet (PDF)', openSheet: 'Open the datasheet in a new tab', noSheet: 'Datasheet available on request.', del: 'Delete', delConfirm: 'Confirm deletion', deleted: 'Customer deleted. Their past orders are kept.', clickCust: 'Click a customer to see their file and all their orders.', since: 'customer since', nOrders: 'Orders', spent: 'Total purchased (before tax)', lastOrder: 'Last order', close: 'Close', save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
     datasheet: 'Datasheet', mode: { vacuum: 'vacuum', pressure: 'pressure' }, ship: 'Delivery', taxNote: 'Taxes calculated at order'
   };
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
@@ -121,6 +121,7 @@
     root.innerHTML = bar;
     root.querySelectorAll('[data-t]').forEach(function (b) { b.onclick = function () { S.tab = b.dataset.t; history.replaceState(null, '', '#' + S.tab); shell(); }; });
     $('pt-out-btn').onclick = function () { sb.auth.signOut(); };
+    if (S.tab === 'prod') return productView($('pt-view'));
     ({ cat: catView, cart: cartView, orders: ordersView, account: accountView, admin: adminView }[S.tab] || catView)($('pt-view'));
   }
 
@@ -147,7 +148,7 @@
       }).sort(function (a, b) { return a.specs.cfm - b.specs.cfm || a.specs.stages - b.specs.stages || a.specs.kw - b.specs.kw || a.sku.localeCompare(b.sku); });
       $('pt-rows').innerHTML = list.map(function (p) {
         var s = p.specs;
-        return '<tr><td><strong>' + esc(p.sku) + '</strong><br><small>' + esc(pname(p)) + (s.double_flow ? ', ' + T.dbl : '') + '</small>' + dsLink(p) + '</td><td>' + num(s.cfm, 0) + ' · ' + num(s.m3h, 0) + '</td><td>' + num(s.hp) + ' · ' + num(s.kw) + '</td><td>' + s.stages + '</td><td>' + vlabel(s.volt) + '</td><td>' + esc(s.port || '') + '</td><td class="r pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td><td class="r"><strong>' + usd(net(p.list_price)) + '</strong></td><td><button class="pt-add" type="button" data-b="' + esc(p.sku) + '"' + (p.list_price == null ? ' disabled' : '') + '>' + T.add + '</button></td></tr>';
+        return '<tr><td><a class="pt-model" href="#p/' + encodeURIComponent(p.sku) + '"><strong>' + esc(p.sku) + '</strong></a><br><small>' + esc(pname(p)) + (s.double_flow ? ', ' + T.dbl : '') + '</small>' + '</td><td>' + num(s.cfm, 0) + ' · ' + num(s.m3h, 0) + '</td><td>' + num(s.hp) + ' · ' + num(s.kw) + '</td><td>' + s.stages + '</td><td>' + vlabel(s.volt) + '</td><td>' + esc(s.port || '') + '</td><td class="r pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td><td class="r"><strong>' + usd(net(p.list_price)) + '</strong></td><td><button class="pt-add" type="button" data-b="' + esc(p.sku) + '"' + (p.list_price == null ? ' disabled' : '') + '>' + T.add + '</button></td></tr>';
       }).join('') || '<tr><td colspan="9">' + T.none + '</td></tr>';
       $('pt-rows').querySelectorAll('[data-b]').forEach(function (b) { b.onclick = function () { blowerDialog(S.bySku[b.dataset.b]); }; });
     }
@@ -210,6 +211,43 @@
     draw(); box.querySelector('[data-u]').focus();
   }
   function toast(t) { var d = h('div', { class: 'pt-toast', role: 'status' }, esc(t)); document.body.appendChild(d); setTimeout(function () { d.remove(); }, 1800); }
+
+  // ---------- product page (#p/SKU) ----------
+  function route(first) {
+    var hsh = decodeURIComponent((location.hash || '').slice(1));
+    if (hsh.indexOf('p/') === 0 && S.bySku[hsh.slice(2)]) { S.tab = 'prod'; S.sku = hsh.slice(2); }
+    else if (['cat', 'cart', 'orders', 'account', 'admin'].indexOf(hsh) >= 0) S.tab = hsh;
+    else if (!first) S.tab = 'cat';
+    if (!first) { shell(); window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 90 }); }
+  }
+  function productView(el) {
+    var p = S.bySku[S.sku], s = p.specs, a = p.acc || {};
+    var sib = S.prods.filter(function (q) { return q.kind === 'blower' && q.sku.slice(0, -1) === p.sku.slice(0, -1) && q.sku !== p.sku; });
+    function accRow(sku, lab) { var q = S.bySku[sku]; return q ? '<tr><th>' + lab + '</th><td><strong>' + esc(q.sku) + '</strong> · ' + esc(T.kind[q.kind]) + ' ' + esc(q.specs.port || '') + '</td><td class="r">' + usd(net(q.list_price)) + '</td></tr>' : ''; }
+    el.innerHTML = '<p><a class="pt-link" href="#cat">← ' + T.back + '</a></p><div class="pt-prod"><div><h2 class="pt-h" style="margin-top:6px">' + esc(p.sku) + '</h2><p class="pt-note" style="margin-top:0">' + esc(pname(p)) + (s.double_flow ? ', ' + T.dbl : '') + '</p>' +
+      '<div class="pt-tw"><table class="pt-t pt-spec"><tbody>' +
+      '<tr><th>' + T.flow + '</th><td colspan="2">' + num(s.cfm, 0) + ' CFM · ' + num(s.m3h, 0) + ' m³/h</td></tr>' +
+      '<tr><th>' + T.power + '</th><td colspan="2">' + num(s.hp) + ' HP · ' + num(s.kw) + ' kW</td></tr>' +
+      '<tr><th>' + T.stages + '</th><td colspan="2">' + s.stages + (s.double_flow ? ' (' + T.dbl + ')' : '') + '</td></tr>' +
+      '<tr><th>' + T.volt + '</th><td colspan="2">' + vlabel(s.volt) + ', 60 Hz</td></tr>' +
+      '<tr><th>' + T.port + '</th><td colspan="2">' + esc(s.port || '') + ' NPT</td></tr>' +
+      '<tr><th>' + T.list + '</th><td colspan="2" class="pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td></tr>' +
+      '<tr><th>' + T.yours + '</th><td colspan="2"><strong>' + usd(net(p.list_price)) + '</strong></td></tr>' +
+      '</tbody></table></div>' +
+      (sib.length ? '<p class="pt-note">' + T.otherV + ' ' + sib.map(function (q) { return '<a href="#p/' + encodeURIComponent(q.sku) + '">' + esc(q.sku) + '</a> (' + vlabel(q.specs.volt) + ')'; }).join(' · ') + '</p>' : '') +
+      '<div class="pt-acts" style="margin-top:14px"><button class="btn btn--solid" type="button" id="pp-add"' + (p.list_price == null ? ' disabled' : '') + '>' + T.addCart + '</button>' + (p.datasheet ? '<button class="btn btn--line" type="button" id="pp-dl">' + T.dlSheet + '</button>' : '') + '</div>' +
+      '<h3 class="pt-sub">' + T.rec + '</h3><div class="pt-tw"><table class="pt-t pt-spec"><tbody>' + accRow(a.vac_filter, T.vac) + accRow(a.vac_valve, T.vac) + accRow(a.press_filter, T.press) + accRow(a.press_valve, T.press) + '</tbody></table></div></div>' +
+      '<div class="pt-sheet" id="pp-sheet">' + (p.datasheet ? '<p class="pt-note">' + T.working + '</p>' : '<p class="pt-note">' + T.noSheet + '</p>') + '</div></div>';
+    $('pp-add').onclick = function () { blowerDialog(p); };
+    if (p.datasheet) {
+      sb.storage.from('datasheets').createSignedUrl(p.datasheet, 3600).then(function (r) {
+        if (!r.data) { $('pp-sheet').innerHTML = '<p class="pt-note">' + T.noSheet + '</p>'; return; }
+        var u = r.data.signedUrl;
+        $('pp-sheet').innerHTML = '<iframe title="' + esc(T.datasheet) + ' ' + esc(p.sku) + '" src="' + esc(u) + '#view=FitH"></iframe><p class="pt-note"><a href="' + esc(u) + '" target="_blank" rel="noopener">' + T.openSheet + '</a></p>';
+        $('pp-dl').onclick = function () { window.open(u, '_blank', 'noopener'); };
+      });
+    }
+  }
 
   // ---------- cart + checkout ----------
   function cartView(el) {
@@ -377,7 +415,8 @@
         }
         sb.from('products').select('*').order('sort').then(function (pp) {
           S.prods = pp.data || []; S.bySku = {}; S.prods.forEach(function (p) { S.bySku[p.sku] = p; });
-          var want = (location.hash || '').slice(1); if (['cat', 'cart', 'orders', 'account', 'admin'].indexOf(want) >= 0) S.tab = want;
+          route(true);
+          window.addEventListener('hashchange', function () { route(false); });
           shell();
         });
       });
