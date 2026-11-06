@@ -91,7 +91,7 @@ create policy "products admin all" on public.products for all using (public.is_a
 -- ---------- orders (written only by the place-order / confirm-payment functions) ----------
 create table if not exists public.orders (
   id           bigserial primary key,
-  user_id      uuid not null references public.profiles(id),
+  user_id      uuid references public.profiles(id) on delete set null,  -- kept when a customer is deleted
   created_at   timestamptz not null default now(),
   status       text not null check (status in ('invoice_requested','awaiting_payment','paid','processing','shipped','cancelled')),
   pay_method   text not null check (pay_method in ('card','invoice')),

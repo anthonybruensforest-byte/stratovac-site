@@ -23,7 +23,7 @@
     okCard: 'Merci ! Votre paiement est approuvé (commande no {n}). Nous vous contactons sous peu pour le transport.', payPending: 'Paiement reçu, vérification en cours (commande no {n}). Nous vous confirmerons par courriel.',
     declined: 'Le paiement a été refusé ou annulé.', err: 'Une erreur est survenue. Réessayez ou écrivez à abruens@stratovac.ca.', cardOff: 'Le paiement par carte n’est pas encore activé. Utilisez « Commander avec facture ».',
     noOrders: 'Aucune commande pour l’instant.', date: 'Date', status: 'Statut', items: 'Articles', st: { invoice_requested: 'Facture à envoyer', awaiting_payment: 'Paiement en attente', paid: 'Payée', processing: 'En préparation', shipped: 'Expédiée', cancelled: 'Annulée' },
-    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
+    us: { pending: 'En attente', approved: 'Approuvé', rejected: 'Refusé' }, del: 'Supprimer', delConfirm: 'Confirmer la suppression', deleted: 'Client supprimé. Ses commandes passées sont conservées.', clickCust: 'Cliquez sur un client pour voir sa fiche et toutes ses commandes.', since: 'client depuis le', nOrders: 'Commandes', spent: 'Total acheté (avant taxes)', lastOrder: 'Dernière commande', close: 'Fermer', save: 'Enregistrer', saved: 'Enregistré.', yourDisc: 'Votre escompte', pendingU: 'Comptes en attente', customers: 'Clients', allOrders: 'Commandes', approve: 'Approuver', reject: 'Refuser', disc: 'Escompte %', none: 'Aucun.',
     datasheet: 'Fiche', mode: { vacuum: 'vide', pressure: 'pression' }, ship: 'Livraison', taxNote: 'Taxes calculées à la commande'
   } : {
     login: 'Sign in', signup: 'Create an account', email: 'Email', pass: 'Password', pass2: 'New password', go: 'Sign in', create: 'Create my account',
@@ -43,7 +43,7 @@
     okCard: 'Thank you! Your payment was approved (order #{n}). We will contact you shortly about transport.', payPending: 'Payment received, verification in progress (order #{n}). We will confirm by email.',
     declined: 'The payment was declined or cancelled.', err: 'Something went wrong. Try again or write to abruens@stratovac.ca.', cardOff: 'Card payment is not enabled yet. Use “Order with invoice”.',
     noOrders: 'No orders yet.', date: 'Date', status: 'Status', items: 'Items', st: { invoice_requested: 'Invoice to send', awaiting_payment: 'Awaiting payment', paid: 'Paid', processing: 'In preparation', shipped: 'Shipped', cancelled: 'Cancelled' },
-    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
+    us: { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' }, del: 'Delete', delConfirm: 'Confirm deletion', deleted: 'Customer deleted. Their past orders are kept.', clickCust: 'Click a customer to see their file and all their orders.', since: 'customer since', nOrders: 'Orders', spent: 'Total purchased (before tax)', lastOrder: 'Last order', close: 'Close', save: 'Save', saved: 'Saved.', yourDisc: 'Your discount', pendingU: 'Accounts awaiting approval', customers: 'Customers', allOrders: 'Orders', approve: 'Approve', reject: 'Reject', disc: 'Discount %', none: 'None.',
     datasheet: 'Datasheet', mode: { vacuum: 'vacuum', pressure: 'pressure' }, ship: 'Delivery', taxNote: 'Taxes calculated at order'
   };
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
@@ -309,21 +309,55 @@
       var users = rs[0].data || [], orders = rs[1].data || [];
       var pend = users.filter(function (u) { return u.status === 'pending'; }), rest = users.filter(function (u) { return u.status !== 'pending'; });
       function urow(u) {
-        return '<tr><td><strong>' + esc(u.company || '') + '</strong><br><small>' + esc(u.full_name || '') + ' · ' + esc(u.email) + ' · ' + esc(u.phone || '') + '<br>' + esc([u.city, u.province, u.country].filter(Boolean).join(', ')) + '</small></td>' +
-          '<td><input type="number" min="0" max="90" step="0.5" value="' + Number(u.discount_pct) + '" data-ud="' + u.id + '" aria-label="' + T.disc + '" class="pt-num"> %</td><td>' + esc(T.us[u.status] || u.status) + '</td><td class="pt-acts">' +
+        return '<tr><td><button class="pt-link pt-cust" type="button" data-uv="' + u.id + '"><strong>' + esc(u.company || u.email) + '</strong></button><br><small>' + esc(u.full_name || '') + ' · ' + esc(u.email) + ' · ' + esc(u.phone || '') + '<br>' + esc([u.city, u.province, u.country].filter(Boolean).join(', ')) + '</small></td>' +
+          '<td><input type="number" min="0" max="90" step="0.5" value="' + Number(u.discount_pct) + '" data-ud="' + u.id + '" aria-label="' + T.disc + '" class="pt-num"> %</td><td>' + esc(T.us[u.status] || u.status) + (u.is_admin ? '<br><small>' + T.admin + '</small>' : '') + '</td><td class="pt-acts">' +
           (u.status !== 'approved' ? '<button class="btn btn--solid" type="button" data-ua="' + u.id + '">' + T.approve + '</button>' : '<button class="btn btn--line" type="button" data-us="' + u.id + '">' + T.save + '</button>') +
-          (u.status === 'pending' ? '<button class="btn btn--line" type="button" data-ur="' + u.id + '">' + T.reject + '</button>' : '') + '</td></tr>';
+          (u.status === 'pending' ? '<button class="btn btn--line" type="button" data-ur="' + u.id + '">' + T.reject + '</button>' : '') +
+          (u.is_admin ? '' : '<button class="btn btn--line pt-del" type="button" data-ux="' + u.id + '">' + T.del + '</button>') + '</td></tr>';
       }
       var head = '<thead><tr><th>' + T.company + '</th><th>' + T.disc + '</th><th>' + T.status + '</th><th></th></tr></thead>';
-      el.innerHTML = '<h2 class="pt-h">' + T.pendingU + ' (' + pend.length + ')</h2>' + (pend.length ? '<div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + pend.map(urow).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.none + '</p>') +
+      el.innerHTML = '<p class="pt-msg" id="ad-msg" role="status"></p><h2 class="pt-h">' + T.pendingU + ' (' + pend.length + ')</h2>' + (pend.length ? '<div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + pend.map(urow).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.none + '</p>') +
         '<h2 class="pt-h">' + T.allOrders + '</h2>' + orderTable(orders, true) +
-        '<h2 class="pt-h">' + T.customers + '</h2><div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + rest.map(urow).join('') + '</tbody></table></div><p class="pt-msg" id="ad-msg" role="status"></p>';
-      function upd(id, patch) { sb.from('profiles').update(patch).eq('id', id).then(function (r) { $('ad-msg').textContent = r.error ? r.error.message : T.saved; if (!r.error) adminView(el); }); }
+        '<h2 class="pt-h">' + T.customers + ' (' + rest.length + ')</h2><p class="pt-note">' + T.clickCust + '</p><div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + rest.map(urow).join('') + '</tbody></table></div>';
+      function say(t) { $('ad-msg').textContent = t; }
+      function upd(id, patch) { sb.from('profiles').update(patch).eq('id', id).then(function (r) { if (r.error) return say(r.error.message); adminView(el); setTimeout(function () { say(T.saved); }, 600); }); }
       function dval(id) { return Math.max(0, Math.min(90, Number(el.querySelector('[data-ud="' + id + '"]').value) || 0)); }
       el.querySelectorAll('[data-ua]').forEach(function (b) { b.onclick = function () { upd(b.dataset.ua, { status: 'approved', discount_pct: dval(b.dataset.ua) }); }; });
       el.querySelectorAll('[data-us]').forEach(function (b) { b.onclick = function () { upd(b.dataset.us, { discount_pct: dval(b.dataset.us) }); }; });
       el.querySelectorAll('[data-ur]').forEach(function (b) { b.onclick = function () { upd(b.dataset.ur, { status: 'rejected' }); }; });
-      el.querySelectorAll('[data-os]').forEach(function (s) { s.onchange = function () { sb.from('orders').update({ status: s.value }).eq('id', +s.dataset.os).then(function (r) { $('ad-msg').textContent = r.error ? r.error.message : T.saved; }); }; });
+      el.querySelectorAll('[data-os]').forEach(function (s) { s.onchange = function () { sb.from('orders').update({ status: s.value }).eq('id', +s.dataset.os).then(function (r) { say(r.error ? r.error.message : T.saved); }); }; });
+      el.querySelectorAll('[data-uv]').forEach(function (b) { b.onclick = function () { customerDialog(users.filter(function (u) { return u.id === b.dataset.uv; })[0]); }; });
+      // two-step delete: first click arms the button, second click deletes
+      el.querySelectorAll('[data-ux]').forEach(function (b) {
+        b.onclick = function () {
+          if (!b.classList.contains('armed')) { b.classList.add('armed'); b.textContent = T.delConfirm; setTimeout(function () { if (b.isConnected) { b.classList.remove('armed'); b.textContent = T.del; } }, 5000); return; }
+          b.disabled = true; b.textContent = T.working;
+          sb.functions.invoke('admin-delete-user', { body: { user_id: b.dataset.ux } }).then(function (r) {
+            if (r.error || !r.data || !r.data.deleted) { b.disabled = false; b.textContent = T.del; b.classList.remove('armed'); return say(T.err); }
+            adminView(el); setTimeout(function () { say(T.deleted); }, 600);
+          });
+        };
+      });
+    });
+  }
+  function customerDialog(u) {
+    if (!u) return;
+    var dlg = h('div', { class: 'pt-dlg-bg' }), box = h('div', { class: 'pt-dlg pt-dlg--wide', role: 'dialog', 'aria-modal': 'true', 'aria-label': u.company || u.email });
+    dlg.appendChild(box); document.body.appendChild(dlg);
+    function close() { dlg.remove(); document.removeEventListener('keydown', onKey); }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onKey); dlg.onclick = function (e) { if (e.target === dlg) close(); };
+    var info = '<button class="pt-x" type="button" aria-label="' + T.close + '">×</button><h3>' + esc(u.company || u.email) + '</h3>' +
+      '<p class="pt-note">' + esc(u.full_name || '') + ' · <a href="mailto:' + esc(u.email) + '">' + esc(u.email) + '</a>' + (u.phone ? ' · <a href="tel:' + esc(u.phone) + '">' + esc(u.phone) + '</a>' : '') + '<br>' +
+      esc([u.address, u.city, u.province, u.postal, u.country].filter(Boolean).join(', ')) + '<br>' + T.status + ' : ' + esc(T.us[u.status] || u.status) + ' · ' + T.disc + ' : ' + num(Number(u.discount_pct)) + ' % · ' + T.since + ' ' + new Date(u.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</p><div id="cd-o"><p class="pt-note">' + T.working + '</p></div>';
+    box.innerHTML = info; box.querySelector('.pt-x').onclick = close; box.querySelector('.pt-x').focus();
+    sb.from('orders').select('*').eq('user_id', u.id).order('created_at', { ascending: false }).then(function (r) {
+      var list = r.data || [], live = list.filter(function (o) { return o.status !== 'cancelled'; });
+      var spent = live.reduce(function (a, o) { return a + Number(o.subtotal || 0); }, 0);
+      $('cd-o').innerHTML = '<div class="pt-stats"><div><span>' + T.nOrders + '</span><strong>' + list.length + '</strong></div><div><span>' + T.spent + '</span><strong>' + usd(r2(spent)) + '</strong></div><div><span>' + T.lastOrder + '</span><strong>' + (list[0] ? new Date(list[0].created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') : '–') + '</strong></div></div>' +
+        (list.length ? '<div class="pt-tw"><table class="pt-t"><thead><tr><th>#</th><th>' + T.date + '</th><th>' + T.items + '</th><th class="r">' + T.total + '</th><th>' + T.status + '</th></tr></thead><tbody>' + list.map(function (o) {
+          return '<tr><td>' + o.id + (o.po_number ? '<br><small>PO ' + esc(o.po_number) + '</small>' : '') + '</td><td>' + new Date(o.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</td><td><small>' + (o.items || []).map(function (i) { return i.qty + ' × ' + esc(i.sku) + (i.mode ? ' (' + T.mode[i.mode] + ')' : '') + (i.unit_price != null ? ' – ' + usd(Number(i.unit_price)) : ''); }).join('<br>') + '</small></td><td class="r">' + usd(Number(o.total)) + '<br><small>' + (o.pay_method === 'card' ? T.payCard : T.payInv) + '</small></td><td>' + esc(T.st[o.status] || o.status) + '</td></tr>';
+        }).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.noOrders + '</p>');
     });
   }
 

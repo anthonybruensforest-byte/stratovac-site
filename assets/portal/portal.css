@@ -65,3 +65,14 @@
 .pt-cart .pt-t{table-layout:fixed;min-width:0}
 .pt-cart .pt-t td:nth-child(2){width:112px}
 .pt-cart .pt-t td:nth-child(3){width:140px}
+.pt-cust{font-size:1rem;color:var(--ink);text-decoration:none;text-align:left}
+.pt-cust:hover strong{color:var(--accent);text-decoration:underline}
+.pt-del{color:#b42318;border-color:currentColor}
+.pt-del.armed{background:#b42318;color:#fff;border-color:#b42318}
+.pt-dlg--wide{width:min(900px,100%)}
+.pt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.pt-stats div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:2px}
+.pt-stats span{font-size:.78rem;color:var(--ink-2)}
+.pt-stats strong{font-size:1.15rem}
+.pt-dlg .pt-t{min-width:0}
+@media (max-width:560px){.pt-stats{grid-template-columns:1fr}}
