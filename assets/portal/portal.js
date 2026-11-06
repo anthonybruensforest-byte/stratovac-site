@@ -310,7 +310,7 @@
       var pend = users.filter(function (u) { return u.status === 'pending'; }), rest = users.filter(function (u) { return u.status !== 'pending'; });
       function urow(u) {
         return '<tr><td><strong>' + esc(u.company || '') + '</strong><br><small>' + esc(u.full_name || '') + ' · ' + esc(u.email) + ' · ' + esc(u.phone || '') + '<br>' + esc([u.city, u.province, u.country].filter(Boolean).join(', ')) + '</small></td>' +
-          '<td><input type="number" min="0" max="90" step="0.5" value="' + Number(u.discount_pct) + '" data-ud="' + u.id + '" aria-label="' + T.disc + '" class="pt-num"> %</td><td>' + esc(T.st[u.status] || u.status) + '</td><td class="pt-acts">' +
+          '<td><input type="number" min="0" max="90" step="0.5" value="' + Number(u.discount_pct) + '" data-ud="' + u.id + '" aria-label="' + T.disc + '" class="pt-num"> %</td><td>' + esc(T.us[u.status] || u.status) + '</td><td class="pt-acts">' +
           (u.status !== 'approved' ? '<button class="btn btn--solid" type="button" data-ua="' + u.id + '">' + T.approve + '</button>' : '<button class="btn btn--line" type="button" data-us="' + u.id + '">' + T.save + '</button>') +
           (u.status === 'pending' ? '<button class="btn btn--line" type="button" data-ur="' + u.id + '">' + T.reject + '</button>' : '') + '</td></tr>';
       }
