@@ -53,6 +53,7 @@
     poNone: 'Bon de commande {f} joint, mais aucun article n’a été reconnu dans notre catalogue. Ajoutez les articles depuis le catalogue ; le bon sera joint à votre commande.',
     poMiss: 'Articles du bon à confirmer avec nous :', poLow: 'à vérifier', poPrice: 'prix sur votre bon', poErr: 'Nous n’avons pas pu lire ce document. Essayez un PDF, ou ajoutez les articles depuis le catalogue.',
     poAi: 'Bon de commande {f} joint. La lecture automatique n’est pas encore activée : ajoutez les articles depuis le catalogue, nous vérifierons avec votre bon.',
+    aiT: 'Assistant de sélection', aiIntro: 'Décrivez votre besoin en vos mots (ex. : « 200 CFM à 5 psi pour aérer un bassin »). L’assistant trouve le surpresseur et affiche les résultats ci-dessous.', aiPh: 'Votre question…', aiSend: 'Envoyer', aiThink: 'L’assistant réfléchit…', aiErr: 'L’assistant n’est pas disponible pour le moment. Utilisez le sélecteur ci-dessous ou écrivez-nous à abruens@stratovac.ca.', aiNew: 'Nouvelle conversation', aiYou: 'Vous', aiBot: 'Assistant',
     poBadType: 'Format non accepté. Envoyez un PDF ou une image (PNG, JPG, WEBP).', poBig: 'Fichier trop lourd (15 Mo max).', poDetach: 'Retirer le bon', poFile: 'Bon de commande', poHave: 'Vous avez un bon de commande ? Déposez-le, nous remplissons le panier pour vous.', poGo: 'Déposer mon bon', useSel: 'Usage à préciser', poAtt: 'Bon de commande joint'
   } : {
     poTitle: 'Drop your purchase order here', poSub: 'Drag your PDF (or a photo or screenshot) into this box, or click to choose it. We read the PO and fill the cart; you check everything before confirming.',
@@ -61,6 +62,7 @@
     poNone: 'Purchase order {f} attached, but no item matched our catalog. Add the items from the catalog; the PO will be attached to your order.',
     poMiss: 'PO items to confirm with us:', poLow: 'to check', poPrice: 'price on your PO', poErr: 'We could not read this document. Try a PDF, or add the items from the catalog.',
     poAi: 'Purchase order {f} attached. Automatic reading is not active yet: add the items from the catalog and we will check them against your PO.',
+    aiT: 'Selection assistant', aiIntro: 'Describe your need in your own words (e.g. “200 CFM at 5 psi to aerate a basin”). The assistant finds the blower and shows the results below.', aiPh: 'Your question…', aiSend: 'Send', aiThink: 'The assistant is thinking…', aiErr: 'The assistant is not available right now. Use the selector below or write to abruens@stratovac.ca.', aiNew: 'New conversation', aiYou: 'You', aiBot: 'Assistant',
     poBadType: 'Format not accepted. Send a PDF or an image (PNG, JPG, WEBP).', poBig: 'File too large (15 MB max).', poDetach: 'Remove the PO', poFile: 'Purchase order', poHave: 'Have a purchase order? Drop it and we fill the cart for you.', poGo: 'Drop my PO', useSel: 'Use to specify', poAtt: 'Purchase order attached'
   });
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
@@ -239,10 +241,18 @@
   var DP = { inH2O: 1, psi: 27.7076, bar: 401.865, mbar: 0.401865, kPa: 4.01865, inHg: 13.5951 };
   var QU = { CFM: 1, 'm³/h': 0.588578, 'L/min': 0.0353147 };
   function lerp(c, x) { if (!c || !c.length || x < c[0][0] || x > c[c.length - 1][0]) return null; for (var i = 1; i < c.length; i++) if (x <= c[i][0]) { var a = c[i - 1], b = c[i]; return b[0] === a[0] ? a[1] : a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]); } return c[c.length - 1][1]; }
+  function aiMsg(m) {
+    var t = esc(m.content).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\b(ID[A-Z]{1,4}[0-9A-Z.\-]*[0-9A-Z])\b/g, function (x) { return S.bySku[x] ? '<a class="pt-model" href="#p/' + encodeURIComponent(x) + '"><strong>' + x + '</strong></a>' : x; }).replace(/\n/g, '<br>');
+    return '<div class="pt-ai-m pt-ai-' + (m.role === 'user' ? 'u' : 'a') + '"><small>' + (m.role === 'user' ? T.aiYou : T.aiBot) + '</small><p>' + t + '</p></div>';
+  }
   function selView(el) {
     var f = S.selF || (S.selF = { mode: 'press', q: '', qu: 'CFM', dp: '', du: 'psi', v: '6' });
     function opts(o, cur) { return Object.keys(o).map(function (k) { return '<option' + (k === cur ? ' selected' : '') + '>' + k + '</option>'; }).join(''); }
-    el.innerHTML = '<h2 class="pt-h" style="margin-top:6px">' + T.sel + '</h2><p class="pt-note" style="margin-top:0">' + T.selIntro + '</p>' +
+    var ai = S.ai || (S.ai = { msgs: [], busy: false });
+    el.innerHTML = '<section class="pt-ai" aria-label="' + T.aiT + '"><div class="pt-ai-hd"><h2 class="pt-h">' + T.aiT + '</h2>' + (ai.msgs.length ? '<button class="pt-link" type="button" id="ai-new">' + T.aiNew + '</button>' : '') + '</div><p class="pt-note">' + T.aiIntro + '</p>' +
+      '<div id="ai-log" class="pt-ai-log" aria-live="polite">' + ai.msgs.map(aiMsg).join('') + (ai.busy ? '<p class="pt-note">' + T.aiThink + '</p>' : '') + '</div>' +
+      '<form id="ai-f" class="pt-ai-f"><textarea id="ai-in" rows="2" placeholder="' + T.aiPh + '" aria-label="' + T.aiPh + '"' + (ai.busy ? ' disabled' : '') + '></textarea><button class="btn btn--solid" type="submit"' + (ai.busy ? ' disabled' : '') + '>' + T.aiSend + '</button></form></section>' +
+      '<h2 class="pt-h" style="margin-top:6px">' + T.sel + '</h2><p class="pt-note" style="margin-top:0">' + T.selIntro + '</p>' +
       '<form id="sf" class="pt-selform"><div class="pt-seg pt-seg--sm"><button type="button" data-m="press" aria-pressed="' + (f.mode === 'press') + '">' + T.press + '</button><button type="button" data-m="vac" aria-pressed="' + (f.mode === 'vac') + '">' + T.vac + '</button></div>' +
       '<label>' + T.flow + '<span class="pt-in"><input id="sf-q" type="number" min="0" step="any" required value="' + esc(f.q) + '"><select id="sf-qu">' + opts(QU, f.qu) + '</select></span></label>' +
       '<label id="sf-dpl">' + (f.mode === 'vac' ? T.vacLvl : T.pressLvl) + '<span class="pt-in"><input id="sf-dp" type="number" min="0" step="any" required value="' + esc(f.dp) + '"><select id="sf-du">' + opts(DP, f.du) + '</select></span></label>' +
@@ -251,6 +261,21 @@
     el.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { read(); f.mode = b.dataset.m; if (f.mode === 'vac' && f.du === 'psi') f.du = 'inHg'; if (f.mode === 'press' && f.du === 'inHg') f.du = 'psi'; selView(el); }; });
     function read() { f.q = v('sf-q'); f.qu = v('sf-qu'); f.dp = v('sf-dp'); f.du = v('sf-du'); f.v = v('sf-v'); }
     $('sf').onsubmit = function (e) { e.preventDefault(); read(); run(); };
+    var log = $('ai-log'); log.scrollTop = log.scrollHeight;
+    if ($('ai-new')) $('ai-new').onclick = function () { S.ai = { msgs: [], busy: false }; selView(el); };
+    $('ai-in').onkeydown = function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('ai-f').requestSubmit(); } };
+    $('ai-f').onsubmit = function (e) {
+      e.preventDefault(); var q = v('ai-in'); if (!q || ai.busy) return;
+      read(); ai.msgs.push({ role: 'user', content: q.slice(0, 2000) }); ai.busy = true; selView(el);
+      sb.functions.invoke('assistant', { body: { messages: ai.msgs, lang: FR ? 'fr' : 'en' } }).then(function (r) {
+        var d = r.data || {}; ai.busy = false;
+        if (r.error || !d.reply) { ai.msgs.push({ role: 'assistant', content: T.aiErr, err: true }); }
+        else { ai.msgs.push({ role: 'assistant', content: d.reply }); if (d.selector) Object.assign(f, d.selector); }
+        if (S.tab === 'sel') selView(el);
+        if (d.selector && $('sf-out')) $('sf-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }).catch(function () { ai.busy = false; ai.msgs.push({ role: 'assistant', content: T.aiErr, err: true }); if (S.tab === 'sel') selView(el); });
+    };
+    if (!ai.busy) $('ai-in').focus({ preventScroll: true });
     if (f.q && f.dp) run();
     function run() {
       var out = $('sf-out'), Q = Number(f.q) * QU[f.qu], dp = Number(f.dp) * DP[f.du];
