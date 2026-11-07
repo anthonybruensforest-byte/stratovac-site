@@ -20,8 +20,9 @@ Deno.serve(async (req) => {
     const db = createClient(url, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
     const { data: prof } = await db.from('profiles').select('status,is_admin').eq('id', user.id).single();
     if (!prof || !(prof.status === 'approved' || prof.is_admin)) return json({ error: 'not_approved' }, 403);
-    const key = Deno.env.get('GEMINI_API_KEY');
+    const key = (Deno.env.get('GEMINI_API_KEY') ?? '').trim();
     if (!key) return json({ error: 'stt_unavailable' }, 503);
+    if (!/^[A-Za-z0-9_\-]{20,}$/.test(key)) return json({ error: 'bad_key' }, 500);
 
     const { audio, mime, lang } = await req.json();
     if (typeof audio !== 'string' || !audio || audio.length > 3_500_000) return json({ error: 'audio' }, 400);
@@ -43,6 +44,6 @@ Deno.serve(async (req) => {
     return json({ text: text.slice(0, 2000) });
   } catch (e) {
     console.error('transcribe', e);
-    return json({ error: 'server', detail: String(e).slice(0, 300) }, 500);
+    return json({ error: String(e).includes('header') ? 'bad_key' : 'server' }, 500);
   }
 });
