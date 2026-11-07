@@ -65,6 +65,27 @@
     aiT: 'Selection assistant', aiIntro: 'For your questions about our blowers and accessories. Describe your need in your own words (e.g. “200 CFM at 5 psi to aerate a basin”). The assistant finds the blower and shows the results below.', aiPh: 'Your question…', aiSend: 'Send', aiThink: 'The assistant is thinking…', aiErr: 'The assistant is not available right now. Use the selector below or write to abruens@stratovac.ca.', aiNew: 'New conversation', aiLimit: 'You have reached the question limit for now. Try again in an hour, or write to abruens@stratovac.ca.', aiMic: 'Speak', aiListen: 'Listening… speak, then pause.', aiStop: 'Stop reading', aiNoMic: 'Microphone not allowed. Allow the microphone for this site in your browser.', aiNet: 'This browser’s speech recognition is not responding. Try Microsoft Edge, or dictate into the box with Windows key + H (on a Mac: press Fn twice).', aiBrave: 'The Brave browser blocks speech recognition. Use Chrome, Edge or Safari to talk to the assistant, or dictate into the box with Windows key + H.', aiNoHear: 'I did not hear anything. Click the mic and speak a little louder.', aiYou: 'You', aiBot: 'Assistant',
     poBadType: 'Format not accepted. Send a PDF or an image (PNG, JPG, WEBP).', poBig: 'File too large (15 MB max).', poDetach: 'Remove the PO', poFile: 'Purchase order', poHave: 'Have a purchase order? Drop it and we fill the cart for you.', poGo: 'Drop my PO', useSel: 'Use to specify', poAtt: 'Purchase order attached'
   });
+  Object.assign(T, FR ? {
+    home: 'Accueil', hiName: 'Bonjour {n}', hiSub: 'Que voulez-vous faire aujourd’hui ?', hAskT: 'Décrivez votre besoin', hAskS: 'Parlez ou écrivez : l’assistant trouve le surpresseur et ses accessoires, avec vos prix.', hAskPh: 'Ex. : 200 CFM à 5 psi pour aérer un bassin', hAsk: 'Demander',
+    hCatT: 'Parcourir le catalogue', hCatS: 'Tous les surpresseurs et accessoires, avec vos prix et les fiches techniques.', hCat: 'Ouvrir le catalogue', hSel: 'Sélecteur par débit et pression', hRecent: 'Vos dernières commandes', again: 'Commander à nouveau', againDone: 'Articles ajoutés au panier.',
+    sol: 'Ajouter la solution complète', solDone: 'Surpresseur, filtre et soupape ajoutés au panier.', solPick: 'Ajouter (choisir vide ou pression)', addOne: 'Ajouter',
+    quote: 'Télécharger une soumission (PDF)', quoteT: 'SOUMISSION', quoteNo: 'No', quoteDate: 'Date', quoteValid: 'Valide jusqu’au', quoteFor: 'Préparée pour', quoteDesc: 'Description', quoteQty: 'Qté', quoteUnit: 'Prix unitaire', quoteLine: 'Total', quoteDisc: 'Escompte appliqué',
+    quoteNotes: 'Prix en dollars américains (USD), escompte inclus. FOB Longueuil (Québec), transport en sus. Taxes canadiennes selon la province de livraison.', quoteOrder: 'Pour commander : déposez cette soumission ou votre bon de commande sur l’espace client (stratovac.ca/fr/portail), ou écrivez à abruens@stratovac.ca.', quoteMaking: 'Préparation de la soumission…', quoteErr: 'La soumission n’a pas pu être créée. Réessayez.', quoteOk: 'Soumission {n} téléchargée.',
+    freight: 'Transport estimé', freightNote: 'estimation, non incluse ; confirmée et facturée à l’expédition', lead: 'Délai', page: 'Page',
+    curveT: 'Courbe de performance à 60 Hz (air à 20 °C / 68 °F, niveau de la mer)', curveP: 'Pression', curveV: 'Vide', yourPt: 'Votre point',
+    tracking: 'No de suivi', setTitle: 'Transport et délais affichés aux clients', setLeadFr: 'Délai (français), ex. : en stock, expédié sous 3 jours ouvrables', setLeadEn: 'Délai (anglais)', setFreight: 'Transport estimé par surpresseur (USD), selon la taille du moteur', setSmall: 'Moteur ≤ 3 kW', setMed: 'Moteur 3 à 11 kW', setLarge: 'Moteur > 11 kW', setAcc: 'Accessoires seuls (par commande)', setHint: 'Laissez vide pour ne rien afficher. Le transport reste une estimation : il n’est pas ajouté au total payé.',
+    region: { QC: 'Québec', ON: 'Ontario', ATL: 'Atlantique', WEST: 'Ouest', NORTH: 'Territoires', US: 'États-Unis' }, emailed: 'Courriel envoyé au client.', noEmail: 'Enregistré. Courriel au client non envoyé (service de courriel pas encore configuré).', quotes: 'Soumissions téléchargées', reorderNone: 'Ces articles ne sont plus au catalogue.'
+  } : {
+    home: 'Home', hiName: 'Hello {n}', hiSub: 'What would you like to do today?', hAskT: 'Describe your need', hAskS: 'Speak or type: the assistant finds the blower and its accessories, with your prices.', hAskPh: 'E.g. 200 CFM at 5 psi to aerate a basin', hAsk: 'Ask',
+    hCatT: 'Browse the catalog', hCatS: 'All blowers and accessories, with your prices and datasheets.', hCat: 'Open the catalog', hSel: 'Selector by flow and pressure', hRecent: 'Your latest orders', again: 'Order again', againDone: 'Items added to the cart.',
+    sol: 'Add the complete solution', solDone: 'Blower, filter and relief valve added to the cart.', solPick: 'Add (choose vacuum or pressure)', addOne: 'Add',
+    quote: 'Download a quote (PDF)', quoteT: 'QUOTATION', quoteNo: 'No.', quoteDate: 'Date', quoteValid: 'Valid until', quoteFor: 'Prepared for', quoteDesc: 'Description', quoteQty: 'Qty', quoteUnit: 'Unit price', quoteLine: 'Total', quoteDisc: 'Discount applied',
+    quoteNotes: 'Prices in US dollars (USD), discount included. FOB Longueuil (Quebec), freight extra. Canadian taxes according to the delivery province.', quoteOrder: 'To order: drop this quote or your purchase order on the customer portal (stratovac.ca/portal), or write to abruens@stratovac.ca.', quoteMaking: 'Preparing the quote…', quoteErr: 'The quote could not be created. Try again.', quoteOk: 'Quote {n} downloaded.',
+    freight: 'Estimated freight', freightNote: 'estimate, not included; confirmed and invoiced at shipping', lead: 'Lead time', page: 'Page',
+    curveT: '60 Hz performance curve (air at 68 °F / 20 °C, sea level)', curveP: 'Pressure', curveV: 'Vacuum', yourPt: 'Your point',
+    tracking: 'Tracking no.', setTitle: 'Freight and lead time shown to customers', setLeadFr: 'Lead time (French)', setLeadEn: 'Lead time (English), e.g. in stock, ships within 3 business days', setFreight: 'Estimated freight per blower (USD), by motor size', setSmall: 'Motor ≤ 3 kW', setMed: 'Motor 3 to 11 kW', setLarge: 'Motor > 11 kW', setAcc: 'Accessories only (per order)', setHint: 'Leave empty to show nothing. Freight stays an estimate: it is not added to the total paid.',
+    region: { QC: 'Quebec', ON: 'Ontario', ATL: 'Atlantic', WEST: 'West', NORTH: 'Territories', US: 'United States' }, emailed: 'Email sent to the customer.', noEmail: 'Saved. Customer email not sent (email service not set up yet).', quotes: 'Downloaded quotes', reorderNone: 'These items are no longer in the catalog.'
+  });
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
   var TAX = { QC: [['TPS/GST', 5], ['TVQ/QST', 9.975]], ON: [['TVH/HST', 13]], NB: [['TVH/HST', 15]], NL: [['TVH/HST', 15]], PE: [['TVH/HST', 15]], NS: [['TVH/HST', 14]], BC: [['TPS/GST', 5]], AB: [['TPS/GST', 5]], SK: [['TPS/GST', 5]], MB: [['TPS/GST', 5]], YT: [['TPS/GST', 5]], NT: [['TPS/GST', 5]], NU: [['TPS/GST', 5]] };
 
@@ -72,7 +93,7 @@
   if (!root) return;
   if (!CFG.url || !window.supabase) { root.innerHTML = '<p class="pt-note">' + (FR ? 'Espace client bientôt disponible.' : 'Customer portal coming soon.') + '</p>'; return; }
   var sb = window.supabase.createClient(CFG.url, CFG.key);
-  var S = { user: null, prof: null, prods: [], bySku: {}, tab: 'cat', f: { q: '', fam: '', v: '6', st: '', min: '' } };
+  var S = { user: null, prof: null, prods: [], bySku: {}, tab: 'home', set: {}, f: { q: '', fam: '', v: '6', st: '', min: '' } };
   var cart = []; try { cart = JSON.parse(localStorage.getItem('sv_portal_cart') || '[]'); } catch (e) { cart = []; }
   function saveCart() { try { localStorage.setItem('sv_portal_cart', JSON.stringify(cart)); } catch (e) {} }
 
@@ -134,7 +155,7 @@
   // ---------- app shell ----------
   function shell() {
     var n = cart.reduce(function (s, l) { return s + l.qty; }, 0);
-    var tabs = [['sel', T.sel], ['cat', T.cat], ['cart', T.cart + (n ? ' (' + n + ')' : '')], ['orders', T.orders], ['account', T.account]];
+    var tabs = [['home', T.home], ['sel', T.sel], ['cat', T.cat], ['cart', T.cart + (n ? ' (' + n + ')' : '')], ['orders', T.orders], ['account', T.account]];
     if (S.prof && S.prof.is_admin) tabs.push(['admin', T.admin]);
     var bar = '<div class="pt-bar"><div class="pt-tabs" role="tablist">' + tabs.map(function (t) { return '<button type="button" data-t="' + t[0] + '" aria-selected="' + (S.tab === t[0]) + '">' + t[1] + '</button>'; }).join('') + '</div><div class="pt-who"><span>' + esc(S.prof.company || S.prof.email) + (disc() ? ' · ' + T.yourDisc + ' ' + num(disc()) + ' %' : '') + '</span><button class="pt-link" type="button" id="pt-out-btn">' + T.logout + '</button></div></div><div id="pt-view"></div>';
     root.innerHTML = bar;
@@ -142,7 +163,7 @@
     $('pt-out-btn').onclick = function () { sb.auth.signOut(); };
     if (S.tab === 'prod') return productView($('pt-view'));
     if (S.tab === 'sel') return selView($('pt-view'));
-    ({ cat: catView, cart: cartView, orders: ordersView, account: accountView, admin: adminView }[S.tab] || catView)($('pt-view'));
+    ({ home: homeView, cat: catView, cart: cartView, orders: ordersView, account: accountView, admin: adminView }[S.tab] || homeView)($('pt-view'));
   }
 
   // ---------- catalogue ----------
@@ -244,7 +265,7 @@
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   function aiMsg(m) {
     var t = esc(m.content).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\b(ID[A-Z]{1,4}[0-9A-Z.\-]*[0-9A-Z])\b/g, function (x) { return S.bySku[x] ? '<a class="pt-model" href="#p/' + encodeURIComponent(x) + '"><strong>' + x + '</strong></a>' : x; }).replace(/\n/g, '<br>');
-    return '<div class="pt-ai-m pt-ai-' + (m.role === 'user' ? 'u' : 'a') + '"><small>' + (m.role === 'user' ? T.aiYou : T.aiBot) + '</small><p>' + t + '</p></div>';
+    return '<div class="pt-ai-m pt-ai-' + (m.role === 'user' ? 'u' : 'a') + '"><small>' + (m.role === 'user' ? T.aiYou : T.aiBot) + '</small><p>' + t + '</p>' + aiActions(m) + '</div>';
   }
   function selView(el) {
     var f = S.selF || (S.selF = { mode: 'press', q: '', qu: 'CFM', dp: '', du: 'psi', v: '6' });
@@ -271,7 +292,7 @@
       sb.functions.invoke('assistant', { body: { messages: ai.msgs, lang: FR ? 'fr' : 'en' } }).then(function (r) {
         var d = r.data || {}; ai.busy = false;
         if (r.error || !d.reply) { var st = r.error && r.error.context && r.error.context.status; ai.msgs.push({ role: 'assistant', content: st === 429 ? T.aiLimit : T.aiErr, err: true }); }
-        else { ai.msgs.push({ role: 'assistant', content: d.reply }); if (d.selector) Object.assign(f, d.selector); if (byVoice) say(d.reply); }
+        else { ai.msgs.push({ role: 'assistant', content: d.reply, mode: d.mode || null }); if (d.selector) Object.assign(f, d.selector); if (byVoice) say(d.reply); }
         if (S.tab === 'sel') selView(el);
         if (d.selector && $('sf-out')) $('sf-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }).catch(function () { ai.busy = false; ai.msgs.push({ role: 'assistant', content: T.aiErr, err: true }); if (S.tab === 'sel') selView(el); });
@@ -398,8 +419,8 @@
   function route(first) {
     var hsh = decodeURIComponent((location.hash || '').slice(1));
     if (hsh.indexOf('p/') === 0 && S.bySku[hsh.slice(2)]) { S.tab = 'prod'; S.sku = hsh.slice(2); }
-    else if (['sel', 'cat', 'cart', 'orders', 'account', 'admin'].indexOf(hsh) >= 0) S.tab = hsh;
-    else if (!first) S.tab = 'cat';
+    else if (['home', 'sel', 'cat', 'cart', 'orders', 'account', 'admin'].indexOf(hsh) >= 0) S.tab = hsh;
+    else if (!first) S.tab = 'home';
     if (!first) { shell(); window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 90 }); }
   }
   function productView(el) {
@@ -415,12 +436,15 @@
       '<tr><th>' + T.port + '</th><td colspan="2">' + esc(s.port || '') + ' NPT</td></tr>' +
       '<tr><th>' + T.list + '</th><td colspan="2" class="pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td></tr>' +
       '<tr><th>' + T.yours + '</th><td colspan="2"><strong>' + usd(net(p.list_price)) + '</strong></td></tr>' +
+      (S.set.lead_fr || S.set.lead_en ? '<tr><th>' + T.lead + '</th><td colspan="2">' + esc(FR ? S.set.lead_fr || S.set.lead_en : S.set.lead_en || S.set.lead_fr) + '</td></tr>' : '') +
       '</tbody></table></div>' +
+      '<div id="pp-curve" class="pt-curve"></div>' +
       (sib.length ? '<p class="pt-note">' + T.otherV + ' ' + sib.map(function (q) { return '<a href="#p/' + encodeURIComponent(q.sku) + '">' + esc(q.sku) + '</a> (' + vlabel(q.specs.volt) + ')'; }).join(' · ') + '</p>' : '') +
       '<div class="pt-acts" style="margin-top:14px"><button class="btn btn--solid" type="button" id="pp-add"' + (p.list_price == null ? ' disabled' : '') + '>' + T.addCart + '</button>' + (p.datasheet ? '<button class="btn btn--line" type="button" id="pp-dl">' + T.dlSheet + '</button>' : '') + '</div>' +
       '<h3 class="pt-sub">' + T.rec + '</h3><div class="pt-tw"><table class="pt-t pt-spec"><tbody>' + accRow(a.vac_filter, T.vac) + accRow(a.vac_valve, T.vac) + accRow(a.press_filter, T.press) + accRow(a.press_valve, T.press) + '</tbody></table></div></div>' +
       '<div class="pt-sheet" id="pp-sheet">' + (p.datasheet ? '<p class="pt-note">' + T.working + '</p>' : '<p class="pt-note">' + T.noSheet + '</p>') + '</div></div>';
     $('pp-add').onclick = function () { blowerDialog(p); };
+    loadCurves().then(function () { var c = $('pp-curve'); if (c) c.innerHTML = curveSvg(p); });
     if (p.datasheet) {
       sb.storage.from('datasheets').createSignedUrl(p.datasheet, 3600).then(function (r) {
         if (!r.data) { $('pp-sheet').innerHTML = '<p class="pt-note">' + T.noSheet + '</p>'; return; }
@@ -491,6 +515,7 @@
       field('ps-nm', T.name, 'text', pick(st.name, pr.full_name)) + field('ps-co', T.company, 'text', pick(st.company, pr.company)) + field('ps-ph', T.phone, 'tel', pick(st.phone, pr.phone)) + countrySelect('ps-cn', shipCn) + provSelect('ps-pv', shipPv) +
       field('ps-ad', T.address, 'text', pick(st.address, pr.address)) + field('ps-ci', T.city, 'text', pick(st.city, pr.city)) + field('ps-pc', T.postal, 'text', pick(st.postal, pr.postal)) + field('ps-po', T.po, 'text', po.number || '') +
       '<div class="pt-f"><label for="ps-nt">' + T.note + '</label><textarea id="ps-nt" rows="' + (miss.length ? 4 : 2) + '">' + esc(noteVal) + '</textarea></div></div>' +
+      '<div class="pt-acts pt-pay"><button class="btn btn--line" type="button" id="pc-quote">' + T.quote + '</button></div>' +
       '<div class="pt-acts pt-pay"><button class="btn btn--line" type="button" id="pc-inv">' + T.payInv + '</button><button class="btn btn--solid" type="button" id="pc-card">' + T.payCard + '</button></div><p class="pt-msg" id="pc-msg" role="status"></p><p class="pt-note">' + T.terms + '</p></div></div>';
     function lines() {
       $('pc-l').innerHTML = cart.map(function (l, i) {
@@ -509,10 +534,13 @@
       var s = r2(cart.reduce(function (a, l) { return a + net(S.bySku[l.sku].list_price) * l.qty; }, 0));
       var tx = v('ps-cn') === 'CA' ? (TAX[v('ps-pv')] || []).map(function (t) { return [t[0] + ' ' + num(t[1], 3) + ' %', r2(s * t[1] / 100)]; }) : [];
       var t = r2(s + tx.reduce(function (a, x) { return a + x[1]; }, 0));
-      $('pc-tot').innerHTML = '<div><span>' + T.sub + '</span><span>' + usd(s) + '</span></div>' + tx.map(function (x) { return '<div><span>' + x[0] + '</span><span>' + usd(x[1]) + '</span></div>'; }).join('') + '<div class="t"><span>' + T.total + '</span><span>' + usd(t) + '</span></div>';
+      var fr8 = freightEst(cart, v('ps-cn'), v('ps-pv')), ld = FR ? S.set.lead_fr || S.set.lead_en : S.set.lead_en || S.set.lead_fr;
+      $('pc-tot').innerHTML = '<div><span>' + T.sub + '</span><span>' + usd(s) + '</span></div>' + tx.map(function (x) { return '<div><span>' + x[0] + '</span><span>' + usd(x[1]) + '</span></div>'; }).join('') + '<div class="t"><span>' + T.total + '</span><span>' + usd(t) + '</span></div>' +
+        (fr8 != null ? '<div class="pt-est"><span>' + T.freight + '<br><small>' + T.freightNote + '</small></span><span>' + usd(fr8) + '</span></div>' : '') + (ld ? '<p class="pt-note">' + T.lead + ' : ' + esc(ld) + '</p>' : '');
     }
     $('ps-cn').onchange = $('ps-pv').onchange = tot;
     $('pc-inv').onclick = function () { submit('invoice'); };
+    $('pc-quote').onclick = function () { makeQuote(); };
     $('pc-card').onclick = function () { submit('card'); };
     lines(); dropZone(el, again); poX();
   }
@@ -526,7 +554,7 @@
       var d = r.data || {};
       if (r.error && !d.order_id) { var ctx = r.error.context; if (ctx && ctx.json) return ctx.json().then(function (j) { fail(j.error === 'card_unavailable' ? T.cardOff : T.err); }); return fail(T.err); }
       var summary = function (status) { return 'Commande no ' + d.order_id + ' (' + status + ')\nClient : ' + (S.prof.company || '') + ' – ' + S.prof.email + '\nTotal : ' + d.total + ' USD\n\n' + cart.map(function (l) { return l.qty + ' × ' + l.sku + (l.mode ? ' (' + l.mode + ')' : ''); }).join('\n') + '\n\nLivraison : ' + [ship.name, ship.company, ship.address, ship.city, ship.province, ship.postal, ship.country].filter(Boolean).join(', ') + (payload.po_number ? '\nPO client : ' + payload.po_number : '') + (payload.note ? '\nNote : ' + payload.note : '') + (payload.po_file ? '\nBon de commande du client joint (voir l’onglet Administration)' : '') + '\n\nhttps://stratovac.ca/fr/portail/#admin'; };
-      if (method === 'invoice') { notify('Commande no ' + d.order_id + ' – facture à envoyer', summary('facture à envoyer')); done(T.okInv.replace('{n}', d.order_id)); return; }
+      if (method === 'invoice') { mailCustomer({ kind: 'order', order_id: d.order_id }); notify('Commande no ' + d.order_id + ' – facture à envoyer', summary('facture à envoyer')); done(T.okInv.replace('{n}', d.order_id)); return; }
       if (!d.checkoutToken || !window.appendHelcimPayIframe) return fail(T.cardOff);
       var key = 'helcim-pay-js-' + d.checkoutToken;
       function on(ev) {
@@ -538,6 +566,7 @@
           sb.functions.invoke('confirm-payment', { body: { order_id: d.order_id, transaction_id: id } }).then(function (c) {
             var ok = c.data && c.data.status === 'paid';
             notify('Commande no ' + d.order_id + (ok ? ' – PAYÉE par carte' : ' – paiement à vérifier'), summary(ok ? 'payée par carte, transaction ' + id : 'paiement à vérifier, transaction ' + id));
+            mailCustomer({ kind: 'order', order_id: d.order_id });
             done((ok ? T.okCard : T.payPending).replace('{n}', d.order_id));
           });
         } else if (ev.data.eventStatus === 'ABORTED') { msg.textContent = T.declined; btns.forEach(function (b) { b.disabled = false; }); }
@@ -555,14 +584,15 @@
     if (!list.length) return '<p class="pt-note">' + T.noOrders + '</p>';
     return '<div class="pt-tw"><table class="pt-t"><thead><tr><th>#</th><th>' + T.date + '</th>' + (admin ? '<th>' + T.company + '</th>' : '') + '<th>' + T.items + '</th><th class="r">' + T.total + '</th><th>' + T.status + '</th></tr></thead><tbody>' +
       list.map(function (o) {
-        var st = admin ? '<select data-os="' + o.id + '">' + Object.keys(T.st).map(function (k) { return '<option value="' + k + '"' + (k === o.status ? ' selected' : '') + '>' + T.st[k] + '</option>'; }).join('') + '</select>' : esc(T.st[o.status] || o.status);
+        var st = admin ? '<select data-os="' + o.id + '">' + Object.keys(T.st).map(function (k) { return '<option value="' + k + '"' + (k === o.status ? ' selected' : '') + '>' + T.st[k] + '</option>'; }).join('') + '</select><br><input class="pt-trk" data-ot="' + o.id + '" placeholder="' + T.tracking + '" value="' + esc(o.tracking || '') + '" aria-label="' + T.tracking + '">'
+          : esc(T.st[o.status] || o.status) + (o.tracking ? '<br><small>' + T.tracking + ' : ' + esc(o.tracking) + '</small>' : '') + '<br><button class="pt-add" type="button" data-re="' + o.id + '">' + T.again + '</button>';
         return '<tr><td>' + o.id + (o.po_file ? '<br><button class="pt-link" type="button" data-pof="' + esc(o.po_file) + '">' + T.poFile + '</button>' : '') + '</td><td>' + new Date(o.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</td>' + (admin ? '<td>' + esc((o.ship && o.ship.company) || '') + '<br><small>' + esc((o.ship && o.ship.name) || '') + (o.po_number ? ' · PO ' + esc(o.po_number) : '') + '</small></td>' : '') +
           '<td><small>' + (o.items || []).map(function (i) { return i.qty + ' × ' + esc(i.sku) + (i.mode ? ' (' + T.mode[i.mode] + ')' : ''); }).join('<br>') + '</small></td><td class="r">' + usd(Number(o.total)) + '<br><small>' + (o.pay_method === 'card' ? T.payCard : T.payInv) + '</small></td><td>' + st + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
   function ordersView(el) {
     el.innerHTML = '<p class="pt-note">' + T.working + '</p>';
-    sb.from('orders').select('*').eq('user_id', S.user.id).order('created_at', { ascending: false }).then(function (r) { el.innerHTML = orderTable(r.data || [], false); });
+    sb.from('orders').select('*').eq('user_id', S.user.id).order('created_at', { ascending: false }).then(function (r) { var list = r.data || []; el.innerHTML = orderTable(list, false); wireReorder(el, list); });
   }
 
   // ---------- account ----------
@@ -581,8 +611,9 @@
   // ---------- admin ----------
   function adminView(el) {
     el.innerHTML = '<p class="pt-note">' + T.working + '</p>';
-    Promise.all([sb.from('profiles').select('*').order('created_at', { ascending: false }), sb.from('orders').select('*').order('created_at', { ascending: false }).limit(200)]).then(function (rs) {
-      var users = rs[0].data || [], orders = rs[1].data || [];
+    Promise.all([sb.from('profiles').select('*').order('created_at', { ascending: false }), sb.from('orders').select('*').order('created_at', { ascending: false }).limit(200), sb.from('quotes').select('*').order('created_at', { ascending: false }).limit(30)]).then(function (rs) {
+      var users = rs[0].data || [], orders = rs[1].data || [], quotes = rs[2].data || [];
+      var byId = {}; users.forEach(function (u) { byId[u.id] = u; });
       var pend = users.filter(function (u) { return u.status === 'pending'; }), rest = users.filter(function (u) { return u.status !== 'pending'; });
       function urow(u) {
         return '<tr><td><button class="pt-link pt-cust" type="button" data-uv="' + u.id + '"><strong>' + esc(u.company || u.email) + '</strong></button><br><small>' + esc(u.full_name || '') + ' · ' + esc(u.email) + ' · ' + esc(u.phone || '') + '<br>' + esc([u.city, u.province, u.country].filter(Boolean).join(', ')) + '</small></td>' +
@@ -594,14 +625,26 @@
       var head = '<thead><tr><th>' + T.company + '</th><th>' + T.disc + '</th><th>' + T.status + '</th><th></th></tr></thead>';
       el.innerHTML = '<p class="pt-msg" id="ad-msg" role="status"></p><h2 class="pt-h">' + T.pendingU + ' (' + pend.length + ')</h2>' + (pend.length ? '<div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + pend.map(urow).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.none + '</p>') +
         '<h2 class="pt-h">' + T.allOrders + '</h2>' + orderTable(orders, true) +
-        '<h2 class="pt-h">' + T.customers + ' (' + rest.length + ')</h2><p class="pt-note">' + T.clickCust + '</p><div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + rest.map(urow).join('') + '</tbody></table></div>';
+        '<h2 class="pt-h">' + T.customers + ' (' + rest.length + ')</h2><p class="pt-note">' + T.clickCust + '</p><div class="pt-tw"><table class="pt-t">' + head + '<tbody>' + rest.map(urow).join('') + '</tbody></table></div>' +
+        '<h2 class="pt-h">' + T.quotes + ' (' + quotes.length + ')</h2>' + (quotes.length ? '<div class="pt-tw"><table class="pt-t"><thead><tr><th>' + T.quoteNo + '</th><th>' + T.date + '</th><th>' + T.company + '</th><th>' + T.items + '</th><th class="r">' + T.sub + '</th></tr></thead><tbody>' + quotes.map(function (q) { var u = byId[q.user_id] || {}; return '<tr><td>' + esc(q.number) + '</td><td>' + new Date(q.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</td><td>' + esc(u.company || u.email || '') + '</td><td><small>' + (q.items || []).map(function (i) { return i.qty + ' × ' + esc(i.sku); }).join('<br>') + '</small></td><td class="r">' + usd(Number(q.subtotal)) + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.none + '</p>') +
+        settingsForm();
       function say(t) { $('ad-msg').textContent = t; }
       function upd(id, patch) { sb.from('profiles').update(patch).eq('id', id).then(function (r) { if (r.error) return say(r.error.message); adminView(el); setTimeout(function () { say(T.saved); }, 600); }); }
       function dval(id) { return Math.max(0, Math.min(90, Number(el.querySelector('[data-ud="' + id + '"]').value) || 0)); }
-      el.querySelectorAll('[data-ua]').forEach(function (b) { b.onclick = function () { upd(b.dataset.ua, { status: 'approved', discount_pct: dval(b.dataset.ua) }); }; });
+      el.querySelectorAll('[data-ua]').forEach(function (b) { b.onclick = function () { var id = b.dataset.ua; sb.from('profiles').update({ status: 'approved', discount_pct: dval(id) }).eq('id', id).then(function (r) { if (r.error) return say(r.error.message); mailCustomer({ kind: 'approved', user_id: id }).then(function (ok) { adminView(el); setTimeout(function () { say(ok ? T.saved + ' ' + T.emailed : T.noEmail); }, 600); }); }); }; });
       el.querySelectorAll('[data-us]').forEach(function (b) { b.onclick = function () { upd(b.dataset.us, { discount_pct: dval(b.dataset.us) }); }; });
       el.querySelectorAll('[data-ur]').forEach(function (b) { b.onclick = function () { upd(b.dataset.ur, { status: 'rejected' }); }; });
-      el.querySelectorAll('[data-os]').forEach(function (s) { s.onchange = function () { sb.from('orders').update({ status: s.value }).eq('id', +s.dataset.os).then(function (r) { say(r.error ? r.error.message : T.saved); }); }; });
+      function saveOrder(id) {
+        var s = el.querySelector('[data-os="' + id + '"]'), t = el.querySelector('[data-ot="' + id + '"]'), prev = (orders.filter(function (o) { return o.id === id; })[0] || {}).status;
+        sb.from('orders').update({ status: s.value, tracking: t.value.trim() || null }).eq('id', id).then(function (r) {
+          if (r.error) return say(r.error.message);
+          if (s.value === 'shipped' && prev !== 'shipped') { mailCustomer({ kind: 'shipped', order_id: id }).then(function (ok) { say(ok ? T.saved + ' ' + T.emailed : T.noEmail); }); orders.forEach(function (o) { if (o.id === id) o.status = 'shipped'; }); }
+          else say(T.saved);
+        });
+      }
+      el.querySelectorAll('[data-os]').forEach(function (s) { s.onchange = function () { saveOrder(+s.dataset.os); }; });
+      el.querySelectorAll('[data-ot]').forEach(function (t) { t.onchange = function () { saveOrder(+t.dataset.ot); }; });
+      wireSettings(el, say);
       el.querySelectorAll('[data-uv]').forEach(function (b) { b.onclick = function () { customerDialog(users.filter(function (u) { return u.id === b.dataset.uv; })[0]); }; });
       // two-step delete: first click arms the button, second click deletes
       el.querySelectorAll('[data-ux]').forEach(function (b) {
@@ -637,6 +680,188 @@
     });
   }
 
+  // ---------- home ----------
+  function homeView(el) {
+    var nm = String(S.prof.full_name || '').split(' ')[0];
+    var mic = SR || window.MediaRecorder ? '<button class="pt-mic" type="button" id="hm-mic" aria-label="' + T.aiMic + '" title="' + T.aiMic + '"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg></button>' : '';
+    el.innerHTML = '<div class="pt-home"><h2 class="pt-h" style="margin-top:4px">' + esc(T.hiName.replace('{n}', nm).replace(/\s+$/, '')) + '</h2><p class="pt-note" style="margin-top:0">' + T.hiSub + '</p><div class="pt-cards">' +
+      '<section class="pt-card pt-card--ask"><h3>' + T.hAskT + '</h3><p>' + T.hAskS + '</p><form id="hm-f" class="pt-ai-f">' + mic + '<textarea id="hm-q" rows="2" placeholder="' + esc(T.hAskPh) + '" aria-label="' + T.hAskT + '"></textarea><button class="btn btn--solid" type="submit">' + T.hAsk + '</button></form></section>' +
+      '<section class="pt-card pt-card--po" id="hm-po"></section>' +
+      '<section class="pt-card"><h3>' + T.hCatT + '</h3><p>' + T.hCatS + '</p><div class="pt-acts"><a class="btn btn--line" href="#cat">' + T.hCat + '</a><a class="pt-link" href="#sel">' + T.hSel + '</a></div></section>' +
+      '</div><div id="hm-recent"></div></div>';
+    function goAsk(q, useMic) { S.tab = 'sel'; history.replaceState(null, '', '#sel'); shell(); if (q) { $('ai-in').value = q; $('ai-f').requestSubmit(); } else if (useMic && $('ai-mic')) $('ai-mic').click(); }
+    $('hm-f').onsubmit = function (e) { e.preventDefault(); var q = v('hm-q'); if (q) goAsk(q); };
+    $('hm-q').onkeydown = function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('hm-f').requestSubmit(); } };
+    if ($('hm-mic')) $('hm-mic').onclick = function () { goAsk(null, true); };
+    dropZone($('hm-po'), function () { S.tab = 'cart'; history.replaceState(null, '', '#cart'); shell(); });
+    sb.from('orders').select('*').eq('user_id', S.user.id).order('created_at', { ascending: false }).limit(3).then(function (r) {
+      var list = r.data || []; if (!list.length || !$('hm-recent')) return;
+      $('hm-recent').innerHTML = '<h3 class="pt-sub">' + T.hRecent + '</h3>' + orderTable(list, false); wireReorder($('hm-recent'), list);
+    });
+  }
+  function wireReorder(el, list) {
+    el.querySelectorAll('[data-re]').forEach(function (b) {
+      b.onclick = function () {
+        var o = list.filter(function (x) { return String(x.id) === b.dataset.re; })[0], n = 0; if (!o) return;
+        (o.items || []).forEach(function (i) { if (S.bySku[i.sku] && S.bySku[i.sku].list_price != null) { addLine(i.sku, i.qty, i.mode || null); n++; } });
+        if (!n) { toast(T.reorderNone); return; }
+        toast(T.againDone); S.tab = 'cart'; history.replaceState(null, '', '#cart'); shell();
+      };
+    });
+  }
+
+  // ---------- assistant: one-click buttons under a reply ----------
+  function kitSkus(p, mode) { var a = p.acc || {}; return [p.sku].concat(mode === 'vacuum' ? [a.vac_filter, a.vac_valve] : mode === 'pressure' ? [a.press_filter, a.press_valve] : []).filter(function (x) { return x && S.bySku[x] && S.bySku[x].list_price != null; }); }
+  function aiActions(m) {
+    if (m.role !== 'assistant' || m.err) return '';
+    var seen = {}, list = [];
+    (m.content.match(/\bID[A-Z]{1,4}[0-9A-Z.\-]*[0-9A-Z]\b/g) || []).forEach(function (x) { if (S.bySku[x] && !seen[x] && S.bySku[x].list_price != null) { seen[x] = 1; list.push(S.bySku[x]); } });
+    var bl = list.filter(function (p) { return p.kind === 'blower'; }).slice(0, 3), inKit = {};
+    bl.forEach(function (p) { kitSkus(p, m.mode).forEach(function (x) { inKit[x] = 1; }); });
+    var acc = list.filter(function (p) { return p.kind !== 'blower' && !inKit[p.sku]; }).slice(0, 4);
+    if (!bl.length && !acc.length) return '';
+    return '<div class="pt-ai-acts">' + bl.map(function (p) {
+      var k = kitSkus(p, m.mode), tot = r2(k.reduce(function (a, x) { return a + net(S.bySku[x].list_price); }, 0));
+      return m.mode ? '<button class="btn btn--solid pt-sol" type="button" data-sol="' + esc(p.sku) + '" data-mode="' + m.mode + '"><span>' + T.sol + '</span><small>' + esc(k.join(' + ')) + ' · ' + usd(tot) + '</small></button>'
+        : '<button class="btn btn--line pt-sol" type="button" data-pick="' + esc(p.sku) + '"><span>' + T.solPick + '</span><small>' + esc(p.sku) + '</small></button>';
+    }).join('') + acc.map(function (p) { return '<button class="pt-add" type="button" data-one="' + esc(p.sku) + '">' + T.addOne + ' ' + esc(p.sku) + ' · ' + usd(net(p.list_price)) + '</button>'; }).join('') + '</div>';
+  }
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-sol],[data-one],[data-pick]'); if (!b) return;
+    if (b.dataset.pick) return blowerDialog(S.bySku[b.dataset.pick]);
+    if (b.dataset.one) { addLine(b.dataset.one, 1, null); shellCount(); toast(T.added); return; }
+    var p = S.bySku[b.dataset.sol], mode = b.dataset.mode; if (!p) return;
+    kitSkus(p, mode).forEach(function (x) { addLine(x, 1, mode); });
+    shellCount(); toast(T.solDone); b.classList.add('done'); b.querySelector('span').textContent = '✓ ' + T.solDone;
+  });
+
+  // ---------- performance curve (SVG) ----------
+  function loadCurves() { return S.curves ? Promise.resolve() : sb.from('perf_curves').select('*').then(function (r) { S.curves = {}; (r.data || []).forEach(function (x) { S.curves[x.frame] = x.data; }); }); }
+  function niceStep(span) { var e = Math.pow(10, Math.floor(Math.log10(span))), f = span / e; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * e; }
+  function curveSvg(p) {
+    var pf = p.specs.perf, cv = pf && S.curves && S.curves[pf.frame]; if (!cv) return '';
+    var sets = [];
+    if (cv.flow_press && cv.flow_press.length && pf.max_p) sets.push({ k: 'p', c: cv.flow_press.filter(function (q) { return q[0] <= pf.max_p * 1.001; }) });
+    if (cv.flow_vac && cv.flow_vac.length && pf.max_v) sets.push({ k: 'v', c: cv.flow_vac.filter(function (q) { return q[0] <= pf.max_v * 1.001; }) });
+    sets = sets.filter(function (s) { return s.c.length > 1; }); if (!sets.length) return '';
+    var f = S.selF, pt = null;
+    if (f && f.q && f.dp) { var Q = Number(f.q) * QU[f.qu], dp = Number(f.dp) * DP[f.du], k = f.mode === 'vac' ? 'v' : 'p'; if (Q > 0 && dp >= 0 && sets.some(function (s) { return s.k === k; })) pt = { x: dp / DP.psi, y: Q, k: k }; }
+    var xmax = 0, ymax = 0;
+    sets.forEach(function (s) { s.c.forEach(function (q) { xmax = Math.max(xmax, q[0] / DP.psi); ymax = Math.max(ymax, q[1]); }); });
+    if (pt) { xmax = Math.max(xmax, pt.x); ymax = Math.max(ymax, pt.y); }
+    var xs = niceStep(xmax / 5), ys = niceStep(ymax / 5); xmax = Math.ceil(xmax / xs) * xs; ymax = Math.ceil(ymax * 1.05 / ys) * ys;
+    var W = 560, H = 320, L = 70, R = 16, Tp = 14, B = 52, iw = W - L - R, ih = H - Tp - B;
+    function X(x) { return L + x / xmax * iw; } function Y(y) { return Tp + ih - y / ymax * ih; }
+    var g = '';
+    for (var x = 0; x <= xmax + 1e-9; x += xs) g += '<line x1="' + X(x) + '" y1="' + Tp + '" x2="' + X(x) + '" y2="' + (Tp + ih) + '" class="gr"/><text x="' + X(x) + '" y="' + (Tp + ih + 16) + '" text-anchor="middle">' + num(x, 2) + '</text><text x="' + X(x) + '" y="' + (Tp + ih + 29) + '" text-anchor="middle" class="sub">' + num(x * 0.0689476, 2) + '</text>';
+    for (var y = 0; y <= ymax + 1e-9; y += ys) g += '<line x1="' + L + '" y1="' + Y(y) + '" x2="' + (L + iw) + '" y2="' + Y(y) + '" class="gr"/><text x="' + (L - 8) + '" y="' + (Y(y) - 1) + '" text-anchor="end">' + num(y, 0) + '</text><text x="' + (L - 8) + '" y="' + (Y(y) + 11) + '" text-anchor="end" class="sub">' + num(y / 0.588578, 0) + '</text>';
+    var lines = sets.map(function (s) { return '<polyline class="' + (s.k === 'p' ? 'cp' : 'cvv') + '" points="' + s.c.map(function (q) { return X(q[0] / DP.psi).toFixed(1) + ',' + Y(q[1]).toFixed(1); }).join(' ') + '"/>'; }).join('');
+    var dot = pt ? '<circle cx="' + X(pt.x) + '" cy="' + Y(pt.y) + '" r="6" class="pt-dot"/><text x="' + (X(pt.x) + 9) + '" y="' + (Y(pt.y) - 8) + '" class="lab">' + T.yourPt + '</text>' : '';
+    var leg = sets.map(function (s, i) { return '<span class="lg lg-' + s.k + '">' + (s.k === 'p' ? T.curveP : T.curveV) + '</span>'; }).join('');
+    return '<h3 class="pt-sub">' + T.curveT + '</h3><div class="pt-legend">' + leg + '</div><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.curveT + ' ' + p.sku) + '">' + g +
+      '<text x="' + (L + iw / 2) + '" y="' + (H - 4) + '" text-anchor="middle" class="ax">psi · bar</text><text transform="translate(14 ' + (Tp + ih / 2) + ') rotate(-90)" text-anchor="middle" class="ax">CFM · m³/h</text>' + lines + dot + '</svg>';
+  }
+
+  // ---------- freight estimate ----------
+  function regionOf(country, prov) {
+    if (country === 'US') return 'US'; if (country !== 'CA') return null;
+    return prov === 'QC' ? 'QC' : prov === 'ON' ? 'ON' : ['NB', 'NS', 'PE', 'NL'].indexOf(prov) >= 0 ? 'ATL' : ['MB', 'SK', 'AB', 'BC'].indexOf(prov) >= 0 ? 'WEST' : ['YT', 'NT', 'NU'].indexOf(prov) >= 0 ? 'NORTH' : null;
+  }
+  function freightEst(lines, country, prov) {
+    var fr8 = S.set.freight, rg = regionOf(country, prov); if (!fr8 || !rg) return null;
+    var tot = 0, blowers = 0, ok = true;
+    lines.forEach(function (l) {
+      var p = S.bySku[l.sku]; if (!p || p.kind !== 'blower') return;
+      var kw = Number(p.specs.kw) || 0, band = kw <= 3 ? 'small' : kw <= 11 ? 'med' : 'large', rate = fr8[band] && fr8[band][rg];
+      if (rate === '' || rate == null || isNaN(Number(rate))) ok = false; else { tot += Number(rate) * l.qty; blowers += l.qty; }
+    });
+    if (!blowers) { var a = fr8.acc && fr8.acc[rg]; if (a === '' || a == null || isNaN(Number(a)) || !lines.length) return null; return Number(a); }
+    return ok ? r2(tot) : null;
+  }
+
+  // ---------- admin: freight + lead time settings ----------
+  var REG = ['QC', 'ON', 'ATL', 'WEST', 'NORTH', 'US'];
+  function settingsForm() {
+    var st = S.set || {}, fr8 = st.freight || {};
+    function row(band, lab) { return '<tr><th>' + lab + '</th>' + REG.map(function (r) { var val = fr8[band] && fr8[band][r]; return '<td><input class="pt-num" type="number" min="0" step="1" data-fb="' + band + '" data-fr="' + r + '" value="' + (val == null ? '' : esc(val)) + '" aria-label="' + esc(lab + ' ' + T.region[r]) + '"></td>'; }).join('') + '</tr>'; }
+    return '<h2 class="pt-h">' + T.setTitle + '</h2><div class="pt-form" style="max-width:820px">' + field('st-lf', T.setLeadFr, 'text', st.lead_fr || '') + field('st-le', T.setLeadEn, 'text', st.lead_en || '') + '</div>' +
+      '<p class="pt-sub">' + T.setFreight + '</p><div class="pt-tw"><table class="pt-t pt-set"><thead><tr><th></th>' + REG.map(function (r) { return '<th>' + T.region[r] + '</th>'; }).join('') + '</tr></thead><tbody>' + row('small', T.setSmall) + row('med', T.setMed) + row('large', T.setLarge) + row('acc', T.setAcc) + '</tbody></table></div>' +
+      '<p class="pt-note">' + T.setHint + '</p><button class="btn btn--solid" type="button" id="st-save">' + T.save + '</button>';
+  }
+  function wireSettings(el, say) {
+    var b = $('st-save'); if (!b) return;
+    b.onclick = function () {
+      var fr8 = { small: {}, med: {}, large: {}, acc: {} };
+      el.querySelectorAll('[data-fb]').forEach(function (i) { var val = i.value.trim(); if (val !== '') fr8[i.dataset.fb][i.dataset.fr] = Math.max(0, Number(val) || 0); });
+      var data = { lead_fr: v('st-lf'), lead_en: v('st-le'), freight: fr8 };
+      sb.from('portal_settings').upsert({ id: 1, data: data }).then(function (r) { if (r.error) return say(r.error.message); S.set = data; say(T.saved); });
+    };
+  }
+
+  // ---------- customer emails (silently skipped until the email service is set up) ----------
+  function mailCustomer(body) {
+    return sb.functions.invoke('customer-email', { body: body }).then(function (r) { return !!(r.data && r.data.sent); }).catch(function () { return false; });
+  }
+
+  // ---------- quote PDF ----------
+  function loadScript(src) { return new Promise(function (ok, ko) { if (document.querySelector('script[src="' + src + '"]')) return ok(); var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
+  function imgData(src) { return new Promise(function (ok) { var i = new Image(); i.onload = function () { var c = document.createElement('canvas'); c.width = i.naturalWidth; c.height = i.naturalHeight; c.getContext('2d').drawImage(i, 0, 0); ok({ d: c.toDataURL('image/png'), w: i.naturalWidth, h: i.naturalHeight }); }; i.onerror = function () { ok(null); }; i.src = src; }); }
+  function pm(n) { return usd(n).replace(/[  ]/g, ' '); }
+  function pt(s) { return String(s == null ? '' : s).replace(/[  ]/g, ' ').replace(/[≤]/g, '<=').replace(/[^\x00-\xff’–—…€]/g, ''); }
+  function makeQuote() {
+    var msg = $('pc-msg'), btn = $('pc-quote'); btn.disabled = true; msg.textContent = T.quoteMaking;
+    var ship = { name: v('ps-nm'), company: v('ps-co'), phone: v('ps-ph'), country: v('ps-cn'), province: v('ps-pv'), address: v('ps-ad'), city: v('ps-ci'), postal: v('ps-pc') };
+    var now = new Date(), until = new Date(now.getTime() + 30 * 864e5), d2 = function (x) { return x.toLocaleDateString(FR ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' }); };
+    var number = 'Q' + String(now.getFullYear()).slice(2) + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2) + '-' + String(Math.floor(1000 + Math.random() * 9000));
+    var lines = cart.map(function (l) { var p = S.bySku[l.sku], u = net(p.list_price); return { sku: l.sku, qty: l.qty, mode: l.mode, unit: u, total: r2(u * l.qty), desc: (p.kind === 'blower' ? pname(p) + ', ' + num(p.specs.cfm, 0) + ' CFM (' + num(p.specs.m3h, 0) + ' m³/h), ' + num(p.specs.hp) + ' HP (' + num(p.specs.kw) + ' kW), ' + vlabel(p.specs.volt) : T.kind[p.kind] + (p.specs.port ? ' ' + p.specs.port : '')) + (l.mode ? ' – ' + T.mode[l.mode] : '') }; });
+    var sub = r2(lines.reduce(function (a, l) { return a + l.total; }, 0));
+    var tx = ship.country === 'CA' ? (TAX[ship.province] || []).map(function (t) { return [t[0] + ' ' + num(t[1], 3) + ' %', r2(sub * t[1] / 100)]; }) : [];
+    var total = r2(sub + tx.reduce(function (a, x) { return a + x[1]; }, 0)), fr8 = freightEst(cart, ship.country, ship.province), ld = FR ? S.set.lead_fr || S.set.lead_en : S.set.lead_en || S.set.lead_fr;
+    Promise.all([loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'), imgData('/assets/img/stratovac-logo.png'), imgData('/assets/img/id-mark.webp')]).then(function (rs) {
+      var doc = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), W = 612, M = 44, y = 40, logo = rs[1], idm = rs[2];
+      var ink = [21, 32, 43], mute = [91, 102, 115], acc = [30, 111, 217];
+      if (logo) doc.addImage(logo.d, 'PNG', M, y, 34 * logo.w / logo.h, 34);
+      if (idm) doc.addImage(idm.d, 'PNG', W - M - 30 * idm.w / idm.h, y + 2, 30 * idm.w / idm.h, 30);
+      y += 56; doc.setDrawColor(acc[0], acc[1], acc[2]); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(20); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(T.quoteT, M, y);
+      doc.setFontSize(10); doc.setFont('helvetica', 'normal');
+      [[T.quoteNo, number], [T.quoteDate, d2(now)], [T.quoteValid, d2(until)]].forEach(function (r, i) { doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(r[0]), W - M - 150, y - 12 + i * 14); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(pt(r[1]), W - M, y - 12 + i * 14, { align: 'right' }); });
+      y += 34;
+      doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text('Stratovac', M, y); doc.text(pt(T.quoteFor), M + 270, y); y += 13;
+      doc.setFontSize(10); doc.setTextColor(ink[0], ink[1], ink[2]);
+      var seller = ['Stratovac · Part of ID Industries', '1396 des Mouettes', 'Longueuil (QC) J4J 5K2, Canada', '+1 438-880-4655 · abruens@stratovac.ca'];
+      var buyer = [ship.company || S.prof.company || '', ship.name || S.prof.full_name || '', S.prof.email || '', ship.address, [ship.city, ship.province, ship.postal].filter(Boolean).join(' '), ship.country === 'US' ? 'United States' : ship.country === 'CA' ? 'Canada' : ''].filter(Boolean);
+      for (var i = 0; i < Math.max(seller.length, buyer.length); i++) { if (seller[i]) doc.text(pt(seller[i]), M, y + i * 13); if (buyer[i]) doc.text(pt(buyer[i]), M + 270, y + i * 13); }
+      y += Math.max(seller.length, buyer.length) * 13 + 20;
+      var cx = [M, M + 118, W - M - 170, W - M - 85, W - M];
+      function headRow() { doc.setFillColor(238, 242, 247); doc.rect(M, y - 12, W - 2 * M, 20, 'F'); doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(pt(T.model), cx[0] + 4, y + 1); doc.text(pt(T.quoteDesc), cx[1], y + 1); doc.text(pt(T.quoteQty), cx[2] + 6, y + 1, { align: 'center' }); doc.text(pt(T.quoteUnit), cx[3] + 10, y + 1, { align: 'right' }); doc.text(pt(T.quoteLine), cx[4] - 4, y + 1, { align: 'right' }); y += 22; doc.setFont('helvetica', 'normal'); }
+      function footer() { doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt('Stratovac · Part of ID Industries · stratovac.ca · ' + T.quoteNo + ' ' + number), M, 770); }
+      headRow();
+      lines.forEach(function (l) {
+        var dl = doc.splitTextToSize(pt(l.desc), cx[2] - cx[1] - 14), h = Math.max(1, dl.length) * 12 + 8;
+        if (y + h > 690) { footer(); doc.addPage(); y = 60; headRow(); }
+        doc.setFontSize(9.5); doc.setTextColor(ink[0], ink[1], ink[2]); doc.setFont('helvetica', 'bold'); doc.text(pt(l.sku), cx[0] + 4, y); doc.setFont('helvetica', 'normal');
+        doc.text(dl, cx[1], y); doc.text(String(l.qty), cx[2] + 6, y, { align: 'center' }); doc.text(pt(pm(l.unit)), cx[3] + 10, y, { align: 'right' }); doc.text(pt(pm(l.total)), cx[4] - 4, y, { align: 'right' });
+        y += h - 4; doc.setDrawColor(227, 232, 238); doc.setLineWidth(0.6); doc.line(M, y - 6, W - M, y - 6); y += 6;
+      });
+      if (y > 600) { footer(); doc.addPage(); y = 60; }
+      y += 6; var tx0 = W - M - 230;
+      function trow(lab, val, bold) { doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setFontSize(bold ? 11 : 10); doc.text(pt(lab), tx0, y); doc.text(pt(val), W - M - 4, y, { align: 'right' }); y += bold ? 18 : 15; }
+      if (disc()) { doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(T.quoteDisc + ' : ' + num(disc()) + ' %'), M, y); doc.setTextColor(ink[0], ink[1], ink[2]); }
+      trow(T.sub, pm(sub)); tx.forEach(function (x) { trow(x[0], pm(x[1])); });
+      doc.setDrawColor(ink[0], ink[1], ink[2]); doc.setLineWidth(1); doc.line(tx0, y - 10, W - M, y - 10); y += 4; trow(T.total, pm(total), true);
+      if (fr8 != null) { doc.setTextColor(mute[0], mute[1], mute[2]); trow(T.freight, pm(fr8)); doc.setFontSize(8); doc.text(pt('(' + T.freightNote + ')'), W - M - 4, y - 6, { align: 'right' }); y += 8; doc.setTextColor(ink[0], ink[1], ink[2]); }
+      y += 16; doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]);
+      [ld ? T.lead + ' : ' + ld : '', T.quoteNotes, T.quoteOrder].filter(Boolean).forEach(function (t) { var tl = doc.splitTextToSize(pt(t), W - 2 * M); doc.text(tl, M, y); y += tl.length * 12 + 4; });
+      footer();
+      var n = doc.getNumberOfPages(); for (var pg = 1; pg <= n; pg++) { doc.setPage(pg); doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(T.page + ' ' + pg + ' / ' + n), W - M, 770, { align: 'right' }); }
+      doc.save((FR ? 'Soumission-Stratovac-' : 'Quote-Stratovac-') + number + '.pdf');
+      sb.from('quotes').insert({ user_id: S.user.id, number: number, items: lines.map(function (l) { return { sku: l.sku, qty: l.qty, mode: l.mode, unit_price: l.unit }; }), subtotal: sub }).then(function () {});
+      notify('Soumission ' + number + ' téléchargée – ' + (ship.company || S.prof.company || S.prof.email), 'Soumission ' + number + ' (' + pm(sub) + ' avant taxes)\nClient : ' + (S.prof.company || '') + ' – ' + S.prof.email + '\n\n' + lines.map(function (l) { return l.qty + ' × ' + l.sku + (l.mode ? ' (' + l.mode + ')' : '') + ' – ' + pm(l.total); }).join('\n') + '\n\nhttps://stratovac.ca/fr/portail/#admin');
+      btn.disabled = false; msg.textContent = T.quoteOk.replace('{n}', number);
+    }).catch(function () { btn.disabled = false; msg.textContent = T.quoteErr; });
+  }
+
   // ---------- boot ----------
   var recovering = false;
   function boot() {
@@ -651,7 +876,8 @@
           root.innerHTML = '<p class="pt-msg">' + (S.prof && S.prof.status === 'rejected' ? T.rejected : T.pending) + '</p><button class="pt-link" type="button" id="pt-out-btn">' + T.logout + '</button>';
           $('pt-out-btn').onclick = function () { sb.auth.signOut(); }; return;
         }
-        sb.from('products').select('*').order('sort').then(function (pp) {
+        Promise.all([sb.from('products').select('*').order('sort'), sb.from('portal_settings').select('data').eq('id', 1).maybeSingle()]).then(function (rs) {
+          var pp = rs[0]; S.set = (rs[1].data && rs[1].data.data) || {};
           S.prods = pp.data || []; S.bySku = {}; S.prods.forEach(function (p) { S.bySku[p.sku] = p; });
           route(true);
           window.addEventListener('hashchange', function () { route(false); });

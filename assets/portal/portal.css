@@ -124,3 +124,37 @@
 @keyframes pt-pulse{0%,100%{box-shadow:0 0 0 0 rgba(180,35,24,.5)}50%{box-shadow:0 0 0 8px rgba(180,35,24,0)}}
 @media (prefers-reduced-motion:reduce){.pt-mic.on{animation:none}}
 @media (max-width:560px){.pt-ai-f .pt-mic{align-self:flex-start}}
+/* home */
+.pt-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:14px 0 22px}
+.pt-card{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:18px}
+.pt-card h3{font-size:1.1rem;margin:0}
+.pt-card p{margin:0;color:var(--ink-2);font-size:.92rem}
+.pt-card .pt-acts{margin-top:auto}
+.pt-card--ask{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.pt-card--po{padding:0;border:0;background:none}
+.pt-card--po .pt-drop{height:100%;margin:0;align-content:center}
+@media (max-width:900px){.pt-cards{grid-template-columns:1fr}}
+/* assistant one-click */
+.pt-ai-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pt-sol{display:grid;gap:2px;text-align:left;padding:9px 14px;line-height:1.25}
+.pt-sol small{font-weight:400;font-size:.76rem;opacity:.9}
+.pt-sol.done{opacity:.75}
+/* curve */
+.pt-curve svg{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.pt-curve text{font:11px var(--font-body);fill:var(--ink-2)}
+.pt-curve text.sub{font-size:9.5px;opacity:.75}
+.pt-curve text.ax{font-size:11px;fill:var(--ink)}
+.pt-curve text.lab{font-weight:700;fill:var(--ink)}
+.pt-curve .gr{stroke:var(--line);stroke-width:1}
+.pt-curve .cp{fill:none;stroke:var(--accent);stroke-width:2.5}
+.pt-curve .cvv{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-dasharray:7 5}
+.pt-curve .pt-dot{fill:#d92d20;stroke:var(--paper);stroke-width:2}
+.pt-legend{display:flex;gap:16px;font-size:.82rem;color:var(--ink-2);margin:0 0 6px}
+.pt-legend .lg::before{content:"";display:inline-block;width:22px;height:0;border-top:2.5px solid var(--accent);vertical-align:middle;margin-right:6px}
+.pt-legend .lg-v::before{border-top:2.5px dashed var(--ink)}
+/* cart extras + admin */
+.pt-tot .pt-est{color:var(--ink-2);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px}
+.pt-tot .pt-est small{font-size:.75rem}
+.pt-trk{margin-top:6px;width:150px;font:inherit;font-size:.82rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 7px}
+.pt-set .pt-num{width:86px}
+.pt-set th{white-space:nowrap}

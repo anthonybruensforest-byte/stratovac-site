@@ -155,3 +155,19 @@ alter table public.xref enable row level security;
 create table if not exists public.ai_usage (id bigserial primary key, user_id uuid references public.profiles(id) on delete cascade, fn text not null, at timestamptz not null default now());
 create index if not exists ai_usage_user_at on public.ai_usage (user_id, fn, at);
 alter table public.ai_usage enable row level security;
+
+-- ---------- shipping tracking, portal settings (freight estimate, lead time), downloaded quotes ----------
+alter table public.orders add column if not exists tracking text;
+create table if not exists public.portal_settings (id int primary key default 1 check (id = 1), data jsonb not null default '{}'::jsonb);
+alter table public.portal_settings enable row level security;
+drop policy if exists "settings approved read" on public.portal_settings;
+create policy "settings approved read" on public.portal_settings for select using (public.is_approved());
+drop policy if exists "settings admin all" on public.portal_settings;
+create policy "settings admin all" on public.portal_settings for all using (public.is_admin()) with check (public.is_admin());
+insert into public.portal_settings (id, data) values (1, '{}'::jsonb) on conflict (id) do nothing;
+create table if not exists public.quotes (id bigserial primary key, user_id uuid references public.profiles(id) on delete cascade, number text not null, items jsonb not null default '[]'::jsonb, subtotal numeric(12,2), created_at timestamptz not null default now());
+alter table public.quotes enable row level security;
+drop policy if exists "quotes insert own" on public.quotes;
+create policy "quotes insert own" on public.quotes for insert with check (user_id = auth.uid() and public.is_approved());
+drop policy if exists "quotes read own or admin" on public.quotes;
+create policy "quotes read own or admin" on public.quotes for select using (user_id = auth.uid() or public.is_admin());
