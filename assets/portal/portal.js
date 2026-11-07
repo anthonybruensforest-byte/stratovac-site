@@ -313,7 +313,8 @@
             var b64 = String(fr.result).split(',')[1];
             sb.functions.invoke('transcribe', { body: { audio: b64, mime: blob.type, lang: FR ? 'fr' : 'en' } }).then(function (r) {
               ai.busy = false; var d = r.data || {};
-              if (d.text && d.text.trim()) return sendVoice(d.text.trim());
+              var txt = String(d.text || '').replace(/\[?\b\d{1,2}:\d{2}(:\d{2})?\b\]?/g, ' ').trim();
+              if (/[A-Za-zÀ-ÿ]{2}/.test(txt)) return sendVoice(txt);
               if (!r.error) return aiNote(T.aiNoHear);
               var ctx = r.error.context;
               (ctx && ctx.json ? ctx.json().catch(function () { return {}; }) : Promise.resolve({})).then(function (j) {
