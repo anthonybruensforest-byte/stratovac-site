@@ -22,7 +22,7 @@ Deno.serve(async (req) => {
     if (!prof || !(prof.status === 'approved' || prof.is_admin)) return json({ error: 'not_approved' }, 403);
     const key = (Deno.env.get('GEMINI_API_KEY') ?? '').trim();
     if (!key) return json({ error: 'stt_unavailable' }, 503);
-    if (!/^[A-Za-z0-9_\-]{20,}$/.test(key)) return json({ error: 'bad_key' }, 500);
+    if (!/^[A-Za-z0-9._\-]{20,}$/.test(key)) return json({ error: 'bad_key' }, 500);
 
     const { audio, mime, lang } = await req.json();
     if (typeof audio !== 'string' || !audio || audio.length > 3_500_000) return json({ error: 'audio' }, 400);
