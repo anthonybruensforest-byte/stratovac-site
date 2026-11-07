@@ -22,6 +22,12 @@ Deno.serve(async (req) => {
     if (!prof || !(prof.status === 'approved' || prof.is_admin)) return json({ error: 'not_approved' }, 403);
     const key = (Deno.env.get('GEMINI_API_KEY') ?? '').trim();
     if (!key) return json({ error: 'stt_unavailable' }, 503);
+    if (!prof.is_admin) {
+      const hour = new Date(Date.now() - 3600e3).toISOString();
+      const { count } = await db.from('ai_usage').select('id', { count: 'exact', head: true }).eq('user_id', user.id).eq('fn', 'transcribe').gte('at', hour);
+      if ((count ?? 0) >= 40) return json({ error: 'limit' }, 429);
+    }
+    await db.from('ai_usage').insert({ user_id: user.id, fn: 'transcribe' });
     if (!/^[A-Za-z0-9._\-]{20,}$/.test(key)) return json({ error: 'bad_key' }, 500);
 
     const { audio, mime, lang } = await req.json();

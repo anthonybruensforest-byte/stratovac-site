@@ -150,3 +150,8 @@ create policy "po read own or admin" on storage.objects for select using (bucket
 -- other manufacturers' model -> ID model base; server-side only (no client policy)
 create table if not exists public.xref (ext_key text primary key, id_base text not null);
 alter table public.xref enable row level security;
+
+-- ---------- AI assistant usage log (per-customer rate limits; server-side only) ----------
+create table if not exists public.ai_usage (id bigserial primary key, user_id uuid references public.profiles(id) on delete cascade, fn text not null, at timestamptz not null default now());
+create index if not exists ai_usage_user_at on public.ai_usage (user_id, fn, at);
+alter table public.ai_usage enable row level security;
