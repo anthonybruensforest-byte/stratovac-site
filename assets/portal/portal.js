@@ -252,7 +252,7 @@
     var ai = S.ai || (S.ai = { msgs: [], busy: false });
     el.innerHTML = '<section class="pt-ai" aria-label="' + T.aiT + '"><div class="pt-ai-hd"><h2 class="pt-h">' + T.aiT + '</h2>' + (ai.msgs.length ? '<button class="pt-link" type="button" id="ai-new">' + T.aiNew + '</button>' : '') + '</div><p class="pt-note">' + T.aiIntro + '</p>' +
       '<div id="ai-log" class="pt-ai-log" aria-live="polite">' + ai.msgs.map(aiMsg).join('') + (ai.busy ? '<p class="pt-note">' + T.aiThink + '</p>' : '') + '</div>' +
-      '<form id="ai-f" class="pt-ai-f">' + (SR ? '<button class="pt-mic' + (ai.listening ? ' on' : '') + '" type="button" id="ai-mic" aria-label="' + T.aiMic + '" title="' + T.aiMic + '"' + (ai.busy ? ' disabled' : '') + '><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg></button>' : '') + '<textarea id="ai-in" rows="2" placeholder="' + T.aiPh + '" aria-label="' + T.aiPh + '"' + (ai.busy ? ' disabled' : '') + '></textarea><button class="btn btn--solid" type="submit"' + (ai.busy ? ' disabled' : '') + '>' + T.aiSend + '</button></form>' + (ai.listening ? '<p class="pt-note" role="status">' + T.aiListen + '</p>' : '') + (ai.speaking ? '<button class="pt-link" type="button" id="ai-shh">' + T.aiStop + '</button>' : '') + '</section>' +
+      '<form id="ai-f" class="pt-ai-f">' + (SR || window.MediaRecorder ? '<button class="pt-mic' + (ai.listening ? ' on' : '') + '" type="button" id="ai-mic" aria-label="' + T.aiMic + '" title="' + T.aiMic + '"' + (ai.busy ? ' disabled' : '') + '><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg></button>' : '') + '<textarea id="ai-in" rows="2" placeholder="' + T.aiPh + '" aria-label="' + T.aiPh + '"' + (ai.busy ? ' disabled' : '') + '></textarea><button class="btn btn--solid" type="submit"' + (ai.busy ? ' disabled' : '') + '>' + T.aiSend + '</button></form>' + (ai.listening ? '<p class="pt-note" role="status">' + T.aiListen + '</p>' : '') + (ai.speaking ? '<button class="pt-link" type="button" id="ai-shh">' + T.aiStop + '</button>' : '') + '</section>' +
       '<h2 class="pt-h" style="margin-top:6px">' + T.sel + '</h2><p class="pt-note" style="margin-top:0">' + T.selIntro + '</p>' +
       '<form id="sf" class="pt-selform"><div class="pt-seg pt-seg--sm"><button type="button" data-m="press" aria-pressed="' + (f.mode === 'press') + '">' + T.press + '</button><button type="button" data-m="vac" aria-pressed="' + (f.mode === 'vac') + '">' + T.vac + '</button></div>' +
       '<label>' + T.flow + '<span class="pt-in"><input id="sf-q" type="number" min="0" step="any" required value="' + esc(f.q) + '"><select id="sf-qu">' + opts(QU, f.qu) + '</select></span></label>' +
@@ -278,27 +278,75 @@
     };
     if (!ai.busy && !ai.listening) $('ai-in').focus({ preventScroll: true });
     if ($('ai-shh')) $('ai-shh').onclick = function () { try { speechSynthesis.cancel(); } catch (e) {} ai.speaking = false; selView(el); };
+    function aiNote(t) { ai.msgs.push({ role: 'assistant', content: t, err: true }); selView(el); }
+    function sendVoice(text) { selView(el); $('ai-in').value = text; ai.voice = true; $('ai-f').requestSubmit(); }
     if ($('ai-mic')) $('ai-mic').onclick = function () {
-      if (ai.listening) { try { ai.rec.stop(); } catch (e) {} return; }
-      if (navigator.brave) { ai.msgs.push({ role: 'assistant', content: T.aiBrave, err: true }); selView(el); return; }
+      if (ai.listening) { if (ai.stop) ai.stop(); return; }
       try { speechSynthesis.cancel(); } catch (e) {} ai.speaking = false;
-      var rec = new SR(); ai.rec = rec; rec.lang = FR ? 'fr-CA' : 'en-US'; rec.interimResults = true; rec.continuous = false;
+      if (window.MediaRecorder && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && !ai.noStt) return record();
+      browserSR();
+    };
+    // record the voice and have the server transcribe it (works in every browser, Brave included)
+    function record() {
+      navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } }).then(function (stream) {
+        var mime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4'].filter(function (m) { return MediaRecorder.isTypeSupported(m); })[0] || '';
+        var mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined), chunks = [], spoke = false, quiet = 0, t0 = Date.now();
+        var AC = window.AudioContext || window.webkitAudioContext, ac = AC ? new AC() : null, an = null, buf = null, tick = null;
+        if (ac) { an = ac.createAnalyser(); an.fftSize = 1024; ac.createMediaStreamSource(stream).connect(an); buf = new Float32Array(an.fftSize); }
+        mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+        ai.stop = function () { try { if (mr.state !== 'inactive') mr.stop(); } catch (e) {} };
+        tick = setInterval(function () {
+          var el2 = Date.now() - t0;
+          if (an) { an.getFloatTimeDomainData(buf); var sum = 0; for (var i = 0; i < buf.length; i++) sum += buf[i] * buf[i]; var rms = Math.sqrt(sum / buf.length); if (rms > 0.02) { spoke = true; quiet = 0; } else if (spoke) quiet += 100; }
+          else spoke = true;
+          if ((spoke && quiet >= 1500) || el2 > 30000 || (!spoke && el2 > 8000)) ai.stop();
+        }, 100);
+        mr.onstop = function () {
+          clearInterval(tick); stream.getTracks().forEach(function (t) { t.stop(); }); try { if (ac) ac.close(); } catch (e) {}
+          ai.listening = false; ai.stop = null;
+          if (!spoke || !chunks.length) return aiNote(T.aiNoHear);
+          var blob = new Blob(chunks, { type: mr.mimeType || mime || 'audio/webm' });
+          if (blob.size > 2500000) return aiNote(T.aiNoHear);
+          ai.busy = true; selView(el);
+          var fr = new FileReader();
+          fr.onload = function () {
+            var b64 = String(fr.result).split(',')[1];
+            sb.functions.invoke('transcribe', { body: { audio: b64, mime: blob.type, lang: FR ? 'fr' : 'en' } }).then(function (r) {
+              ai.busy = false; var d = r.data || {};
+              if (d.text && d.text.trim()) return sendVoice(d.text.trim());
+              if (!r.error) return aiNote(T.aiNoHear);
+              var ctx = r.error.context;
+              (ctx && ctx.json ? ctx.json().catch(function () { return {}; }) : Promise.resolve({})).then(function (j) {
+                if (j.error === 'stt_unavailable') { ai.noStt = true; selView(el); return browserSR(); }
+                aiNote(T.aiNet);
+              });
+            }).catch(function () { ai.busy = false; aiNote(T.aiNet); });
+          };
+          fr.readAsDataURL(blob);
+        };
+        mr.start(250); ai.listening = true; selView(el);
+      }).catch(function () { ai.listening = false; aiNote(T.aiNoMic); });
+    }
+    // fallback: the browser's own dictation (Chrome, Edge, Safari; not Brave or Firefox)
+    function browserSR() {
+      if (!SR || navigator.brave) return aiNote(T.aiBrave);
+      var rec = new SR(); ai.stop = function () { try { rec.stop(); } catch (e) {} }; rec.lang = FR ? 'fr-CA' : 'en-US'; rec.interimResults = true; rec.continuous = false;
       var heard = '';
       rec.onresult = function (e) { heard = Array.prototype.map.call(e.results, function (r) { return r[0].transcript; }).join(' '); var t = $('ai-in'); if (t) t.value = heard; };
       rec.onerror = function (e) { ai.micErr = e.error === 'not-allowed' || e.error === 'service-not-allowed' ? T.aiNoMic : e.error === 'network' ? T.aiNet : e.error === 'no-speech' ? T.aiNoHear : e.error === 'aborted' ? '' : T.aiNet; };
       var guard = setTimeout(function () { try { rec.abort(); } catch (e) {} }, 15000);
       rec.onend = function () {
-        clearTimeout(guard); ai.listening = false; ai.rec = null;
-        if (heard.trim()) { selView(el); $('ai-in').value = heard.trim(); ai.voice = true; $('ai-f').requestSubmit(); }
+        clearTimeout(guard); ai.listening = false; ai.stop = null;
+        if (heard.trim()) sendVoice(heard.trim());
         else { selView(el); if (ai.micErr) { ai.msgs.push({ role: 'assistant', content: ai.micErr, err: true }); ai.micErr = ''; selView(el); } }
       };
       ai.listening = true; selView(el);
       // use on-device recognition when the browser offers it (no dependence on the browser's cloud service)
       (SR.available ? SR.available({ langs: [rec.lang], processLocally: true }).catch(function () { return 'unavailable'; }) : Promise.resolve('unavailable')).then(function (st) {
         if (st === 'available') rec.processLocally = true;
-        try { rec.start(); } catch (e) { clearTimeout(guard); ai.listening = false; ai.msgs.push({ role: 'assistant', content: T.aiNet, err: true }); selView(el); }
+        try { rec.start(); } catch (e) { clearTimeout(guard); ai.listening = false; aiNote(T.aiNet); }
       });
-    };
+    }
     function say(text) {
       if (!window.speechSynthesis) return;
       var clean = text.replace(/\*\*/g, '').replace(/^\s*[-•]\s*/gm, '').replace(/m³\/h/g, FR ? 'mètres cubes heure' : 'cubic meters per hour').replace(/\bCFM\b/g, 'C F M').replace(/\$ US|US\$/g, FR ? 'dollars américains' : 'US dollars');
