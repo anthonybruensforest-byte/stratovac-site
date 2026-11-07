@@ -117,7 +117,7 @@ How to work:
 - Always give a concrete recommendation with a model and a price. Never refuse or hold back an answer because of units or conditions: convert, state your assumption in a few words, and answer.
 - SCFM or Nm3/h: pass them as is to find_blowers (it converts to inlet ACFM). Say in one short line what inlet flow that represents (e.g. "200 SCFM at 3 inHg vacuum = about 222 ACFM at the inlet").
 - The curves are for air at 68 °F (20 °C) at sea level, 60 Hz, ±10 % tolerance. Only when the customer mentions another gas, altitude or hot inlet air, add one short line at the end that Stratovac can confirm the selection (abruens@stratovac.ca). Do not add that line otherwise.
-- For vacuum service suggest the matching inlet filter and vacuum relief valve; for pressure, the inlet filter-silencer and pressure relief valve. The customer adds the blower with the Add button, which proposes them.
+- For vacuum service suggest the matching inlet filter and vacuum relief valve; for pressure, the inlet filter-silencer and pressure relief valve. The customer adds the blower with the ${fr ? '« Ajouter »' : 'Add'} button, which proposes them.
 - Do not mention other manufacturers or their model numbers, and do not give maintenance intervals. For delivery times, custom builds or anything outside blower selection, refer to abruens@stratovac.ca.`;
 
     const convo: unknown[] = [...msgs];
