@@ -41,7 +41,8 @@ Deno.serve(async (req) => {
     if (!r.ok) return json({ error: 'stt', detail: out?.error?.message ?? r.status }, 502);
     const text = (out.candidates?.[0]?.content?.parts ?? []).map((p: { text?: string }) => p.text ?? '').join('').trim().replace(/^["«]|["»]$/g, '');
     return json({ text: text.slice(0, 2000) });
-  } catch (_e) {
-    return json({ error: 'server' }, 500);
+  } catch (e) {
+    console.error('transcribe', e);
+    return json({ error: 'server', detail: String(e).slice(0, 300) }, 500);
   }
 });
