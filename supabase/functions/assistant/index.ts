@@ -11,7 +11,9 @@ const CORS = {
 };
 const json = (b: unknown, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { ...CORS, 'Content-Type': 'application/json' } });
 const DP: Record<string, number> = { inH2O: 1, psi: 27.7076, bar: 401.865, mbar: 0.401865, kPa: 4.01865, inHg: 13.5951 };
-const QU: Record<string, number> = { CFM: 1, 'm3/h': 0.588578, 'L/min': 0.0353147 };
+const QU: Record<string, number> = { CFM: 1, ACFM: 1, ICFM: 1, SCFM: 1, 'm3/h': 0.588578, 'Nm3/h': 0.588578 * 293.15 / 273.15, 'L/min': 0.0353147 };
+const STD = new Set(['SCFM', 'Nm3/h']);
+const PATM = 407.19; // inH2O, 14.696 psia
 const r2 = (n: number) => Math.round(n * 100) / 100;
 type Curve = [number, number][];
 function lerp(c: Curve | undefined, x: number) {
@@ -28,8 +30,8 @@ const TOOL = {
     properties: {
       mode: { type: 'string', enum: ['pressure', 'vacuum'] },
       flow: { type: 'number', description: 'required flow' },
-      flow_unit: { type: 'string', enum: ['CFM', 'm3/h', 'L/min'] },
-      level: { type: 'number', description: 'pressure (gauge) or vacuum level, positive number' },
+      flow_unit: { type: 'string', enum: ['CFM', 'ACFM', 'ICFM', 'SCFM', 'm3/h', 'Nm3/h', 'L/min'], description: 'CFM/ACFM/ICFM/m3/h = actual inlet flow; SCFM (68 °F, 14.7 psia) and Nm3/h (0 °C, 1.013 bar) = standard flow, converted to inlet flow automatically' },
+      level: { type: 'number', description: 'pressure (gauge) or vacuum level; a vacuum like -3 inHg is given as 3' },
       level_unit: { type: 'string', enum: ['psi', 'bar', 'mbar', 'kPa', 'inH2O', 'inHg'] },
       voltage: { type: 'string', enum: ['230/460V-3ph', '575V-3ph', '230V-1ph'], description: 'motor voltage, default 230/460V-3ph' },
     },
@@ -69,10 +71,14 @@ Deno.serve(async (req) => {
     function find(a: Record<string, unknown>) {
       const press = a.mode !== 'vacuum';
       const fu = String(a.flow_unit), lu = String(a.level_unit);
-      const Q = Number(a.flow) * (QU[fu] ?? 1), dp = Number(a.level) * (DP[lu] ?? 1);
+      const dp = Math.abs(Number(a.level)) * (DP[lu] ?? 1);
+      let Q = Number(a.flow) * (QU[fu] ?? 1);
+      // standard flow -> actual flow at the blower inlet (curves are inlet flow, air at 68 °F, sea level)
+      const std = STD.has(fu);
+      if (std && !press) Q = Q * PATM / Math.max(PATM - dp, 1);
       const v = a.voltage === '575V-3ph' ? '5' : a.voltage === '230V-1ph' ? '3' : '6';
       if (!(Q > 0) || !(dp >= 0)) return { error: 'invalid flow or level' };
-      lastSel = { mode: press ? 'press' : 'vac', q: String(a.flow), qu: fu === 'm3/h' ? 'm³/h' : fu, dp: String(a.level), du: lu, v };
+      lastSel = { mode: press ? 'press' : 'vac', q: String(Math.round(Q)), qu: 'CFM', dp: String(Math.abs(Number(a.level))), du: lu, v };
       const fit: Record<string, unknown>[] = [], pair: Record<string, unknown>[] = [];
       for (const p of prods ?? []) {
         const s = p.specs || {}, pf = s.perf;
@@ -93,6 +99,7 @@ Deno.serve(async (req) => {
       const byPrice = (x: Record<string, unknown>, y: Record<string, unknown>) => Number(x.price_usd) - Number(y.price_usd);
       fit.sort(byPrice); pair.sort(byPrice);
       return {
+        standard_flow_converted: std ? { given: `${a.flow} ${fu}`, inlet_acfm: Math.round(Q), note: press ? 'pressure service: inlet at atmosphere, so standard flow ~= inlet flow' : 'vacuum service: inlet flow = standard flow x 14.7 / (14.7 - vacuum psi)' } : null,
         point: { cfm: Math.round(Q), m3h: Math.round(Q / 0.588578), psi: r2(dp / DP.psi), bar: r2(dp / DP.bar), mode: press ? 'pressure' : 'vacuum', voltage: v },
         fitting_count: fit.length, fitting_cheapest_first: fit.slice(0, 6),
         two_units_in_parallel: fit.length ? [] : pair.slice(0, 3),
@@ -107,7 +114,9 @@ How to work:
 - Recommend the cheapest fitting model first and say why it fits (flow at the point and margin). Mention one alternative when useful (more margin, fewer stages).
 - Give every flow in both CFM and m3/h, and every pressure or vacuum in both psi and bar.
 - Prices are in US dollars and already include the customer's discount. Freight is not included.
-- The curves are for air at 68 °F (20 °C) at sea level, 60 Hz, ±10 % tolerance. For another gas, altitude, hot inlet air or a point near a model's limit, say the selection must be confirmed by Stratovac (abruens@stratovac.ca).
+- Always give a concrete recommendation with a model and a price. Never refuse or hold back an answer because of units or conditions: convert, state your assumption in a few words, and answer.
+- SCFM or Nm3/h: pass them as is to find_blowers (it converts to inlet ACFM). Say in one short line what inlet flow that represents (e.g. "200 SCFM at 3 inHg vacuum = about 222 ACFM at the inlet").
+- The curves are for air at 68 °F (20 °C) at sea level, 60 Hz, ±10 % tolerance. Only when the customer mentions another gas, altitude or hot inlet air, add one short line at the end that Stratovac can confirm the selection (abruens@stratovac.ca). Do not add that line otherwise.
 - For vacuum service suggest the matching inlet filter and vacuum relief valve; for pressure, the inlet filter-silencer and pressure relief valve. The customer adds the blower with the Add button, which proposes them.
 - Do not mention other manufacturers or their model numbers, and do not give maintenance intervals. For delivery times, custom builds or anything outside blower selection, refer to abruens@stratovac.ca.`;
 
