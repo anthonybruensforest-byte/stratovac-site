@@ -29,13 +29,13 @@ Deno.serve(async (req) => {
     const mt = MIME[String(mime ?? '').split(';')[0].trim().toLowerCase()] ?? 'audio/webm';
     const fr = lang === 'fr';
     const prompt = `Transcribe this short spoken question from a customer of an industrial blower supplier. The speaker most likely speaks ${fr ? 'Quebec French' : 'English'} (possibly mixing French and English). Return ONLY the transcript, no quotes or comments. Write numbers as digits and units as symbols (CFM, m3/h, psi, bar, mbar, inHg, kPa, HP, kW, V). If there is no intelligible speech, return an empty string.`;
-    const model = Deno.env.get('GEMINI_STT_MODEL') || 'gemini-flash-latest';
+    const model = Deno.env.get('GEMINI_STT_MODEL') || 'gemini-flash-lite-latest';
     const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: 'POST',
+      method: 'POST', signal: AbortSignal.timeout(20000),
       headers: { 'x-goog-api-key': key, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ role: 'user', parts: [{ inline_data: { mime_type: mt, data: audio } }, { text: prompt }] }],
-        generationConfig: { temperature: 0, maxOutputTokens: 2000 },
+        generationConfig: { temperature: 0, maxOutputTokens: 600 },
       }),
     });
     const out = await r.json().catch(() => ({}));
@@ -44,6 +44,6 @@ Deno.serve(async (req) => {
     return json({ text: text.slice(0, 2000) });
   } catch (e) {
     console.error('transcribe', e);
-    return json({ error: String(e).includes('header') ? 'bad_key' : 'server' }, 500);
+    return json({ error: String(e).includes('header') ? 'bad_key' : String(e).includes('Timeout') || String(e).includes('abort') ? 'stt_timeout' : 'server' }, 500);
   }
 });
