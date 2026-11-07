@@ -158,3 +158,6 @@
 .pt-trk{margin-top:6px;width:150px;font:inherit;font-size:.82rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 7px}
 .pt-set .pt-num{width:86px}
 .pt-set th{white-space:nowrap}
+.pt-card--ask .pt-ai-f{flex-wrap:wrap;margin-top:auto}
+.pt-card--ask .pt-ai-f textarea{order:-1;flex:1 1 100%;min-height:64px}
+.pt-card--ask .pt-ai-f .btn{flex:1}
