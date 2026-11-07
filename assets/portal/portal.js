@@ -53,7 +53,7 @@
     poNone: 'Bon de commande {f} joint, mais aucun article n’a été reconnu dans notre catalogue. Ajoutez les articles depuis le catalogue ; le bon sera joint à votre commande.',
     poMiss: 'Articles du bon à confirmer avec nous :', poLow: 'à vérifier', poPrice: 'prix sur votre bon', poErr: 'Nous n’avons pas pu lire ce document. Essayez un PDF, ou ajoutez les articles depuis le catalogue.',
     poAi: 'Bon de commande {f} joint. La lecture automatique n’est pas encore activée : ajoutez les articles depuis le catalogue, nous vérifierons avec votre bon.',
-    aiT: 'Assistant de sélection', aiIntro: 'Décrivez votre besoin en vos mots (ex. : « 200 CFM à 5 psi pour aérer un bassin »). L’assistant trouve le surpresseur et affiche les résultats ci-dessous.', aiPh: 'Votre question…', aiSend: 'Envoyer', aiThink: 'L’assistant réfléchit…', aiErr: 'L’assistant n’est pas disponible pour le moment. Utilisez le sélecteur ci-dessous ou écrivez-nous à abruens@stratovac.ca.', aiNew: 'Nouvelle conversation', aiMic: 'Parler', aiListen: 'Je vous écoute… parlez, puis faites une pause.', aiStop: 'Arrêter la lecture', aiNoMic: 'Micro non autorisé. Autorisez le micro pour ce site dans votre navigateur.', aiYou: 'Vous', aiBot: 'Assistant',
+    aiT: 'Assistant de sélection', aiIntro: 'Décrivez votre besoin en vos mots (ex. : « 200 CFM à 5 psi pour aérer un bassin »). L’assistant trouve le surpresseur et affiche les résultats ci-dessous.', aiPh: 'Votre question…', aiSend: 'Envoyer', aiThink: 'L’assistant réfléchit…', aiErr: 'L’assistant n’est pas disponible pour le moment. Utilisez le sélecteur ci-dessous ou écrivez-nous à abruens@stratovac.ca.', aiNew: 'Nouvelle conversation', aiMic: 'Parler', aiListen: 'Je vous écoute… parlez, puis faites une pause.', aiStop: 'Arrêter la lecture', aiNoMic: 'Micro non autorisé. Autorisez le micro pour ce site dans votre navigateur.', aiNet: 'La reconnaissance vocale de ce navigateur ne répond pas. Essayez avec Microsoft Edge, ou dictez dans la boîte avec la touche Windows + H (sur Mac : touche Fn deux fois).', aiNoHear: 'Je n’ai rien entendu. Cliquez le micro et parlez un peu plus fort.', aiYou: 'Vous', aiBot: 'Assistant',
     poBadType: 'Format non accepté. Envoyez un PDF ou une image (PNG, JPG, WEBP).', poBig: 'Fichier trop lourd (15 Mo max).', poDetach: 'Retirer le bon', poFile: 'Bon de commande', poHave: 'Vous avez un bon de commande ? Déposez-le, nous remplissons le panier pour vous.', poGo: 'Déposer mon bon', useSel: 'Usage à préciser', poAtt: 'Bon de commande joint'
   } : {
     poTitle: 'Drop your purchase order here', poSub: 'Drag your PDF (or a photo or screenshot) into this box, or click to choose it. We read the PO and fill the cart; you check everything before confirming.',
@@ -62,7 +62,7 @@
     poNone: 'Purchase order {f} attached, but no item matched our catalog. Add the items from the catalog; the PO will be attached to your order.',
     poMiss: 'PO items to confirm with us:', poLow: 'to check', poPrice: 'price on your PO', poErr: 'We could not read this document. Try a PDF, or add the items from the catalog.',
     poAi: 'Purchase order {f} attached. Automatic reading is not active yet: add the items from the catalog and we will check them against your PO.',
-    aiT: 'Selection assistant', aiIntro: 'Describe your need in your own words (e.g. “200 CFM at 5 psi to aerate a basin”). The assistant finds the blower and shows the results below.', aiPh: 'Your question…', aiSend: 'Send', aiThink: 'The assistant is thinking…', aiErr: 'The assistant is not available right now. Use the selector below or write to abruens@stratovac.ca.', aiNew: 'New conversation', aiMic: 'Speak', aiListen: 'Listening… speak, then pause.', aiStop: 'Stop reading', aiNoMic: 'Microphone not allowed. Allow the microphone for this site in your browser.', aiYou: 'You', aiBot: 'Assistant',
+    aiT: 'Selection assistant', aiIntro: 'Describe your need in your own words (e.g. “200 CFM at 5 psi to aerate a basin”). The assistant finds the blower and shows the results below.', aiPh: 'Your question…', aiSend: 'Send', aiThink: 'The assistant is thinking…', aiErr: 'The assistant is not available right now. Use the selector below or write to abruens@stratovac.ca.', aiNew: 'New conversation', aiMic: 'Speak', aiListen: 'Listening… speak, then pause.', aiStop: 'Stop reading', aiNoMic: 'Microphone not allowed. Allow the microphone for this site in your browser.', aiNet: 'This browser’s speech recognition is not responding. Try Microsoft Edge, or dictate into the box with Windows key + H (on a Mac: press Fn twice).', aiNoHear: 'I did not hear anything. Click the mic and speak a little louder.', aiYou: 'You', aiBot: 'Assistant',
     poBadType: 'Format not accepted. Send a PDF or an image (PNG, JPG, WEBP).', poBig: 'File too large (15 MB max).', poDetach: 'Remove the PO', poFile: 'Purchase order', poHave: 'Have a purchase order? Drop it and we fill the cart for you.', poGo: 'Drop my PO', useSel: 'Use to specify', poAtt: 'Purchase order attached'
   });
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
@@ -284,13 +284,19 @@
       var rec = new SR(); ai.rec = rec; rec.lang = FR ? 'fr-CA' : 'en-US'; rec.interimResults = true; rec.continuous = false;
       var heard = '';
       rec.onresult = function (e) { heard = Array.prototype.map.call(e.results, function (r) { return r[0].transcript; }).join(' '); var t = $('ai-in'); if (t) t.value = heard; };
-      rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') ai.micErr = true; };
+      rec.onerror = function (e) { ai.micErr = e.error === 'not-allowed' || e.error === 'service-not-allowed' ? T.aiNoMic : e.error === 'network' ? T.aiNet : e.error === 'no-speech' ? T.aiNoHear : e.error === 'aborted' ? '' : T.aiNet; };
+      var guard = setTimeout(function () { try { rec.abort(); } catch (e) {} }, 15000);
       rec.onend = function () {
-        ai.listening = false; ai.rec = null;
+        clearTimeout(guard); ai.listening = false; ai.rec = null;
         if (heard.trim()) { selView(el); $('ai-in').value = heard.trim(); ai.voice = true; $('ai-f').requestSubmit(); }
-        else { selView(el); if (ai.micErr) { ai.micErr = false; ai.msgs.push({ role: 'assistant', content: T.aiNoMic, err: true }); selView(el); } }
+        else { selView(el); if (ai.micErr) { ai.msgs.push({ role: 'assistant', content: ai.micErr, err: true }); ai.micErr = ''; selView(el); } }
       };
-      ai.listening = true; selView(el); try { rec.start(); } catch (e) { ai.listening = false; selView(el); }
+      ai.listening = true; selView(el);
+      // use on-device recognition when the browser offers it (no dependence on the browser's cloud service)
+      (SR.available ? SR.available({ langs: [rec.lang], processLocally: true }).catch(function () { return 'unavailable'; }) : Promise.resolve('unavailable')).then(function (st) {
+        if (st === 'available') rec.processLocally = true;
+        try { rec.start(); } catch (e) { clearTimeout(guard); ai.listening = false; ai.msgs.push({ role: 'assistant', content: T.aiNet, err: true }); selView(el); }
+      });
     };
     function say(text) {
       if (!window.speechSynthesis) return;
