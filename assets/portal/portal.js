@@ -827,7 +827,7 @@
       doc.setFontSize(10); doc.setFont('helvetica', 'normal');
       [[T.quoteNo, number], [T.quoteDate, d2(now)], [T.quoteValid, d2(until)]].forEach(function (r, i) { doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(r[0]), W - M - 150, y - 12 + i * 14); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(pt(r[1]), W - M, y - 12 + i * 14, { align: 'right' }); });
       y += 34;
-      doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text('Stratovac', M, y); doc.text(pt(T.quoteFor), M + 270, y); y += 13;
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(FR ? 'Fournisseur' : 'Supplier'), M, y); doc.text(pt(T.quoteFor), M + 270, y); y += 13;
       doc.setFontSize(10); doc.setTextColor(ink[0], ink[1], ink[2]);
       var seller = ['Stratovac · Part of ID Industries', '1396 des Mouettes', 'Longueuil (QC) J4J 5K2, Canada', '+1 438-880-4655 · abruens@stratovac.ca'];
       var buyer = [ship.company || S.prof.company || '', ship.name || S.prof.full_name || '', S.prof.email || '', ship.address, [ship.city, ship.province, ship.postal].filter(Boolean).join(' '), ship.country === 'US' ? 'United States' : ship.country === 'CA' ? 'Canada' : ''].filter(Boolean);
@@ -835,7 +835,7 @@
       y += Math.max(seller.length, buyer.length) * 13 + 20;
       var cx = [M, M + 118, W - M - 170, W - M - 85, W - M];
       function headRow() { doc.setFillColor(238, 242, 247); doc.rect(M, y - 12, W - 2 * M, 20, 'F'); doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(pt(T.model), cx[0] + 4, y + 1); doc.text(pt(T.quoteDesc), cx[1], y + 1); doc.text(pt(T.quoteQty), cx[2] + 6, y + 1, { align: 'center' }); doc.text(pt(T.quoteUnit), cx[3] + 10, y + 1, { align: 'right' }); doc.text(pt(T.quoteLine), cx[4] - 4, y + 1, { align: 'right' }); y += 22; doc.setFont('helvetica', 'normal'); }
-      function footer() { doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt('Stratovac · Part of ID Industries · stratovac.ca · ' + T.quoteNo + ' ' + number), M, 770); }
+      function footer() { doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt('Stratovac · Part of ID Industries · stratovac.ca · ' + T.quoteNo + ' ' + number), M, 770); }
       headRow();
       lines.forEach(function (l) {
         var dl = doc.splitTextToSize(pt(l.desc), cx[2] - cx[1] - 14), h = Math.max(1, dl.length) * 12 + 8;
@@ -851,10 +851,10 @@
       trow(T.sub, pm(sub)); tx.forEach(function (x) { trow(x[0], pm(x[1])); });
       doc.setDrawColor(ink[0], ink[1], ink[2]); doc.setLineWidth(1); doc.line(tx0, y - 10, W - M, y - 10); y += 4; trow(T.total, pm(total), true);
       if (fr8 != null) { doc.setTextColor(mute[0], mute[1], mute[2]); trow(T.freight, pm(fr8)); doc.setFontSize(8); doc.text(pt('(' + T.freightNote + ')'), W - M - 4, y - 6, { align: 'right' }); y += 8; doc.setTextColor(ink[0], ink[1], ink[2]); }
-      y += 16; doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]);
+      y += 16; doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(mute[0], mute[1], mute[2]);
       [ld ? T.lead + ' : ' + ld : '', T.quoteNotes, T.quoteOrder].filter(Boolean).forEach(function (t) { var tl = doc.splitTextToSize(pt(t), W - 2 * M); doc.text(tl, M, y); y += tl.length * 12 + 4; });
       footer();
-      var n = doc.getNumberOfPages(); for (var pg = 1; pg <= n; pg++) { doc.setPage(pg); doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(T.page + ' ' + pg + ' / ' + n), W - M, 770, { align: 'right' }); }
+      var n = doc.getNumberOfPages(); for (var pg = 1; pg <= n; pg++) { doc.setPage(pg); doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(T.page + ' ' + pg + ' / ' + n), W - M, 770, { align: 'right' }); }
       doc.save((FR ? 'Soumission-Stratovac-' : 'Quote-Stratovac-') + number + '.pdf');
       sb.from('quotes').insert({ user_id: S.user.id, number: number, items: lines.map(function (l) { return { sku: l.sku, qty: l.qty, mode: l.mode, unit_price: l.unit }; }), subtotal: sub }).then(function () {});
       notify('Soumission ' + number + ' téléchargée – ' + (ship.company || S.prof.company || S.prof.email), 'Soumission ' + number + ' (' + pm(sub) + ' avant taxes)\nClient : ' + (S.prof.company || '') + ' – ' + S.prof.email + '\n\n' + lines.map(function (l) { return l.qty + ' × ' + l.sku + (l.mode ? ' (' + l.mode + ')' : '') + ' – ' + pm(l.total); }).join('\n') + '\n\nhttps://stratovac.ca/fr/portail/#admin');
