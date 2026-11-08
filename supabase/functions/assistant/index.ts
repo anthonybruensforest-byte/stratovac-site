@@ -114,6 +114,7 @@ Deno.serve(async (req) => {
     }
     let lastSel: Record<string, unknown> | null = null;
     let lastMode: string | null = null;
+    const modesSeen = new Set<string>();
     let report: Record<string, unknown> | null = null;
     const DPX: Record<string, number> = { ...DP, hPa: 0.401865 };
     function findEq(a: Record<string, unknown>) {
@@ -123,7 +124,7 @@ Deno.serve(async (req) => {
       const lvl = Number(a.max_level) > 0 ? Number(a.max_level) * (DPX[String(a.level_unit)] ?? 1) : 0;
       const press = a.mode === 'pressure' ? true : a.mode === 'vacuum' ? false : null;
       if (!(Q > 0)) return { error: 'invalid flow' };
-      lastMode = press == null ? null : press ? 'pressure' : 'vacuum';
+      lastMode = press == null ? null : press ? 'pressure' : 'vacuum'; modesSeen.add(lastMode ?? 'unknown');
       const rows = [];
       for (const p of prods ?? []) {
         if (p.kind !== 'blower' || p.sku.slice(-1) !== v || p.list_price == null) continue;
@@ -161,7 +162,7 @@ Deno.serve(async (req) => {
       const v = a.voltage === '575V-3ph' ? '5' : a.voltage === '230V-1ph' ? '3' : '6';
       if (!(Q > 0) || !(dp >= 0) || !(rho > 0)) return { error: 'invalid input' };
       const corrected = Math.abs(rho - 1) > 0.02;
-      lastMode = press ? 'pressure' : 'vacuum';
+      lastMode = press ? 'pressure' : 'vacuum'; modesSeen.add(lastMode);
       lastSel = corrected ? null : { mode: press ? 'press' : 'vac', q: String(Math.round(Q)), qu: 'CFM', dp: String(Math.abs(Number(a.level))), du: lu, v };
       const hours = Number(a.hours_per_year) > 0 ? Math.min(8760, Number(a.hours_per_year)) : 8760, rate = Number(a.electricity_rate) > 0 ? Number(a.electricity_rate) : 0.10;
       const fit: Record<string, unknown>[] = [], pair: Record<string, unknown>[] = [];
@@ -255,7 +256,7 @@ ${bought.length ? bought.join('\n') : 'none yet'}`;
       convo.push({ role: 'assistant', content });
       convo.push({ role: 'user', content: uses.map((u: { id: string; input: Record<string, unknown> }) => ({ type: 'tool_result', tool_use_id: u.id, content: JSON.stringify(u.name === 'find_equivalent' ? findEq(u.input) : find(u.input)) })) });
     }
-    return json({ reply: reply || (fr ? 'Pouvez-vous préciser le débit et la pression (ou le vide) voulus ?' : 'Could you give the flow and the pressure (or vacuum) you need?'), selector: lastSel, mode: lastMode, report });
+    return json({ reply: reply || (fr ? 'Pouvez-vous préciser le débit et la pression (ou le vide) voulus ?' : 'Could you give the flow and the pressure (or vacuum) you need?'), selector: lastSel, mode: modesSeen.size === 1 ? lastMode : null, report });
   } catch (_e) {
     return json({ error: 'server' }, 500);
   }
