@@ -420,4 +420,18 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/politique-de-confidentialite/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/privacy-policy/"/>
   </url>
+  <url>
+    <loc>https://stratovac.ca/selection-assistant/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/selection-assistant/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/assistant-selection/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/selection-assistant/"/>
+  </url>
+  <url>
+    <loc>https://stratovac.ca/fr/assistant-selection/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://stratovac.ca/selection-assistant/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://stratovac.ca/fr/assistant-selection/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://stratovac.ca/selection-assistant/"/>
+  </url>
 </urlset>

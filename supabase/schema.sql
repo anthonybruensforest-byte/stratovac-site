@@ -171,3 +171,68 @@ drop policy if exists "quotes insert own" on public.quotes;
 create policy "quotes insert own" on public.quotes for insert with check (user_id = auth.uid() and public.is_approved());
 drop policy if exists "quotes read own or admin" on public.quotes;
 create policy "quotes read own or admin" on public.quotes for select using (user_id = auth.uid() or public.is_admin());
+-- ---------- round 2: carriers, company accounts, shared carts, CAD rate, drawings, public assistant ----------
+alter table public.orders add column if not exists carrier text;
+alter table public.profiles add column if not exists org_id uuid;
+alter table public.ai_usage add column if not exists ip_hash text;
+alter table public.ai_usage alter column user_id drop not null;
+create index if not exists ai_usage_ip_at on public.ai_usage (ip_hash, fn, at);
+
+-- customers never change their own company link
+create or replace function public.protect_profile() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is not null and not public.is_admin() then
+    new.status := old.status; new.discount_pct := old.discount_pct; new.is_admin := old.is_admin;
+    new.approved_at := old.approved_at; new.email := old.email; new.org_id := old.org_id;
+  elsif new.status = 'approved' and old.status <> 'approved' then
+    new.approved_at := now();
+  end if;
+  return new;
+end $$;
+
+-- same company: the user, or two profiles sharing a non-null org_id
+create or replace function public.same_org(other uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select other = auth.uid() or exists (
+    select 1 from public.profiles a join public.profiles b on a.org_id = b.org_id
+    where a.id = auth.uid() and b.id = other and a.org_id is not null);
+$$;
+create or replace function public.my_org() returns uuid
+language sql stable security definer set search_path = public as $$
+  select org_id from public.profiles where id = auth.uid();
+$$;
+
+drop policy if exists "profiles read own or admin" on public.profiles;
+create policy "profiles read own or admin" on public.profiles for select using (id = auth.uid() or public.is_admin() or (public.is_approved() and public.same_org(id)));
+drop policy if exists "orders read own or admin" on public.orders;
+create policy "orders read own or admin" on public.orders for select using (user_id = auth.uid() or public.is_admin() or (public.is_approved() and public.same_org(user_id)));
+drop policy if exists "quotes read own or admin" on public.quotes;
+create policy "quotes read own or admin" on public.quotes for select using (user_id = auth.uid() or public.is_admin() or (public.is_approved() and public.same_org(user_id)));
+
+-- carts a colleague sends for approval
+create table if not exists public.shared_carts (
+  id bigserial primary key, org_id uuid not null, from_user uuid references public.profiles(id) on delete cascade,
+  items jsonb not null default '[]'::jsonb, note text, status text not null default 'open' check (status in ('open','ordered','dismissed')),
+  created_at timestamptz not null default now());
+alter table public.shared_carts enable row level security;
+drop policy if exists "shared read org" on public.shared_carts;
+create policy "shared read org" on public.shared_carts for select using (public.is_admin() or (public.is_approved() and org_id = public.my_org()));
+drop policy if exists "shared insert org" on public.shared_carts;
+create policy "shared insert org" on public.shared_carts for insert with check (public.is_approved() and from_user = auth.uid() and org_id = public.my_org());
+drop policy if exists "shared update org" on public.shared_carts;
+create policy "shared update org" on public.shared_carts for update using (public.is_approved() and org_id = public.my_org());
+
+-- daily USD/CAD rate (Bank of Canada), written by the fx function
+create table if not exists public.fx_rate (id int primary key default 1 check (id = 1), rate numeric(10,5), obs_date date, fetched_at timestamptz);
+alter table public.fx_rate enable row level security;
+drop policy if exists "fx read" on public.fx_rate;
+create policy "fx read" on public.fx_rate for select using (public.is_approved());
+
+-- drawings and 3D files: cad/<model base>/<file>, approved customers read, admin writes
+insert into storage.buckets (id, name, public) values ('cad','cad', false) on conflict (id) do nothing;
+drop policy if exists "cad approved read" on storage.objects;
+create policy "cad approved read" on storage.objects for select using (bucket_id = 'cad' and public.is_approved());
+drop policy if exists "cad admin write" on storage.objects;
+create policy "cad admin write" on storage.objects for all using (bucket_id = 'cad' and public.is_admin()) with check (bucket_id = 'cad' and public.is_admin());
+select 'ok' as round2;

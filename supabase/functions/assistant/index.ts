@@ -43,8 +43,25 @@ const TOOL = {
       altitude_unit: { type: 'string', enum: ['ft', 'm'] },
       inlet_temp: { type: 'number', description: 'gas temperature at the blower inlet, default 68 °F' },
       temp_unit: { type: 'string', enum: ['F', 'C'] },
+      hours_per_year: { type: 'number', description: 'operating hours per year for the electricity cost, default 8760 (continuous)' },
+      electricity_rate: { type: 'number', description: 'electricity price in USD per kWh, default 0.10' },
     },
     required: ['mode', 'flow', 'flow_unit', 'level', 'level_unit'],
+  },
+};
+const TOOL_EQ = {
+  name: 'find_equivalent',
+  description: 'Find the ID regenerative blowers closest to an existing blower, from the ratings on its nameplate (maximum flow, motor power, voltage, maximum pressure or vacuum). Use it when the customer wants to replace an existing unit and gives nameplate data rather than an operating point. Returns the closest models with prices and their matching accessories.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      max_flow: { type: 'number' }, max_flow_unit: { type: 'string', enum: ['CFM', 'm3/h', 'm3/min', 'L/min'] },
+      power_kw: { type: 'number', description: 'motor power in kW (convert HP x 0.7457)' },
+      voltage: { type: 'string', enum: ['230/460V-3ph', '575V-3ph', '230V-1ph'] },
+      mode: { type: 'string', enum: ['pressure', 'vacuum'], description: 'if known' },
+      max_level: { type: 'number', description: 'maximum pressure or vacuum on the plate, positive' }, level_unit: { type: 'string', enum: ['psi', 'bar', 'mbar', 'hPa', 'kPa', 'inH2O', 'inHg'] },
+    },
+    required: ['max_flow', 'max_flow_unit'],
   },
 };
 
@@ -97,6 +114,33 @@ Deno.serve(async (req) => {
     }
     let lastSel: Record<string, unknown> | null = null;
     let lastMode: string | null = null;
+    let report: Record<string, unknown> | null = null;
+    const DPX: Record<string, number> = { ...DP, hPa: 0.401865 };
+    function findEq(a: Record<string, unknown>) {
+      const fq: Record<string, number> = { CFM: 1, 'm3/h': 0.588578, 'm3/min': 35.3147, 'L/min': 0.0353147 };
+      const Q = Number(a.max_flow) * (fq[String(a.max_flow_unit)] ?? 1), kw = Number(a.power_kw) || 0;
+      const v = a.voltage === '575V-3ph' ? '5' : a.voltage === '230V-1ph' ? '3' : '6';
+      const lvl = Number(a.max_level) > 0 ? Number(a.max_level) * (DPX[String(a.level_unit)] ?? 1) : 0;
+      const press = a.mode === 'pressure' ? true : a.mode === 'vacuum' ? false : null;
+      if (!(Q > 0)) return { error: 'invalid flow' };
+      lastMode = press == null ? null : press ? 'pressure' : 'vacuum';
+      const rows = [];
+      for (const p of prods ?? []) {
+        if (p.kind !== 'blower' || p.sku.slice(-1) !== v || p.list_price == null) continue;
+        const s = p.specs || {}, pf = s.perf || {}, cfm = Number(s.cfm) || 0, pkw = Number(s.kw) || 0;
+        if (cfm < Q * 0.8 || cfm > Q * 1.6) continue;
+        if (kw && pkw < kw * 0.8) continue;
+        const lim = press === false ? pf.max_v : press === true ? pf.max_p : Math.max(pf.max_p || 0, pf.max_v || 0);
+        if (lvl && lim && lim < lvl * 0.9) continue;
+        const score = Math.abs(cfm - Q) / Q + (kw ? Math.abs(pkw - kw) / kw * 0.6 : 0) + (lvl && lim ? Math.abs(lim - lvl) / lvl * 0.4 : 0);
+        const k = press == null ? null : kit(p.sku, press);
+        rows.push({ score, model: p.sku, max_flow_cfm: cfm, max_flow_m3h: Math.round(cfm / 0.588578), motor_kw: pkw, motor_hp: s.hp, stages: s.stages, port: s.port, price_usd: net(p.sku),
+          max_pressure_psi: pf.max_p ? r2(pf.max_p / DP.psi) : null, max_pressure_bar: pf.max_p ? r2(pf.max_p / DP.bar) : null, max_vacuum_psi: pf.max_v ? r2(pf.max_v / DP.psi) : null, max_vacuum_bar: pf.max_v ? r2(pf.max_v / DP.bar) : null,
+          ...(k ?? {}), complete_solution_usd: k ? r2(net(p.sku)! + (k.filter_usd ?? 0) + (k.relief_valve_usd ?? 0)) : null });
+      }
+      rows.sort((x, y) => x.score - y.score);
+      return { target: { max_flow_cfm: Math.round(Q), max_flow_m3h: Math.round(Q / 0.588578), motor_kw: kw || null, voltage: v }, closest: rows.slice(0, 4).map(({ score: _s, ...r }) => r), note: press == null ? 'service (pressure or vacuum) unknown: ask the customer to get the matching accessories' : null };
+    }
 
     function find(a: Record<string, unknown>) {
       const press = a.mode !== 'vacuum';
@@ -119,6 +163,7 @@ Deno.serve(async (req) => {
       const corrected = Math.abs(rho - 1) > 0.02;
       lastMode = press ? 'pressure' : 'vacuum';
       lastSel = corrected ? null : { mode: press ? 'press' : 'vac', q: String(Math.round(Q)), qu: 'CFM', dp: String(Math.abs(Number(a.level))), du: lu, v };
+      const hours = Number(a.hours_per_year) > 0 ? Math.min(8760, Number(a.hours_per_year)) : 8760, rate = Number(a.electricity_rate) > 0 ? Number(a.electricity_rate) : 0.10;
       const fit: Record<string, unknown>[] = [], pair: Record<string, unknown>[] = [];
       for (const p of prods ?? []) {
         if (p.kind !== 'blower') continue;
@@ -136,6 +181,7 @@ Deno.serve(async (req) => {
           power_at_point_kw: hp != null ? r2(hp * 0.7457 * rho) : null,
           model_limit_psi: r2(lim * rho / DP.psi), model_limit_bar: r2(lim * rho / DP.bar), limit_estimated: !!pf.est,
           ...k, complete_solution_usd: r2(price + (k.filter_usd ?? 0) + (k.relief_valve_usd ?? 0)),
+          annual_electricity_usd: hp != null ? Math.round(hp * 0.7457 * rho / 0.9 * hours * rate) : null,
         };
         if (qa >= Q) fit.push(row); else if (qa * 2 >= Q) pair.push(row);
       }
@@ -145,7 +191,10 @@ Deno.serve(async (req) => {
       if (corrected) notes.push(`conditions differ from the curves (gas ${gas}${a.molecular_weight ? ` MW ${mw}` : ''}, ${Math.round(ft)} ft, inlet ${Math.round(tR - 459.67)} °F): density ratio ${r2(rho)} vs air at 68 °F sea level; the point was converted to an equivalent air pressure of ${r2(dpAir / DP.psi)} psi and power scaled by the density ratio`);
       if (FLAMMABLE.has(gas)) notes.push('flammable gas: the blower must be gas-tight with an explosion-proof motor suited to the hazardous area; Stratovac confirms the construction with the order');
       if (tR - 459.67 > 104) notes.push('hot inlet gas (above 104 °F / 40 °C): the discharge temperature must stay within the blower limit; Stratovac confirms it with the order');
+      report = { mode: press ? 'pressure' : 'vacuum', acfm: Math.round(Q), m3h: Math.round(Q / 0.588578), psi: r2(dp / DP.psi), bar: r2(dp / DP.bar), dp_air_inh2o: dpAir, rho: r2(rho), gas, mw: r2(mw), altitude_ft: Math.round(ft), inlet_temp_f: Math.round(tR - 459.67), given: `${a.flow} ${fu}`, hours, rate, voltage: v,
+        rows: fit.slice(0, 5).map((x) => ({ model: x.model, acfm: x.flow_at_point_acfm, kw: x.power_at_point_kw, lim_psi: x.model_limit_psi, lim_bar: x.model_limit_bar, energy: x.annual_electricity_usd })) };
       return {
+        energy_basis: { hours_per_year: hours, usd_per_kwh: rate, motor_efficiency_assumed: 0.9 },
         conditions: { gas, molecular_weight: r2(mw), altitude_ft: Math.round(ft), inlet_temp_f: Math.round(tR - 459.67), density_ratio: r2(rho) },
         standard_flow_converted: std ? { given: `${a.flow} ${fu}`, inlet_acfm: Math.round(Q) } : null,
         point: { acfm: Math.round(Q), m3h: Math.round(Q / 0.588578), psi: r2(dp / DP.psi), bar: r2(dp / DP.bar), mode: press ? 'pressure' : 'vacuum', voltage: v },
@@ -178,6 +227,8 @@ How to work:
 - Give every flow in both CFM and m3/h, and every pressure or vacuum in both psi and bar.
 - SCFM or Nm3/h: pass them as is to find_blowers (it converts to inlet ACFM). Say in one short line what inlet flow that represents. Do not label an SCFM value in Nm3/h: 1 SCFM = 1.70 Sm3/h at 68 °F = 1.58 Nm3/h at 0 °C.
 - Gas, altitude, inlet temperature: pass them to find_blowers (gas, or molecular_weight computed from a composition; altitude; inlet_temp). It corrects the selection. Say the conditions in one short line and give the answer. Repeat the tool's notes (flammable gas construction, hot inlet) in one short line each.
+- Yearly electricity cost: the tool gives annual_electricity_usd for each model (shaft power at the point / 0.9 motor efficiency x hours x rate). Show it for the models you cite, and when a model costs more to buy but less to run, say how many years it takes to recover the difference. State the basis in a few words (hours per year and $/kWh, default continuous 8 760 h and 0.10 USD/kWh) and invite the customer to give their own hours and rate.
+- Replacing an existing blower: when the customer gives nameplate data (often after sending a photo of the plate), call find_equivalent with it. Never repeat or mention the manufacturer, brand or model of the existing unit, even if the customer writes it; just say « votre surpresseur actuel » / "your current blower". If an operating point is also known, prefer find_blowers. Ask pressure or vacuum if it is not known, so the accessories match.
 - Prices are in US dollars and already include the customer's discount. Freight is not included.${lead ? ` Current lead time: ${lead}.` : ''}
 - Spare parts and reorders: use the customer's purchase history below. If they ask for a cartridge or a part for a blower they bought, find it there and give the code and price. To reorder a past order, they can use « ${fr ? 'Commander à nouveau' : 'Order again'} » in ${fr ? 'Mes commandes' : 'My orders'}.
 - Do not mention other manufacturers or their model numbers, and do not give maintenance intervals. For custom builds or anything outside blower selection, refer to abruens@stratovac.ca.
@@ -193,7 +244,7 @@ ${bought.length ? bought.join('\n') : 'none yet'}`;
       const r = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-        body: JSON.stringify({ model: 'claude-sonnet-5-5', max_tokens: 1000, system, tools: [TOOL], messages: convo }),
+        body: JSON.stringify({ model: 'claude-sonnet-5-5', max_tokens: 1100, system, tools: [TOOL, TOOL_EQ], messages: convo }),
       });
       const out = await r.json().catch(() => ({}));
       if (!r.ok) return json({ error: 'ai' }, 502);
@@ -202,9 +253,9 @@ ${bought.length ? bought.join('\n') : 'none yet'}`;
       const uses = content.filter((c: { type: string }) => c.type === 'tool_use');
       if (out.stop_reason !== 'tool_use' || !uses.length) break;
       convo.push({ role: 'assistant', content });
-      convo.push({ role: 'user', content: uses.map((u: { id: string; input: Record<string, unknown> }) => ({ type: 'tool_result', tool_use_id: u.id, content: JSON.stringify(find(u.input)) })) });
+      convo.push({ role: 'user', content: uses.map((u: { id: string; input: Record<string, unknown> }) => ({ type: 'tool_result', tool_use_id: u.id, content: JSON.stringify(u.name === 'find_equivalent' ? findEq(u.input) : find(u.input)) })) });
     }
-    return json({ reply: reply || (fr ? 'Pouvez-vous préciser le débit et la pression (ou le vide) voulus ?' : 'Could you give the flow and the pressure (or vacuum) you need?'), selector: lastSel, mode: lastMode });
+    return json({ reply: reply || (fr ? 'Pouvez-vous préciser le débit et la pression (ou le vide) voulus ?' : 'Could you give the flow and the pressure (or vacuum) you need?'), selector: lastSel, mode: lastMode, report });
   } catch (_e) {
     return json({ error: 'server' }, 500);
   }

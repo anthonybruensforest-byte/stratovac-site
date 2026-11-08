@@ -86,6 +86,28 @@
     tracking: 'Tracking no.', setTitle: 'Freight and lead time shown to customers', setLeadFr: 'Lead time (French)', setLeadEn: 'Lead time (English), e.g. in stock, ships within 3 business days', setFreight: 'Estimated freight per blower (USD), by motor size', setSmall: 'Motor ≤ 3 kW', setMed: 'Motor 3 to 11 kW', setLarge: 'Motor > 11 kW', setAcc: 'Accessories only (per order)', setHint: 'Leave empty to show nothing. Freight stays an estimate: it is not added to the total paid.',
     region: { QC: 'Quebec', ON: 'Ontario', ATL: 'Atlantic', WEST: 'West', NORTH: 'Territories', US: 'United States' }, emailed: 'Email sent to the customer.', noEmail: 'Saved. Customer email not sent (email service not set up yet).', quotes: 'Downloaded quotes', reorderNone: 'These items are no longer in the catalog.'
   });
+  Object.assign(T, FR ? {
+    plate: 'Photo de la plaque', plateT: 'Prenez en photo la plaque signalétique de votre surpresseur actuel : nous proposons le modèle ID équivalent.', plateReading: 'Lecture de la plaque…', plateBad: 'La plaque n’est pas lisible. Reprenez la photo de plus près, bien éclairée et sans reflet.', plateMsg: 'Je veux remplacer mon surpresseur actuel. Plaque signalétique :', plateYou: '📷 Photo de la plaque de mon surpresseur actuel',
+    talk: 'Parler à Anthony', talkT: 'Écrire à Anthony', talkS: 'Anthony reçoit votre conversation avec l’assistant et votre panier, et vous répond par courriel.', talkPh: 'Votre message (facultatif)', talkSend: 'Envoyer à Anthony', talkOk: 'C’est envoyé. Anthony vous répondra par courriel à {e}.', talkErr: 'Le message n’a pas pu être envoyé. Écrivez directement à abruens@stratovac.ca.',
+    energy: 'Électricité / an', hours: 'Heures / an', rate: '$ US / kWh', energyNote: 'Coût d’électricité estimé : puissance au point, moteur à 90 % de rendement, selon vos heures et votre tarif.',
+    report: 'Rapport technique (PDF)', repT: 'RAPPORT DE SÉLECTION', repCond: 'Conditions de service', repRes: 'Résultat au point de fonctionnement', repAcc: 'Accessoires recommandés', repUse: 'Service', repFlowReq: 'Débit demandé', repLevel: 'Pression / vide', repGas: 'Gaz', repAlt: 'Altitude', repTemp: 'Température à l’aspiration', repVolt: 'Moteur', repFlowAt: 'Débit au point', repMargin: 'Marge de débit', repPow: 'Puissance absorbée au point', repLim: 'Limite du modèle', repEnergy: 'Électricité estimée', repEq: 'Point équivalent en air (courbes)', repNote: 'Sélection calculée sur les courbes de performance à 60 Hz, air à 20 °C (68 °F) au niveau de la mer, tolérance ±10 %, corrigée selon la densité du gaz aux conditions indiquées. Document technique sans valeur contractuelle ; la soumission fait foi pour les prix.', repFilter: 'Filtre', repValve: 'Soupape de sûreté', repCart: 'Cartouche de rechange', repPrepared: 'Préparé pour', repMaking: 'Préparation du rapport…',
+    team: 'Votre équipe', teamNone: 'Votre compte n’est pas relié à des collègues. Pour ajouter un acheteur ou un collègue de votre entreprise, demandez-lui de créer un compte, puis écrivez-nous : nous relions les comptes.', approveSend: 'Envoyer pour approbation', approveSent: 'Panier envoyé à votre équipe pour approbation.', approveErr: 'Le panier n’a pas pu être envoyé.', toApprove: 'Paniers à approuver', mySent: 'Paniers que vous avez envoyés', load: 'Charger dans mon panier', dismiss: 'Ignorer', loaded: 'Panier chargé : vérifiez et commandez.', by: 'par', stOpen: 'en attente', stOrdered: 'repris', stDismissed: 'ignoré', orgLink: 'Même entreprise que', orgNone: '— aucun —', orgSaved: 'Comptes reliés.',
+    carrier: 'Transporteur', track: 'Suivre le colis', steps: ['Reçue', 'Confirmée', 'En préparation', 'Expédiée'],
+    cadNote: '≈ {v} $ CA', cadBasis: 'Montant en dollars canadiens à titre indicatif (taux de la Banque du Canada du {d}). Le prix et le paiement sont en dollars américains.',
+    cadT: 'Plans et fichiers 3D', cadNone: 'Plans et fichiers 3D disponibles sur demande.', cadUp: 'Ajouter des fichiers (admin)', cadDel: 'Supprimer',
+    tryPublic: 'Pas encore de compte ? Essayez l’assistant de sélection sans compte.'
+  } : {
+    plate: 'Nameplate photo', plateT: 'Take a photo of the nameplate of your current blower: we propose the equivalent ID model.', plateReading: 'Reading the nameplate…', plateBad: 'The nameplate is not readable. Take the photo closer, well lit and without glare.', plateMsg: 'I want to replace my current blower. Nameplate:', plateYou: '📷 Photo of my current blower’s nameplate',
+    talk: 'Talk to Anthony', talkT: 'Write to Anthony', talkS: 'Anthony receives your conversation with the assistant and your cart, and answers you by email.', talkPh: 'Your message (optional)', talkSend: 'Send to Anthony', talkOk: 'Sent. Anthony will answer you by email at {e}.', talkErr: 'The message could not be sent. Write directly to abruens@stratovac.ca.',
+    energy: 'Electricity / yr', hours: 'Hours / yr', rate: 'US$ / kWh', energyNote: 'Estimated electricity cost: power at the point, 90 % motor efficiency, with your hours and rate.',
+    report: 'Technical report (PDF)', repT: 'SELECTION REPORT', repCond: 'Service conditions', repRes: 'Result at the operating point', repAcc: 'Recommended accessories', repUse: 'Service', repFlowReq: 'Required flow', repLevel: 'Pressure / vacuum', repGas: 'Gas', repAlt: 'Altitude', repTemp: 'Inlet temperature', repVolt: 'Motor', repFlowAt: 'Flow at the point', repMargin: 'Flow margin', repPow: 'Power absorbed at the point', repLim: 'Model limit', repEnergy: 'Estimated electricity', repEq: 'Equivalent air point (curves)', repNote: 'Selection calculated from the 60 Hz performance curves, air at 68 °F (20 °C) at sea level, ±10 % tolerance, corrected for the gas density at the stated conditions. Technical document, not contractual; prices are given by the quotation.', repFilter: 'Filter', repValve: 'Relief valve', repCart: 'Spare cartridge', repPrepared: 'Prepared for', repMaking: 'Preparing the report…',
+    team: 'Your team', teamNone: 'Your account is not linked to colleagues. To add a buyer or a colleague from your company, ask them to create an account, then write to us: we link the accounts.', approveSend: 'Send for approval', approveSent: 'Cart sent to your team for approval.', approveErr: 'The cart could not be sent.', toApprove: 'Carts to approve', mySent: 'Carts you sent', load: 'Load into my cart', dismiss: 'Dismiss', loaded: 'Cart loaded: review and order.', by: 'by', stOpen: 'pending', stOrdered: 'taken', stDismissed: 'dismissed', orgLink: 'Same company as', orgNone: '— none —', orgSaved: 'Accounts linked.',
+    carrier: 'Carrier', track: 'Track the package', steps: ['Received', 'Confirmed', 'In preparation', 'Shipped'],
+    cadNote: '≈ CA${v}', cadBasis: 'Canadian dollar amount for information only (Bank of Canada rate of {d}). Price and payment are in US dollars.',
+    cadT: 'Drawings and 3D files', cadNone: 'Drawings and 3D files available on request.', cadUp: 'Add files (admin)', cadDel: 'Delete',
+    tryPublic: 'No account yet? Try the selection assistant without an account.'
+  });
+  var CARRIERS = { purolator: ['Purolator', 'https://www.purolator.com/en/shipping/tracker?pin='], ups: ['UPS', 'https://www.ups.com/track?tracknum='], fedex: ['FedEx', 'https://www.fedex.com/fedextrack/?trknbr='], canpar: ['Canpar', 'https://www.canpar.com/en/tracking/track.htm?barcode='], dhl: ['DHL', 'https://www.dhl.com/ca-en/home/tracking/tracking-express.html?submit=1&tracking-id='], canadapost: ['Postes Canada / Canada Post', 'https://www.canadapost-postescanada.ca/track-reperage/en#/search?searchFor='], other: [FR ? 'Autre' : 'Other', ''] };
   var PROV = [['QC', 'Québec'], ['ON', 'Ontario'], ['NB', 'New Brunswick / Nouveau-Brunswick'], ['NS', 'Nova Scotia / Nouvelle-Écosse'], ['PE', 'PEI / Î.-P.-É.'], ['NL', 'Newfoundland / Terre-Neuve'], ['MB', 'Manitoba'], ['SK', 'Saskatchewan'], ['AB', 'Alberta'], ['BC', 'British Columbia / C.-B.'], ['YT', 'Yukon'], ['NT', 'NWT / T.N.-O.'], ['NU', 'Nunavut']];
   var TAX = { QC: [['TPS/GST', 5], ['TVQ/QST', 9.975]], ON: [['TVH/HST', 13]], NB: [['TVH/HST', 15]], NL: [['TVH/HST', 15]], PE: [['TVH/HST', 15]], NS: [['TVH/HST', 14]], BC: [['TPS/GST', 5]], AB: [['TPS/GST', 5]], SK: [['TPS/GST', 5]], MB: [['TPS/GST', 5]], YT: [['TPS/GST', 5]], NT: [['TPS/GST', 5]], NU: [['TPS/GST', 5]] };
 
@@ -100,6 +122,7 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function r2(n) { return Math.round(n * 100) / 100; }
   function usd(n) { return n == null ? T.onReq : (FR ? n.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' $ US' : 'US$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })); }
+  function cad(n) { return S.fx && n != null ? T.cadNote.replace('{v}', (n * S.fx.rate).toLocaleString(FR ? 'fr-CA' : 'en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : ''; }
   function num(n, d) { return Number(n).toLocaleString(FR ? 'fr-CA' : 'en-US', { maximumFractionDigits: d == null ? 2 : d }); }
   function disc() { return S.prof ? Number(S.prof.discount_pct) || 0 : 0; }
   function net(p) { return p == null ? null : r2(Number(p) * (1 - disc() / 100)); }
@@ -118,6 +141,7 @@
     mode = mode || 'login';
     var html = '<div class="pt-auth"><div class="pt-tabs" role="tablist"><button type="button" data-m="login" aria-selected="' + (mode === 'login') + '">' + T.login + '</button><button type="button" data-m="signup" aria-selected="' + (mode === 'signup') + '">' + T.signup + '</button></div>';
     if (msg) html += '<p class="pt-msg">' + esc(msg) + '</p>';
+    html += '<p class="pt-note"><a href="' + (FR ? '/fr/assistant-selection/' : '/selection-assistant/') + '">' + T.tryPublic + '</a></p>';
     if (mode === 'login') {
       html += '<form id="pt-f" class="pt-form">' + field('pt-em', T.email, 'email', '', 'autocomplete="email" required') + field('pt-pw', T.pass, 'password', '', 'autocomplete="current-password" required') +
         '<button class="btn btn--solid" type="submit">' + T.go + '</button><button class="pt-link" type="button" id="pt-forgot">' + T.forgot + '</button></form>';
@@ -189,7 +213,7 @@
       }).sort(function (a, b) { return a.specs.cfm - b.specs.cfm || a.specs.stages - b.specs.stages || a.specs.kw - b.specs.kw || a.sku.localeCompare(b.sku); });
       $('pt-rows').innerHTML = list.map(function (p) {
         var s = p.specs;
-        return '<tr><td><a class="pt-model" href="#p/' + encodeURIComponent(p.sku) + '"><strong>' + esc(p.sku) + '</strong></a><br><small>' + esc(pname(p)) + (s.double_flow ? ', ' + T.dbl : '') + '</small>' + '</td><td>' + num(s.cfm, 0) + ' · ' + num(s.m3h, 0) + '</td><td>' + num(s.hp) + ' · ' + num(s.kw) + '</td><td>' + s.stages + '</td><td>' + vlabel(s.volt) + '</td><td>' + esc(s.port || '') + '</td><td class="r pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td><td class="r"><strong>' + usd(net(p.list_price)) + '</strong></td><td><button class="pt-add" type="button" data-b="' + esc(p.sku) + '"' + (p.list_price == null ? ' disabled' : '') + '>' + T.add + '</button></td></tr>';
+        return '<tr><td><a class="pt-model" href="#p/' + encodeURIComponent(p.sku) + '"><strong>' + esc(p.sku) + '</strong></a><br><small>' + esc(pname(p)) + (s.double_flow ? ', ' + T.dbl : '') + '</small>' + '</td><td>' + num(s.cfm, 0) + ' · ' + num(s.m3h, 0) + '</td><td>' + num(s.hp) + ' · ' + num(s.kw) + '</td><td>' + s.stages + '</td><td>' + vlabel(s.volt) + '</td><td>' + esc(s.port || '') + '</td><td class="r pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td><td class="r"><strong>' + usd(net(p.list_price)) + '</strong>' + (S.fx && p.list_price != null ? '<br><small>' + cad(net(p.list_price)) + '</small>' : '') + '</td><td><button class="pt-add" type="button" data-b="' + esc(p.sku) + '"' + (p.list_price == null ? ' disabled' : '') + '>' + T.add + '</button></td></tr>';
       }).join('') || '<tr><td colspan="9">' + T.none + '</td></tr>';
       $('pt-rows').querySelectorAll('[data-b]').forEach(function (b) { b.onclick = function () { blowerDialog(S.bySku[b.dataset.b]); }; });
     }
@@ -263,28 +287,49 @@
   var QU = { CFM: 1, 'm³/h': 0.588578, 'L/min': 0.0353147 };
   function lerp(c, x) { if (!c || !c.length || x < c[0][0] || x > c[c.length - 1][0]) return null; for (var i = 1; i < c.length; i++) if (x <= c[i][0]) { var a = c[i - 1], b = c[i]; return b[0] === a[0] ? a[1] : a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]); } return c[c.length - 1][1]; }
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  function aiMsg(m) {
+  function aiMsg(m, idx) {
     var t = esc(m.content).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\b(ID[A-Z]{1,4}[0-9A-Z.\-]*[0-9A-Z])\b/g, function (x) { return S.bySku[x] ? '<a class="pt-model" href="#p/' + encodeURIComponent(x) + '"><strong>' + x + '</strong></a>' : x; }).replace(/\n/g, '<br>');
-    return '<div class="pt-ai-m pt-ai-' + (m.role === 'user' ? 'u' : 'a') + '"><small>' + (m.role === 'user' ? T.aiYou : T.aiBot) + '</small><p>' + t + '</p>' + aiActions(m) + '</div>';
+    return '<div class="pt-ai-m pt-ai-' + (m.role === 'user' ? 'u' : 'a') + '"><small>' + (m.role === 'user' ? T.aiYou : T.aiBot) + '</small><p>' + t + '</p>' + aiActions(m, idx) + '</div>';
   }
   function selView(el) {
     var f = S.selF || (S.selF = { mode: 'press', q: '', qu: 'CFM', dp: '', du: 'psi', v: '6' });
+    if (f.h == null) f.h = '8760'; if (f.r == null) f.r = '0.10';
     function opts(o, cur) { return Object.keys(o).map(function (k) { return '<option' + (k === cur ? ' selected' : '') + '>' + k + '</option>'; }).join(''); }
     var ai = S.ai || (S.ai = { msgs: [], busy: false });
-    el.innerHTML = '<section class="pt-ai" aria-label="' + T.aiT + '"><div class="pt-ai-hd"><h2 class="pt-h">' + T.aiT + '</h2>' + (ai.msgs.length ? '<button class="pt-link" type="button" id="ai-new">' + T.aiNew + '</button>' : '') + '</div><p class="pt-note">' + T.aiIntro + '</p>' +
-      '<div id="ai-log" class="pt-ai-log" aria-live="polite">' + ai.msgs.map(aiMsg).join('') + (ai.busy ? '<p class="pt-note">' + T.aiThink + '</p>' : '') + '</div>' +
-      '<form id="ai-f" class="pt-ai-f">' + (SR || window.MediaRecorder ? '<button class="pt-mic' + (ai.listening ? ' on' : '') + '" type="button" id="ai-mic" aria-label="' + T.aiMic + '" title="' + T.aiMic + '"' + (ai.busy ? ' disabled' : '') + '><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg></button>' : '') + '<textarea id="ai-in" rows="2" placeholder="' + T.aiPh + '" aria-label="' + T.aiPh + '"' + (ai.busy ? ' disabled' : '') + '></textarea><button class="btn btn--solid" type="submit"' + (ai.busy ? ' disabled' : '') + '>' + T.aiSend + '</button></form>' + (ai.listening ? '<p class="pt-note" role="status">' + T.aiListen + '</p>' : '') + (ai.speaking ? '<button class="pt-link" type="button" id="ai-shh">' + T.aiStop + '</button>' : '') + '</section>' +
+    el.innerHTML = '<section class="pt-ai" aria-label="' + T.aiT + '"><div class="pt-ai-hd"><h2 class="pt-h">' + T.aiT + '</h2>' + '<span class="pt-acts">' + '<button class="pt-link" type="button" id="ai-talk">' + T.talk + '</button>' + (ai.msgs.length ? '<button class="pt-link" type="button" id="ai-new">' + T.aiNew + '</button>' : '') + '</span></div><p class="pt-note">' + T.aiIntro + '</p>' +
+      '<div id="ai-log" class="pt-ai-log" aria-live="polite">' + ai.msgs.map(function (m, i) { return aiMsg(m, i); }).join('') + (ai.busy ? '<p class="pt-note">' + T.aiThink + '</p>' : '') + '</div>' +
+      '<form id="ai-f" class="pt-ai-f">' + (SR || window.MediaRecorder ? '<button class="pt-mic' + (ai.listening ? ' on' : '') + '" type="button" id="ai-mic" aria-label="' + T.aiMic + '" title="' + T.aiMic + '"' + (ai.busy ? ' disabled' : '') + '><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg></button>' : '') + '<label class="pt-cam" title="' + T.plateT + '"><input type="file" id="ai-cam" accept="image/*" capture="environment"' + (ai.busy ? ' disabled' : '') + '><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4H9Zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg><span class="pt-vh">' + T.plate + '</span></label>' + '<textarea id="ai-in" rows="2" placeholder="' + T.aiPh + '" aria-label="' + T.aiPh + '"' + (ai.busy ? ' disabled' : '') + '></textarea><button class="btn btn--solid" type="submit"' + (ai.busy ? ' disabled' : '') + '>' + T.aiSend + '</button></form>' + (ai.listening ? '<p class="pt-note" role="status">' + T.aiListen + '</p>' : '') + (ai.speaking ? '<button class="pt-link" type="button" id="ai-shh">' + T.aiStop + '</button>' : '') + '</section>' +
       '<h2 class="pt-h" style="margin-top:6px">' + T.sel + '</h2><p class="pt-note" style="margin-top:0">' + T.selIntro + '</p>' +
       '<form id="sf" class="pt-selform"><div class="pt-seg pt-seg--sm"><button type="button" data-m="press" aria-pressed="' + (f.mode === 'press') + '">' + T.press + '</button><button type="button" data-m="vac" aria-pressed="' + (f.mode === 'vac') + '">' + T.vac + '</button></div>' +
       '<label>' + T.flow + '<span class="pt-in"><input id="sf-q" type="number" min="0" step="any" required value="' + esc(f.q) + '"><select id="sf-qu">' + opts(QU, f.qu) + '</select></span></label>' +
       '<label id="sf-dpl">' + (f.mode === 'vac' ? T.vacLvl : T.pressLvl) + '<span class="pt-in"><input id="sf-dp" type="number" min="0" step="any" required value="' + esc(f.dp) + '"><select id="sf-du">' + opts(DP, f.du) + '</select></span></label>' +
       '<label>' + T.volt + '<select id="sf-v"><option value="6"' + (f.v === '6' ? ' selected' : '') + '>' + T.v6 + '</option><option value="5"' + (f.v === '5' ? ' selected' : '') + '>' + T.v5 + '</option><option value="3"' + (f.v === '3' ? ' selected' : '') + '>' + T.v3 + '</option></select></label>' +
+      '<label>' + T.hours + '<input id="sf-h" type="number" min="1" max="8760" step="1" value="' + esc(f.h) + '" style="width:110px"></label><label>' + T.rate + '<input id="sf-r" type="number" min="0" step="0.01" value="' + esc(f.r) + '" style="width:100px"></label>' +
       '<button class="btn btn--solid" type="submit">' + T.find + '</button></form><div id="sf-out"></div><p class="pt-note">' + T.selNote + '</p>';
     el.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { read(); f.mode = b.dataset.m; if (f.mode === 'vac' && f.du === 'psi') f.du = 'inHg'; if (f.mode === 'press' && f.du === 'inHg') f.du = 'psi'; selView(el); }; });
-    function read() { f.q = v('sf-q'); f.qu = v('sf-qu'); f.dp = v('sf-dp'); f.du = v('sf-du'); f.v = v('sf-v'); }
+    function read() { f.q = v('sf-q'); f.qu = v('sf-qu'); f.dp = v('sf-dp'); f.du = v('sf-du'); f.v = v('sf-v'); f.h = v('sf-h') || '8760'; f.r = v('sf-r') || '0.10'; }
     $('sf').onsubmit = function (e) { e.preventDefault(); read(); run(); };
     var log = $('ai-log'); log.scrollTop = log.scrollHeight;
     if ($('ai-new')) $('ai-new').onclick = function () { S.ai = { msgs: [], busy: false }; selView(el); };
+    $('ai-talk').onclick = function () { talkDialog(); };
+    $('ai-cam').onchange = function () {
+      var file = $('ai-cam').files[0]; if (!file) return;
+      ai.msgs.push({ role: 'user', content: T.plateYou, local: true }); ai.busy = true; selView(el);
+      shrink(file, 1600).then(function (img) { return sb.functions.invoke('read-plate', { body: { image: img.b64, mime: 'image/jpeg' } }); }).then(function (r) {
+        ai.busy = false; var pl = r.data && r.data.plate;
+        if (!pl || !pl.readable) { ai.msgs.pop(); aiNote(r.error && r.error.context && r.error.context.status === 429 ? T.aiLimit : T.plateBad); return; }
+        var parts = [];
+        if (pl.power_kw) parts.push(num(pl.power_kw) + ' kW'); else if (pl.power_hp) parts.push(num(pl.power_hp) + ' HP');
+        if (pl.voltage) parts.push(pl.voltage + ' V' + (pl.phase ? (pl.phase === 1 ? (FR ? ' monophasé' : ' single-phase') : (FR ? ' triphasé' : ' three-phase')) : ''));
+        if (pl.hz) parts.push(pl.hz + ' Hz'); if (pl.rpm) parts.push(pl.rpm + (FR ? ' tr/min' : ' rpm'));
+        if (pl.max_flow) parts.push((FR ? 'débit max ' : 'max flow ') + pl.max_flow + ' ' + (pl.max_flow_unit || ''));
+        if (pl.max_pressure) parts.push((FR ? 'pression max ' : 'max pressure ') + pl.max_pressure + ' ' + (pl.level_unit || ''));
+        if (pl.max_vacuum) parts.push((FR ? 'vide max ' : 'max vacuum ') + pl.max_vacuum + ' ' + (pl.level_unit || ''));
+        if (pl.stages) parts.push(pl.stages + (FR ? ' étage(s)' : ' stage(s)'));
+        if (!parts.length) { ai.msgs.pop(); aiNote(T.plateBad); return; }
+        ai.msgs.pop(); selView(el); $('ai-in').value = T.plateMsg + ' ' + parts.join(', ') + '.'; $('ai-f').requestSubmit();
+      }).catch(function () { ai.busy = false; ai.msgs.pop(); aiNote(T.plateBad); });
+    };
     $('ai-in').onkeydown = function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('ai-f').requestSubmit(); } };
     $('ai-f').onsubmit = function (e) {
       e.preventDefault(); var q = v('ai-in'); if (!q || ai.busy) return;
@@ -292,7 +337,7 @@
       sb.functions.invoke('assistant', { body: { messages: ai.msgs, lang: FR ? 'fr' : 'en' } }).then(function (r) {
         var d = r.data || {}; ai.busy = false;
         if (r.error || !d.reply) { var st = r.error && r.error.context && r.error.context.status; ai.msgs.push({ role: 'assistant', content: st === 429 ? T.aiLimit : T.aiErr, err: true }); }
-        else { ai.msgs.push({ role: 'assistant', content: d.reply, mode: d.mode || null }); if (d.selector) Object.assign(f, d.selector); if (byVoice) say(d.reply); }
+        else { ai.msgs.push({ role: 'assistant', content: d.reply, mode: d.mode || null, report: d.report || null }); if (d.selector) Object.assign(f, d.selector); if (byVoice) say(d.reply); }
         if (S.tab === 'sel') selView(el);
         if (d.selector && $('sf-out')) $('sf-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }).catch(function () { ai.busy = false; ai.msgs.push({ role: 'assistant', content: T.aiErr, err: true }); if (S.tab === 'sel') selView(el); });
@@ -398,18 +443,19 @@
         pair.sort(function (a, b) { return a.price - b.price; });
         var head = '<p class="pt-point">' + T.point + ' <strong>' + num(Q, 0) + ' CFM · ' + num(Q / 0.588578, 0) + ' m³/h</strong> ' + T.at + ' <strong>' + (press ? '' : '−') + num(dp / DP.psi, 2) + ' psi · ' + num(dp / DP.mbar, 0) + ' mbar · ' + num(dp, 1) + ' inH₂O</strong>' + (press ? '' : ' (' + num(dp / DP.inHg, 2) + ' inHg)') + '</p>';
         function rows(list, k) {
-          return '<div class="pt-tw"><table class="pt-t"><thead><tr><th>' + T.model + '</th><th>' + T.flowAt + '<br><small>CFM · m³/h</small></th><th>' + T.margin + '</th><th>' + T.maxDp + '<br><small>psi · mbar</small></th><th>' + T.powerAt + '<br><small>HP · kW</small></th><th class="r">' + T.yours + '</th><th></th></tr></thead><tbody>' +
+          return '<div class="pt-tw"><table class="pt-t"><thead><tr><th>' + T.model + '</th><th>' + T.flowAt + '<br><small>CFM · m³/h</small></th><th>' + T.margin + '</th><th>' + T.maxDp + '<br><small>psi · mbar</small></th>' + '<th>' + T.powerAt + '<br><small>HP · kW</small></th><th class="r">' + T.energy + '</th><th class="r">' + T.yours + '</th><th></th></tr></thead><tbody>' +
             list.slice(0, 15).map(function (r, i) {
               var s = r.p.specs;
               return '<tr' + (i === 0 ? ' class="pt-best"' : '') + '><td>' + (k > 1 ? '<strong>2 ×</strong> ' : '') + '<a class="pt-model" href="#p/' + encodeURIComponent(r.p.sku) + '"><strong>' + esc(r.p.sku) + '</strong></a>' + (i === 0 && k === 1 ? ' <span class="pt-tag">' + T.cheapest + '</span>' : '') + '<br><small>' + (s.double_flow ? T.dbl : s.stages + ' ' + T.stg) + ' · ' + num(s.kw) + ' kW · ' + esc(s.port || '') + '</small></td>' +
                 '<td>' + num(r.qa * k, 0) + ' · ' + num(r.qa * k / 0.588578, 0) + '</td><td>+' + num((r.qa * k / Q - 1) * 100, 0) + ' %</td><td>' + num(r.lim / DP.psi, 2) + ' · ' + num(r.lim / DP.mbar, 0) + (r.est ? '<br><small>' + T.est + '</small>' : '') + '</td>' +
-                '<td>' + (r.hp != null ? num(r.hp * k, 2) + ' · ' + num(r.hp * k * 0.7457, 2) : '–') + '</td><td class="r"><strong>' + usd(r.price * k) + '</strong></td><td><button class="pt-add" type="button" data-sa="' + esc(r.p.sku) + '" data-k="' + k + '">' + T.add + '</button></td></tr>';
+                '<td>' + (r.hp != null ? num(r.hp * k, 2) + ' · ' + num(r.hp * k * 0.7457, 2) : '–') + '</td><td class="r">' + (r.hp != null ? usd(Math.round(r.hp * k * 0.7457 / 0.9 * (Number(f.h) || 8760) * (Number(f.r) || 0.1))) : '–') + '</td><td class="r"><strong>' + usd(r.price * k) + '</strong></td><td><button class="pt-add" type="button" data-sa="' + esc(r.p.sku) + '" data-k="' + k + '">' + T.add + '</button>' + (k === 1 ? '<br><button class="pt-link" type="button" data-srep="' + esc(r.p.sku) + '">' + T.report + '</button>' : '') + '</td></tr>';
             }).join('') + '</tbody></table></div>';
         }
         var html = head;
         if (res.length) html += '<p class="pt-note">' + res.length + ' ' + T.found + '</p>' + rows(res, 1);
         else html += '<p class="pt-msg">' + T.noFit + '</p>' + (pair.length ? '<p class="pt-note">' + T.twoUnits + '</p>' + rows(pair, 2) : '');
-        out.innerHTML = html;
+        out.innerHTML = html + '<p class="pt-note">' + T.energyNote + '</p>';
+        out.querySelectorAll('[data-srep]').forEach(function (b) { b.onclick = function () { var r = res.filter(function (x) { return x.p.sku === b.dataset.srep; })[0]; if (!r) return; makeReport({ p: r.p, mode: press ? 'pressure' : 'vacuum', acfm: Q, given: f.q + ' ' + f.qu, psi: dp / DP.psi, dpAir: dp, rho: 1, gas: 'air', alt: 0, temp: 68, qa: r.qa, kw: r.hp != null ? r.hp * 0.7457 : null, lim_psi: r.lim / DP.psi, energy: r.hp != null ? Math.round(r.hp * 0.7457 / 0.9 * (Number(f.h) || 8760) * (Number(f.r) || 0.1)) : null, hours: Number(f.h) || 8760, rate: Number(f.r) || 0.1 }); }; });
         out.querySelectorAll('[data-sa]').forEach(function (b) { b.onclick = function () { blowerDialog(S.bySku[b.dataset.sa], press ? 'pressure' : 'vacuum'); }; });
       });
     }
@@ -435,16 +481,17 @@
       '<tr><th>' + T.volt + '</th><td colspan="2">' + vlabel(s.volt) + ', 60 Hz</td></tr>' +
       '<tr><th>' + T.port + '</th><td colspan="2">' + esc(s.port || '') + ' NPT</td></tr>' +
       '<tr><th>' + T.list + '</th><td colspan="2" class="pt-old">' + usd(p.list_price == null ? null : Number(p.list_price)) + '</td></tr>' +
-      '<tr><th>' + T.yours + '</th><td colspan="2"><strong>' + usd(net(p.list_price)) + '</strong></td></tr>' +
+      '<tr><th>' + T.yours + '</th><td colspan="2"><strong>' + usd(net(p.list_price)) + '</strong>' + (S.fx && p.list_price != null ? ' <small>' + cad(net(p.list_price)) + '</small>' : '') + '</td></tr>' +
       (S.set.lead_fr || S.set.lead_en ? '<tr><th>' + T.lead + '</th><td colspan="2">' + esc(FR ? S.set.lead_fr || S.set.lead_en : S.set.lead_en || S.set.lead_fr) + '</td></tr>' : '') +
       '</tbody></table></div>' +
-      '<div id="pp-curve" class="pt-curve"></div>' +
+      '<div id="pp-curve" class="pt-curve"></div><div id="pp-cad"></div>' +
       (sib.length ? '<p class="pt-note">' + T.otherV + ' ' + sib.map(function (q) { return '<a href="#p/' + encodeURIComponent(q.sku) + '">' + esc(q.sku) + '</a> (' + vlabel(q.specs.volt) + ')'; }).join(' · ') + '</p>' : '') +
       '<div class="pt-acts" style="margin-top:14px"><button class="btn btn--solid" type="button" id="pp-add"' + (p.list_price == null ? ' disabled' : '') + '>' + T.addCart + '</button>' + (p.datasheet ? '<button class="btn btn--line" type="button" id="pp-dl">' + T.dlSheet + '</button>' : '') + '</div>' +
       '<h3 class="pt-sub">' + T.rec + '</h3><div class="pt-tw"><table class="pt-t pt-spec"><tbody>' + accRow(a.vac_filter, T.vac) + accRow(a.vac_valve, T.vac) + accRow(a.press_filter, T.press) + accRow(a.press_valve, T.press) + '</tbody></table></div></div>' +
       '<div class="pt-sheet" id="pp-sheet">' + (p.datasheet ? '<p class="pt-note">' + T.working + '</p>' : '<p class="pt-note">' + T.noSheet + '</p>') + '</div></div>';
     $('pp-add').onclick = function () { blowerDialog(p); };
     loadCurves().then(function () { var c = $('pp-curve'); if (c) c.innerHTML = curveSvg(p); });
+    cadFiles(p);
     if (p.datasheet) {
       sb.storage.from('datasheets').createSignedUrl(p.datasheet, 3600).then(function (r) {
         if (!r.data) { $('pp-sheet').innerHTML = '<p class="pt-note">' + T.noSheet + '</p>'; return; }
@@ -515,7 +562,7 @@
       field('ps-nm', T.name, 'text', pick(st.name, pr.full_name)) + field('ps-co', T.company, 'text', pick(st.company, pr.company)) + field('ps-ph', T.phone, 'tel', pick(st.phone, pr.phone)) + countrySelect('ps-cn', shipCn) + provSelect('ps-pv', shipPv) +
       field('ps-ad', T.address, 'text', pick(st.address, pr.address)) + field('ps-ci', T.city, 'text', pick(st.city, pr.city)) + field('ps-pc', T.postal, 'text', pick(st.postal, pr.postal)) + field('ps-po', T.po, 'text', po.number || '') +
       '<div class="pt-f"><label for="ps-nt">' + T.note + '</label><textarea id="ps-nt" rows="' + (miss.length ? 4 : 2) + '">' + esc(noteVal) + '</textarea></div></div>' +
-      '<div class="pt-acts pt-pay"><button class="btn btn--line" type="button" id="pc-quote">' + T.quote + '</button></div>' +
+      '<div class="pt-acts pt-pay"><button class="btn btn--line" type="button" id="pc-quote">' + T.quote + '</button>' + (S.prof.org_id ? '<button class="btn btn--line" type="button" id="pc-appr">' + T.approveSend + '</button>' : '') + '</div>' +
       '<div class="pt-acts pt-pay"><button class="btn btn--line" type="button" id="pc-inv">' + T.payInv + '</button><button class="btn btn--solid" type="button" id="pc-card">' + T.payCard + '</button></div><p class="pt-msg" id="pc-msg" role="status"></p><p class="pt-note">' + T.terms + '</p></div></div>';
     function lines() {
       $('pc-l').innerHTML = cart.map(function (l, i) {
@@ -535,12 +582,19 @@
       var tx = v('ps-cn') === 'CA' ? (TAX[v('ps-pv')] || []).map(function (t) { return [t[0] + ' ' + num(t[1], 3) + ' %', r2(s * t[1] / 100)]; }) : [];
       var t = r2(s + tx.reduce(function (a, x) { return a + x[1]; }, 0));
       var fr8 = freightEst(cart, v('ps-cn'), v('ps-pv')), ld = FR ? S.set.lead_fr || S.set.lead_en : S.set.lead_en || S.set.lead_fr;
-      $('pc-tot').innerHTML = '<div><span>' + T.sub + '</span><span>' + usd(s) + '</span></div>' + tx.map(function (x) { return '<div><span>' + x[0] + '</span><span>' + usd(x[1]) + '</span></div>'; }).join('') + '<div class="t"><span>' + T.total + '</span><span>' + usd(t) + '</span></div>' +
+      $('pc-tot').innerHTML = '<div><span>' + T.sub + '</span><span>' + usd(s) + '</span></div>' + tx.map(function (x) { return '<div><span>' + x[0] + '</span><span>' + usd(x[1]) + '</span></div>'; }).join('') + '<div class="t"><span>' + T.total + '</span><span>' + usd(t) + '</span></div>' + (S.fx ? '<div class="pt-cadl"><span></span><span>' + cad(t) + '</span></div><p class="pt-note">' + T.cadBasis.replace('{d}', S.fx.date) + '</p>' : '') +
         (fr8 != null ? '<div class="pt-est"><span>' + T.freight + '<br><small>' + T.freightNote + '</small></span><span>' + usd(fr8) + '</span></div>' : '') + (ld ? '<p class="pt-note">' + T.lead + ' : ' + esc(ld) + '</p>' : '');
     }
     $('ps-cn').onchange = $('ps-pv').onchange = tot;
     $('pc-inv').onclick = function () { submit('invoice'); };
     $('pc-quote').onclick = function () { makeQuote(); };
+    if ($('pc-appr')) $('pc-appr').onclick = function () {
+      var b = $('pc-appr'), msg = $('pc-msg'); b.disabled = true;
+      sb.from('shared_carts').insert({ org_id: S.prof.org_id, from_user: S.user.id, items: cart.map(function (l) { return { sku: l.sku, qty: l.qty, mode: l.mode }; }), note: v('ps-nt') || null }).select('id').single().then(function (r) {
+        if (r.error || !r.data) { b.disabled = false; msg.textContent = T.approveErr; return; }
+        mailCustomer({ kind: 'cart_shared', cart_id: r.data.id }); msg.textContent = T.approveSent; b.disabled = false;
+      });
+    };
     $('pc-card').onclick = function () { submit('card'); };
     lines(); dropZone(el, again); poX();
   }
@@ -584,15 +638,16 @@
     if (!list.length) return '<p class="pt-note">' + T.noOrders + '</p>';
     return '<div class="pt-tw"><table class="pt-t"><thead><tr><th>#</th><th>' + T.date + '</th>' + (admin ? '<th>' + T.company + '</th>' : '') + '<th>' + T.items + '</th><th class="r">' + T.total + '</th><th>' + T.status + '</th></tr></thead><tbody>' +
       list.map(function (o) {
-        var st = admin ? '<select data-os="' + o.id + '">' + Object.keys(T.st).map(function (k) { return '<option value="' + k + '"' + (k === o.status ? ' selected' : '') + '>' + T.st[k] + '</option>'; }).join('') + '</select><br><input class="pt-trk" data-ot="' + o.id + '" placeholder="' + T.tracking + '" value="' + esc(o.tracking || '') + '" aria-label="' + T.tracking + '">'
-          : esc(T.st[o.status] || o.status) + (o.tracking ? '<br><small>' + T.tracking + ' : ' + esc(o.tracking) + '</small>' : '') + '<br><button class="pt-add" type="button" data-re="' + o.id + '">' + T.again + '</button>';
+        var st = admin ? '<select data-os="' + o.id + '">' + Object.keys(T.st).map(function (k) { return '<option value="' + k + '"' + (k === o.status ? ' selected' : '') + '>' + T.st[k] + '</option>'; }).join('') + '</select><br><select class="pt-trk" data-oc="' + o.id + '" aria-label="' + T.carrier + '"><option value="">' + T.carrier + '</option>' + Object.keys(CARRIERS).map(function (k) { return '<option value="' + k + '"' + (o.carrier === k ? ' selected' : '') + '>' + CARRIERS[k][0] + '</option>'; }).join('') + '</select><br><input class="pt-trk" data-ot="' + o.id + '" placeholder="' + T.tracking + '" value="' + esc(o.tracking || '') + '" aria-label="' + T.tracking + '">'
+          : timeline(o) + '<button class="pt-add" type="button" data-re="' + o.id + '">' + T.again + '</button>';
         return '<tr><td>' + o.id + (o.po_file ? '<br><button class="pt-link" type="button" data-pof="' + esc(o.po_file) + '">' + T.poFile + '</button>' : '') + '</td><td>' + new Date(o.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</td>' + (admin ? '<td>' + esc((o.ship && o.ship.company) || '') + '<br><small>' + esc((o.ship && o.ship.name) || '') + (o.po_number ? ' · PO ' + esc(o.po_number) : '') + '</small></td>' : '') +
           '<td><small>' + (o.items || []).map(function (i) { return i.qty + ' × ' + esc(i.sku) + (i.mode ? ' (' + T.mode[i.mode] + ')' : ''); }).join('<br>') + '</small></td><td class="r">' + usd(Number(o.total)) + '<br><small>' + (o.pay_method === 'card' ? T.payCard : T.payInv) + '</small></td><td>' + st + '</td></tr>';
       }).join('') + '</tbody></table></div>';
   }
   function ordersView(el) {
     el.innerHTML = '<p class="pt-note">' + T.working + '</p>';
-    sb.from('orders').select('*').eq('user_id', S.user.id).order('created_at', { ascending: false }).then(function (r) { var list = r.data || []; el.innerHTML = orderTable(list, false); wireReorder(el, list); });
+    var ids = (S.team && S.team.length ? S.team.map(function (t) { return t.id; }) : []).concat([S.user.id]);
+    sb.from('orders').select('*').in('user_id', ids).order('created_at', { ascending: false }).then(function (r) { var list = r.data || []; el.innerHTML = orderTable(list, false); wireReorder(el, list); });
   }
 
   // ---------- account ----------
@@ -605,6 +660,7 @@
       var u = { full_name: v('pa-nm'), company: v('pa-co'), phone: v('pa-ph'), country: v('pa-cn'), province: v('pa-pv'), address: v('pa-ad'), city: v('pa-ci'), postal: v('pa-pc') };
       sb.from('profiles').update(u).eq('id', S.user.id).then(function (r) { $('pa-msg').textContent = r.error ? r.error.message : T.saved; if (!r.error) Object.assign(S.prof, u); });
     };
+    teamBox(el);
     $('pa-pwb').onclick = function () { sb.auth.updateUser({ password: $('pa-pw').value }).then(function (r) { $('pa-msg').textContent = r.error ? r.error.message : T.passSaved; }); };
   }
 
@@ -635,8 +691,8 @@
       el.querySelectorAll('[data-us]').forEach(function (b) { b.onclick = function () { upd(b.dataset.us, { discount_pct: dval(b.dataset.us) }); }; });
       el.querySelectorAll('[data-ur]').forEach(function (b) { b.onclick = function () { upd(b.dataset.ur, { status: 'rejected' }); }; });
       function saveOrder(id) {
-        var s = el.querySelector('[data-os="' + id + '"]'), t = el.querySelector('[data-ot="' + id + '"]'), prev = (orders.filter(function (o) { return o.id === id; })[0] || {}).status;
-        sb.from('orders').update({ status: s.value, tracking: t.value.trim() || null }).eq('id', id).then(function (r) {
+        var s = el.querySelector('[data-os="' + id + '"]'), t = el.querySelector('[data-ot="' + id + '"]'), c = el.querySelector('[data-oc="' + id + '"]'), prev = (orders.filter(function (o) { return o.id === id; })[0] || {}).status;
+        sb.from('orders').update({ status: s.value, tracking: t.value.trim() || null, carrier: c.value || null }).eq('id', id).then(function (r) {
           if (r.error) return say(r.error.message);
           if (s.value === 'shipped' && prev !== 'shipped') { mailCustomer({ kind: 'shipped', order_id: id }).then(function (ok) { say(ok ? T.saved + ' ' + T.emailed : T.noEmail); }); orders.forEach(function (o) { if (o.id === id) o.status = 'shipped'; }); }
           else say(T.saved);
@@ -644,8 +700,9 @@
       }
       el.querySelectorAll('[data-os]').forEach(function (s) { s.onchange = function () { saveOrder(+s.dataset.os); }; });
       el.querySelectorAll('[data-ot]').forEach(function (t) { t.onchange = function () { saveOrder(+t.dataset.ot); }; });
+      el.querySelectorAll('[data-oc]').forEach(function (t) { t.onchange = function () { saveOrder(+t.dataset.oc); }; });
       wireSettings(el, say);
-      el.querySelectorAll('[data-uv]').forEach(function (b) { b.onclick = function () { customerDialog(users.filter(function (u) { return u.id === b.dataset.uv; })[0]); }; });
+      el.querySelectorAll('[data-uv]').forEach(function (b) { b.onclick = function () { customerDialog(users.filter(function (u) { return u.id === b.dataset.uv; })[0], users, function () { adminView(el); }); }; });
       // two-step delete: first click arms the button, second click deletes
       el.querySelectorAll('[data-ux]').forEach(function (b) {
         b.onclick = function () {
@@ -659,8 +716,9 @@
       });
     });
   }
-  function customerDialog(u) {
+  function customerDialog(u, users, onChange) {
     if (!u) return;
+    users = users || [];
     var dlg = h('div', { class: 'pt-dlg-bg' }), box = h('div', { class: 'pt-dlg pt-dlg--wide', role: 'dialog', 'aria-modal': 'true', 'aria-label': u.company || u.email });
     dlg.appendChild(box); document.body.appendChild(dlg);
     function close() { dlg.remove(); document.removeEventListener('keydown', onKey); }
@@ -668,8 +726,15 @@
     document.addEventListener('keydown', onKey); dlg.onclick = function (e) { if (e.target === dlg) close(); };
     var info = '<button class="pt-x" type="button" aria-label="' + T.close + '">×</button><h3>' + esc(u.company || u.email) + '</h3>' +
       '<p class="pt-note">' + esc(u.full_name || '') + ' · <a href="mailto:' + esc(u.email) + '">' + esc(u.email) + '</a>' + (u.phone ? ' · <a href="tel:' + esc(u.phone) + '">' + esc(u.phone) + '</a>' : '') + '<br>' +
-      esc([u.address, u.city, u.province, u.postal, u.country].filter(Boolean).join(', ')) + '<br>' + T.status + ' : ' + esc(T.us[u.status] || u.status) + ' · ' + T.disc + ' : ' + num(Number(u.discount_pct)) + ' % · ' + T.since + ' ' + new Date(u.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</p><div id="cd-o"><p class="pt-note">' + T.working + '</p></div>';
+      esc([u.address, u.city, u.province, u.postal, u.country].filter(Boolean).join(', ')) + '<br>' + T.status + ' : ' + esc(T.us[u.status] || u.status) + ' · ' + T.disc + ' : ' + num(Number(u.discount_pct)) + ' % · ' + T.since + ' ' + new Date(u.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '</p>' + (u.is_admin ? '' : '<p class="pt-note"><label>' + T.orgLink + ' <select id="cd-org"><option value="">' + T.orgNone + '</option>' + users.filter(function (x) { return x.id !== u.id && !x.is_admin && x.status === 'approved'; }).map(function (x) { var same = u.org_id && (x.org_id === u.org_id); return '<option value="' + x.id + '"' + (same ? ' selected' : '') + '>' + esc((x.company || x.email) + ' – ' + (x.full_name || x.email)) + '</option>'; }).join('') + '</select></label> <span id="cd-om" role="status"></span></p>') + '<div id="cd-o"><p class="pt-note">' + T.working + '</p></div>';
     box.innerHTML = info; box.querySelector('.pt-x').onclick = close; box.querySelector('.pt-x').focus();
+    if ($('cd-org')) $('cd-org').onchange = function () {
+      var tid = $('cd-org').value, t = users.filter(function (x) { return x.id === tid; })[0];
+      var org = t ? (t.org_id || t.id) : null;
+      var jobs = [sb.from('profiles').update({ org_id: org }).eq('id', u.id)];
+      if (t && !t.org_id) jobs.push(sb.from('profiles').update({ org_id: org }).eq('id', t.id));
+      Promise.all(jobs).then(function (rs) { var e = rs.filter(function (r) { return r.error; })[0]; $('cd-om').textContent = e ? e.error.message : T.orgSaved; if (!e) { u.org_id = org; if (t) t.org_id = org; if (onChange) onChange(); } });
+    };
     sb.from('orders').select('*').eq('user_id', u.id).order('created_at', { ascending: false }).then(function (r) {
       var list = r.data || [], live = list.filter(function (o) { return o.status !== 'cancelled'; });
       var spent = live.reduce(function (a, o) { return a + Number(o.subtotal || 0); }, 0);
@@ -712,7 +777,7 @@
 
   // ---------- assistant: one-click buttons under a reply ----------
   function kitSkus(p, mode) { var a = p.acc || {}; return [p.sku].concat(mode === 'vacuum' ? [a.vac_filter, a.vac_valve] : mode === 'pressure' ? [a.press_filter, a.press_valve] : []).filter(function (x) { return x && S.bySku[x] && S.bySku[x].list_price != null; }); }
-  function aiActions(m) {
+  function aiActions(m, idx) {
     if (m.role !== 'assistant' || m.err) return '';
     var seen = {}, list = [];
     (m.content.match(/\bID[A-Z]{1,4}[0-9A-Z.\-]*[0-9A-Z]\b/g) || []).forEach(function (x) { if (S.bySku[x] && !seen[x] && S.bySku[x].list_price != null) { seen[x] = 1; list.push(S.bySku[x]); } });
@@ -724,10 +789,16 @@
       var k = kitSkus(p, m.mode), tot = r2(k.reduce(function (a, x) { return a + net(S.bySku[x].list_price); }, 0));
       return m.mode ? '<button class="btn btn--solid pt-sol" type="button" data-sol="' + esc(p.sku) + '" data-mode="' + m.mode + '"><span>' + T.sol + '</span><small>' + esc(k.join(' + ')) + ' · ' + usd(tot) + '</small></button>'
         : '<button class="btn btn--line pt-sol" type="button" data-pick="' + esc(p.sku) + '"><span>' + T.solPick + '</span><small>' + esc(p.sku) + '</small></button>';
-    }).join('') + acc.map(function (p) { return '<button class="pt-add" type="button" data-one="' + esc(p.sku) + '">' + T.addOne + ' ' + esc(p.sku) + ' · ' + usd(net(p.list_price)) + '</button>'; }).join('') + '</div>';
+    }).join('') + (m.report && m.report.rows ? bl.filter(function (p) { return m.report.rows.some(function (r) { return r.model === p.sku; }); }).map(function (p) { return '<button class="pt-add" type="button" data-arep="' + idx + '|' + esc(p.sku) + '">' + T.report + ' · ' + esc(p.sku) + '</button>'; }).join('') : '') + acc.map(function (p) { return '<button class="pt-add" type="button" data-one="' + esc(p.sku) + '">' + T.addOne + ' ' + esc(p.sku) + ' · ' + usd(net(p.list_price)) + '</button>'; }).join('') + '</div>';
   }
   root.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('[data-sol],[data-one],[data-pick]'); if (!b) return;
+    var b = e.target.closest && e.target.closest('[data-sol],[data-one],[data-pick],[data-arep],[data-cadf],[data-cadx]'); if (!b) return;
+    if (b.dataset.cadf) { sb.storage.from('cad').createSignedUrl(b.dataset.cadf, 600, { download: true }).then(function (r) { if (r.data) window.open(r.data.signedUrl, '_blank', 'noopener'); }); return; }
+    if (b.dataset.cadx) { sb.storage.from('cad').remove([b.dataset.cadx]).then(function () { cadFiles(S.bySku[S.sku]); }); return; }
+    if (b.dataset.arep) {
+      var pr = b.dataset.arep.split('|'), m = S.ai && S.ai.msgs[+pr[0]], rp = m && m.report, row = rp && rp.rows.filter(function (r) { return r.model === pr[1]; })[0]; if (!row) return;
+      return makeReport({ p: S.bySku[pr[1]], mode: rp.mode, acfm: rp.acfm, given: rp.given, psi: rp.psi, dpAir: rp.dp_air_inh2o, rho: rp.rho, gas: rp.gas, mw: rp.mw, alt: rp.altitude_ft, temp: rp.inlet_temp_f, qa: row.acfm, kw: row.kw, lim_psi: row.lim_psi, energy: row.energy, hours: rp.hours, rate: rp.rate });
+    }
     if (b.dataset.pick) return blowerDialog(S.bySku[b.dataset.pick]);
     if (b.dataset.one) { addLine(b.dataset.one, 1, null); shellCount(); toast(T.added); return; }
     var p = S.bySku[b.dataset.sol], mode = b.dataset.mode; if (!p) return;
@@ -862,13 +933,149 @@
     }).catch(function () { btn.disabled = false; msg.textContent = T.quoteErr; });
   }
 
+  // ---------- order progress ----------
+  function timeline(o) {
+    if (o.status === 'cancelled') return '<span class="pt-tag pt-tag--warn">' + esc(T.st.cancelled) + '</span><br>';
+    var at = { invoice_requested: 0, awaiting_payment: 0, paid: 1, processing: 2, shipped: 3 }[o.status]; if (at == null) at = 0;
+    var c = o.carrier && CARRIERS[o.carrier], link = o.tracking && c && c[1] ? c[1] + encodeURIComponent(o.tracking) : null;
+    return '<ol class="pt-steps">' + T.steps.map(function (s, i) { return '<li class="' + (i < at ? 'done' : i === at ? 'now' : '') + '">' + esc(s) + '</li>'; }).join('') + '</ol>' +
+      (o.tracking ? '<small>' + (c ? esc(c[0]) + ' · ' : '') + T.tracking + ' : ' + esc(o.tracking) + '</small>' + (link ? '<br><a class="pt-link" href="' + esc(link) + '" target="_blank" rel="noopener">' + T.track + ' →</a>' : '') + '<br>' : '');
+  }
+
+  // ---------- team (company accounts) ----------
+  function teamBox(el) {
+    var box = h('div', { class: 'pt-team' }); el.appendChild(box);
+    if (!S.prof.org_id) { box.innerHTML = '<h2 class="pt-h">' + T.team + '</h2><p class="pt-note">' + T.teamNone + '</p>'; return; }
+    Promise.all([sb.from('profiles').select('id,full_name,email,company,status').eq('org_id', S.prof.org_id), sb.from('shared_carts').select('*').eq('org_id', S.prof.org_id).order('created_at', { ascending: false }).limit(30)]).then(function (rs) {
+      var team = rs[0].data || [], carts = rs[1].data || [], byId = {}; S.team = team; team.forEach(function (t) { byId[t.id] = t; });
+      var inc = carts.filter(function (c) { return c.from_user !== S.user.id; }), mine = carts.filter(function (c) { return c.from_user === S.user.id; });
+      function who(id) { var t = byId[id] || {}; return t.full_name || t.email || ''; }
+      function list(c, actions) { return '<tr><td>' + new Date(c.created_at).toLocaleDateString(FR ? 'fr-CA' : 'en-CA') + '<br><small>' + T.by + ' ' + esc(who(c.from_user)) + '</small></td><td><small>' + (c.items || []).map(function (i) { return i.qty + ' × ' + esc(i.sku) + (i.mode ? ' (' + T.mode[i.mode] + ')' : ''); }).join('<br>') + '</small>' + (c.note ? '<br><small><em>' + esc(c.note) + '</em></small>' : '') + '</td><td>' + (actions && c.status === 'open' ? '<button class="pt-add" type="button" data-scl="' + c.id + '">' + T.load + '</button> <button class="pt-link" type="button" data-scd="' + c.id + '">' + T.dismiss + '</button>' : esc({ open: T.stOpen, ordered: T.stOrdered, dismissed: T.stDismissed }[c.status] || c.status)) + '</td></tr>'; }
+      box.innerHTML = '<h2 class="pt-h">' + T.team + '</h2><ul class="pt-teaml">' + team.map(function (t) { return '<li><strong>' + esc(t.full_name || t.email) + '</strong> · ' + esc(t.email) + (t.id === S.user.id ? ' ✓' : '') + '</li>'; }).join('') + '</ul>' +
+        '<h3 class="pt-sub">' + T.toApprove + '</h3>' + (inc.length ? '<div class="pt-tw"><table class="pt-t"><tbody>' + inc.map(function (c) { return list(c, true); }).join('') + '</tbody></table></div>' : '<p class="pt-note">' + T.none + '</p>') +
+        (mine.length ? '<h3 class="pt-sub">' + T.mySent + '</h3><div class="pt-tw"><table class="pt-t"><tbody>' + mine.map(function (c) { return list(c, false); }).join('') + '</tbody></table></div>' : '');
+      box.querySelectorAll('[data-scl]').forEach(function (b) { b.onclick = function () { var c = carts.filter(function (x) { return String(x.id) === b.dataset.scl; })[0]; if (!c) return; cart = []; (c.items || []).forEach(function (i) { if (S.bySku[i.sku]) addLine(i.sku, i.qty, i.mode || null); }); sb.from('shared_carts').update({ status: 'ordered' }).eq('id', c.id).then(function () {}); toast(T.loaded); S.tab = 'cart'; history.replaceState(null, '', '#cart'); shell(); }; });
+      box.querySelectorAll('[data-scd]').forEach(function (b) { b.onclick = function () { sb.from('shared_carts').update({ status: 'dismissed' }).eq('id', +b.dataset.scd).then(function () { box.remove(); teamBox(el); }); }; });
+    });
+  }
+
+  // ---------- talk to Anthony ----------
+  function talkDialog() {
+    var dlg = h('div', { class: 'pt-dlg-bg' }), box = h('div', { class: 'pt-dlg', role: 'dialog', 'aria-modal': 'true', 'aria-label': T.talkT });
+    dlg.appendChild(box); document.body.appendChild(dlg);
+    function close() { dlg.remove(); document.removeEventListener('keydown', onKey); }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onKey); dlg.onclick = function (e) { if (e.target === dlg) close(); };
+    box.innerHTML = '<button class="pt-x" type="button" aria-label="' + T.close + '">×</button><h3>' + T.talkT + '</h3><p class="pt-note">' + T.talkS + '</p><div class="pt-form"><textarea id="tk-m" rows="4" placeholder="' + T.talkPh + '" aria-label="' + T.talkPh + '"></textarea></div><p class="pt-msg" id="tk-o" role="status"></p><div class="pt-acts"><button class="btn btn--line" type="button" data-c>' + T.cancel + '</button><button class="btn btn--solid" type="button" id="tk-s">' + T.talkSend + '</button></div>';
+    box.querySelector('.pt-x').onclick = box.querySelector('[data-c]').onclick = close; $('tk-m').focus();
+    $('tk-s').onclick = function () {
+      var b = $('tk-s'); b.disabled = true; $('tk-o').textContent = T.working;
+      var tr = ((S.ai && S.ai.msgs) || []).filter(function (m) { return !m.err && !m.local; }).map(function (m) { return { role: m.role, content: m.content }; });
+      sb.functions.invoke('customer-email', { body: { kind: 'handoff', message: v('tk-m'), transcript: tr, cart: cart } }).then(function (r) {
+        if (r.data && r.data.sent) { close(); toast(T.talkOk.replace('{e}', S.prof.email)); if (S.ai) { S.ai.msgs.push({ role: 'assistant', content: T.talkOk.replace('{e}', S.prof.email), err: true }); if (S.tab === 'sel') shell(); } }
+        else { b.disabled = false; $('tk-o').textContent = T.talkErr; }
+      }).catch(function () { b.disabled = false; $('tk-o').textContent = T.talkErr; });
+    };
+  }
+
+  // ---------- photo helper: shrink to JPEG ----------
+  function shrink(file, max) {
+    return new Promise(function (ok, ko) {
+      var u = URL.createObjectURL(file), i = new Image();
+      i.onload = function () { var k = Math.min(1, max / Math.max(i.naturalWidth, i.naturalHeight)), c = document.createElement('canvas'); c.width = Math.round(i.naturalWidth * k); c.height = Math.round(i.naturalHeight * k); c.getContext('2d').drawImage(i, 0, 0, c.width, c.height); URL.revokeObjectURL(u); ok({ b64: c.toDataURL('image/jpeg', 0.86).split(',')[1] }); };
+      i.onerror = function () { URL.revokeObjectURL(u); ko(new Error('image')); }; i.src = u;
+    });
+  }
+
+  // ---------- drawings and 3D files (cad/<model base>/...) ----------
+  function cadBase(p) { return p.sku.replace(/-\d$/, ''); }
+  function cadFiles(p) {
+    var el = $('pp-cad'); if (!el || !p) return; var base = cadBase(p), admin = S.prof && S.prof.is_admin;
+    sb.storage.from('cad').list(base, { limit: 50 }).then(function (r) {
+      var files = (r.data || []).filter(function (f) { return f.name && f.name !== '.emptyFolderPlaceholder'; });
+      if (!files.length && !admin) { el.innerHTML = ''; return; }
+      el.innerHTML = '<h3 class="pt-sub">' + T.cadT + '</h3>' + (files.length ? '<ul class="pt-files">' + files.map(function (f) { return '<li><button class="pt-link" type="button" data-cadf="' + esc(base + '/' + f.name) + '">' + esc(f.name) + '</button>' + (f.metadata && f.metadata.size ? ' <small>' + num(f.metadata.size / 1048576, 1) + ' Mo</small>' : '') + (admin ? ' <button class="pt-link pt-del" type="button" data-cadx="' + esc(base + '/' + f.name) + '">' + T.cadDel + '</button>' : '') + '</li>'; }).join('') + '</ul>' : '<p class="pt-note">' + T.cadNone + '</p>') +
+        (admin ? '<label class="pt-note">' + T.cadUp + ' <input type="file" id="cad-up" multiple accept=".step,.stp,.igs,.iges,.dwg,.dxf,.pdf,.zip,.sat,.x_t"></label>' : '');
+      if ($('cad-up')) $('cad-up').onchange = function () {
+        var fs = Array.prototype.slice.call($('cad-up').files);
+        Promise.all(fs.map(function (f) { return sb.storage.from('cad').upload(base + '/' + f.name.replace(/[^A-Za-z0-9._-]+/g, '_'), f, { upsert: true, contentType: f.type || 'application/octet-stream' }); })).then(function () { cadFiles(p); });
+      };
+    });
+  }
+
+  // ---------- technical selection report (PDF) ----------
+  function curveSvgPlain(p, ptx) {
+    var pf = p.specs.perf, cv = pf && S.curves && S.curves[pf.frame]; if (!cv) return null;
+    var k = ptx.mode === 'vacuum' ? 'v' : 'p', c = (k === 'p' ? cv.flow_press : cv.flow_vac) || [], lim = k === 'p' ? pf.max_p : pf.max_v;
+    c = c.filter(function (q) { return q[0] <= lim * 1.001; }); if (c.length < 2) return null;
+    var xmax = Math.max(c[c.length - 1][0], ptx.x) / DP.psi, ymax = 0; c.forEach(function (q) { ymax = Math.max(ymax, q[1]); }); ymax = Math.max(ymax, ptx.y);
+    var xs = niceStep(xmax / 5), ys = niceStep(ymax / 5); xmax = Math.ceil(xmax / xs) * xs; ymax = Math.ceil(ymax * 1.05 / ys) * ys;
+    var W = 640, H = 340, L = 74, R = 18, Tp = 16, B = 56, iw = W - L - R, ih = H - Tp - B, g = '';
+    function X(x) { return L + x / xmax * iw; } function Y(y) { return Tp + ih - y / ymax * ih; }
+    var st = 'font-family:Arial,Helvetica,sans-serif;font-size:12px;fill:#3a4652';
+    for (var x = 0; x <= xmax + 1e-9; x += xs) g += '<line x1="' + X(x) + '" y1="' + Tp + '" x2="' + X(x) + '" y2="' + (Tp + ih) + '" stroke="#e3e8ee"/><text x="' + X(x) + '" y="' + (Tp + ih + 17) + '" text-anchor="middle" style="' + st + '">' + num(x, 2) + '</text><text x="' + X(x) + '" y="' + (Tp + ih + 31) + '" text-anchor="middle" style="' + st + ';font-size:10px;fill:#7a8591">' + num(x * 0.0689476, 2) + '</text>';
+    for (var y = 0; y <= ymax + 1e-9; y += ys) g += '<line x1="' + L + '" y1="' + Y(y) + '" x2="' + (L + iw) + '" y2="' + Y(y) + '" stroke="#e3e8ee"/><text x="' + (L - 8) + '" y="' + (Y(y) - 1) + '" text-anchor="end" style="' + st + '">' + num(y, 0) + '</text><text x="' + (L - 8) + '" y="' + (Y(y) + 12) + '" text-anchor="end" style="' + st + ';font-size:10px;fill:#7a8591">' + num(y / 0.588578, 0) + '</text>';
+    var line = '<polyline fill="none" stroke="#1e6fd9" stroke-width="3"' + (k === 'v' ? ' stroke-dasharray="8 5"' : '') + ' points="' + c.map(function (q) { return X(q[0] / DP.psi).toFixed(1) + ',' + Y(q[1]).toFixed(1); }).join(' ') + '"/>';
+    var dot = '<circle cx="' + X(ptx.x / DP.psi) + '" cy="' + Y(ptx.y) + '" r="7" fill="#d92d20" stroke="#fff" stroke-width="2"/><text x="' + (X(ptx.x / DP.psi) + 11) + '" y="' + (Y(ptx.y) - 9) + '" style="' + st + ';font-weight:bold;fill:#15202b">' + esc(T.yourPt) + '</text>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><rect width="100%" height="100%" fill="#fff"/>' + g + '<text x="' + (L + iw / 2) + '" y="' + (H - 5) + '" text-anchor="middle" style="' + st + ';fill:#15202b">' + (k === 'v' ? esc(T.curveV) : esc(T.curveP)) + ' (psi · bar)</text><text transform="translate(16 ' + (Tp + ih / 2) + ') rotate(-90)" text-anchor="middle" style="' + st + ';fill:#15202b">CFM · m³/h</text>' + line + dot + '</svg>';
+  }
+  function svgPng(svg) { return new Promise(function (ok) { var i = new Image(); i.onload = function () { var c = document.createElement('canvas'); c.width = i.width * 2; c.height = i.height * 2; var x = c.getContext('2d'); x.scale(2, 2); x.drawImage(i, 0, 0); ok({ d: c.toDataURL('image/png'), w: i.width, h: i.height }); }; i.onerror = function () { ok(null); }; i.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); }); }
+  function makeReport(r) {
+    var p = r.p; if (!p) return; toast(T.repMaking);
+    var a = p.acc || {}, filt = r.mode === 'vacuum' ? a.vac_filter : a.press_filter, valve = r.mode === 'vacuum' ? a.vac_valve : a.press_valve, crt = filt && S.bySku[filt] && S.bySku[filt].acc && S.bySku[filt].acc.cartridge;
+    loadCurves().then(function () {
+      var svg = curveSvgPlain(p, { mode: r.mode, x: r.dpAir, y: r.acfm });
+      return Promise.all([loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'), imgData('/assets/img/stratovac-logo.png'), imgData('/assets/img/id-mark.webp'), svg ? svgPng(svg) : Promise.resolve(null)]);
+    }).then(function (rs) {
+      var doc = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), W = 612, M = 44, y = 40, logo = rs[1], idm = rs[2], chart = rs[3];
+      var ink = [21, 32, 43], mute = [91, 102, 115], acc = [30, 111, 217], s = p.specs;
+      if (logo) doc.addImage(logo.d, 'PNG', M, y, 34 * logo.w / logo.h, 34);
+      if (idm) doc.addImage(idm.d, 'PNG', W - M - 30 * idm.w / idm.h, y + 2, 30 * idm.w / idm.h, 30);
+      y += 56; doc.setDrawColor(acc[0], acc[1], acc[2]); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(18); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(pt(T.repT), M, y);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.text(pt(new Date().toLocaleDateString(FR ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' })), W - M, y, { align: 'right' });
+      y += 16; doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(T.repPrepared + ' : ' + (S.prof.company || '') + ' – ' + (S.prof.full_name || S.prof.email)), M, y);
+      y += 24; doc.setTextColor(ink[0], ink[1], ink[2]); doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.text(pt(p.sku), M, y);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(10); y += 14;
+      var dl = doc.splitTextToSize(pt(pname(p) + (s.double_flow ? ', ' + T.dbl : '') + ' · ' + s.stages + ' ' + T.stg + ' · ' + num(s.hp) + ' HP (' + num(s.kw) + ' kW) · ' + vlabel(s.volt) + ', 60 Hz · ' + (s.port || '') + ' NPT'), W - 2 * M); doc.text(dl, M, y); y += dl.length * 12 + 12;
+      function sec(t) { doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(acc[0], acc[1], acc[2]); doc.text(pt(t), M, y); y += 6; doc.setDrawColor(227, 232, 238); doc.setLineWidth(0.8); doc.line(M, y, W - M, y); y += 14; doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(ink[0], ink[1], ink[2]); }
+      function row(l, val) { var vl = doc.splitTextToSize(pt(val), W - 2 * M - 200); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt(l), M, y); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(vl, M + 200, y); y += 13 * vl.length + 3; }
+      var gasName = { air: 'air', biogas: FR ? 'biogaz (60 % CH4 / 40 % CO2)' : 'biogas (60 % CH4 / 40 % CO2)', methane: FR ? 'méthane' : 'methane', natural_gas: FR ? 'gaz naturel' : 'natural gas', nitrogen: FR ? 'azote' : 'nitrogen', oxygen: FR ? 'oxygène' : 'oxygen', co2: 'CO2', argon: 'argon', helium: FR ? 'hélium' : 'helium', hydrogen: FR ? 'hydrogène' : 'hydrogen', landfill_gas: FR ? 'gaz d’enfouissement' : 'landfill gas' }[r.gas] || r.gas;
+      var tF = r.temp == null ? 68 : r.temp;
+      sec(T.repCond);
+      row(T.repUse, r.mode === 'vacuum' ? T.vac : T.press);
+      row(T.repFlowReq, (r.given ? r.given + ' = ' : '') + num(r.acfm, 0) + ' CFM · ' + num(r.acfm / 0.588578, 0) + ' m³/h ' + (FR ? '(débit réel à l’aspiration)' : '(actual inlet flow)'));
+      row(T.repLevel, (r.mode === 'vacuum' ? '-' : '') + num(r.psi, 2) + ' psi · ' + num(r.psi * 0.0689476, 3) + ' bar');
+      row(T.repGas, gasName + (r.mw ? ' (M = ' + num(r.mw, 1) + ' g/mol)' : ''));
+      row(T.repAlt, num(r.alt || 0, 0) + ' ft · ' + num((r.alt || 0) * 0.3048, 0) + ' m');
+      row(T.repTemp, num(tF, 0) + ' °F · ' + num((tF - 32) / 1.8, 0) + ' °C');
+      row(T.repVolt, vlabel(s.volt) + ', 60 Hz');
+      if (r.rho && Math.abs(r.rho - 1) > 0.02) row(T.repEq, num(r.dpAir / DP.psi, 2) + ' psi · ' + num(r.dpAir / DP.bar, 3) + ' bar (' + (FR ? 'densité relative ' : 'density ratio ') + num(r.rho, 2) + ')');
+      y += 8; sec(T.repRes);
+      row(T.repFlowAt, num(r.qa, 0) + ' CFM · ' + num(r.qa / 0.588578, 0) + ' m³/h');
+      row(T.repMargin, '+' + num((r.qa / r.acfm - 1) * 100, 0) + ' %');
+      if (r.kw != null) row(T.repPow, num(r.kw, 2) + ' kW · ' + num(r.kw / 0.7457, 2) + ' HP');
+      if (r.lim_psi) row(T.repLim, num(r.lim_psi, 2) + ' psi · ' + num(r.lim_psi * 0.0689476, 3) + ' bar');
+      if (r.energy != null) row(T.repEnergy, pm(r.energy) + (FR ? ' / an (' : ' / yr (') + num(r.hours, 0) + ' h, ' + num(r.rate, 2) + (FR ? ' $ US/kWh, rendement moteur 90 %)' : ' US$/kWh, 90 % motor efficiency)'));
+      if (chart) { y += 6; var cw = W - 2 * M, chh = cw * chart.h / chart.w; if (y + chh > 700) { doc.addPage(); y = 50; } doc.addImage(chart.d, 'PNG', M, y, cw, chh); y += chh + 16; }
+      if (y > 640) { doc.addPage(); y = 50; }
+      sec(T.repAcc);
+      if (filt) row(T.repFilter, filt + (S.bySku[filt] ? ' · ' + T.kind[S.bySku[filt].kind] + ' ' + (S.bySku[filt].specs.port || '') : ''));
+      if (valve) row(T.repValve, valve + (S.bySku[valve] ? ' · ' + T.kind[S.bySku[valve].kind] + ' ' + (S.bySku[valve].specs.port || '') : ''));
+      if (crt) row(T.repCart, crt);
+      y += 10; doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(mute[0], mute[1], mute[2]); var nt = doc.splitTextToSize(pt(T.repNote), W - 2 * M); if (y + nt.length * 11 > 750) { doc.addPage(); y = 50; } doc.text(nt, M, y);
+      var n = doc.getNumberOfPages(); for (var pg = 1; pg <= n; pg++) { doc.setPage(pg); doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(mute[0], mute[1], mute[2]); doc.text(pt('Stratovac · Part of ID Industries · stratovac.ca · +1 438-880-4655'), M, 770); doc.text(pt(T.page + ' ' + pg + ' / ' + n), W - M, 770, { align: 'right' }); }
+      doc.save((FR ? 'Rapport-selection-' : 'Selection-report-') + p.sku + '.pdf');
+    }).catch(function () { toast(T.quoteErr); });
+  }
+
   // ---------- boot ----------
   var recovering = false;
   function boot() {
     sb.auth.getSession().then(function (r) {
       var ses = r.data && r.data.session;
       if (recovering) return authView('recover');
-      if (!ses) { S.user = null; return authView('login'); }
+      if (!ses) { S.user = null; return authView(location.hash === '#signup' ? 'signup' : 'login'); }
       S.user = ses.user;
       sb.from('profiles').select('*').eq('id', S.user.id).single().then(function (pr) {
         S.prof = pr.data;
@@ -878,6 +1085,9 @@
         }
         Promise.all([sb.from('products').select('*').order('sort'), sb.from('portal_settings').select('data').eq('id', 1).maybeSingle()]).then(function (rs) {
           var pp = rs[0]; S.set = (rs[1].data && rs[1].data.data) || {};
+          sb.functions.invoke('fx', { body: {} }).then(function (r) { if (r.data && r.data.rate) { S.fx = r.data; if (['cart', 'prod', 'cat'].indexOf(S.tab) >= 0) shell(); } }).catch(function () {});
+          S.team = [];
+          if (S.prof.org_id) sb.from('profiles').select('id,full_name,email,company,status').eq('org_id', S.prof.org_id).then(function (t) { S.team = t.data || []; });
           S.prods = pp.data || []; S.bySku = {}; S.prods.forEach(function (p) { S.bySku[p.sku] = p; });
           route(true);
           window.addEventListener('hashchange', function () { route(false); });

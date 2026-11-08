@@ -13,6 +13,15 @@ const CORS = {
 const json = (b: unknown, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { ...CORS, 'Content-Type': 'application/json' } });
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
 const PORTAL = { fr: 'https://stratovac.ca/fr/portail/', en: 'https://stratovac.ca/portal/' };
+const CARRIER: Record<string, (n: string) => string> = {
+  purolator: (n) => `https://www.purolator.com/en/shipping/tracker?pin=${encodeURIComponent(n)}`,
+  ups: (n) => `https://www.ups.com/track?tracknum=${encodeURIComponent(n)}`,
+  fedex: (n) => `https://www.fedex.com/fedextrack/?trknbr=${encodeURIComponent(n)}`,
+  canpar: (n) => `https://www.canpar.com/en/tracking/track.htm?barcode=${encodeURIComponent(n)}`,
+  dhl: (n) => `https://www.dhl.com/ca-en/home/tracking/tracking-express.html?submit=1&tracking-id=${encodeURIComponent(n)}`,
+  canadapost: (n) => `https://www.canadapost-postescanada.ca/track-reperage/en#/search?searchFor=${encodeURIComponent(n)}`,
+};
+const ADMIN_TO = 'abruens@stratovac.ca';
 
 function money(n: number, fr: boolean) {
   return fr ? n.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' $ US' : 'US$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -41,10 +50,38 @@ Deno.serve(async (req) => {
     if (!key) return json({ error: 'email_unavailable' }, 503);
     const from = Deno.env.get('RESEND_FROM') || 'Stratovac <commandes@stratovac.ca>';
 
-    const { kind, order_id, user_id } = await req.json();
-    let to = '', subject = '', html = '';
+    const body = await req.json();
+    const { kind, order_id, user_id } = body;
+    let to: string | string[] = '', subject = '', html = '', replyTo = ADMIN_TO;
+    const { data: meP } = await db.from('profiles').select('email,full_name,company,phone,lang,status,org_id,is_admin').eq('id', user.id).single();
+    const approvedMe = !!meP && (meP.status === 'approved' || meP.is_admin);
 
-    if (kind === 'approved') {
+    if (kind === 'handoff') {
+      // "Talk to Anthony": the customer's conversation and cart, to Stratovac, replies go to the customer
+      if (!approvedMe) return json({ error: 'forbidden' }, 403);
+      const hour = new Date(Date.now() - 3600e3).toISOString();
+      const { count } = await db.from('ai_usage').select('id', { count: 'exact', head: true }).eq('user_id', user.id).eq('fn', 'handoff').gte('at', hour);
+      if ((count ?? 0) >= 5) return json({ error: 'limit' }, 429);
+      await db.from('ai_usage').insert({ user_id: user.id, fn: 'handoff' });
+      const msg = String(body.message ?? '').slice(0, 2000);
+      const convo = (Array.isArray(body.transcript) ? body.transcript : []).slice(-30).map((m: Record<string, unknown>) => `<p style="margin:0 0 8px"><strong>${m.role === 'user' ? esc(meP!.full_name || 'Client') : 'Assistant'} :</strong><br>${esc(String(m.content ?? '').slice(0, 3000)).replace(/\n/g, '<br>')}</p>`).join('');
+      const items = (Array.isArray(body.cart) ? body.cart : []).slice(0, 60).map((l: Record<string, unknown>) => `${esc(l.qty)} × ${esc(l.sku)}${l.mode ? ' (' + esc(l.mode) + ')' : ''}`).join('<br>');
+      to = ADMIN_TO; replyTo = meP!.email;
+      subject = `Portail : ${meP!.company || meP!.email} veut vous parler`;
+      html = frame(subject, `<p><strong>${esc(meP!.full_name || '')}</strong> · ${esc(meP!.company || '')}<br><a href="mailto:${esc(meP!.email)}">${esc(meP!.email)}</a>${meP!.phone ? ' · ' + esc(meP!.phone) : ''}</p>${msg ? `<p style="padding:10px 12px;background:#eef4fd;border-left:4px solid #1e6fd9">${esc(msg).replace(/\n/g, '<br>')}</p>` : ''}<h2 style="font-size:15px;margin:18px 0 8px">Conversation avec l’assistant</h2>${convo || '<p>(aucune)</p>'}<h2 style="font-size:15px;margin:18px 0 8px">Panier</h2><p>${items || '(vide)'}</p><p style="font-size:13px;color:#5b6673">Répondez à ce courriel pour écrire directement au client.</p>`, true);
+    } else if (kind === 'cart_shared') {
+      if (!approvedMe || !meP!.org_id) return json({ error: 'forbidden' }, 403);
+      const { data: sc } = await db.from('shared_carts').select('*').eq('id', Number(body.cart_id)).single();
+      if (!sc || sc.org_id !== meP!.org_id || sc.from_user !== user.id) return json({ error: 'not_found' }, 404);
+      const { data: team } = await db.from('profiles').select('email,lang,status').eq('org_id', meP!.org_id).neq('id', user.id);
+      const rcpt = (team ?? []).filter((t) => t.status === 'approved').map((t) => t.email);
+      if (!rcpt.length) return json({ error: 'no_team' }, 400);
+      const fr = meP!.lang !== 'en';
+      to = rcpt; replyTo = meP!.email;
+      const lines = (sc.items ?? []).map((l: Record<string, unknown>) => `${esc(l.qty)} × <strong>${esc(l.sku)}</strong>${l.mode ? ' (' + (fr ? (l.mode === 'vacuum' ? 'vide' : 'pression') : l.mode) + ')' : ''}`).join('<br>');
+      subject = fr ? `${meP!.full_name || meP!.email} vous envoie un panier à approuver` : `${meP!.full_name || meP!.email} sent you a cart to approve`;
+      html = frame(subject, `<p>${fr ? 'Bonjour,' : 'Hello,'}</p><p>${fr ? `<strong>${esc(meP!.full_name || meP!.email)}</strong> a préparé ce panier sur l’espace client Stratovac et vous demande de l’approuver :` : `<strong>${esc(meP!.full_name || meP!.email)}</strong> prepared this cart on the Stratovac customer portal and asks you to approve it:`}</p><p style="font-size:14px">${lines}</p>${sc.note ? `<p style="padding:10px 12px;background:#eef4fd;border-left:4px solid #1e6fd9">${esc(sc.note)}</p>` : ''}<p><a href="${fr ? PORTAL.fr : PORTAL.en}#account" style="display:inline-block;background:#1e6fd9;color:#fff;padding:11px 18px;border-radius:6px;text-decoration:none;font-weight:bold">${fr ? 'Voir et commander' : 'Review and order'}</a></p>`, fr);
+    } else if (kind === 'approved') {
       if (!admin) return json({ error: 'forbidden' }, 403);
       const { data: p } = await db.from('profiles').select('email,full_name,lang,status,discount_pct').eq('id', user_id).single();
       if (!p || p.status !== 'approved') return json({ error: 'not_found' }, 404);
@@ -74,7 +111,8 @@ Deno.serve(async (req) => {
         html = frame(subject, `<p>${fr ? 'Bonjour' : 'Hello'} ${esc(p.full_name || '')},</p><p>${fr ? `Merci pour votre commande no <strong>${o.id}</strong>. ${pay} Le transport (FOB Longueuil) vous sera confirmé séparément.` : `Thank you for your order no. <strong>${o.id}</strong>. ${pay} Freight (FOB Longueuil) will be confirmed separately.`}</p>${table}${shipTo}<p><a href="${fr ? PORTAL.fr : PORTAL.en}#orders" style="color:#1e6fd9">${fr ? 'Suivre ma commande' : 'Track my order'}</a></p>`, fr);
       } else {
         subject = fr ? `Votre commande no ${o.id} est expédiée` : `Your order no. ${o.id} has shipped`;
-        const trk = o.tracking ? `<p style="font-size:15px">${fr ? 'Numéro de suivi' : 'Tracking number'} : <strong>${esc(o.tracking)}</strong></p>` : '';
+        const link = o.tracking && o.carrier && CARRIER[o.carrier] ? CARRIER[o.carrier](o.tracking) : null;
+        const trk = o.tracking ? `<p style="font-size:15px">${fr ? 'Numéro de suivi' : 'Tracking number'} : <strong>${esc(o.tracking)}</strong>${link ? `<br><a href="${link}" style="display:inline-block;margin-top:8px;background:#1e6fd9;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:bold">${fr ? 'Suivre mon colis' : 'Track my package'}</a>` : ''}</p>` : '';
         html = frame(subject, `<p>${fr ? 'Bonjour' : 'Hello'} ${esc(p.full_name || '')},</p><p>${fr ? `Bonne nouvelle : votre commande no <strong>${o.id}</strong> vient d’être expédiée.` : `Good news: your order no. <strong>${o.id}</strong> has just shipped.`}</p>${trk}${table}${shipTo}`, fr);
       }
     } else return json({ error: 'kind' }, 400);
@@ -82,7 +120,7 @@ Deno.serve(async (req) => {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST', signal: AbortSignal.timeout(15000),
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: [to], reply_to: 'abruens@stratovac.ca', subject, html }),
+      body: JSON.stringify({ from, to: Array.isArray(to) ? to : [to], reply_to: replyTo, subject, html }),
     });
     if (!r.ok) { console.error('resend', r.status, await r.text().catch(() => '')); return json({ error: 'send' }, 502); }
     return json({ sent: true });
