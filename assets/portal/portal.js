@@ -1044,7 +1044,7 @@
       var tF = r.temp == null ? 68 : r.temp;
       sec(T.repCond);
       row(T.repUse, r.mode === 'vacuum' ? T.vac : T.press);
-      row(T.repFlowReq, (r.given ? r.given + ' = ' : '') + num(r.acfm, 0) + ' CFM · ' + num(r.acfm / 0.588578, 0) + ' m³/h ' + (FR ? '(débit réel à l’aspiration)' : '(actual inlet flow)'));
+      row(T.repFlowReq, (r.given && !/^[\d.,\s]+(A|I)?CFM$/i.test(r.given) ? r.given + ' = ' : '') + num(r.acfm, 0) + ' CFM · ' + num(r.acfm / 0.588578, 0) + ' m³/h ' + (FR ? '(débit réel à l’aspiration)' : '(actual inlet flow)'));
       row(T.repLevel, (r.mode === 'vacuum' ? '-' : '') + num(r.psi, 2) + ' psi · ' + num(r.psi * 0.0689476, 3) + ' bar');
       row(T.repGas, gasName + (r.mw ? ' (M = ' + num(r.mw, 1) + ' g/mol)' : ''));
       row(T.repAlt, num(r.alt || 0, 0) + ' ft · ' + num((r.alt || 0) * 0.3048, 0) + ' m');
@@ -1057,7 +1057,7 @@
       if (r.kw != null) row(T.repPow, num(r.kw, 2) + ' kW · ' + num(r.kw / 0.7457, 2) + ' HP');
       if (r.lim_psi) row(T.repLim, num(r.lim_psi, 2) + ' psi · ' + num(r.lim_psi * 0.0689476, 3) + ' bar');
       if (r.energy != null) row(T.repEnergy, pm(r.energy) + (FR ? ' / an (' : ' / yr (') + num(r.hours, 0) + ' h, ' + num(r.rate, 2) + (FR ? ' $ US/kWh, rendement moteur 90 %)' : ' US$/kWh, 90 % motor efficiency)'));
-      if (chart) { y += 6; var cw = W - 2 * M, chh = cw * chart.h / chart.w; if (y + chh > 700) { doc.addPage(); y = 50; } doc.addImage(chart.d, 'PNG', M, y, cw, chh); y += chh + 16; }
+      if (chart) { y += 6; var cw = W - 2 * M, chh = cw * chart.h / chart.w, avail = 735 - y; if (chh > avail) { if (avail >= 190) { cw = cw * avail / chh; chh = avail; } else { doc.addPage(); y = 50; } } doc.addImage(chart.d, 'PNG', M + (W - 2 * M - cw) / 2, y, cw, chh); y += chh + 16; }
       if (y > 640) { doc.addPage(); y = 50; }
       sec(T.repAcc);
       if (filt) row(T.repFilter, filt + (S.bySku[filt] ? ' · ' + T.kind[S.bySku[filt].kind] + ' ' + (S.bySku[filt].specs.port || '') : ''));
