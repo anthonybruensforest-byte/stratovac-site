@@ -236,3 +236,7 @@ create policy "cad approved read" on storage.objects for select using (bucket_id
 drop policy if exists "cad admin write" on storage.objects;
 create policy "cad admin write" on storage.objects for all using (bucket_id = 'cad' and public.is_admin()) with check (bucket_id = 'cad' and public.is_admin());
 select 'ok' as round2;
+
+-- ---------- earlier price lists (server-side only, no client access) ----------
+create table if not exists public.price_history (sku text not null, list_price numeric(10,2), list_name text not null, saved_at timestamptz not null default now(), primary key (sku, list_name));
+alter table public.price_history enable row level security;
