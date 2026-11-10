@@ -34,6 +34,14 @@ Quotes are made on request: send the operating point (gas, flow, inlet and outle
 - [Custom pressurized regenerative blowers](https://stratovac.ca/pressurized-blowers/): For gas circuits that run at line pressure. The whole casing is engineered and tested as a pressure part, and a magnetic drive replaces the shaft seal.
 - [Soufflantes régénératives sous pression sur mesure (français)](https://stratovac.ca/fr/soufflantes-pressurisees/)
 
+## Guides
+- [How to choose a blower: regenerative, turbo, rotary lobe or claw](https://stratovac.ca/guides/blower-selection/): comparison table of blower and vacuum technologies (flow, pressure, strong points, limits) and how to size a blower for gas, altitude and temperature.
+- [Choisir une soufflante (français)](https://stratovac.ca/fr/guides/choisir-une-soufflante/)
+- [Free blower selection assistant](https://stratovac.ca/selection-assistant/): describe the duty point in plain words (e.g. "200 SCFM at -3 inHg") and get a regenerative blower model with accessories; corrects for gas, altitude and temperature.
+
+## United States
+Stratovac sells across the United States. Regenerative blowers for US customers ship from a warehouse in Florida; US prices include tariffs, with no brokerage or customs fees.
+
 ## Datasheets (PDF)
 - [Natural gas booster](https://stratovac.ca/assets/pdf/high-pressure-gas-booster.pdf)
 - [Biogas regenerative blower](https://stratovac.ca/assets/pdf/biogas-regenerative-blower.pdf)
